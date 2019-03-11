@@ -1,9 +1,9 @@
-package com.example.lanhuajian.blues.contract;
+package com.example.lanhuajian.blues.model_android.contract;
 
 import com.example.framework.base.BasePresenter;
 import com.example.framework.base.BaseView;
 import com.example.framework.http.HttpCallBack;
-import com.example.lanhuajian.blues.model.Entity;
+import com.example.lanhuajian.blues.model_android.model.AndroidEntity;
 
 
 import java.util.List;
@@ -16,10 +16,10 @@ import rx.Subscription;
  * Email : huajianlan@rastar.com
  */
 
-public interface Contract {
+public interface AndroidContract {
     interface iContractView extends BaseView<iContractPresenter> {
 
-        void setData(List<Entity.ResultsBean> result);
+        void setData(List<AndroidEntity.ResultsBean> result);
 
     }
 
@@ -35,7 +35,7 @@ public interface Contract {
 
     interface iContractModel {
 
-        Subscription getData(int limit, int page, HttpCallBack<Entity> callBack);
+        Subscription getData(int limit, int page, HttpCallBack<AndroidEntity> callBack);
 
     }
 }

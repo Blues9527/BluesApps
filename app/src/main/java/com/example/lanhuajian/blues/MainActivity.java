@@ -7,19 +7,19 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.example.framework.base.BaseActivity;
-import com.example.lanhuajian.blues.contract.Contract;
-import com.example.lanhuajian.blues.model.Entity;
-import com.example.lanhuajian.blues.presenter.CPresenter;
-import com.example.lanhuajian.blues.view.fragments.AndroidFragment;
-import com.example.lanhuajian.blues.view.fragments.FuliFragment;
-import com.example.lanhuajian.blues.view.fragments.WebFragment;
-import com.example.lanhuajian.blues.view.fragments._iOSFragment;
+import com.example.lanhuajian.blues.model_android.contract.AndroidContract;
+import com.example.lanhuajian.blues.model_android.model.AndroidEntity;
+import com.example.lanhuajian.blues.model_android.presenter.AndroidPresenter;
+import com.example.lanhuajian.blues.model_android.view.AndroidFragment;
+import com.example.lanhuajian.blues.model_fuli.view.FuliFragment;
+import com.example.lanhuajian.blues.model_ios.view._iOSFragment;
+import com.example.lanhuajian.blues.model_web.view.WebFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends BaseActivity implements Contract.iContractView {
+public class MainActivity extends BaseActivity implements AndroidContract.iContractView {
 
     private TabLayout mTab;
     private ViewPager mViewPager;
@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity implements Contract.iContractView
         mTab = findViewById(R.id.tl_bottom);
         mViewPager = findViewById(R.id.vp_show);
 
-        mPresenter = new CPresenter(this);
+        mPresenter = new AndroidPresenter(this);
 
 
         fragments.add(new AndroidFragment());
@@ -76,13 +76,13 @@ public class MainActivity extends BaseActivity implements Contract.iContractView
     }
 
     @Override
-    public void setData(List<Entity.ResultsBean> result) {
+    public void setData(List<AndroidEntity.ResultsBean> result) {
 
 
     }
 
     @Override
-    public void setPresenter(Contract.iContractPresenter presenter) {
+    public void setPresenter(AndroidContract.iContractPresenter presenter) {
 
     }
 

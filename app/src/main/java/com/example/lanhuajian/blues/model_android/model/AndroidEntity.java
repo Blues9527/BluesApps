@@ -1,4 +1,4 @@
-package com.example.lanhuajian.blues.model;
+package com.example.lanhuajian.blues.model_android.model;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * Email : huajianlan@rastar.com
  */
 
-public class Entity {
+public class AndroidEntity {
 
 
     /**

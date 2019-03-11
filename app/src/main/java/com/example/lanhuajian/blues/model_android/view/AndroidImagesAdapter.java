@@ -1,4 +1,4 @@
-package com.example.lanhuajian.blues.view;
+package com.example.lanhuajian.blues.model_android.view;
 
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -14,10 +14,10 @@ import com.example.lanhuajian.blues.R;
 
 import java.util.List;
 
-public class ImagesAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+public class AndroidImagesAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
 
-    public ImagesAdapter(@Nullable List<String> data) {
+    public AndroidImagesAdapter(@Nullable List<String> data) {
         super(R.layout.item_item_image, data);
     }
 

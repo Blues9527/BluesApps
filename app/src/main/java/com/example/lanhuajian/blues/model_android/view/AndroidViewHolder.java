@@ -1,14 +1,13 @@
-package com.example.lanhuajian.blues.view;
+package com.example.lanhuajian.blues.model_android.view;
 
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lanhuajian.blues.R;
-import com.example.lanhuajian.blues.model.Entity;
+import com.example.lanhuajian.blues.model_android.model.AndroidEntity;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 
@@ -17,13 +16,13 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
  * Date : 2019/3/6
  */
 
-public class CViewHolder extends BaseViewHolder<Entity.ResultsBean> {
+public class AndroidViewHolder extends BaseViewHolder<AndroidEntity.ResultsBean> {
 
     private ImageView ivAvatar;
     private TextView tvDesc, tvAuthor, tvSource, tvPTime, tvUrl;
     private EasyRecyclerView rvImages;
 
-    public CViewHolder(ViewGroup parent) {
+    public AndroidViewHolder(ViewGroup parent) {
         super(parent, R.layout.item_test);
 
         rvImages = $(R.id.rv_images);
@@ -36,7 +35,7 @@ public class CViewHolder extends BaseViewHolder<Entity.ResultsBean> {
     }
 
     @Override
-    public void setData(Entity.ResultsBean data) {
+    public void setData(AndroidEntity.ResultsBean data) {
         super.setData(data);
 
         Log.i("Blues", data.toString());
@@ -49,6 +48,6 @@ public class CViewHolder extends BaseViewHolder<Entity.ResultsBean> {
 
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         rvImages.setLayoutManager(layoutManager);
-        rvImages.setAdapter(new ImagesAdapter(data.getImages()));
+        rvImages.setAdapter(new AndroidImagesAdapter(data.getImages()));
     }
 }

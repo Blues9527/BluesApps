@@ -1,13 +1,13 @@
-package com.example.lanhuajian.blues.presenter;
+package com.example.lanhuajian.blues.model_android.presenter;
 
 import android.util.Log;
 
 import com.example.framework.base.BaseView;
 import com.example.framework.base.RxPresenter;
 import com.example.framework.http.HttpCallBack;
-import com.example.lanhuajian.blues.contract.Contract;
-import com.example.lanhuajian.blues.model.CModel;
-import com.example.lanhuajian.blues.model.Entity;
+import com.example.lanhuajian.blues.model_android.contract.AndroidContract;
+import com.example.lanhuajian.blues.model_android.model.AndroidModel;
+import com.example.lanhuajian.blues.model_android.model.AndroidEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,20 +19,20 @@ import java.util.List;
  * Email : huajianlan@rastar.com
  */
 
-public class CPresenter extends RxPresenter implements Contract.iContractPresenter {
+public class AndroidPresenter extends RxPresenter implements AndroidContract.iContractPresenter {
 
-    private Contract.iContractModel iModel;
-    private Contract.iContractView iView;
+    private AndroidContract.iContractModel iModel;
+    private AndroidContract.iContractView iView;
 
-    private List<Entity.ResultsBean> mDatas;
+    private List<AndroidEntity.ResultsBean> mDatas;
 
     private static final int LIMIT = 10;
     private int mCurrentPage = 1;
 
-    public CPresenter(BaseView mView) {
+    public AndroidPresenter(BaseView mView) {
         super(mView);
-        iModel = new CModel();
-        iView = (Contract.iContractView) mView;
+        iModel = new AndroidModel();
+        iView = (AndroidContract.iContractView) mView;
         mDatas = new ArrayList<>();
     }
 
@@ -49,9 +49,9 @@ public class CPresenter extends RxPresenter implements Contract.iContractPresent
 
     @Override
     public void getData(int limit, int page) {
-        subscribe(iModel.getData(limit, page, new HttpCallBack<Entity>() {
+        subscribe(iModel.getData(limit, page, new HttpCallBack<AndroidEntity>() {
             @Override
-            public void onSuccess(Entity data) {
+            public void onSuccess(AndroidEntity data) {
                 mDatas.addAll(data.getResults());
                 iView.setData(data.getResults());
             }

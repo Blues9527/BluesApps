@@ -1,17 +1,15 @@
-package com.example.lanhuajian.blues.view.fragments;
+package com.example.lanhuajian.blues.model_ios.view;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
-import com.example.lanhuajian.blues.contract.Contract;
-import com.example.lanhuajian.blues.model.Entity;
-import com.example.lanhuajian.blues.presenter.CPresenter;
-import com.example.lanhuajian.blues.view.CViewHolder;
+import com.example.lanhuajian.blues.model_ios.contract.IOSContract;
+import com.example.lanhuajian.blues.model_ios.model.IOSEntity;
+import com.example.lanhuajian.blues.model_ios.presenter.IOSPresenter;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -19,34 +17,32 @@ import com.jude.easyrecyclerview.decoration.DividerDecoration;
 
 import java.util.List;
 
-public class AndroidFragment extends BaseFragment implements Contract.iContractView {
+public class _iOSFragment extends BaseFragment implements IOSContract.iContractView {
 
-    private EasyRecyclerView androidErv;
-    private Contract.iContractPresenter iPresenter;
-    private RecyclerArrayAdapter<Entity.ResultsBean> mAdapter;
+    private EasyRecyclerView iOSErv;
+    private IOSContract.iContractPresenter iPresenter;
+    private RecyclerArrayAdapter<IOSEntity.ResultsBean> mAdapter;
 
     @Override
     public int setLayoutResourceId() {
-        return R.layout.fragment_android;
+        return R.layout.fragment_ios;
     }
 
     @Override
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        androidErv = rootView.findViewById(R.id.rv_android);
+        iOSErv = rootView.findViewById(R.id.rv_ios);
 
-        mPresenter = new CPresenter(this);
+        mPresenter = new IOSPresenter(this);
+
         iPresenter.initData();
 
-        //初始化数据
-        iPresenter.initData();
-
-        androidErv.addItemDecoration(new DividerDecoration(getResources().getColor(R.color.color_light_gray), 1));
-        androidErv.setLayoutManager(new LinearLayoutManager(getmContext()));
-        androidErv.setAdapter(mAdapter = new RecyclerArrayAdapter<Entity.ResultsBean>(getmContext()) {
+        iOSErv.addItemDecoration(new DividerDecoration(getResources().getColor(R.color.color_light_gray), 1));
+        iOSErv.setLayoutManager(new LinearLayoutManager(getmContext()));
+        iOSErv.setAdapter(mAdapter = new RecyclerArrayAdapter<IOSEntity.ResultsBean>(getmContext()) {
             @Override
             public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-                return new CViewHolder(parent);
+                return new IOSViewHolder(parent);
             }
         });
         mAdapter.setMore(R.layout.view_loading_more, new RecyclerArrayAdapter.OnMoreListener() {
@@ -60,8 +56,8 @@ public class AndroidFragment extends BaseFragment implements Contract.iContractV
 
             }
         });
-
         mAdapter.setNoMore(R.layout.view_load_no_more);
+
     }
 
     @Override
@@ -75,17 +71,21 @@ public class AndroidFragment extends BaseFragment implements Contract.iContractV
     }
 
     @Override
-    public void setData(List<Entity.ResultsBean> result) {
-        for (Entity.ResultsBean data : result) {
+    public void setData(List<IOSEntity.ResultsBean> result) {
 
-            mAdapter.add(data);
+        if (result != null) {
+            for (IOSEntity.ResultsBean ios : result) {
+
+                mAdapter.add(ios);
+            }
 
         }
         mAdapter.notifyDataSetChanged();
+
     }
 
     @Override
-    public void setPresenter(Contract.iContractPresenter presenter) {
+    public void setPresenter(IOSContract.iContractPresenter presenter) {
         this.iPresenter = presenter;
     }
 

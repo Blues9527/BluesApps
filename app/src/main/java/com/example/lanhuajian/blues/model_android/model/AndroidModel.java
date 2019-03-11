@@ -1,8 +1,8 @@
-package com.example.lanhuajian.blues.model;
+package com.example.lanhuajian.blues.model_android.model;
 
 import com.example.framework.http.HttpCallBack;
-import com.example.lanhuajian.blues.api.API;
-import com.example.lanhuajian.blues.contract.Contract;
+import com.example.lanhuajian.blues.model_android.api.AndroidAPI;
+import com.example.lanhuajian.blues.model_android.contract.AndroidContract;
 
 import rx.Subscriber;
 import rx.Subscription;
@@ -13,11 +13,11 @@ import rx.Subscription;
  * Email : huajianlan@rastar.com
  */
 
-public class CModel implements Contract.iContractModel {
+public class AndroidModel implements AndroidContract.iContractModel {
 
     @Override
-    public Subscription getData(int limit, int page, final HttpCallBack<Entity> callBack) {
-        return API.getInstance().getData(limit, page, new Subscriber<Entity>() {
+    public Subscription getData(int limit, int page, final HttpCallBack<AndroidEntity> callBack) {
+        return AndroidAPI.getInstance().getData(limit, page, new Subscriber<AndroidEntity>() {
             @Override
             public void onCompleted() {
 
@@ -30,7 +30,7 @@ public class CModel implements Contract.iContractModel {
             }
 
             @Override
-            public void onNext(Entity entity) {
+            public void onNext(AndroidEntity entity) {
                 callBack.onSuccess(entity);
             }
         });
