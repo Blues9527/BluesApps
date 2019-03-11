@@ -2,11 +2,14 @@ package com.example.lanhuajian.blues.model_android.view;
 
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.WebViewDialog;
 import com.example.lanhuajian.blues.model_android.model.AndroidEntity;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
@@ -49,5 +52,12 @@ public class AndroidViewHolder extends BaseViewHolder<AndroidEntity.ResultsBean>
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         rvImages.setLayoutManager(layoutManager);
         rvImages.setAdapter(new AndroidImagesAdapter(data.getImages()));
+
+        tvUrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new WebViewDialog(getContext(), data.getUrl()).show();
+            }
+        });
     }
 }

@@ -45,20 +45,15 @@
             android:id="@+id/tv_url"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/color_light_blue" />
 
         <com.jude.easyrecyclerview.EasyRecyclerView
             android:id="@+id/rv_images"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp" />
-
-        <!--<ImageView-->
-        <!--android:id="@+id/iv_image"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-
-        <!--android:scaleType="centerCrop" />-->
 
     </LinearLayout>
 
