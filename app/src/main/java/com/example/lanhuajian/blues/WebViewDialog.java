@@ -2,10 +2,10 @@ package com.example.lanhuajian.blues;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -21,10 +21,12 @@ public class WebViewDialog extends Dialog {
     private ProgressBar webViewPb;
     private ImageView backIv;
     private String url;
+    private LoadingDialog mDialog;
 
     public WebViewDialog(Context context, String url) {
         super(context);
         this.url = url;
+        mDialog = new LoadingDialog(getContext());
     }
 
     @Override
@@ -61,8 +63,29 @@ public class WebViewDialog extends Dialog {
         webSettings.supportZoom();
         webSettings.setUseWideViewPort(true);
 
-        showWv.setWebViewClient(new WebViewClient());
-        showWv.setWebChromeClient(new WebChromeClient());
+        showWv.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                webViewPb.setVisibility(View.VISIBLE);
+                mDialog.show();
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                webViewPb.setVisibility(View.GONE);
+                mDialog.dismiss();
+            }
+        });
+        showWv.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+                webViewPb.setProgress(newProgress);
+            }
+        });
+
 
         showWv.loadUrl(url);
 

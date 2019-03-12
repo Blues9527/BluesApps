@@ -19,27 +19,27 @@ import java.util.List;
 
 public class FuliFragment extends BaseFragment implements FuliContract.iContractView {
 
-    private EasyRecyclerView iOSErv;
+    private EasyRecyclerView fuliErv;
     private FuliContract.iContractPresenter iPresenter;
     private RecyclerArrayAdapter<FuliEntity.ResultsBean> mAdapter;
 
     @Override
     public int setLayoutResourceId() {
-        return R.layout.fragment_ios;
+        return R.layout.fragment_fuli;
     }
 
     @Override
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        iOSErv = rootView.findViewById(R.id.rv_ios);
+        fuliErv = rootView.findViewById(R.id.rv_fuli);
 
         mPresenter = new FuliPresenter(this);
 
         iPresenter.initData();
 
-        iOSErv.addItemDecoration(new DividerDecoration(getResources().getColor(R.color.color_light_gray), 1));
-        iOSErv.setLayoutManager(new LinearLayoutManager(getmContext()));
-        iOSErv.setAdapter(mAdapter = new RecyclerArrayAdapter<FuliEntity.ResultsBean>(getmContext()) {
+        fuliErv.addItemDecoration(new DividerDecoration(getResources().getColor(R.color.color_light_gray), 1));
+        fuliErv.setLayoutManager(new LinearLayoutManager(getmContext()));
+        fuliErv.setAdapter(mAdapter = new RecyclerArrayAdapter<FuliEntity.ResultsBean>(getmContext()) {
             @Override
             public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
                 return new FuliViewHolder(parent);
