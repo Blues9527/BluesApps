@@ -51,7 +51,7 @@ public class StudyPageFragment extends BaseFragment {
         fragments.add(new FuliFragment());
 
         FragmentPagerAdapter fragmentPagerAdapter =
-                new FragmentPagerAdapter(getSupportFragmentManager()) {
+                new FragmentPagerAdapter(getChildFragmentManager()) {
                     @Override
                     public Fragment getItem(int i) {
                         return fragments.get(i);
