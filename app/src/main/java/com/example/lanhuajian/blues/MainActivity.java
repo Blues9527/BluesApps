@@ -112,4 +112,5 @@ public class MainActivity extends BaseActivity implements AndroidContract.iContr
     public void showEmpty() {
 
     }
+
 }
