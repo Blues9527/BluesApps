@@ -33,6 +33,8 @@
     <color name="color_black_translucent90">#90000000</color>
     <!--浅灰色-->
     <color name="color_light_gray">#ffcccccc</color>
+    <!--super亮灰-->
+    <color name="color_super_light_gray">#ffe6e6e6</color>
     <!--灰色-->
     <color name="color_gray">#ff999999</color>
     <!--暗灰色-->

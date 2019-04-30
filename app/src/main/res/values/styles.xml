@@ -17,7 +17,7 @@
         <item name="colorAccent">@color/color_black</item>
     </style>
 
-    <style name="CustomEditText" parent="Widget.AppCompat.EditText">
+    <style name="CustomEditText" parent="Base.Widget.AppCompat.EditText">
         <item name="colorAccent">@color/color_white</item>
     </style>
 

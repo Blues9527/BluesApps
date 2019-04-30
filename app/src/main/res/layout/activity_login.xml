@@ -24,7 +24,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/iv_logo"
-            android:text="QQ"
+            android:text="Blues"
             android:textColor="@color/color_black"
             android:textSize="25dp"
             android:textStyle="bold" />
@@ -46,7 +46,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginLeft="10dp"
-            android:background="@mipmap/iv_my_avatar" />
+            android:background="@mipmap/ic_avatar_default" />
 
         <EditText
             android:id="@+id/et_input_account"
@@ -56,6 +56,7 @@
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:background="@null"
+            android:inputType="text|textUri"
             android:theme="@style/CustomEditText" />
 
         <ImageView
@@ -92,7 +93,16 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
-                android:background="@mipmap/ic_eyes_on" />
+                android:background="@mipmap/ic_eyes_on"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/iv_eyes_off"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:background="@mipmap/ic_eyes_off"
+                android:visibility="gone" />
 
         </FrameLayout>
 
@@ -104,6 +114,7 @@
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:background="@null"
+            android:inputType="textPassword"
             android:theme="@style/CustomEditText" />
 
         <ImageView
@@ -119,8 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:background="@color/color_light_blue">
+        android:layout_marginTop="100dp">
 
         <ImageView
             android:id="@+id/iv_go"
