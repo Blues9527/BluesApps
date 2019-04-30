@@ -5,25 +5,17 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.widget.FrameLayout;
 
 import com.example.framework.base.BaseActivity;
-import com.example.lanhuajian.blues.model_main.MainPageFragment;
-import com.example.lanhuajian.blues.model_personalpage.PersonalPageFragment;
-import com.example.lanhuajian.blues.model_study.StudyPageFragment;
-import com.example.lanhuajian.blues.model_study.model_android.contract.AndroidContract;
-import com.example.lanhuajian.blues.model_study.model_android.model.AndroidEntity;
-import com.example.lanhuajian.blues.model_study.model_android.presenter.AndroidPresenter;
-import com.example.lanhuajian.blues.model_study.model_android.view.AndroidFragment;
-import com.example.lanhuajian.blues.model_study.model_fuli.view.FuliFragment;
-import com.example.lanhuajian.blues.model_study.model_ios.view._iOSFragment;
-import com.example.lanhuajian.blues.model_study.model_web.view.WebFragment;
+import com.example.lanhuajian.blues.module_main.MainPageFragment;
+import com.example.lanhuajian.blues.module_personalpage.PersonalPageFragment;
+import com.example.lanhuajian.blues.module_study.StudyPageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends BaseActivity implements AndroidContract.iContractView {
+public class MainActivity extends BaseActivity {
 
     private TabLayout mTab;
     private ViewPager mViewPager;
@@ -41,8 +33,6 @@ public class MainActivity extends BaseActivity implements AndroidContract.iContr
 
         mTab = findViewById(R.id.tl_activity_bottom);
         mViewPager = findViewById(R.id.vp_show);
-
-        mPresenter = new AndroidPresenter(this);
 
         fragments.add(new MainPageFragment());
         fragments.add(new StudyPageFragment());
@@ -68,6 +58,7 @@ public class MainActivity extends BaseActivity implements AndroidContract.iContr
 
         for (int i = 0; i < tabs.length; i++) {
             mTab.getTabAt(i).setText(tabs[i]);
+//            mTab.getTabAt(i).setIcon();
         }
 
     }
@@ -76,41 +67,4 @@ public class MainActivity extends BaseActivity implements AndroidContract.iContr
     @Override
     public void setListener() {
     }
-
-    @Override
-    public void setData(List<AndroidEntity.ResultsBean> result) {
-
-
-    }
-
-    @Override
-    public void setPresenter(AndroidContract.iContractPresenter presenter) {
-
-    }
-
-    @Override
-    public void showBegin() {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void showFinished() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
-    public void showEmpty() {
-
-    }
-
 }

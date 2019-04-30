@@ -5,12 +5,15 @@
     android:layout_marginLeft="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
+    android:background="@drawable/shape_item_background"
     android:paddingBottom="10dp">
 
     <ImageView
         android:id="@+id/iv_avatar"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:background="@mipmap/ic_avatar_default"
         android:contentDescription="TODO" />
 
@@ -19,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/iv_avatar"
         android:orientation="vertical">
 
@@ -76,6 +80,7 @@
         android:layout_alignBaseline="@+id/tv_publish_time"
         android:layout_alignParentRight="true"
         android:text="来自web"
+        android:layout_marginRight="10dp"
         android:textColor="@color/color_dark_gray"
         android:textSize="11sp" />
 </RelativeLayout>

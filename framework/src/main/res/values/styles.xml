@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme_LoaidngDialog" parent="@android:style/Theme.Dialog">
+    <style name="Theme_LoadingDialog" parent="@android:style/Theme.Dialog">
         <!--Dialog的windowFrame框为无 -->
         <item name="android:windowFrame">@null</item>
         <!-- 是否漂现在activity上-->
@@ -13,7 +13,7 @@
         <!-- dim:模糊的 阴影效果 -->
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 背景图片的大小也影响窗口的大小 -->
-        <item name="android:windowBackground">@color/color_transparent</item>
+        <item name="android:windowBackground">@null</item>
     </style>
 
     <style name="Theme_CustomProgressBar" parent="Widget.AppCompat.ProgressBar">

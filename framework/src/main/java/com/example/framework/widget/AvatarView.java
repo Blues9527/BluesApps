@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
 
@@ -17,7 +18,7 @@ import android.util.Log;
  * Time : 15:29
  */
 
-public class AvatarView extends android.support.v7.widget.AppCompatImageView {
+public class AvatarView extends AppCompatImageView {
 
     private static final String TAG = "Blues";
     private Bitmap bitmap;

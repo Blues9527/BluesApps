@@ -8,9 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
     <style name="Theme.Custom" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/color_light_blue</item>
+        <item name="colorPrimaryDark">@color/color_light_blue</item>
+        <item name="colorAccent">@color/color_black</item>
+    </style>
+
+    <style name="CustomEditText" parent="Widget.AppCompat.EditText">
+        <item name="colorAccent">@color/color_white</item>
     </style>
 
 

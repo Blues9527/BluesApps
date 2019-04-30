@@ -13,7 +13,7 @@ public class LoadingDialog extends Dialog {
 
 
     public LoadingDialog(@NonNull Context context) {
-        super(context, R.style.Theme_LoaidngDialog);
+        super(context, R.style.Theme_LoadingDialog);
     }
 
     @Override

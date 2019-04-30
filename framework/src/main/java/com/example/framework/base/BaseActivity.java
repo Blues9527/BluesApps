@@ -29,7 +29,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
         //加载视图控件
         initView(savedInstanceState);
-
         //设置监听
         setListener();
     }

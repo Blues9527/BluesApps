@@ -3,22 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
-    android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/shape_item_background"
     android:paddingBottom="10dp">
 
     <ImageView
         android:id="@+id/iv_avatar"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:background="@mipmap/ic_avatar_default"
-        android:contentDescription="TODO" />
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@mipmap/ic_avatar_default" />
 
     <LinearLayout
         android:id="@+id/ll_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/iv_avatar"
         android:orientation="vertical">
 
@@ -27,9 +30,9 @@
             android:id="@+id/tv_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:text="Blues"
-            android:textColor="@color/color_black"
+            android:textColor="@color/color_light_blue"
             android:textSize="12sp" />
 
         <TextView
@@ -76,6 +79,7 @@
         android:layout_below="@id/ll_container"
         android:layout_alignBaseline="@+id/tv_publish_time"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
         android:text="来自web"
         android:textColor="@color/color_dark_gray"
         android:textSize="11sp" />
