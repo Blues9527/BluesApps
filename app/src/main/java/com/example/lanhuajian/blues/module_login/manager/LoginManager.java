@@ -10,8 +10,10 @@ import android.text.TextUtils;
 
 public class LoginManager {
 
+
     private LoginCallBack mLoginCallBack;
 
+    //静态内部类单例
     private static class LoginHolder {
         private static LoginManager INSTANCE = new LoginManager();
     }
@@ -23,6 +25,7 @@ public class LoginManager {
         return LoginHolder.INSTANCE;
     }
 
+    //客户端参数校验
     private boolean checkNotNull(String... strings) {
         for (String str : strings) {
             if (TextUtils.isEmpty(str)) {
@@ -34,8 +37,10 @@ public class LoginManager {
 
     }
 
+    //登录校验
     public void login(String account, String password, LoginCallBack mLoginCallBack) {
         this.mLoginCallBack = mLoginCallBack;
+        //模拟校验逻辑，正确应是请求后端让后端进行校验，返回json串
         if (checkNotNull(account, password))
             if ("blues".equals(account) && password.equals("000000"))
                 mLoginCallBack.onSuccess();
@@ -44,6 +49,7 @@ public class LoginManager {
     }
 
 
+    //登录回调
     public interface LoginCallBack {
         void onSuccess();
 

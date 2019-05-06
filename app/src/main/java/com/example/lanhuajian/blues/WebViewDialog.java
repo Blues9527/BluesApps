@@ -89,12 +89,7 @@ public class WebViewDialog extends Dialog {
 
         showWv.loadUrl(url);
 
-        backIv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                WebViewDialog.this.dismiss();
-            }
-        });
+        backIv.setOnClickListener(v -> WebViewDialog.this.dismiss());
 
     }
 

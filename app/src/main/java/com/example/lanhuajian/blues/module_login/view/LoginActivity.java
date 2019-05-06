@@ -50,11 +50,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void setListener() {
-        ivEyesOn.setOnClickListener(this::onClick);
-        ivEyesOff.setOnClickListener(this::onClick);
-        ivGo.setOnClickListener(this::onClick);
-        ivCleanPwd.setOnClickListener(this::onClick);
-        ivCleanAct.setOnClickListener(this::onClick);
+        ivEyesOn.setOnClickListener(this);
+        ivEyesOff.setOnClickListener(this);
+        ivGo.setOnClickListener(this);
+        ivCleanPwd.setOnClickListener(this);
+        ivCleanAct.setOnClickListener(this);
 
     }
 

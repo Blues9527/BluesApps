@@ -29,7 +29,12 @@
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleInstance"
             android:theme="@style/Theme.Custom"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name=".splash.SplashActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.Custom">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
