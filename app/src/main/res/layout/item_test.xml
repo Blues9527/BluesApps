@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
@@ -12,8 +13,8 @@
         android:id="@+id/iv_avatar"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:background="@mipmap/ic_avatar_default" />
 
     <LinearLayout
@@ -30,10 +31,10 @@
             android:id="@+id/tv_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:text="Blues"
             android:textColor="@color/color_light_blue"
-            android:textSize="12sp" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tv_desc"
@@ -43,14 +44,6 @@
             android:text="this is title"
             android:textColor="@color/color_black"
             android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tv_url"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/color_light_blue" />
 
         <com.jude.easyrecyclerview.EasyRecyclerView
             android:id="@+id/rv_images"

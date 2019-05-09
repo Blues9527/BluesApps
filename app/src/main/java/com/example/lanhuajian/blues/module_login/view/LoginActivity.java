@@ -7,12 +7,15 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.framework.http.HttpResponse;
 import com.example.lanhuajian.blues.MainActivity;
 import com.example.lanhuajian.blues.R;
 import com.example.framework.base.BaseActivity;
-import com.example.lanhuajian.blues.module_login.manager.LoginManager;
+import com.example.lanhuajian.blues.module_login.manager.LoginContract;
+import com.example.lanhuajian.blues.module_login.presenter.LoginPresenter;
 
 
 /**
@@ -21,13 +24,16 @@ import com.example.lanhuajian.blues.module_login.manager.LoginManager;
  * Time : 14:22
  */
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener, LoginContract.iLoginContractView {
 
     private String password, account;
     private EditText etInputAccount, etInputPwd;
     private ImageView ivEyesOn, ivEyesOff;
     private ImageView ivGo;
     private ImageView ivCleanAct, ivCleanPwd;
+    private TextView ivSkip;
+
+    private LoginContract.iLoginContractPresenter iPresenter;
 
     @Override
     public int setLayoutResourceId() {
@@ -45,6 +51,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         ivGo = findViewById(R.id.iv_go);
         ivCleanAct = findViewById(R.id.iv_clean_act);
         ivCleanPwd = findViewById(R.id.iv_clean_pwd);
+        ivSkip = findViewById(R.id.tv_skip);
+
+        mPresenter = new LoginPresenter(this);
 
     }
 
@@ -55,7 +64,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         ivGo.setOnClickListener(this);
         ivCleanPwd.setOnClickListener(this);
         ivCleanAct.setOnClickListener(this);
-
+        ivSkip.setOnClickListener(this);
     }
 
     @Override
@@ -65,18 +74,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 password = etInputPwd.getText().toString();
                 account = etInputAccount.getText().toString();
 
-                LoginManager.getInstance().login(account, password, new LoginManager.LoginCallBack() {
-                    @Override
-                    public void onSuccess() {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
-                    }
+                iPresenter.doLogin(account, password);
 
-                    @Override
-                    public void onFailure(String msg) {
-                        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
-                    }
-                });
                 break;
             case R.id.iv_clean_act:
                 etInputAccount.getText().clear();
@@ -97,6 +96,53 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 ivEyesOn.setVisibility(View.VISIBLE);
                 ivEyesOff.setVisibility(View.GONE);
                 break;
+            case R.id.tv_skip:
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();
+                break;
         }
+    }
+
+    @Override
+    public void onSuccess(HttpResponse result) {
+        if (result.getCode() == 200) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+    }
+
+    @Override
+    public void onFailure(String result) {
+        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setPresenter(LoginContract.iLoginContractPresenter presenter) {
+        iPresenter = presenter;
+    }
+
+    @Override
+    public void showBegin() {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void showFinished() {
+
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void showEmpty() {
+
     }
 }

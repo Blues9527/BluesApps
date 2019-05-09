@@ -25,8 +25,6 @@ public class MainPageFragment extends BaseFragment {
     @Override
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        rootView.findViewById(R.id.tv_tologin).setOnClickListener(v -> startActivity(new Intent(mContext, LoginActivity.class)));
-
     }
 
     @Override

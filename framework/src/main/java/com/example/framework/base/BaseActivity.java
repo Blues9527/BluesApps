@@ -1,8 +1,10 @@
 package com.example.framework.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 
 /**
  * User : Blues
@@ -24,6 +26,11 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
         mContext = this;
 
+        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+            finish();
+            return;
+        }
+
         //设置布局id
         setContentView(setLayoutResourceId());
 
@@ -42,6 +49,17 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
             mPresenter = null;
         }
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            //返回退出界面，但不销毁
+            moveTaskToBack(false);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 
     public abstract int setLayoutResourceId();
 

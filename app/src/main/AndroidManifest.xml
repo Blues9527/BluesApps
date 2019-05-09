@@ -25,12 +25,6 @@
             android:launchMode="singleInstance" />
 
         <activity
-            android:name=".module_login.view.LoginActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation"
-            android:launchMode="singleInstance"
-            android:theme="@style/Theme.Custom"
-            android:windowSoftInputMode="adjustPan"></activity>
-        <activity
             android:name=".splash.SplashActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleInstance"
@@ -41,6 +35,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".module_login.view.LoginActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.Custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".module_register.view.RegisterActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.Custom"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

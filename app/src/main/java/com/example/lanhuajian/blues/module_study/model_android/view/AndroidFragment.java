@@ -3,10 +3,14 @@ package com.example.lanhuajian.blues.module_study.model_android.view;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.WebViewDialog;
 import com.example.lanhuajian.blues.module_study.model_android.contract.AndroidContract;
 import com.example.lanhuajian.blues.module_study.model_android.model.AndroidEntity;
 import com.example.lanhuajian.blues.module_study.model_android.presenter.AndroidPresenter;

@@ -10,7 +10,6 @@ import android.text.TextUtils;
 
 public class LoginManager {
 
-
     private LoginCallBack mLoginCallBack;
 
     //静态内部类单例

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.lanhuajian.blues.R;
@@ -16,8 +17,9 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 public class WebViewHolder extends BaseViewHolder<WebEntity.ResultsBean> {
 
     private ImageView ivAvatar;
-    private TextView tvDesc, tvAuthor, tvSource, tvPTime, tvUrl;
+    private TextView tvDesc, tvAuthor, tvSource, tvPTime;
     private EasyRecyclerView rvImages;
+    private RelativeLayout rlRoot;
 
     public WebViewHolder(ViewGroup parent) {
         super(parent, R.layout.item_test);
@@ -28,7 +30,7 @@ public class WebViewHolder extends BaseViewHolder<WebEntity.ResultsBean> {
         tvSource = $(R.id.tv_source);
         tvPTime = $(R.id.tv_publish_time);
         ivAvatar = $(R.id.iv_avatar);
-        tvUrl = $(R.id.tv_url);
+        rlRoot = $(R.id.rl_root);
     }
 
     @Override
@@ -38,7 +40,6 @@ public class WebViewHolder extends BaseViewHolder<WebEntity.ResultsBean> {
         Log.i("Blues", data.toString());
 
         tvDesc.setText(data.getDesc());
-        tvUrl.setText(data.getUrl());
         tvAuthor.setText(String.format("作者：%s", data.getWho()));
         tvSource.setText(String.format("来自：%s", data.getSource()));
         tvPTime.setText(String.format("日期：%s", data.getPublishedAt().substring(0, data.getPublishedAt().indexOf("T"))));
@@ -46,12 +47,6 @@ public class WebViewHolder extends BaseViewHolder<WebEntity.ResultsBean> {
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         rvImages.setLayoutManager(layoutManager);
         rvImages.setAdapter(new WebImagesAdapter(data.getImages()));
-
-        tvUrl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new WebViewDialog(getContext(), data.getUrl()).show();
-            }
-        });
+        rlRoot.setOnClickListener(v -> new WebViewDialog(getContext(), data.getUrl()).show());
     }
 }
