@@ -8,8 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.framework.utils.ScreenUtil;
-import com.example.framework.widget.ShowImageActivity;
+import com.example.lanhuajian.blues.framework.utils.ScreenUtil;
+import com.example.lanhuajian.blues.framework.widget.ShowImageActivity;
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.module_study.model_fuli.model.FuliEntity;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;

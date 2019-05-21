@@ -1,6 +1,6 @@
 package com.example.lanhuajian.blues.module_study.model_android.model;
 
-import com.example.framework.http.HttpCallBack;
+import com.example.lanhuajian.blues.framework.http.HttpCallBack;
 import com.example.lanhuajian.blues.module_study.model_android.api.AndroidAPI;
 import com.example.lanhuajian.blues.module_study.model_android.contract.AndroidContract;
 

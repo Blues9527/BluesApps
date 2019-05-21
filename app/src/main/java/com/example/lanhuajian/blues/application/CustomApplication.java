@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
-import com.example.framework.utils.Utils;
+import com.example.lanhuajian.blues.framework.utils.Utils;
 
 
 /**

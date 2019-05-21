@@ -5,7 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.framework.base.BaseFragment;
+import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.module_study.model_ios.contract.IOSContract;
 import com.example.lanhuajian.blues.module_study.model_ios.model.IOSEntity;

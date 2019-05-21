@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.example.framework.utils.ScreenUtil;
-import com.example.framework.utils.SizeUtil;
-import com.example.framework.widget.ShowImageActivity;
+import com.example.lanhuajian.blues.framework.utils.ScreenUtil;
+import com.example.lanhuajian.blues.framework.utils.SizeUtil;
+import com.example.lanhuajian.blues.framework.widget.ShowImageActivity;
 import com.example.lanhuajian.blues.R;
 
 import java.util.List;

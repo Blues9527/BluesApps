@@ -8,7 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.framework.base.BaseFragment;
+import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.module_study.model_android.view.AndroidFragment;
 import com.example.lanhuajian.blues.module_study.model_fuli.view.FuliFragment;

@@ -1,8 +1,8 @@
 package com.example.lanhuajian.blues.module_study.model_android.contract;
 
-import com.example.framework.base.BasePresenter;
-import com.example.framework.base.BaseView;
-import com.example.framework.http.HttpCallBack;
+import com.example.lanhuajian.blues.framework.base.BasePresenter;
+import com.example.lanhuajian.blues.framework.base.BaseView;
+import com.example.lanhuajian.blues.framework.http.HttpCallBack;
 import com.example.lanhuajian.blues.module_study.model_android.model.AndroidEntity;
 
 

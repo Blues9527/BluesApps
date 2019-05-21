@@ -2,9 +2,9 @@ package com.example.lanhuajian.blues.module_study.model_android.presenter;
 
 import android.util.Log;
 
-import com.example.framework.base.BaseView;
-import com.example.framework.base.RxPresenter;
-import com.example.framework.http.HttpCallBack;
+import com.example.lanhuajian.blues.framework.base.BaseView;
+import com.example.lanhuajian.blues.framework.base.RxPresenter;
+import com.example.lanhuajian.blues.framework.http.HttpCallBack;
 import com.example.lanhuajian.blues.module_study.model_android.contract.AndroidContract;
 import com.example.lanhuajian.blues.module_study.model_android.model.AndroidModel;
 import com.example.lanhuajian.blues.module_study.model_android.model.AndroidEntity;

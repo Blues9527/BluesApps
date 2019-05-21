@@ -2,7 +2,7 @@ package com.example.lanhuajian.blues.module_register.view;
 
 import android.os.Bundle;
 
-import com.example.framework.base.BaseActivity;
+import com.example.lanhuajian.blues.framework.base.BaseActivity;
 
 /**
  * User : Blues

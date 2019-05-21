@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.framework.base.BaseFragment;
-import com.example.framework.widget.AvatarView;
+import com.example.lanhuajian.blues.framework.base.BaseFragment;
+import com.example.lanhuajian.blues.framework.widget.AvatarView;
 import com.example.lanhuajian.blues.R;
 
 /**

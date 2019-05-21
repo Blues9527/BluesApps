@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.example.framework.base.BaseActivity;
+import com.example.lanhuajian.blues.framework.base.BaseActivity;
 import com.example.lanhuajian.blues.module_main.MainPageFragment;
 import com.example.lanhuajian.blues.module_personalpage.PersonalPageFragment;
 import com.example.lanhuajian.blues.module_study.StudyPageFragment;

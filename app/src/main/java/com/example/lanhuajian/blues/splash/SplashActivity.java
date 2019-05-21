@@ -3,16 +3,14 @@ package com.example.lanhuajian.blues.splash;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Looper;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.framework.base.BaseActivity;
-import com.example.framework.utils.ResourcesUtils;
+import com.example.lanhuajian.blues.framework.base.BaseActivity;
+import com.example.lanhuajian.blues.framework.utils.ResourcesUtils;
 import com.example.lanhuajian.blues.R;
-import com.example.lanhuajian.blues.module_login.view.LoginActivity;
+import com.example.lanhuajian.blues.module_login.LoginActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.Locale;
@@ -77,6 +75,7 @@ public class SplashActivity extends BaseActivity {
         @Override
         public void onFinish() {
             startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            overridePendingTransition(R.anim.anim_zoom_in, 0);
             finish();
         }
     }
