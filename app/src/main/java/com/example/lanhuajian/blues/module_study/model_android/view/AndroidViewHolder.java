@@ -2,7 +2,6 @@ package com.example.lanhuajian.blues.module_study.model_android.view;
 
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;

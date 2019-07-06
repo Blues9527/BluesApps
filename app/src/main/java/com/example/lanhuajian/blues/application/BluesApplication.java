@@ -13,11 +13,12 @@ import com.example.lanhuajian.blues.framework.utils.Utils;
  * Email : huajianlan@rastar.com
  */
 
-public class CustomApplication extends MultiDexApplication {
+public class BluesApplication extends MultiDexApplication {
 
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
+        //当引入第三方jar包过多时，尽心dex分包处理
         MultiDex.install(this);
     }
 

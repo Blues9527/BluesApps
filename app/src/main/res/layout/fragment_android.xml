@@ -5,11 +5,16 @@
     android:background="@drawable/shape_overall_background"
     android:orientation="vertical">
 
-    <com.jude.easyrecyclerview.EasyRecyclerView
-        android:id="@+id/rv_android"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/sr_android"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingTop="10dp" />
+        android:layout_height="match_parent">
 
+        <com.jude.easyrecyclerview.EasyRecyclerView
+            android:id="@+id/rv_android"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingTop="10dp" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

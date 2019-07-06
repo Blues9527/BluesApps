@@ -1,10 +1,9 @@
-package com.example.lanhuajian.blues.module_study.model_ios.api;
+package com.example.lanhuajian.blues.module_study.model_ios;
 
 import com.example.lanhuajian.blues.framework.http.RetrofitManager;
 import com.example.lanhuajian.blues.framework.utils.RxUtil;
 import com.example.lanhuajian.blues.constant.RequestUrl;
 import com.example.lanhuajian.blues.module_study.model_ios.model.IOSEntity;
-import com.example.lanhuajian.blues.module_study.model_ios.request.IOSContractRequest;
 
 import rx.Observable;
 import rx.Subscriber;

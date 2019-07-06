@@ -7,13 +7,12 @@ import android.view.ViewGroup;
 
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
-import com.example.lanhuajian.blues.module_study.model_fuli.contract.FuliContract;
+import com.example.lanhuajian.blues.module_study.model_fuli.FuliContract;
 import com.example.lanhuajian.blues.module_study.model_fuli.model.FuliEntity;
 import com.example.lanhuajian.blues.module_study.model_fuli.presenter.FuliPresenter;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
-import com.jude.easyrecyclerview.decoration.DividerDecoration;
 
 import java.util.List;
 
@@ -37,7 +36,6 @@ public class FuliFragment extends BaseFragment implements FuliContract.iContract
 
         iPresenter.initData();
 
-        fuliErv.addItemDecoration(new DividerDecoration(getResources().getColor(R.color.color_light_gray), 1));
         fuliErv.setLayoutManager(new LinearLayoutManager(getmContext()));
         fuliErv.setAdapter(mAdapter = new RecyclerArrayAdapter<FuliEntity.ResultsBean>(getmContext()) {
             @Override

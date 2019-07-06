@@ -5,9 +5,9 @@ import android.util.Log;
 import com.example.lanhuajian.blues.framework.base.BaseView;
 import com.example.lanhuajian.blues.framework.base.RxPresenter;
 import com.example.lanhuajian.blues.framework.http.HttpCallBack;
-import com.example.lanhuajian.blues.module_study.model_android.contract.AndroidContract;
-import com.example.lanhuajian.blues.module_study.model_android.model.AndroidModel;
+import com.example.lanhuajian.blues.module_study.model_android.AndroidContract;
 import com.example.lanhuajian.blues.module_study.model_android.model.AndroidEntity;
+import com.example.lanhuajian.blues.module_study.model_android.model.AndroidModel;
 
 import java.util.ArrayList;
 import java.util.List;

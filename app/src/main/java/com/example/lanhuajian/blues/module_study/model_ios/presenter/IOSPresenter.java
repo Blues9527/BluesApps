@@ -3,7 +3,7 @@ package com.example.lanhuajian.blues.module_study.model_ios.presenter;
 import com.example.lanhuajian.blues.framework.base.BaseView;
 import com.example.lanhuajian.blues.framework.base.RxPresenter;
 import com.example.lanhuajian.blues.framework.http.HttpCallBack;
-import com.example.lanhuajian.blues.module_study.model_ios.contract.IOSContract;
+import com.example.lanhuajian.blues.module_study.model_ios.IOSContract;
 import com.example.lanhuajian.blues.module_study.model_ios.model.IOSEntity;
 import com.example.lanhuajian.blues.module_study.model_ios.model.IOSModel;
 

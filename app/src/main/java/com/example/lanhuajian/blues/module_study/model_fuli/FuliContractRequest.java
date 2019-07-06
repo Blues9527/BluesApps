@@ -1,4 +1,4 @@
-package com.example.lanhuajian.blues.module_study.model_fuli.request;
+package com.example.lanhuajian.blues.module_study.model_fuli;
 
 import com.example.lanhuajian.blues.module_study.model_fuli.model.FuliEntity;
 

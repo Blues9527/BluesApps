@@ -1,4 +1,4 @@
-package com.example.lanhuajian.blues.module_study.model_web.request;
+package com.example.lanhuajian.blues.module_study.model_web;
 
 import com.example.lanhuajian.blues.module_study.model_web.model.WebEntity;
 

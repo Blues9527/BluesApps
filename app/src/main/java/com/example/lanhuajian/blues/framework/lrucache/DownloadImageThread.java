@@ -48,12 +48,7 @@ public class DownloadImageThread extends Thread {
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 final Bitmap bitmap = BitmapFactory.decodeStream(ios);
                 utils.addBitmapToLruCache("bitmap", bitmap);
-                act.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        target.setImageBitmap(bitmap);
-                    }
-                });
+                act.runOnUiThread(() -> target.setImageBitmap(bitmap));
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,10 +1,9 @@
-package com.example.lanhuajian.blues.module_study.model_fuli.api;
+package com.example.lanhuajian.blues.module_study.model_fuli;
 
 import com.example.lanhuajian.blues.framework.http.RetrofitManager;
 import com.example.lanhuajian.blues.framework.utils.RxUtil;
 import com.example.lanhuajian.blues.constant.RequestUrl;
 import com.example.lanhuajian.blues.module_study.model_fuli.model.FuliEntity;
-import com.example.lanhuajian.blues.module_study.model_fuli.request.FuliContractRequest;
 
 import rx.Observable;
 import rx.Subscriber;

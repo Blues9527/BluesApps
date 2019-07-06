@@ -6,5 +6,7 @@ public class RequestUrl {
 
     public static final String BASE_LOCAL_URL = "http://192.168.33.93:8090/";
 
+    public static final String BASE_MOCK_URL = "https://easy-mock.com/";
+
 
 }

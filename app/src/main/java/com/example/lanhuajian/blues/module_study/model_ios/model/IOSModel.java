@@ -1,8 +1,8 @@
 package com.example.lanhuajian.blues.module_study.model_ios.model;
 
 import com.example.lanhuajian.blues.framework.http.HttpCallBack;
-import com.example.lanhuajian.blues.module_study.model_ios.api.IOSAPI;
-import com.example.lanhuajian.blues.module_study.model_ios.contract.IOSContract;
+import com.example.lanhuajian.blues.module_study.model_ios.IOSAPI;
+import com.example.lanhuajian.blues.module_study.model_ios.IOSContract;
 
 import rx.Subscriber;
 import rx.Subscription;

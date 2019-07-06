@@ -1,10 +1,9 @@
-package com.example.lanhuajian.blues.module_study.model_android.api;
+package com.example.lanhuajian.blues.module_study.model_android;
 
 import com.example.lanhuajian.blues.framework.http.RetrofitManager;
 import com.example.lanhuajian.blues.framework.utils.RxUtil;
 import com.example.lanhuajian.blues.constant.RequestUrl;
 import com.example.lanhuajian.blues.module_study.model_android.model.AndroidEntity;
-import com.example.lanhuajian.blues.module_study.model_android.request.AndroidContractRequest;
 
 import rx.Observable;
 import rx.Subscriber;

@@ -1,4 +1,4 @@
-package com.example.lanhuajian.blues.module_study.model_fuli.contract;
+package com.example.lanhuajian.blues.module_study.model_fuli;
 
 import com.example.lanhuajian.blues.framework.base.BasePresenter;
 import com.example.lanhuajian.blues.framework.base.BaseView;

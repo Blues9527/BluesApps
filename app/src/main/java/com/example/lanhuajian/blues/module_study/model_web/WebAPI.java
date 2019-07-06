@@ -1,10 +1,9 @@
-package com.example.lanhuajian.blues.module_study.model_web.api;
+package com.example.lanhuajian.blues.module_study.model_web;
 
 import com.example.lanhuajian.blues.framework.http.RetrofitManager;
 import com.example.lanhuajian.blues.framework.utils.RxUtil;
 import com.example.lanhuajian.blues.constant.RequestUrl;
 import com.example.lanhuajian.blues.module_study.model_web.model.WebEntity;
-import com.example.lanhuajian.blues.module_study.model_web.request.WebContractRequest;
 
 import rx.Observable;
 import rx.Subscriber;

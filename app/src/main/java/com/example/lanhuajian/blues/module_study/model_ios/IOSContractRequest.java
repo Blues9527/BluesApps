@@ -1,4 +1,4 @@
-package com.example.lanhuajian.blues.module_study.model_ios.request;
+package com.example.lanhuajian.blues.module_study.model_ios;
 
 import com.example.lanhuajian.blues.module_study.model_ios.model.IOSEntity;
 

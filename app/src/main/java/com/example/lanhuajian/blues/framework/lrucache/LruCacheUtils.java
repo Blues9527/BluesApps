@@ -37,12 +37,7 @@ public class LruCacheUtils {
         if (getBitmapFormLruCache(key) == null) {
             lruCache.put(key, bitmap);
         } else {
-            mActivity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(mActivity, "bitmap already exit!", Toast.LENGTH_SHORT).show();
-                }
-            });
+            mActivity.runOnUiThread(() -> Toast.makeText(mActivity, "bitmap already exit!", Toast.LENGTH_SHORT).show());
         }
     }
 

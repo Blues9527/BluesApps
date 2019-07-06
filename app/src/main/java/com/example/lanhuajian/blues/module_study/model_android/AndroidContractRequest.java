@@ -1,4 +1,4 @@
-package com.example.lanhuajian.blues.module_study.model_android.request;
+package com.example.lanhuajian.blues.module_study.model_android;
 
 import com.example.lanhuajian.blues.module_study.model_android.model.AndroidEntity;
 

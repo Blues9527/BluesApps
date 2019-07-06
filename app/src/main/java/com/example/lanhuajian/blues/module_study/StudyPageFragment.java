@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.framework.base.BaseViewPagerAdapter;
 import com.example.lanhuajian.blues.module_study.model_android.view.AndroidFragment;
 import com.example.lanhuajian.blues.module_study.model_fuli.view.FuliFragment;
 import com.example.lanhuajian.blues.module_study.model_ios.view._iOSFragment;
@@ -25,9 +26,6 @@ import java.util.List;
  */
 
 public class StudyPageFragment extends BaseFragment {
-    private TabLayout mTab;
-    private ViewPager mViewPager;
-    private List<Fragment> fragments = new ArrayList<>();
 
     private String[] tabs = {"Android", "iOS", "Web", "Fuli"};
 
@@ -39,34 +37,18 @@ public class StudyPageFragment extends BaseFragment {
     @Override
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mTab = rootView.findViewById(R.id.tl_fragment_bottom);
-        mViewPager = rootView.findViewById(R.id.vp_show);
+        TabLayout mTab = rootView.findViewById(R.id.tl_fragment_bottom);
+        ViewPager mViewPager = rootView.findViewById(R.id.vp_show);
 
-        fragments.add(new AndroidFragment());
-        fragments.add(new _iOSFragment());
-        fragments.add(new WebFragment());
-        fragments.add(new FuliFragment());
-
-        FragmentPagerAdapter fragmentPagerAdapter =
-                new FragmentPagerAdapter(getChildFragmentManager()) {
-                    @Override
-                    public Fragment getItem(int i) {
-                        return fragments.get(i);
-                    }
-
-                    @Override
-                    public int getCount() {
-                        return fragments.size();
-                    }
-                };
+        BaseViewPagerAdapter mFragmentAdapter = new BaseViewPagerAdapter(getChildFragmentManager(), tabs);
+        mFragmentAdapter.addFragment(new AndroidFragment());
+        mFragmentAdapter.addFragment(new _iOSFragment());
+        mFragmentAdapter.addFragment(new WebFragment());
+        mFragmentAdapter.addFragment(new FuliFragment());
 
         mTab.setupWithViewPager(mViewPager, false);
-        mViewPager.setAdapter(fragmentPagerAdapter);
+        mViewPager.setAdapter(mFragmentAdapter);
         mViewPager.setCurrentItem(0);
-
-        for (int i = 0; i < tabs.length; i++) {
-            mTab.getTabAt(i).setText(tabs[i]);
-        }
     }
 
     @Override

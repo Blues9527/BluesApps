@@ -7,13 +7,12 @@ import android.view.ViewGroup;
 
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
-import com.example.lanhuajian.blues.module_study.model_ios.contract.IOSContract;
+import com.example.lanhuajian.blues.module_study.model_ios.IOSContract;
 import com.example.lanhuajian.blues.module_study.model_ios.model.IOSEntity;
 import com.example.lanhuajian.blues.module_study.model_ios.presenter.IOSPresenter;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
-import com.jude.easyrecyclerview.decoration.DividerDecoration;
 
 import java.util.List;
 
@@ -37,7 +36,6 @@ public class _iOSFragment extends BaseFragment implements IOSContract.iContractV
 
         iPresenter.initData();
 
-        iOSErv.addItemDecoration(new DividerDecoration(getResources().getColor(R.color.color_light_gray), 1));
         iOSErv.setLayoutManager(new LinearLayoutManager(getmContext()));
         iOSErv.setAdapter(mAdapter = new RecyclerArrayAdapter<IOSEntity.ResultsBean>(getmContext()) {
             @Override

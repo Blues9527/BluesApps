@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shape_background_edittext_radius_15"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -12,7 +11,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="80dp"
-        android:background="@drawable/shape_background_edittext_radius_250"
+        android:background="@drawable/shape_item_background"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -32,7 +31,9 @@
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:background="@null"
+            android:hint="请留下阁下的大名"
             android:inputType="text|textUri"
+            android:textColorHint="@color/color_gray"
             android:theme="@style/CustomEditText" />
 
         <ImageView
@@ -55,7 +56,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="80dp"
-        android:background="@drawable/shape_background_edittext_radius_250"
+        android:background="@drawable/shape_item_background"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -90,6 +91,7 @@
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:background="@null"
+            android:hint="请留下阁下的暗号"
             android:inputType="textPassword"
             android:theme="@style/CustomEditText" />
 
@@ -104,10 +106,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Go!"
-        android:textColor="@color/color_black"
-        android:textSize="50sp"
+        android:layout_marginTop="30dp"
+        android:text="让世界铭记您的大名吧"
+        android:textColor="@color/color_light_blue"
+        android:textSize="15sp"
         android:textStyle="normal" />
 
 </LinearLayout>

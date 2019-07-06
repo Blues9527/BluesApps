@@ -3,7 +3,7 @@ package com.example.lanhuajian.blues.module_study.model_fuli.presenter;
 import com.example.lanhuajian.blues.framework.base.BaseView;
 import com.example.lanhuajian.blues.framework.base.RxPresenter;
 import com.example.lanhuajian.blues.framework.http.HttpCallBack;
-import com.example.lanhuajian.blues.module_study.model_fuli.contract.FuliContract;
+import com.example.lanhuajian.blues.module_study.model_fuli.FuliContract;
 import com.example.lanhuajian.blues.module_study.model_fuli.model.FuliEntity;
 import com.example.lanhuajian.blues.module_study.model_fuli.model.FuliModel;
 

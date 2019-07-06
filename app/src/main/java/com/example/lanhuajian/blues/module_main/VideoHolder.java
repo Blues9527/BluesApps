@@ -22,7 +22,6 @@ public class VideoHolder extends BaseViewHolder<VideoEntity.DataBean> {
     private ImageView ivCover;
     private TextView tvTime;
     private TextView tvTitle;
-    private TextView tvAuthor;
 
     public VideoHolder(ViewGroup parent) {
         super(parent, R.layout.item_video_mp);
@@ -30,7 +29,6 @@ public class VideoHolder extends BaseViewHolder<VideoEntity.DataBean> {
         ivCover = $(R.id.iv_cover);
         tvTime = $(R.id.tv_time);
         tvTitle = $(R.id.tv_title);
-        tvAuthor = $(R.id.tv_author);
     }
 
     @Override
@@ -39,6 +37,5 @@ public class VideoHolder extends BaseViewHolder<VideoEntity.DataBean> {
         Glide.with(getContext()).load(data.getCover_url()).placeholder(R.drawable.shape_place_holder).into(ivCover);
         tvTime.setText(data.getVideo_time());
         tvTitle.setText(data.getVideo_title());
-        tvAuthor.setText(data.getVideo_author());
     }
 }

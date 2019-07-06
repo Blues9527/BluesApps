@@ -45,6 +45,22 @@ public class SplashActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        if (mTimer != null) {
+            mTimer.start();
+        }
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        if (mTimer != null) {
+            mTimer.cancel();
+        }
+        super.onPause();
+    }
+
+    @Override
     protected void onDestroy() {
         if (mTimer != null) {
             mTimer.cancel();

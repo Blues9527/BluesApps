@@ -3,12 +3,11 @@ apply from:'config/dependencies.gradle'
 buildscript {
     
     repositories {
-        google()
-        jcenter()
+        jcenter(){url 'http://jcenter.bintray.com/'}
         mavenCentral()
-        maven {
-            url "https://jitpack.io"
-        }
+        maven {  url "https://jitpack.io" }
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.0'
@@ -19,9 +18,10 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        jcenter()
+        jcenter(){url 'http://jcenter.bintray.com/'}
         maven { url "https://jitpack.io" }
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        google()
     }
 
     //加快编译速度不浪费时间

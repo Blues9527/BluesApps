@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +7,8 @@
     <ImageView
         android:id="@+id/iv_splash"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/tv_count_down"
@@ -16,10 +16,9 @@
         android:layout_height="25dp"
         android:layout_gravity="top|end"
         android:layout_margin="15dp"
-        android:background="@drawable/shape_splash_countdown_background"
         android:gravity="center"
         android:text="4s"
-        android:textColor="@color/color_black_translucent50"
+        android:textColor="@color/color_orange"
         android:textSize="13sp"
         android:visibility="visible"
         tools:ignore="HardcodedText" />

@@ -1,8 +1,8 @@
 package com.example.lanhuajian.blues.module_study.model_fuli.model;
 
 import com.example.lanhuajian.blues.framework.http.HttpCallBack;
-import com.example.lanhuajian.blues.module_study.model_fuli.api.FuliAPI;
-import com.example.lanhuajian.blues.module_study.model_fuli.contract.FuliContract;
+import com.example.lanhuajian.blues.module_study.model_fuli.FuliAPI;
+import com.example.lanhuajian.blues.module_study.model_fuli.FuliContract;
 
 import rx.Subscriber;
 import rx.Subscription;

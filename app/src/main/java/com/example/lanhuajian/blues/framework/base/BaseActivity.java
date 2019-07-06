@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.widget.Toast;
+
+import com.example.lanhuajian.blues.framework.injection.InjectManager;
 
 /**
  * User : Blues
@@ -19,6 +23,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     protected P mPresenter;
     public BaseActivity mContext;
+    private static final String TAG = "Blues";
+    private Toast mToast;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +46,13 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         setListener();
     }
 
+
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        InjectManager.init(this);
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -58,6 +71,38 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    /**
+     * 方便父类打印日志
+     *
+     * @param msg
+     */
+    protected void showLog(String msg) {
+        Log.i(getTag(), msg);
+    }
+
+    /**
+     * 方便父类toast消息
+     *
+     * @param msg
+     */
+    protected void showToast(String msg) {
+        if (mToast == null) {
+            mToast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+        } else {
+            mToast.setText(msg);
+        }
+        mToast.show();
+    }
+
+    /**
+     * 默认打印tag为blues，可重写此方法去修改tag
+     *
+     * @return
+     */
+    protected String getTag() {
+        return TAG;
     }
 
 

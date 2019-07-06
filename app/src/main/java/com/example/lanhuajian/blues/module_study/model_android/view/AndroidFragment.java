@@ -1,13 +1,15 @@
 package com.example.lanhuajian.blues.module_study.model_android.view;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
-import com.example.lanhuajian.blues.module_study.model_android.contract.AndroidContract;
+import com.example.lanhuajian.blues.framework.base.BaseViewPagerAdapter;
+import com.example.lanhuajian.blues.module_study.model_android.AndroidContract;
 import com.example.lanhuajian.blues.module_study.model_android.model.AndroidEntity;
 import com.example.lanhuajian.blues.module_study.model_android.presenter.AndroidPresenter;
 import com.jude.easyrecyclerview.EasyRecyclerView;
@@ -16,9 +18,9 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 import java.util.List;
 
-public class AndroidFragment extends BaseFragment implements AndroidContract.iContractView {
+public class AndroidFragment extends BaseFragment implements AndroidContract.iContractView, SwipeRefreshLayout.OnRefreshListener {
 
-    private EasyRecyclerView androidErv;
+    private SwipeRefreshLayout androidSr;
     private AndroidContract.iContractPresenter iPresenter;
     private RecyclerArrayAdapter<AndroidEntity.ResultsBean> mAdapter;
 
@@ -30,15 +32,14 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
     @Override
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        androidErv = rootView.findViewById(R.id.rv_android);
+        EasyRecyclerView androidErv = rootView.findViewById(R.id.rv_android);
+        androidSr = rootView.findViewById(R.id.sr_android);
 
         mPresenter = new AndroidPresenter(this);
-        iPresenter.initData();
 
         //初始化数据
         iPresenter.initData();
 
-//        androidErv.addItemDecoration(new DividerDecoration(getResources().getColor(R.color.color_light_gray), 1));
         androidErv.setLayoutManager(new LinearLayoutManager(getmContext()));
         androidErv.setAdapter(mAdapter = new RecyclerArrayAdapter<AndroidEntity.ResultsBean>(getmContext()) {
             @Override
@@ -68,17 +69,19 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
 
     @Override
     public void setListener() {
-
+        androidSr.setOnRefreshListener(this);
     }
 
     @Override
     public void setData(List<AndroidEntity.ResultsBean> result) {
+        if (androidSr.isRefreshing()) {
+            mAdapter.clear();
+        }
         for (AndroidEntity.ResultsBean data : result) {
-
             mAdapter.add(data);
-
         }
         mAdapter.notifyDataSetChanged();
+        androidSr.setRefreshing(false);
     }
 
     @Override
@@ -109,5 +112,11 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
     @Override
     public void showEmpty() {
 
+    }
+
+    @Override
+    public void onRefresh() {
+        mAdapter.clear();
+        iPresenter.initData();
     }
 }
