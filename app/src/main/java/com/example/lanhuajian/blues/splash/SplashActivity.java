@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.example.lanhuajian.blues.framework.base.BaseActivity;
 import com.example.lanhuajian.blues.framework.utils.ResourcesUtils;
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.framework.widget.TextClockView;
 import com.example.lanhuajian.blues.framework.widget.countdownview.CountDownView;
 import com.example.lanhuajian.blues.framework.widget.explosionanimator.ExplosionField;
 import com.example.lanhuajian.blues.framework.widget.explosionanimator.FallingParticleFactory;
@@ -30,6 +31,7 @@ public class SplashActivity extends BaseActivity {
 
     private CountDownView cdView;
     private ExplosionField mField;
+    private TextClockView tcvSplash;
 
     @Override
     public int setLayoutResourceId() {
@@ -39,7 +41,9 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
 
-        ImageView ivSplash = findViewById(R.id.iv_splash);
+        tcvSplash = findViewById(R.id.rclv_splash);
+        tcvSplash.startTimerSafely();
+
         cdView = findViewById(R.id.cdv_count);
 
         mField = new ExplosionField(SplashActivity.this, new FallingParticleFactory());
@@ -57,8 +61,6 @@ public class SplashActivity extends BaseActivity {
 
         });
 
-        Glide.with(mContext).load(ResourcesUtils.getMipmapID("ic_background", mContext)).into(ivSplash);
-
     }
 
     @Override
@@ -70,12 +72,14 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onPause() {
         cdView.countDownCancel();
+        tcvSplash.release();
         super.onPause();
     }
 
     @Override
     protected void onDestroy() {
         cdView.countDownCancel();
+        tcvSplash.release();
         super.onDestroy();
         System.gc();
     }

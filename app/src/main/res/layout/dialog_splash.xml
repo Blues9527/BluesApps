@@ -4,11 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/iv_splash"
+    <com.example.lanhuajian.blues.framework.widget.TextClockView
+        android:id="@+id/rclv_splash"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:layout_height="match_parent" />
 
     <com.example.lanhuajian.blues.framework.widget.countdownview.CountDownView
         android:id="@+id/cdv_count"
@@ -17,5 +16,6 @@
         android:layout_gravity="top|end"
         android:layout_margin="15dp"
         app:countDownTime="5"
-        app:mode="round"/>
+        app:countDownTextColor="@android:color/white"
+        app:mode="round" />
 </FrameLayout>
