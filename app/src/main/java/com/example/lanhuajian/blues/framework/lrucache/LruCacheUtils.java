@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v4.util.LruCache;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -14,10 +15,9 @@ import android.widget.Toast;
 
 public class LruCacheUtils {
     private LruCache<String, Bitmap> lruCache;
-    private Activity mActivity;
+    private final String TAG = this.getClass().getSimpleName();
 
-    public LruCacheUtils(Activity mActivity) {
-        this.mActivity = mActivity;
+    public LruCacheUtils() {
         int cacheMemory = (int) (Runtime.getRuntime().maxMemory() / 8);
         lruCache = new LruCache<String, Bitmap>(cacheMemory) {
             @Override
@@ -37,7 +37,7 @@ public class LruCacheUtils {
         if (getBitmapFormLruCache(key) == null) {
             lruCache.put(key, bitmap);
         } else {
-            mActivity.runOnUiThread(() -> Toast.makeText(mActivity, "bitmap already exit!", Toast.LENGTH_SHORT).show());
+            Log.d(TAG, "bitmap already exist in cache!");
         }
     }
 
@@ -56,7 +56,6 @@ public class LruCacheUtils {
      * 从lrucache里取出bitmap
      *
      * @param key
-     * @return
      */
     public Bitmap getBitmapFormLruCache(String key) {
         if (null != key) {

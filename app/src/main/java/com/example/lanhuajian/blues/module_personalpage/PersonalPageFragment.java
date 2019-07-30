@@ -43,7 +43,7 @@ public class PersonalPageFragment extends BaseFragment implements UserInfoContra
 
         iPresenter.getUserInfo();
 
-        avatar.setCircleView(BitmapFactory.decodeResource(getResources(), R.mipmap.iv_my_avatar));
+        avatar.setBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.iv_my_avatar));
     }
 
     @Override

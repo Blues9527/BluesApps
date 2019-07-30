@@ -1,27 +1,32 @@
 package com.example.lanhuajian.blues.framework.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
+
+import com.example.lanhuajian.blues.R;
 
 /**
  * User : Blues
- * Date : 2019/4/12
- * Time : 15:29
+ * Date : 2019/7/16
+ * Time : 09:57
  */
 
-public class AvatarView extends AppCompatImageView {
+public class AvatarView extends View {
 
+    private Bitmap defaultBitmap;
     private static final String TAG = "Blues";
-    private Bitmap bitmap;
+    private Bitmap mBitmap;
 
     public AvatarView(Context context) {
         this(context, null);
@@ -33,72 +38,80 @@ public class AvatarView extends AppCompatImageView {
 
     public AvatarView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAttrs(context, attrs);
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    private void initAttrs(Context context, AttributeSet attrs) {
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AvatarView);
+        int bitmapResId = ta.getResourceId(R.styleable.AvatarView_Src, 0);
 
-        if (bitmap == null) return;
+        ta.recycle();
 
-        int bw = bitmap.getWidth();
-        int bh = bitmap.getHeight();
-
-        int sizeW = MeasureSpec.getSize(widthMeasureSpec);
-        int sizeH = MeasureSpec.getSize(heightMeasureSpec);
-        int modeW = MeasureSpec.getMode(widthMeasureSpec);
-        int modeH = MeasureSpec.getMode(heightMeasureSpec);
-
-        if (modeW == MeasureSpec.AT_MOST)
-            sizeW = bw;
-
-        if (modeH == MeasureSpec.AT_MOST)
-            sizeH = bh;
-
-        setMeasuredDimension(sizeW, sizeH);
+        defaultBitmap = BitmapFactory.decodeResource(getContext().getResources(), bitmapResId);
     }
 
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        if (bitmap != null) {
-            canvas.drawBitmap(getCircleView(), 0, 0, null);
-        }
-    }
-
-    public void setCircleView(Bitmap bitmap) {
-        this.bitmap = bitmap;
-        invalidate();
-    }
-
-    public Bitmap getCircleView() {
+    private Bitmap drawCircleView() {
 
         int w = getWidth();
         int h = getHeight();
 
-        Log.i(TAG, "width--->" + w);
-        Log.i(TAG, "height--->" + h);
-
-        Bitmap mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(mBitmap);
+        Bitmap bitmap = createBitmapSafely(w, h, Bitmap.Config.ARGB_8888, 1);
+        if (bitmap == null) {
+            Log.d(TAG, "bitmap is null ,return ");
+            return null;
+        }
+        Canvas canvas = new Canvas(bitmap);
         Paint paint = new Paint();
 
-        int radius = Math.min(w, h)/2;
+        int radius = Math.min(w, h) / 2;
+
         canvas.drawCircle(w >> 1, h >> 1, radius, paint);
 
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
 
         Matrix matrix = new Matrix();
 
-        matrix.postScale((float) w / bitmap.getWidth(), (float) h / bitmap.getHeight(), 0, 0);
+        if (defaultBitmap != null) {
+            matrix.postScale((float) w / defaultBitmap.getWidth(), (float) h / defaultBitmap.getHeight(), 0, 0);
 
-        canvas.drawBitmap(bitmap, matrix, paint);
+            canvas.drawBitmap(defaultBitmap, matrix, paint);
+        } else {
+            matrix.postScale((float) w / getBitmap().getWidth(), (float) h / getBitmap().getHeight(), 0, 0);
 
+            canvas.drawBitmap(getBitmap(), matrix, paint);
+        }
+
+        return bitmap;
+    }
+
+    private Bitmap createBitmapSafely(int width, int height, Bitmap.Config config, int retryCount) {
+        try {
+            return Bitmap.createBitmap(width, height, config);
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (retryCount > 0) {
+                System.gc();
+                return createBitmapSafely(width, height, config, retryCount - 1);
+            }
+        }
+        return null;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        mBitmap = bitmap;
+    }
+
+    public Bitmap getBitmap() {
         return mBitmap;
     }
+
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        if (drawCircleView() != null) {
+            canvas.drawBitmap(drawCircleView(), 0, 0, null);
+        }
+    }
+
 }

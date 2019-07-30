@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CountDownView">
+        <attr name="showCountText" format="boolean" />
+        <attr name="countDownTime" format="integer" />
+        <attr name="countDownTextSize" format="dimension" />
+        <attr name="countDownTextColor" format="color" />
+        <attr name="progressStrokeWidth" format="float" />
+        <attr name="progressColor" format="color" />
+        <attr name="progressBgColor" format="color" />
+
+        <attr name="mode">
+            <enum name="linear" value="0" />
+            <enum name="round" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BannerView">
+        <attr name="rsrollviewpager_hint_mode">
+            <enum name="point" value="0" />
+            <enum name="number" value="1" />
+        </attr>
+        <attr name="rsrollviewpager_hint_gravity">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+        <attr name="rsrollviewpager_hint_paddingRight" format="dimension" />
+        <attr name="rsrollviewpager_hint_paddingLeft" format="dimension" />
+        <attr name="rsrollviewpager_hint_paddingTop" format="dimension" />
+        <attr name="rsrollviewpager_hint_paddingBottom" format="dimension" />
+        <attr name="rsrollviewpager_play_delay" format="integer" />
+        <attr name="rsrollviewpager_hint_color" format="color" />
+        <attr name="rsrollviewpager_hint_alpha" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="AvatarView">
+        <attr name="Src" format="reference" />
+    </declare-styleable>
+
+</resources>

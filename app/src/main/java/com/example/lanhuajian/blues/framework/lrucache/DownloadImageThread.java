@@ -47,7 +47,9 @@ public class DownloadImageThread extends Thread {
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 final Bitmap bitmap = BitmapFactory.decodeStream(ios);
-                utils.addBitmapToLruCache("bitmap", bitmap);
+                //使用url作为key值
+                utils.addBitmapToLruCache(url, bitmap);
+                //切换主线更新ui
                 act.runOnUiThread(() -> target.setImageBitmap(bitmap));
             }
         } catch (IOException e) {

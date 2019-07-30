@@ -31,6 +31,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private ImageView ivCleanAct, ivCleanPwd;
     private TextView ivSkip;
 
+    private TextView tvForgetPwd, tvUserReg;
+
     private LoginContract.iLoginContractPresenter iPresenter;
 
     @Override
@@ -50,6 +52,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         ivCleanAct = findViewById(R.id.iv_clean_act);
         ivCleanPwd = findViewById(R.id.iv_clean_pwd);
         ivSkip = findViewById(R.id.tv_skip);
+
+        tvForgetPwd = findViewById(R.id.tv_forget_pwd);
+        tvUserReg = findViewById(R.id.tv_user_reg);
+
 
         mPresenter = new LoginPresenter(this);
 
