@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
+
 public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
 
     public BaseActivity mContext;
@@ -73,6 +75,12 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
             mPresenter = null;
         }
         super.onDestroy();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        NiceVideoPlayerManager.instance().releaseNiceVideoPlayer();
     }
 
     public BaseActivity getmContext() {

@@ -7,6 +7,7 @@
     <com.jude.easyrecyclerview.EasyRecyclerView
         android:id="@+id/ev_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/dp_10" />
 
 </LinearLayout>

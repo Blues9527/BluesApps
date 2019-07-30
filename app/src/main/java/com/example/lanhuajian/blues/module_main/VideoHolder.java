@@ -10,6 +10,8 @@ import com.bumptech.glide.Glide;
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.framework.utils.SizeUtil;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+import com.xiao.nicevideoplayer.NiceVideoPlayer;
+import com.xiao.nicevideoplayer.TxVideoPlayerController;
 
 /**
  * User : Blues
@@ -17,25 +19,35 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
  * Time : 10:39
  */
 
-public class VideoHolder extends BaseViewHolder<VideoEntity.DataBean> {
+public class VideoHolder extends BaseViewHolder<VideoInfoEntity> {
 
-    private ImageView ivCover;
-    private TextView tvTime;
-    private TextView tvTitle;
+    private NiceVideoPlayer nvPlayer;
 
     public VideoHolder(ViewGroup parent) {
         super(parent, R.layout.item_video_mp);
 
-        ivCover = $(R.id.iv_cover);
-        tvTime = $(R.id.tv_time);
-        tvTitle = $(R.id.tv_title);
+        nvPlayer = $(R.id.nvp_video);
     }
 
     @Override
-    public void setData(VideoEntity.DataBean data) {
+    public void setData(VideoInfoEntity data) {
         super.setData(data);
-        Glide.with(getContext()).load(data.getCover_url()).placeholder(R.drawable.shape_place_holder).into(ivCover);
-        tvTime.setText(data.getVideo_time());
-        tvTitle.setText(data.getVideo_title());
+        nvPlayer.setPlayerType(NiceVideoPlayer.TYPE_NATIVE);
+        nvPlayer.setBackgroundResource(R.drawable.shape_background);
+        nvPlayer.setUp(data.getVideo_url(), null);
+        TxVideoPlayerController controller = new TxVideoPlayerController(getContext());
+        controller.setTitle(data.getVideo_title());
+        controller.setImage(R.mipmap.ic_background);
+        nvPlayer.setController(controller);
+
+        //自动播放
+//        nvPlayer.post(() -> {
+//            if (nvPlayer != null) {
+//                nvPlayer.continueFromLastPosition(false);
+//                if (nvPlayer.isIdle()) {
+//                    nvPlayer.start();
+//                }
+//            }
+//        });
     }
 }

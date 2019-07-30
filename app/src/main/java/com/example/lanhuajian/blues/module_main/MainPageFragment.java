@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.mock.VideoUrlConstant;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,12 +21,9 @@ import java.util.List;
  * Time : 15:27
  */
 
-public class MainPageFragment extends BaseFragment implements MainPageContract.iMainPageView {
+public class MainPageFragment extends BaseFragment {
 
-    private MainPageContract.iMainPagePresenter iPresenter;
-
-    private EasyRecyclerView mainErv;
-    private RecyclerArrayAdapter mAdapter;
+    private List<VideoInfoEntity> videos = new ArrayList<>();
 
     @Override
     public int setLayoutResourceId() {
@@ -34,18 +33,21 @@ public class MainPageFragment extends BaseFragment implements MainPageContract.i
     @Override
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mainErv = rootView.findViewById(R.id.ev_main);
-
-        mPresenter = new MainPagePresenter(this);
-        iPresenter.getVideos();
+        EasyRecyclerView mainErv = rootView.findViewById(R.id.ev_main);
 
         mainErv.setLayoutManager(new LinearLayoutManager(getmContext()));
-        mainErv.setAdapter(mAdapter = new RecyclerArrayAdapter<VideoEntity.DataBean>(getmContext()) {
+        RecyclerArrayAdapter<VideoInfoEntity> mAdapter;
+        mainErv.setAdapter(mAdapter = new RecyclerArrayAdapter<VideoInfoEntity>(getmContext()) {
             @Override
             public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
                 return new VideoHolder(parent);
             }
         });
+        for (int i = 0; i < VideoUrlConstant.urls.length; i++) {
+            videos.add(new VideoInfoEntity(VideoUrlConstant.urls[i], VideoUrlConstant.titles[i]));
+        }
+        mAdapter.addAll(videos);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -55,49 +57,6 @@ public class MainPageFragment extends BaseFragment implements MainPageContract.i
 
     @Override
     public void setListener() {
-
-    }
-
-    @Override
-    public void getVideoSuccess(List<VideoEntity.DataBean> bean) {
-        if (null != bean) {
-            mAdapter.addAll(bean);
-        }
-        mAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void getVideoFailure(String msg) {
-
-    }
-
-    @Override
-    public void setPresenter(MainPageContract.iMainPagePresenter presenter) {
-        iPresenter = presenter;
-    }
-
-    @Override
-    public void showBegin() {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void showFinished() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
-    public void showEmpty() {
 
     }
 }

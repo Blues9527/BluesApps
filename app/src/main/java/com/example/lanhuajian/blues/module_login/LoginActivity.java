@@ -102,6 +102,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 break;
             case R.id.tv_skip:
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                overridePendingTransition(R.anim.anim_zoom_in, R.anim.anim_slide_to_bottom);
                 finish();
                 break;
         }
@@ -111,6 +112,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     public void onSuccess(HttpResponse result) {
         if (result.getCode() == 200) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            overridePendingTransition(R.anim.anim_zoom_in, 0);
             finish();
         }
     }

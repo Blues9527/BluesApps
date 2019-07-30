@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.example.lanhuajian.blues.framework.injection.InjectManager;
+import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 
 /**
  * User : Blues
@@ -54,6 +55,12 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        NiceVideoPlayerManager.instance().releaseNiceVideoPlayer();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         //当视图被销毁时presenter不为空，手动解除订阅
@@ -61,6 +68,12 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
             mPresenter.unSubscribe();
             mPresenter = null;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (NiceVideoPlayerManager.instance().onBackPressd()) return;
+        super.onBackPressed();
     }
 
     @Override
