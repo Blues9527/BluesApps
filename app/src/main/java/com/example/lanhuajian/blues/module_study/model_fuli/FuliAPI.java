@@ -23,7 +23,7 @@ public class FuliAPI {
     }
 
     public static FuliAPI getInstance() {
-        RetrofitManager.setBaseUrl(RequestUrl.BASE_URL);
+        RetrofitManager.setBaseUrl(RequestUrl.BASE_GANKIO_URL);
         if (null == instance) {
             synchronized (FuliAPI.class) {
                 if (null == instance) {

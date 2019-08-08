@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.mock.VideoUrlConstant;
+import com.example.lanhuajian.blues.module_main.banner.BannerContract;
+import com.example.lanhuajian.blues.module_main.banner.BannerEntity;
+import com.example.lanhuajian.blues.module_main.banner.BannerHeaderView;
+import com.example.lanhuajian.blues.module_main.banner.BannerPresenter;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -21,9 +25,12 @@ import java.util.List;
  * Time : 15:27
  */
 
-public class MainPageFragment extends BaseFragment {
+public class MainPageFragment extends BaseFragment implements BannerContract.iBannerContractView {
 
     private List<VideoInfoEntity> videos = new ArrayList<>();
+    private BannerContract.iBannerContractPresenter iPresenter;
+    private BannerHeaderView mHeader;
+    private RecyclerArrayAdapter<VideoInfoEntity> mAdapter;
 
     @Override
     public int setLayoutResourceId() {
@@ -35,14 +42,19 @@ public class MainPageFragment extends BaseFragment {
 
         EasyRecyclerView mainErv = rootView.findViewById(R.id.ev_main);
 
+        mPresenter = new BannerPresenter(this);
+
+        iPresenter.getBanner();
+
         mainErv.setLayoutManager(new LinearLayoutManager(getmContext()));
-        RecyclerArrayAdapter<VideoInfoEntity> mAdapter;
         mainErv.setAdapter(mAdapter = new RecyclerArrayAdapter<VideoInfoEntity>(getmContext()) {
             @Override
             public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
                 return new VideoHolder(parent);
             }
         });
+//        mainErv.setVerticalScrollBarEnabled(false);
+        mAdapter.addHeader(mHeader = new BannerHeaderView(getmContext()));
         for (int i = 0; i < VideoUrlConstant.urls.length; i++) {
             videos.add(new VideoInfoEntity(VideoUrlConstant.urls[i], VideoUrlConstant.titles[i]));
         }
@@ -58,5 +70,60 @@ public class MainPageFragment extends BaseFragment {
     @Override
     public void setListener() {
 
+    }
+
+    @Override
+    public void onSuccess(BannerEntity banner) {
+        if (banner != null) {
+            mHeader.initBanner(getmContext(), banner);
+        }
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onFailure(String result) {
+
+    }
+
+    @Override
+    public void setPresenter(BannerContract.iBannerContractPresenter presenter) {
+        iPresenter = presenter;
+    }
+
+    @Override
+    public void showBegin() {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void showFinished() {
+
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void showEmpty() {
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mHeader.bannerOnPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mHeader.bannerOnResume();
     }
 }

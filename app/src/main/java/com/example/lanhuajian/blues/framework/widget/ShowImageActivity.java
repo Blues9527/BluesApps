@@ -1,10 +1,10 @@
 package com.example.lanhuajian.blues.framework.widget;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
@@ -18,7 +18,7 @@ import com.example.lanhuajian.blues.R;
  * Time : 15:06
  */
 
-public class ShowImageActivity extends AppCompatActivity {
+public class ShowImageActivity extends Activity {
 
     private ImageView ivImageShow;
 
@@ -43,6 +43,7 @@ public class ShowImageActivity extends AppCompatActivity {
 
         //单击图图片退出
         ivImageShow.setOnClickListener(v -> finish());
+        overridePendingTransition(0, 0);
     }
 
 

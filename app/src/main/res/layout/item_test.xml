@@ -17,47 +17,44 @@
         android:layout_marginTop="10dp"
         android:background="@mipmap/ic_avatar_default" />
 
-    <LinearLayout
-        android:id="@+id/ll_container"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/tv_author"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/iv_avatar"
-        android:orientation="vertical">
+        android:text="Blues"
+        android:textColor="@color/color_light_blue"
+        android:textSize="13sp" />
 
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_author"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/iv_avatar"
+        android:text="this is title"
+        android:textColor="@color/color_black"
+        android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/tv_author"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Blues"
-            android:textColor="@color/color_light_blue"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/tv_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="this is title"
-            android:textColor="@color/color_black"
-            android:textSize="12sp" />
-
-        <com.jude.easyrecyclerview.EasyRecyclerView
-            android:id="@+id/rv_images"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp" />
-
-    </LinearLayout>
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/rv_images"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_desc"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toRightOf="@+id/iv_avatar" />
 
     <TextView
         android:id="@+id/tv_publish_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_container"
+        android:layout_below="@+id/rv_images"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/iv_avatar"

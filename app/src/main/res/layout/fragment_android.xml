@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sr_android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shape_overall_background"
-    android:orientation="vertical">
+    android:background="@drawable/shape_overall_background">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/sr_android"
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/rv_android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.jude.easyrecyclerview.EasyRecyclerView
-            android:id="@+id/rv_android"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingTop="10dp" />
-    </android.support.v4.widget.SwipeRefreshLayout>
-</LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="10dp"
+        app:scrollbars="none" />
+</android.support.v4.widget.SwipeRefreshLayout>

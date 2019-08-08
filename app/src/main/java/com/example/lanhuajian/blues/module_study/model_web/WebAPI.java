@@ -23,7 +23,7 @@ public class WebAPI {
     }
 
     public static WebAPI getInstance() {
-        RetrofitManager.setBaseUrl(RequestUrl.BASE_URL);
+        RetrofitManager.setBaseUrl(RequestUrl.BASE_GANKIO_URL);
         if (null == instance) {
             synchronized (WebAPI.class) {
                 if (null == instance) {

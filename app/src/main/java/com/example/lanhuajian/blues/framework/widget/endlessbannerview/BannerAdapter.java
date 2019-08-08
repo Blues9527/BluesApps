@@ -1,15 +1,20 @@
 package com.example.lanhuajian.blues.framework.widget.endlessbannerview;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
+import android.graphics.Bitmap;
+import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.framework.lrucache.DownloadImageThread;
+import com.example.lanhuajian.blues.framework.widget.RoundCornerImage;
+import com.example.lanhuajian.blues.framework.widget.endlessbannerview.hintview.LoopPagerAdapter;
 
 import java.util.List;
 
@@ -19,13 +24,14 @@ import java.util.List;
  * Time : 15:00
  */
 
-public class BannerAdapter extends PagerAdapter {
+public class BannerAdapter extends LoopPagerAdapter {
 
     private List<String> mBannerUrls;
     private Context mContext;
     private BannerView mBannerView;
 
     public BannerAdapter(Context context, List<String> bannerUrls, BannerView bannerView) {
+        super(bannerView);
         this.mBannerUrls = bannerUrls;
         mContext = context;
         mBannerView = bannerView;
@@ -48,28 +54,17 @@ public class BannerAdapter extends PagerAdapter {
     }
 
     @Override
-    public int getCount() {
-        return mBannerUrls.size() <= 1 ? mBannerUrls.size() : Integer.MAX_VALUE;
+    protected int getRealCount() {
+        return mBannerUrls.size();
     }
 
     @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-        return view == o;
-    }
-
-    @Override
-    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((View) object);
-    }
-
-    @NonNull
-    @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    public View getView(ViewGroup container, int position) {
         int realPosition = position % mBannerUrls.size();
         View itemView = LayoutInflater.from(mContext).inflate(R.layout.item_banner, container, false);
 
         ImageView iv = itemView.findViewById(R.id.iv_banner);
-        Glide.with(mContext).load(mBannerUrls.get(realPosition)).into(iv);
+        Glide.with(mContext).load(mBannerUrls.get(realPosition)).placeholder(R.mipmap.ic_img_error).into(iv);
 
         container.addView(itemView);
         return itemView;

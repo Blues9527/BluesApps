@@ -23,7 +23,7 @@ public class AndroidAPI {
     }
 
     public static AndroidAPI getInstance() {
-        RetrofitManager.setBaseUrl(RequestUrl.BASE_URL);
+        RetrofitManager.setBaseUrl(RequestUrl.BASE_GANKIO_URL);
         if (null == instance) {
             synchronized (AndroidAPI.class) {
                 if (null == instance) {

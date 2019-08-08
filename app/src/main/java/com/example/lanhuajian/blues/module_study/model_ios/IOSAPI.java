@@ -23,7 +23,7 @@ public class IOSAPI {
     }
 
     public static IOSAPI getInstance() {
-        RetrofitManager.setBaseUrl(RequestUrl.BASE_URL);
+        RetrofitManager.setBaseUrl(RequestUrl.BASE_GANKIO_URL);
         if (null == instance) {
             synchronized (IOSAPI.class) {
                 if (null == instance) {

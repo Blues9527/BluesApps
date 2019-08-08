@@ -2,17 +2,26 @@ package com.example.lanhuajian.blues.framework.widget.endlessbannerview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
-import android.view.animation.Interpolator;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
 
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.framework.widget.endlessbannerview.hintview.ColorPointHintView;
+import com.example.lanhuajian.blues.framework.widget.endlessbannerview.hintview.HintView;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -35,8 +44,12 @@ public class BannerView extends RelativeLayout implements ViewPager.OnPageChange
     private long mRecentTouchTime;
     //播放延迟
     private int delay;
+    //位置，颜色，透明度
+    private int gravity, color, alpha;
+    private int paddingLeft, paddingRight, paddingTop, paddingBottom;
 
     private Timer timer;
+    private View mHintView;
 
     private int mCurrentPosition;
 
@@ -61,10 +74,18 @@ public class BannerView extends RelativeLayout implements ViewPager.OnPageChange
      */
     private void initView(AttributeSet attrs) {
         TypedArray type = getContext().obtainStyledAttributes(attrs, R.styleable.BannerView);
-        delay = type.getInt(R.styleable.BannerView_rsrollviewpager_play_delay, 0);
+        delay = type.getInt(R.styleable.BannerView_play_delay, 0);
+        gravity = type.getInteger(R.styleable.BannerView_hint_gravity, 1);
+        color = type.getColor(R.styleable.BannerView_hint_color, Color.BLACK);
+        alpha = type.getInt(R.styleable.BannerView_hint_alpha, 0);
+        paddingLeft = (int) type.getDimension(R.styleable.BannerView_hint_paddingLeft, 0);
+        paddingRight = (int) type.getDimension(R.styleable.BannerView_hint_paddingRight, 0);
+        paddingTop = (int) type.getDimension(R.styleable.BannerView_hint_paddingTop, 0);
+        paddingBottom = (int) type.getDimension(R.styleable.BannerView_hint_paddingBottom, dp2px(4));
 
         addViewPager();
         type.recycle();
+        initHint(new ColorPointHintView(getContext(), Color.parseColor("#ff5ac8fa"), Color.parseColor("#ff3aa64c")));
     }
 
     private void addViewPager() {
@@ -102,6 +123,7 @@ public class BannerView extends RelativeLayout implements ViewPager.OnPageChange
                 cur = 0;
             }
             rollPagerView.getViewPager().setCurrentItem(cur);
+            rollPagerView.mHintViewDelegate.setCurrentPosition(cur, msg.arg1, (HintView) rollPagerView.mHintView);
             if (rollPagerView.mAdapter.getCount() <= 1) rollPagerView.stopPlay();
 
         }
@@ -155,7 +177,6 @@ public class BannerView extends RelativeLayout implements ViewPager.OnPageChange
         }
     }
 
-
     /**
      * 设置viewager滑动动画持续时间
      *
@@ -168,11 +189,9 @@ public class BannerView extends RelativeLayout implements ViewPager.OnPageChange
             mField.setAccessible(true);
             Scroller mScroller = new Scroller(getContext(),
                     // 动画效果与ViewPager的一致
-                    new Interpolator() {
-                        public float getInterpolation(float t) {
-                            t -= 1.0f;
-                            return t * t * t * t * t + 1.0f;
-                        }
+                    t -> {
+                        t -= 1.0f;
+                        return t * t * t * t * t + 1.0f;
                     }) {
 
                 @Override
@@ -239,6 +258,7 @@ public class BannerView extends RelativeLayout implements ViewPager.OnPageChange
         mViewPager.addOnPageChangeListener(this);
         mAdapter = adapter;
         startPlay();
+        dataSetChanged();
     }
 
     /**
@@ -261,10 +281,118 @@ public class BannerView extends RelativeLayout implements ViewPager.OnPageChange
     @Override
     public void onPageSelected(int position) {
         mCurrentPosition = position;
+        mHintViewDelegate.setCurrentPosition(position, delay, (HintView) mHintView);
     }
 
     @Override
     public void onPageScrollStateChanged(int i) {
 
+    }
+
+    public int dp2px(float dp) {
+        return (int) (getResources().getDisplayMetrics().density * dp);
+    }
+
+    /* -------------------------------------------------------------------hint view相关-----------------------------------------------------------------------------------------------------------------*/
+
+    public interface HintViewDelegate {
+        void setCurrentPosition(int position, int duration, HintView hintView);
+
+        void initView(int length, int gravity, int duration, HintView hintView);
+    }
+
+    private BannerView.HintViewDelegate mHintViewDelegate = new BannerView.HintViewDelegate() {
+        @Override
+        public void setCurrentPosition(int position, int duration, HintView hintView) {
+            if (hintView != null)
+                hintView.setCurrent(position, duration);
+        }
+
+        @Override
+        public void initView(int length, int gravity, int duration, HintView hintView) {
+            if (hintView != null) {
+                hintView.initView(length, gravity, duration);
+            }
+        }
+    };
+
+    public void setHintViewDelegate(BannerView.HintViewDelegate delegate) {
+        this.mHintViewDelegate = delegate;
+    }
+
+    private void initHint(HintView hintview) {
+        if (hintview == null) {
+            return;
+        }
+        if (mHintView != null) {
+            removeView(mHintView);
+        }
+
+        mHintView = (View) hintview;
+        loadHintView();
+    }
+
+    /**
+     * 加载hintview的容器
+     */
+    private void loadHintView() {
+        addView(mHintView);
+        mHintView.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+        LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        mHintView.setLayoutParams(lp);
+
+        GradientDrawable gd = new GradientDrawable();
+        gd.setColor(color);
+        gd.setAlpha(alpha);
+        mHintView.setBackgroundDrawable(gd);
+
+        mHintViewDelegate.initView(mAdapter == null ? 0 : mAdapter.getCount(), gravity, delay, (HintView) mHintView);
+    }
+
+    /**
+     * 设置提示view的位置
+     */
+    public void setHintPadding(int left, int top, int right, int bottom) {
+        paddingLeft = left;
+        paddingTop = top;
+        paddingRight = right;
+        paddingBottom = bottom;
+        mHintView.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+    }
+
+    /**
+     * 设置提示view的透明度
+     *
+     * @param alpha 0为全透明  255为实心
+     */
+    public void setHintAlpha(int alpha) {
+        this.alpha = alpha;
+        initHint((HintView) mHintView);
+    }
+
+    /**
+     * 支持自定义hintview
+     * 只需new一个实现HintView的View传进来
+     * 会自动将你的view添加到本View里面。重新设置LayoutParams。
+     *
+     * @param hintview
+     */
+    public void setHintView(HintView hintview) {
+
+        if (mHintView != null) {
+            removeView(mHintView);
+        }
+        this.mHintView = (View) hintview;
+        if (hintview != null && hintview instanceof View) {
+            initHint(hintview);
+        }
+    }
+
+    public void dataSetChanged() {
+        if (mHintView != null) {
+            mHintViewDelegate.initView(mAdapter.getCount(), gravity, delay, (HintView) mHintView);
+        }
+        startPlay();
     }
 }

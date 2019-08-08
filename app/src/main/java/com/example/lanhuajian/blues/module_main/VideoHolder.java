@@ -35,6 +35,7 @@ public class VideoHolder extends BaseViewHolder<VideoInfoEntity> {
         nvPlayer.setPlayerType(NiceVideoPlayer.TYPE_NATIVE);
         nvPlayer.setBackgroundResource(R.drawable.shape_background);
         nvPlayer.setUp(data.getVideo_url(), null);
+
         TxVideoPlayerController controller = new TxVideoPlayerController(getContext());
         controller.setTitle(data.getVideo_title());
         controller.setImage(R.mipmap.ic_background);

@@ -2,8 +2,6 @@ package com.example.lanhuajian.blues;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.example.lanhuajian.blues.framework.base.BaseActivity;
@@ -12,13 +10,11 @@ import com.example.lanhuajian.blues.module_main.MainPageFragment;
 import com.example.lanhuajian.blues.module_personalpage.PersonalPageFragment;
 import com.example.lanhuajian.blues.module_study.StudyPageFragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class MainActivity extends BaseActivity {
 
     private String[] tabs = {"home", "study", "mine"};
+    private int[] icons = {R.drawable.ic_svg_home, R.drawable.ic_svg_book, R.drawable.ic_svg_user};
 
     @Override
     public int setLayoutResourceId() {
@@ -36,8 +32,11 @@ public class MainActivity extends BaseActivity {
         mFragmentAdapter.addFragment(new StudyPageFragment());
         mFragmentAdapter.addFragment(new PersonalPageFragment());
 
-        mTab.setupWithViewPager(mViewPager, false);
         mViewPager.setAdapter(mFragmentAdapter);
+        mTab.setupWithViewPager(mViewPager, false);
+        for (int i = 0; i < tabs.length; i++) {
+            mTab.getTabAt(i).setText(tabs[i]).setIcon(icons[i]);
+        }
         mViewPager.setCurrentItem(0);
     }
 

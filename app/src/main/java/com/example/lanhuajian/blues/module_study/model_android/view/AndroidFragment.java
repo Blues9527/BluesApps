@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
-import com.example.lanhuajian.blues.framework.base.BaseViewPagerAdapter;
 import com.example.lanhuajian.blues.module_study.model_android.AndroidContract;
 import com.example.lanhuajian.blues.module_study.model_android.model.AndroidEntity;
 import com.example.lanhuajian.blues.module_study.model_android.presenter.AndroidPresenter;

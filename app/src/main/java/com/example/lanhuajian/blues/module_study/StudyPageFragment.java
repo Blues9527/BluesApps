@@ -2,8 +2,6 @@ package com.example.lanhuajian.blues.module_study;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -16,8 +14,6 @@ import com.example.lanhuajian.blues.module_study.model_fuli.view.FuliFragment;
 import com.example.lanhuajian.blues.module_study.model_ios.view._iOSFragment;
 import com.example.lanhuajian.blues.module_study.model_web.view.WebFragment;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * User : Blues

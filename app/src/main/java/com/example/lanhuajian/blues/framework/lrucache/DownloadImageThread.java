@@ -1,14 +1,19 @@
 package com.example.lanhuajian.blues.framework.lrucache;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.ImageView;
 
+import com.example.lanhuajian.blues.framework.http.OkHttpClientManager;
+
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * User : Blues
@@ -18,53 +23,45 @@ import java.net.URL;
 
 public class DownloadImageThread extends Thread {
 
-    private Activity act;
     private LruCacheUtils utils;
-    private ImageView target;
     private String url;
+    private DownloadCallBack mCallBack;
+
+    public DownloadImageThread(String url, DownloadCallBack callBack) {
+        this(null, url, callBack);
+    }
 
 
-    public DownloadImageThread(Activity act, LruCacheUtils utils, ImageView target, String url) {
-        this.act = act;
+    public DownloadImageThread(@Nullable LruCacheUtils utils,String url, DownloadCallBack callBack) {
         this.utils = utils;
-        this.target = target;
         this.url = url;
+        mCallBack = callBack;
     }
 
     @Override
     public void run() {
-        HttpURLConnection connection = null;
-        InputStream ios = null;
-        try {
-            URL req = new URL(url);
-            connection = (HttpURLConnection) req.openConnection();
-            connection.setReadTimeout(5000);
-            connection.setConnectTimeout(5000);
-            connection.setUseCaches(true);
-            connection.connect();
+        OkHttpClientManager.getInstance().newCall(new Request.Builder().get().url(url).build()).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.i("Blues", "download error");
+                e.printStackTrace();
+                mCallBack.onFailure("download error");
+            }
 
-            ios = connection.getInputStream();
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.i("Blues", "download success");
 
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                final Bitmap bitmap = BitmapFactory.decodeStream(ios);
-                //使用url作为key值
-                utils.addBitmapToLruCache(url, bitmap);
-                //切换主线更新ui
-                act.runOnUiThread(() -> target.setImageBitmap(bitmap));
+                mCallBack.onSuccess(BitmapFactory.decodeStream(response.body().byteStream()));
+                Log.i("Blues", String.valueOf(response.body().byteStream()));
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (null != connection) {
-                connection.disconnect();
-            }
-            if (null != ios) {
-                try {
-                    ios.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        });
+
+    }
+
+    public interface DownloadCallBack {
+        void onSuccess(Bitmap bitmap);
+
+        void onFailure(String msg);
     }
 }

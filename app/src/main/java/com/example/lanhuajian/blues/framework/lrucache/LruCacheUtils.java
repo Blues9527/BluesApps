@@ -1,11 +1,9 @@
 package com.example.lanhuajian.blues.framework.lrucache;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v4.util.LruCache;
 import android.util.Log;
-import android.widget.Toast;
 
 /**
  * User : Blues

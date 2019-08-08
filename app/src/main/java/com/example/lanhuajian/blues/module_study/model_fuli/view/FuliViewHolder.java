@@ -1,5 +1,6 @@
 package com.example.lanhuajian.blues.module_study.model_fuli.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class FuliViewHolder extends BaseViewHolder<FuliEntity.ResultsBean> {
             Log.i("Blues", data.getUrl());
             intent.setClass(getContext(), ShowImageActivity.class);
             getContext().startActivity(intent);
+            ((Activity) getContext()).overridePendingTransition(R.anim.anim_slide_to_bottom, R.anim.anim_slide_to_bottom);
         });
     }
 }
