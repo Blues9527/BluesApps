@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,10 @@ import android.widget.LinearLayout;
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.framework.widget.endlessbannerview.BannerAdapter;
 import com.example.lanhuajian.blues.framework.widget.endlessbannerview.BannerView;
+import com.example.lanhuajian.blues.mock.CourseEntryConstant;
+import com.example.lanhuajian.blues.mock.VideoUrlConstant;
+import com.jude.easyrecyclerview.EasyRecyclerView;
+import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 import java.util.ArrayList;
@@ -28,6 +33,9 @@ import java.util.List;
 public class BannerHeaderView extends LinearLayout implements RecyclerArrayAdapter.ItemView {
 
     private BannerView bannerView;
+    private EasyRecyclerView ervEntry;
+    private RecyclerArrayAdapter mEntryAdapter;
+    private List<CourseEntry> courseEntries = new ArrayList<>();
 
     public BannerHeaderView(Context context) {
         this(context, null);
@@ -45,7 +53,27 @@ public class BannerHeaderView extends LinearLayout implements RecyclerArrayAdapt
     private void initView(Context ctx) {
         View view = LayoutInflater.from(ctx).inflate(R.layout.header_banner, this);
         bannerView = view.findViewById(R.id.bv_header);
+        ervEntry = view.findViewById(R.id.erv_entry);
 
+        initEntry();
+    }
+
+    private void initEntry() {
+
+        final GridLayoutManager goodsLayoutManager = new GridLayoutManager(getContext(), 4);
+        ervEntry.setLayoutManager(goodsLayoutManager);
+        ervEntry.setAdapter(mEntryAdapter = new RecyclerArrayAdapter<CourseEntry>(getContext()) {
+            @Override
+            public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
+                return new CourseEntryHolder(parent);
+            }
+        });
+
+        for (int i = 0; i < CourseEntryConstant.iconsUrl.length; i++) {
+            courseEntries.add(new CourseEntry(CourseEntryConstant.iconsUrl[i], CourseEntryConstant.entryTitles[i]));
+        }
+        mEntryAdapter.addAll(courseEntries);
+        mEntryAdapter.notifyDataSetChanged();
     }
 
     public void initBanner(Context ctx, BannerEntity bannerEntity) {

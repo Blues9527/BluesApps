@@ -13,7 +13,7 @@ import com.example.lanhuajian.blues.module_study.StudyPageFragment;
 
 public class MainActivity extends BaseActivity {
 
-    private String[] tabs = {"home", "study", "mine"};
+    private String[] tabs = {"主页", "学习", "我的"};
     private int[] icons = {R.drawable.ic_svg_home, R.drawable.ic_svg_book, R.drawable.ic_svg_user};
 
     @Override
