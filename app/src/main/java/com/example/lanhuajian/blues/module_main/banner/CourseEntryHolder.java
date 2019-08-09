@@ -22,14 +22,13 @@ public class CourseEntryHolder extends BaseViewHolder<CourseEntry> {
 
     private ImageView ivIcon;
     private TextView tvTitle;
-    private LinearLayout llContainer;
 
     public CourseEntryHolder(ViewGroup parent) {
         super(parent, R.layout.item_course_entry);
 
         ivIcon = $(R.id.iv_entry_icon);
         tvTitle = $(R.id.tv_entry_title);
-        llContainer = $(R.id.ll_course_entry);
+        LinearLayout llContainer = $(R.id.ll_course_entry);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.width = ScreenUtil.getScreenWidth() / 4;

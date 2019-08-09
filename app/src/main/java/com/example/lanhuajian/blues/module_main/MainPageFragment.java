@@ -27,7 +27,6 @@ import java.util.List;
 
 public class MainPageFragment extends BaseFragment implements BannerContract.iBannerContractView {
 
-    private List<VideoInfoEntity> videos = new ArrayList<>();
     private BannerContract.iBannerContractPresenter iPresenter;
     private BannerHeaderView mHeader;
     private RecyclerArrayAdapter<VideoInfoEntity> mAdapter;
@@ -53,12 +52,8 @@ public class MainPageFragment extends BaseFragment implements BannerContract.iBa
                 return new VideoHolder(parent);
             }
         });
-//        mainErv.setVerticalScrollBarEnabled(false);
         mAdapter.addHeader(mHeader = new BannerHeaderView(getmContext()));
-        for (int i = 0; i < VideoUrlConstant.urls.length; i++) {
-            videos.add(new VideoInfoEntity(VideoUrlConstant.urls[i], VideoUrlConstant.titles[i]));
-        }
-        mAdapter.addAll(videos);
+        mAdapter.addAll(VideoUrlConstant.getVideos());
         mAdapter.notifyDataSetChanged();
     }
 

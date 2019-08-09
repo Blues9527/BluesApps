@@ -35,7 +35,6 @@ public class BannerHeaderView extends LinearLayout implements RecyclerArrayAdapt
     private BannerView bannerView;
     private EasyRecyclerView ervEntry;
     private RecyclerArrayAdapter mEntryAdapter;
-    private List<CourseEntry> courseEntries = new ArrayList<>();
 
     public BannerHeaderView(Context context) {
         this(context, null);
@@ -68,11 +67,7 @@ public class BannerHeaderView extends LinearLayout implements RecyclerArrayAdapt
                 return new CourseEntryHolder(parent);
             }
         });
-
-        for (int i = 0; i < CourseEntryConstant.iconsUrl.length; i++) {
-            courseEntries.add(new CourseEntry(CourseEntryConstant.iconsUrl[i], CourseEntryConstant.entryTitles[i]));
-        }
-        mEntryAdapter.addAll(courseEntries);
+        mEntryAdapter.addAll(CourseEntryConstant.getEntries());
         mEntryAdapter.notifyDataSetChanged();
     }
 

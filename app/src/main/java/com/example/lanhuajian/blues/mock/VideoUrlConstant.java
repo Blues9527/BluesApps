@@ -1,6 +1,11 @@
 package com.example.lanhuajian.blues.mock;
 
 
+import com.example.lanhuajian.blues.module_main.VideoInfoEntity;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * User : Blues
  * Date : 2019/7/30
@@ -8,7 +13,7 @@ package com.example.lanhuajian.blues.mock;
  */
 
 public class VideoUrlConstant {
-    public static final String[] urls = {
+    private static final String[] urls = {
             "http://jdvodluwytr3t.vod.126.net/jdvodluwytr3t/nos/hls/2019/07/08/1214841813_1bd740ad3a0d4e6ca7f14d7b55f7d3c0_sd.m3u8?ak=7909bff134372bffca53cdc2c17adc27a4c38c6336120510aea1ae1790819de8f994d2cf80c6a7781230b8b55d4a04635d43566db00e3f882776739c58542d4322117d840132767793f969aceceae3796fd1d305a8fca05072f45e15f4db45ebab1751379953e9446561f60f0e4ab9c0",//EventBus原理解析及手写框架
             "http://jdvodluwytr3t.vod.126.net/jdvodluwytr3t/nos/hls/2019/07/09/1214846004_04fb8dcc33784733a10f73a105ca4f48_sd.m3u8?ak=7909bff134372bffca53cdc2c17adc27a4c38c6336120510aea1ae1790819de8f994d2cf80c6a7781230b8b55d4a04630bf53d7ea480b5965923476124098acd22117d840132767793f969aceceae3797b91e7852e20cf0d9e123d607c272f0db8ae77e29788836745b7125f174b3914",//安卓人工智能——快速图文识别
             "http://jdvodluwytr3t.vod.126.net/jdvodluwytr3t/nos/hls/2019/07/10/1214848950_f2e1ccd0fa8843ccb298458e9d4aec00_sd.m3u8?ak=7909bff134372bffca53cdc2c17adc27a4c38c6336120510aea1ae1790819de8f994d2cf80c6a7781230b8b55d4a04634a6f76e1c31b6fb9b055524abf88837022117d840132767793f969aceceae379d32b9ecc5c4e68e6b4573ea51b4adc52df69454fe54d63664bd5297860cdfa3d",//面试三部曲，叫你如何从容应对即将到来的金九银十
@@ -25,7 +30,7 @@ public class VideoUrlConstant {
             "http://jdvodluwytr3t.vod.126.net/jdvodluwytr3t/nos/hls/2019/07/21/1214884481_ed82e1a2ef294ae0afb5f25a9d22ffe8_sd.m3u8?ak=7909bff134372bffca53cdc2c17adc27a4c38c6336120510aea1ae1790819de8f994d2cf80c6a7781230b8b55d4a0463a1cc149c16b009082ab675f29ef2dfe622117d840132767793f969aceceae379f00e3a43f1b505dff49b44cf1b55f365623591d5e74d0640a136e4a4f0e4eb71",//90分钟解决界面卡顿，UI布局渲染流程详解
     };
 
-    public static final String[] titles = {
+    private static final String[] titles = {
             "EventBus原理解析及手写框架",
             "安卓人工智能——快速图文识别",
             "面试三部曲，叫你如何从容应对即将到来的金九银十",
@@ -41,4 +46,12 @@ public class VideoUrlConstant {
             "挣脱矩形束缚——实现不规则控件点击",
             "90分钟解决界面卡顿，UI布局渲染流程详解",
     };
+
+    public static List<VideoInfoEntity> getVideos() {
+        List<VideoInfoEntity> videos = new ArrayList<>();
+        for (int i = 0; i < VideoUrlConstant.urls.length; i++) {
+            videos.add(new VideoInfoEntity(VideoUrlConstant.urls[i], VideoUrlConstant.titles[i]));
+        }
+        return videos;
+    }
 }

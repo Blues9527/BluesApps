@@ -5,5 +5,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_overall_background"
-    android:paddingBottom="15dp"
     app:scrollbars="none" />
