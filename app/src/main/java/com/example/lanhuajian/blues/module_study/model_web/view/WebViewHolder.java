@@ -37,7 +37,6 @@ public class WebViewHolder extends BaseViewHolder<WebEntity.ResultsBean> {
     public void setData(WebEntity.ResultsBean data) {
         super.setData(data);
 
-        Log.i("Blues", data.toString());
 
         tvDesc.setText(data.getDesc());
         tvAuthor.setText(String.format("作者：%s", data.getWho()));

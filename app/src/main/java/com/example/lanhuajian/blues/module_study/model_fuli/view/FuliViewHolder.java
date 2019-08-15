@@ -35,8 +35,6 @@ public class FuliViewHolder extends BaseViewHolder<FuliEntity.ResultsBean> {
     public void setData(FuliEntity.ResultsBean data) {
         super.setData(data);
 
-        Log.i("Blues", data.toString());
-
         tvDesc.setText(data.getDesc());
         ivUrl.setLayoutParams(new LinearLayout.LayoutParams(ScreenUtil.getScreenWidth() * 2 / 3, ScreenUtil.getScreenHeight() / 3));
         Glide.with(getContext()).load(data.getUrl()).into(ivUrl);

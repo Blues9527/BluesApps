@@ -3,7 +3,10 @@ package com.example.lanhuajian.blues.module_study.model_fuli.view;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.LinearLayout;
 
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
@@ -18,7 +21,8 @@ import java.util.List;
 
 public class FuliFragment extends BaseFragment implements FuliContract.iContractView {
 
-    private EasyRecyclerView fuliErv;
+    private ViewStub networkVS;
+    private View v;
     private FuliContract.iContractPresenter iPresenter;
     private RecyclerArrayAdapter<FuliEntity.ResultsBean> mAdapter;
 
@@ -30,7 +34,9 @@ public class FuliFragment extends BaseFragment implements FuliContract.iContract
     @Override
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        fuliErv = rootView.findViewById(R.id.rv_fuli);
+        EasyRecyclerView fuliErv = rootView.findViewById(R.id.rv_fuli);
+
+        networkVS = rootView.findViewById(R.id.view_stub_network);
 
         mPresenter = new FuliPresenter(this);
 
@@ -65,11 +71,14 @@ public class FuliFragment extends BaseFragment implements FuliContract.iContract
 
     @Override
     public void setListener() {
-
     }
 
     @Override
     public void setData(List<FuliEntity.ResultsBean> result) {
+
+        if (v != null) {
+            v.setVisibility(View.GONE);
+        }
 
         if (result != null) {
             for (FuliEntity.ResultsBean ios : result) {
@@ -104,7 +113,17 @@ public class FuliFragment extends BaseFragment implements FuliContract.iContract
 
     @Override
     public void showError() {
-
+        try {
+            v = networkVS.inflate();
+            LinearLayout blankLl = v.findViewById(R.id.error_blank);
+            blankLl.setOnClickListener(v1 -> {
+                mAdapter.clear();
+                iPresenter.initData();
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            v.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

@@ -41,6 +41,7 @@ public class IOSPresenter extends RxPresenter implements IOSContract.iContractPr
 
             @Override
             public void onFailure(String error) {
+                mView.showError();
             }
         }));
     }

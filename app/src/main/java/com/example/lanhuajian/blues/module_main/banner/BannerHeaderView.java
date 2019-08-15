@@ -16,7 +16,6 @@ import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.framework.widget.endlessbannerview.BannerAdapter;
 import com.example.lanhuajian.blues.framework.widget.endlessbannerview.BannerView;
 import com.example.lanhuajian.blues.mock.CourseEntryConstant;
-import com.example.lanhuajian.blues.mock.VideoUrlConstant;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;

@@ -38,6 +38,7 @@ public class MainActivity extends BaseActivity {
             mTab.getTabAt(i).setText(tabs[i]).setIcon(icons[i]);
         }
         mViewPager.setCurrentItem(0);
+        mViewPager.setOffscreenPageLimit(1);
     }
 
     @Override

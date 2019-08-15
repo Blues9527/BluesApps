@@ -41,6 +41,7 @@ public class WebPresenter extends RxPresenter implements WebContract.iContractPr
 
             @Override
             public void onFailure(String error) {
+                mView.showError();
             }
         }));
     }

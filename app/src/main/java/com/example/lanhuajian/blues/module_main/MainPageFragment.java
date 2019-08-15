@@ -38,12 +38,11 @@ public class MainPageFragment extends BaseFragment implements BannerContract.iBa
 
     @Override
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        EasyRecyclerView mainErv = rootView.findViewById(R.id.ev_main);
-
         mPresenter = new BannerPresenter(this);
 
         iPresenter.getBanner();
+
+        EasyRecyclerView mainErv = rootView.findViewById(R.id.ev_main);
 
         mainErv.setLayoutManager(new LinearLayoutManager(getmContext()));
         mainErv.setAdapter(mAdapter = new RecyclerArrayAdapter<VideoInfoEntity>(getmContext()) {
@@ -59,7 +58,6 @@ public class MainPageFragment extends BaseFragment implements BannerContract.iBa
 
     @Override
     public void lazyFetchData() {
-
     }
 
     @Override

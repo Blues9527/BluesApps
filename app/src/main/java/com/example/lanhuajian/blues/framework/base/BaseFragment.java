@@ -19,6 +19,14 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     private boolean isViewPrepared;
     public View rootView;
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if ((isVisibleToUser && isResumed())) {
+            onResume();
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

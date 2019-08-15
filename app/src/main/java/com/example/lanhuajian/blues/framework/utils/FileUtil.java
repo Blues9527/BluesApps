@@ -2,11 +2,13 @@ package com.example.lanhuajian.blues.framework.utils;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Properties;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  * User : Blues
@@ -52,7 +54,7 @@ public final class FileUtil {
         //while循环通过fios读数据
         while ((len = fios.read(bytes)) != -1) {
             //将读出来的数据存入StringBuffer，默认使用utf-8 中文字符集
-            sb.append(new String(bytes, 0, len, "UTF-8"));
+            sb.append(new String(bytes, 0, len, StandardCharsets.UTF_8));
         }
         //流用完后记得要关闭
         fios.close();
@@ -60,4 +62,36 @@ public final class FileUtil {
         return sb.toString();
     }
 
+    /**
+     * 从assets文件中读取json数据
+     * @param fileName json格式文件名
+     * @return json字符串
+     */
+    public static String readJson(String fileName) {
+        //用StringBuffer 线程安全
+        StringBuilder sb = new StringBuilder();
+        InputStream in = null;
+        try {
+            in = Utils.getContext().getResources().getAssets().open(fileName);
+            //用于循环
+            int len;
+            //定义一个字节数组，用于存放读出来的内容
+            byte[] bytes = new byte[1024];
+            //while循环通过in读数据
+            while ((len = in.read(bytes)) != -1) {
+                //将读出来的数据存入StringBuilder，默认使用utf-8 中文字符集
+                sb.append(new String(bytes, 0, len, StandardCharsets.UTF_8));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return sb.toString();
+    }
 }

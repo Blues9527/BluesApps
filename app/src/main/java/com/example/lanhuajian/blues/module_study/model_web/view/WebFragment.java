@@ -3,7 +3,10 @@ package com.example.lanhuajian.blues.module_study.model_web.view;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.LinearLayout;
 
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
@@ -18,19 +21,21 @@ import java.util.List;
 
 public class WebFragment extends BaseFragment implements WebContract.iContractView {
 
-    private EasyRecyclerView iOSErv;
+    private ViewStub networkVS;
+    private View v;
     private WebContract.iContractPresenter iPresenter;
     private RecyclerArrayAdapter<WebEntity.ResultsBean> mAdapter;
 
     @Override
     public int setLayoutResourceId() {
-        return R.layout.fragment_ios;
+        return R.layout.fragment_web;
     }
 
     @Override
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        iOSErv = rootView.findViewById(R.id.rv_ios);
+        EasyRecyclerView iOSErv = rootView.findViewById(R.id.rv_web);
+        networkVS = rootView.findViewById(R.id.view_stub_network);
 
         mPresenter = new WebPresenter(this);
 
@@ -71,6 +76,10 @@ public class WebFragment extends BaseFragment implements WebContract.iContractVi
     @Override
     public void setData(List<WebEntity.ResultsBean> result) {
 
+        if (v != null) {
+            v.setVisibility(View.GONE);
+        }
+
         if (result != null) {
             for (WebEntity.ResultsBean ios : result) {
 
@@ -104,7 +113,16 @@ public class WebFragment extends BaseFragment implements WebContract.iContractVi
 
     @Override
     public void showError() {
-
+        try {
+            v = networkVS.inflate();
+            LinearLayout blankLl = v.findViewById(R.id.error_blank);
+            blankLl.setOnClickListener(v1 -> {
+                mAdapter.clear();
+                iPresenter.initData();
+            });
+        } catch (Exception e) {
+            v.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

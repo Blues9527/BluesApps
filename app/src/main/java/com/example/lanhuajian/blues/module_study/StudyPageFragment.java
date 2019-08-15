@@ -45,6 +45,7 @@ public class StudyPageFragment extends BaseFragment {
         mTab.setupWithViewPager(mViewPager, false);
         mViewPager.setAdapter(mFragmentAdapter);
         mViewPager.setCurrentItem(0);
+        mViewPager.setOffscreenPageLimit(1);
     }
 
     @Override

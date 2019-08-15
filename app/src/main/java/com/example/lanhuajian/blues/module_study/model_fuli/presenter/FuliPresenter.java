@@ -41,6 +41,7 @@ public class FuliPresenter extends RxPresenter implements FuliContract.iContract
 
             @Override
             public void onFailure(String error) {
+                mView.showError();
             }
         }));
     }

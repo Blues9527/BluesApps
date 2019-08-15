@@ -37,7 +37,6 @@ public class IOSViewHolder extends BaseViewHolder<IOSEntity.ResultsBean> {
     public void setData(IOSEntity.ResultsBean data) {
         super.setData(data);
 
-        Log.i("Blues", data.toString());
 
         tvDesc.setText(data.getDesc());
         tvAuthor.setText(String.format("作者：%s", data.getWho()));

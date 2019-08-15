@@ -8,8 +8,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
+import com.example.lanhuajian.blues.framework.utils.FileUtil;
+import com.example.lanhuajian.blues.framework.utils.JsonUtil;
 import com.example.lanhuajian.blues.framework.widget.AvatarView;
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.mock.CourseListEntity;
 
 /**
  * User : Blues
@@ -24,13 +27,25 @@ public class PersonalPageFragment extends BaseFragment implements UserInfoContra
 
     private TextView tvUserName, tvUserId, tvSchool, tvMajor;
 
+    private TextView tvTest;
+
     @Override
     public int setLayoutResourceId() {
         return R.layout.fragment_personalpage;
     }
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        Log.i("Blues", "isVisibleToUser --> " + isVisibleToUser);
+    }
+
+    @Override
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mPresenter = new PPPresenter(this);
+        iPresenter.getUserInfo();
 
         avatar = rootView.findViewById(R.id.custom_avatar);
         tvUserName = rootView.findViewById(R.id.tv_username);
@@ -38,17 +53,13 @@ public class PersonalPageFragment extends BaseFragment implements UserInfoContra
         tvSchool = rootView.findViewById(R.id.tv_school);
         tvMajor = rootView.findViewById(R.id.tv_major);
 
-
-        mPresenter = new PPPresenter(this);
-
-        iPresenter.getUserInfo();
+        tvTest = rootView.findViewById(R.id.tv_test);
 
         avatar.setBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.iv_my_avatar));
     }
 
     @Override
     public void lazyFetchData() {
-
     }
 
     @Override
@@ -65,6 +76,10 @@ public class PersonalPageFragment extends BaseFragment implements UserInfoContra
         tvUserId.setText(String.valueOf(userInfo.getUser_id()));
         tvSchool.setText(userInfo.getSchool());
         tvMajor.setText(userInfo.getMajor());
+
+        CourseListEntity entity = JsonUtil.convertToEntity(FileUtil.readJson("mock_course.json"), CourseListEntity.class);
+
+        tvTest.setText(entity.getMessage());
     }
 
     @Override

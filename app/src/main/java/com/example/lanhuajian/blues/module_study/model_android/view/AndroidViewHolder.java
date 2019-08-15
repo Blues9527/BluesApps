@@ -41,7 +41,6 @@ public class AndroidViewHolder extends BaseViewHolder<AndroidEntity.ResultsBean>
     public void setData(AndroidEntity.ResultsBean data) {
         super.setData(data);
 
-        Log.i("Blues", data.toString());
 
         tvDesc.setText(data.getDesc());
         tvAuthor.setText(data.getWho());

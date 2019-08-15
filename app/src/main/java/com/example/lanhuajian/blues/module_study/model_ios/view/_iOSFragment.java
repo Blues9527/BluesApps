@@ -3,7 +3,10 @@ package com.example.lanhuajian.blues.module_study.model_ios.view;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.LinearLayout;
 
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
@@ -18,9 +21,10 @@ import java.util.List;
 
 public class _iOSFragment extends BaseFragment implements IOSContract.iContractView {
 
-    private EasyRecyclerView iOSErv;
+    private ViewStub networkVS;
     private IOSContract.iContractPresenter iPresenter;
     private RecyclerArrayAdapter<IOSEntity.ResultsBean> mAdapter;
+    private View v;
 
     @Override
     public int setLayoutResourceId() {
@@ -30,7 +34,8 @@ public class _iOSFragment extends BaseFragment implements IOSContract.iContractV
     @Override
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        iOSErv = rootView.findViewById(R.id.rv_ios);
+        EasyRecyclerView iOSErv = rootView.findViewById(R.id.rv_ios);
+        networkVS = rootView.findViewById(R.id.view_stub_network);
 
         mPresenter = new IOSPresenter(this);
 
@@ -71,6 +76,10 @@ public class _iOSFragment extends BaseFragment implements IOSContract.iContractV
     @Override
     public void setData(List<IOSEntity.ResultsBean> result) {
 
+        if (v != null) {
+            v.setVisibility(View.GONE);
+        }
+
         if (result != null) {
             for (IOSEntity.ResultsBean ios : result) {
 
@@ -104,7 +113,17 @@ public class _iOSFragment extends BaseFragment implements IOSContract.iContractV
 
     @Override
     public void showError() {
-
+        try {
+            v = networkVS.inflate();
+            LinearLayout blankLl = v.findViewById(R.id.error_blank);
+            blankLl.setOnClickListener(v1 -> {
+                mAdapter.clear();
+                iPresenter.initData();
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            v.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
