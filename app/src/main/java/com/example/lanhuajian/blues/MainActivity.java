@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.example.lanhuajian.blues.framework.base.BaseActivity;
@@ -61,5 +62,18 @@ public class MainActivity extends BaseActivity {
         }
 
         super.onBackPressed();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            long currentMillis = System.currentTimeMillis();
+            if (currentMillis - mLastMillis > 2000) {
+                mLastMillis = currentMillis;
+                HelperUtil.showToastShort("再按一次退出程序");
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
