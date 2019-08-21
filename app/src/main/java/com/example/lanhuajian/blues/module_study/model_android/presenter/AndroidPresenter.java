@@ -58,7 +58,7 @@ public class AndroidPresenter extends RxPresenter implements AndroidContract.iCo
 
             @Override
             public void onFailure(String error) {
-                Log.e("Blues", error);
+               iView.showError();
             }
         }));
     }

@@ -19,11 +19,6 @@
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -42,7 +37,13 @@
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleInstance"
             android:theme="@style/Theme.Custom"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".module_register.view.RegisterActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"

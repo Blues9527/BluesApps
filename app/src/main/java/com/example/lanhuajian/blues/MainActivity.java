@@ -3,9 +3,12 @@ package com.example.lanhuajian.blues;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.lanhuajian.blues.framework.base.BaseActivity;
 import com.example.lanhuajian.blues.framework.base.BaseViewPagerAdapter;
+import com.example.lanhuajian.blues.framework.utils.HelperUtil;
 import com.example.lanhuajian.blues.module_main.MainPageFragment;
 import com.example.lanhuajian.blues.module_personalpage.PersonalPageFragment;
 import com.example.lanhuajian.blues.module_study.StudyPageFragment;
@@ -15,6 +18,7 @@ public class MainActivity extends BaseActivity {
 
     private String[] tabs = {"主页", "学习", "我的"};
     private int[] icons = {R.drawable.ic_svg_home, R.drawable.ic_svg_book, R.drawable.ic_svg_user};
+    private long mLastMillis;
 
     @Override
     public int setLayoutResourceId() {
@@ -45,4 +49,17 @@ public class MainActivity extends BaseActivity {
     public void setListener() {
     }
 
+    @Override
+    public void onBackPressed() {
+        HelperUtil.showSimpleLog("on back press");
+
+        long currentMillis = System.currentTimeMillis();
+        if (currentMillis - mLastMillis > 2000) {
+            mLastMillis = currentMillis;
+            HelperUtil.showToastShort("再按一次退出程序");
+            return;
+        }
+
+        super.onBackPressed();
+    }
 }

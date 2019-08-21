@@ -24,11 +24,6 @@ import com.example.lanhuajian.blues.framework.base.BaseActivity;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener, LoginContract.iLoginContractView {
 
-    private String password, account;
-    private EditText etInputAccount, etInputPwd;
-    private ImageView ivEyesOn, ivEyesOff;
-    private ImageView ivGo;
-    private ImageView ivCleanAct, ivCleanPwd;
     private TextView ivSkip;
 
     private TextView tvForgetPwd, tvUserReg;
@@ -44,13 +39,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void initView(Bundle savedInstanceState) {
 
-        etInputAccount = findViewById(R.id.et_input_account);
-        etInputPwd = findViewById(R.id.et_input_pwd);
-        ivEyesOn = findViewById(R.id.iv_eyes_on);
-        ivEyesOff = findViewById(R.id.iv_eyes_off);
-        ivGo = findViewById(R.id.iv_go);
-        ivCleanAct = findViewById(R.id.iv_clean_act);
-        ivCleanPwd = findViewById(R.id.iv_clean_pwd);
         ivSkip = findViewById(R.id.tv_skip);
 
         tvForgetPwd = findViewById(R.id.tv_forget_pwd);
@@ -63,43 +51,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     public void setListener() {
-        ivEyesOn.setOnClickListener(this);
-        ivEyesOff.setOnClickListener(this);
-        ivGo.setOnClickListener(this);
-        ivCleanPwd.setOnClickListener(this);
-        ivCleanAct.setOnClickListener(this);
         ivSkip.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_go:
-                password = etInputPwd.getText().toString();
-                account = etInputAccount.getText().toString();
-
-                iPresenter.doLogin(account, password);
-
-                break;
-            case R.id.iv_clean_act:
-                etInputAccount.getText().clear();
-                account = "";
-                break;
-
-            case R.id.iv_clean_pwd:
-                etInputPwd.getText().clear();
-                password = "";
-                break;
-            case R.id.iv_eyes_on:
-                etInputPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());//显示
-                ivEyesOn.setVisibility(View.GONE);
-                ivEyesOff.setVisibility(View.VISIBLE);
-                break;
-            case R.id.iv_eyes_off:
-                etInputPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());//隐藏
-                ivEyesOn.setVisibility(View.VISIBLE);
-                ivEyesOff.setVisibility(View.GONE);
-                break;
             case R.id.tv_skip:
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 overridePendingTransition(R.anim.anim_zoom_in, R.anim.anim_slide_to_bottom);
