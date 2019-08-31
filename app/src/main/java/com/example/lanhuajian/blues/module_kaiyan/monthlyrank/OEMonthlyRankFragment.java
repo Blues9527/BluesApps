@@ -1,0 +1,153 @@
+package com.example.lanhuajian.blues.module_kaiyan.monthlyrank;
+
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+
+import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.constant.RequestUrl;
+import com.example.lanhuajian.blues.framework.base.BaseFragment;
+import com.example.lanhuajian.blues.framework.utils.HelperUtil;
+import com.example.lanhuajian.blues.module_kaiyan.OpenEyeContract;
+import com.example.lanhuajian.blues.module_kaiyan.OpenEyeEntity;
+import com.example.lanhuajian.blues.module_kaiyan.OpenEyePresenter;
+import com.example.lanhuajian.blues.module_kaiyan.hotrank.OEHotRankViewHolder;
+import com.jude.easyrecyclerview.EasyRecyclerView;
+import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.jude.easyrecyclerview.decoration.DividerDecoration;
+
+import java.util.List;
+
+
+/**
+ * User : Blues
+ * Date : 2019/8/26
+ * Time : 11:18
+ */
+
+public class OEMonthlyRankFragment extends BaseFragment implements OpenEyeContract.iOpenEyeView, SwipeRefreshLayout.OnRefreshListener {
+
+    private SwipeRefreshLayout hotRankSr;
+    private View v;
+    private ViewStub networkVS;
+    private OpenEyeContract.iOpenEyePresenter iPresenter;
+    private RecyclerArrayAdapter<OpenEyeEntity.ItemListBean> mAdapter;
+
+    @Override
+    public int setLayoutResourceId() {
+        return R.layout.fragment_oe_hot_rank;
+    }
+
+    @Override
+    public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        EasyRecyclerView hotRankErv = rootView.findViewById(R.id.rv_hotrank);
+        hotRankSr = rootView.findViewById(R.id.sr_hotrank);
+        networkVS = rootView.findViewById(R.id.view_stub_network);
+
+        mPresenter = new OpenEyePresenter(this);
+
+        iPresenter.getRankList(RequestUrl.KaiYanType.MONTHLY);
+
+        DividerDecoration decoration = new DividerDecoration(R.color.color_gray, 1);
+        hotRankErv.addItemDecoration(decoration);
+        hotRankErv.setLayoutManager(new LinearLayoutManager(getmContext()));
+        hotRankErv.setAdapter(mAdapter = new RecyclerArrayAdapter<OpenEyeEntity.ItemListBean>(getmContext()) {
+            @Override
+            public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
+                return new OEMonthlyRankViewHolder(parent);
+            }
+        });
+//        mAdapter.setMore(R.layout.view_loading_more, new RecyclerArrayAdapter.OnMoreListener() {
+//            @Override
+//            public void onMoreShow() {
+//
+//            }
+//
+//            @Override
+//            public void onMoreClick() {
+//
+//            }
+//        });
+
+        mAdapter.setNoMore(R.layout.view_load_no_more);
+    }
+
+    @Override
+    public void lazyFetchData() {
+
+    }
+
+    @Override
+    public void setListener() {
+        hotRankSr.setOnRefreshListener(this);
+    }
+
+    @Override
+    public void setPresenter(OpenEyeContract.iOpenEyePresenter presenter) {
+        iPresenter = presenter;
+    }
+
+    @Override
+    public void showBegin() {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void showFinished() {
+
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void showEmpty() {
+
+    }
+
+    @Override
+    public void onRefresh() {
+        mAdapter.clear();
+        iPresenter.getRankList();
+    }
+
+    @Override
+    public void showRankList(List<OpenEyeEntity.ItemListBean> openEyeList) {
+        if (hotRankSr.isRefreshing()) {
+            mAdapter.clear();
+        }
+        mAdapter.addAll(openEyeList);
+        mAdapter.notifyDataSetChanged();
+        hotRankSr.setRefreshing(false);
+    }
+
+    @Override
+    public void showRequestError(String msg) {
+        if (hotRankSr.isRefreshing()) {
+            hotRankSr.setRefreshing(false);
+        }
+        HelperUtil.showToastShort(msg);
+    }
+
+    @Override
+    public void showHotSearch(List<String> searches) {
+
+    }
+
+    @Override
+    public void showSearchResult(List<OpenEyeEntity.ItemListBean> openEyeList) {
+
+    }
+}

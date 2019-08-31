@@ -3,21 +3,19 @@ package com.example.lanhuajian.blues;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.widget.Toast;
 
 import com.example.lanhuajian.blues.framework.base.BaseActivity;
 import com.example.lanhuajian.blues.framework.base.BaseViewPagerAdapter;
 import com.example.lanhuajian.blues.framework.utils.HelperUtil;
 import com.example.lanhuajian.blues.module_main.MainPageFragment;
-import com.example.lanhuajian.blues.module_personalpage.PersonalPageFragment;
+import com.example.lanhuajian.blues.module_kaiyan.OpenEyeFragment;
 import com.example.lanhuajian.blues.module_study.StudyPageFragment;
 
 
 public class MainActivity extends BaseActivity {
 
-    private String[] tabs = {"主页", "学习", "我的"};
+    private String[] tabs = {"主页", "学习", "开眼"};
     private int[] icons = {R.drawable.ic_svg_home, R.drawable.ic_svg_book, R.drawable.ic_svg_user};
     private long mLastMillis;
 
@@ -35,7 +33,7 @@ public class MainActivity extends BaseActivity {
         BaseViewPagerAdapter mFragmentAdapter = new BaseViewPagerAdapter(getSupportFragmentManager(), tabs);
         mFragmentAdapter.addFragment(new MainPageFragment());
         mFragmentAdapter.addFragment(new StudyPageFragment());
-        mFragmentAdapter.addFragment(new PersonalPageFragment());
+        mFragmentAdapter.addFragment(new OpenEyeFragment());
 
         mViewPager.setAdapter(mFragmentAdapter);
         mTab.setupWithViewPager(mViewPager, false);
