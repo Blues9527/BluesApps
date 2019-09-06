@@ -2,6 +2,8 @@ package com.example.lanhuajian.blues.module_study.model_fuli.view;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.lanhuajian.blues.framework.utils.ResourcesUtils;
 import com.example.lanhuajian.blues.framework.utils.ScreenUtil;
 import com.example.lanhuajian.blues.framework.widget.ShowImageActivity;
 import com.example.lanhuajian.blues.R;
@@ -43,12 +46,10 @@ public class FuliViewHolder extends BaseViewHolder<FuliEntity.ResultsBean> {
         tvPTime.setText(String.format("日期：%s", data.getPublishedAt().substring(0, data.getPublishedAt().indexOf("T"))));
 
         ivUrl.setOnClickListener(v -> {
-            Intent intent = new Intent();
-            intent.putExtra("url", data.getUrl());
-            Log.i("Blues", data.getUrl());
-            intent.setClass(getContext(), ShowImageActivity.class);
-            getContext().startActivity(intent);
-            ((Activity) getContext()).overridePendingTransition(R.anim.anim_slide_to_bottom, R.anim.anim_slide_to_bottom);
+            Intent intent = new Intent(getContext(), ShowImageActivity.class);
+            intent.putExtra("imgUrl", data.getUrl());
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) getContext(), ivUrl, "transitionImage");
+            getContext().startActivity(intent, options.toBundle());
         });
     }
 }

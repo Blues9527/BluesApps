@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Blues</string>
+
+    <!--使用共享元素时的transitionName-->
+    <string name="transitionName_Image">transitionImage</string>
+    <string name="transitionName_OEObject">transitionOEObject</string>
 </resources>

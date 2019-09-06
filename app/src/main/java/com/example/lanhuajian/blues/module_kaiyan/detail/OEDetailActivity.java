@@ -2,16 +2,23 @@ package com.example.lanhuajian.blues.module_kaiyan.detail;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.transition.AutoTransition;
+import android.transition.Explode;
+import android.transition.Fade;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.framework.base.BaseActivity;
 import com.example.lanhuajian.blues.module_kaiyan.OpenEyeEntity;
+import com.jude.easyrecyclerview.EasyRecyclerView;
+import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.jude.easyrecyclerview.decoration.DividerDecoration;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
 
@@ -26,15 +33,13 @@ import java.util.List;
 public class OEDetailActivity extends BaseActivity implements OEDetailRelatedContract.iOEDetailRelatedView, View.OnClickListener {
 
     private NiceVideoPlayer nvpVideo;
-    private TextView tvTitle, tvDesc;
     private ImageView ivBack;
-
-    private TextView tvShare, tvReply, tvLike;
-    private ImageView ivAvatar;
-    private TextView tvAuthor, tvAuthorDesc;
+    private EasyRecyclerView ervRelated;
 
     private OEDetailRelatedContract.iOEDetailRelatedPresenter iPresenter;
     private OpenEyeEntity.ItemListBean itemListBean;
+    private RecyclerArrayAdapter<OEDetailRelatedEntity.ItemListBean> mAdapter;
+    private OEDetailHeaderView mHeader;
 
     @Override
     public int setLayoutResourceId() {
@@ -44,15 +49,8 @@ public class OEDetailActivity extends BaseActivity implements OEDetailRelatedCon
     @Override
     public void initView(Bundle savedInstanceState) {
         nvpVideo = findViewById(R.id.nvp_oe_detail);
-        tvTitle = findViewById(R.id.tv_title);
-        tvDesc = findViewById(R.id.tv_desc);
-        tvShare = findViewById(R.id.tv_share);
-        tvReply = findViewById(R.id.tv_reply);
-        tvLike = findViewById(R.id.tv_like);
-        ivAvatar = findViewById(R.id.iv_avatar);
-        tvAuthor = findViewById(R.id.tv_author);
-        tvAuthorDesc = findViewById(R.id.tv_author_desc);
         ivBack = findViewById(R.id.iv_back);
+        ervRelated = findViewById(R.id.erv_related);
 
         mPresenter = new OEDetailPresenter(this);
 
@@ -60,6 +58,7 @@ public class OEDetailActivity extends BaseActivity implements OEDetailRelatedCon
 
         if (itemListBean != null) {
             initDefaultView(itemListBean);
+            iPresenter.getRelatedVideos(String.valueOf(itemListBean.getData().getId()));
         }
     }
 
@@ -70,19 +69,36 @@ public class OEDetailActivity extends BaseActivity implements OEDetailRelatedCon
         nvpVideo.setUp(data.getData().getPlayUrl(), null);
         TxVideoPlayerController controller = new TxVideoPlayerController(mContext);
         controller.setTitle(null);
+        controller.setLenght((long) data.getData().getDuration() * 1000L);//这里将long类型时间长度转换成时分秒的单位是毫秒
         Glide.with(mContext).load(data.getData().getCover().getBlurred()).into(controller.imageView());
         nvpVideo.setController(controller);
 
-        tvTitle.setText(data.getData().getTitle());
-        tvDesc.setText(data.getData().getDescription());
-        tvShare.setText(String.valueOf(data.getData().getConsumption().getShareCount()));
-        tvReply.setText(String.valueOf(data.getData().getConsumption().getReplyCount()));
-        tvLike.setText(String.valueOf(data.getData().getConsumption().getCollectionCount()));
+        nvpVideo.post(() -> {
+            if (nvpVideo != null) {
+                nvpVideo.continueFromLastPosition(false);
+                if (nvpVideo.isIdle()) {
+                    nvpVideo.start();
+                }
+            }
+        });
 
-        Glide.with(mContext).load(data.getData().getAuthor().getIcon()).into(ivAvatar);
-        tvAuthor.setText(data.getData().getAuthor().getName());
-        tvAuthorDesc.setText(data.getData().getAuthor().getDescription());
+        DividerDecoration decoration = new DividerDecoration(R.color.color_white, 1);
+        ervRelated.addItemDecoration(decoration);
+        ervRelated.setLayoutManager(new LinearLayoutManager(mContext));
+        ervRelated.setAdapter(mAdapter = new RecyclerArrayAdapter<OEDetailRelatedEntity.ItemListBean>(mContext) {
+            @Override
+            public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
+                return new OEDetailRelatedViewHolder(parent);
+            }
+        });
+        mAdapter.setNoMore(R.layout.view_load_no_more);
 
+        mAdapter.addHeader(mHeader = new OEDetailHeaderView(mContext));
+        mHeader.initDefault(mContext, data);
+        mAdapter.notifyDataSetChanged();
+
+        getWindow().setEnterTransition(new AutoTransition());
+        getWindow().setExitTransition(new Explode());
     }
 
     @Override
@@ -92,7 +108,10 @@ public class OEDetailActivity extends BaseActivity implements OEDetailRelatedCon
 
     @Override
     public void showRelatedVideos(List<OEDetailRelatedEntity.ItemListBean> openEyeRelatedList) {
-
+        if (openEyeRelatedList != null) {
+            mAdapter.addAll(openEyeRelatedList);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -129,15 +148,17 @@ public class OEDetailActivity extends BaseActivity implements OEDetailRelatedCon
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         itemListBean = (OpenEyeEntity.ItemListBean) intent.getExtras().get("itemDetail");
-        if (itemListBean != null)
+        if (itemListBean != null) {
             initDefaultView(itemListBean);
+            iPresenter.getRelatedVideos(String.valueOf(itemListBean.getData().getId()));
+        }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_back:
-                finish();
+                supportFinishAfterTransition();
                 break;
         }
     }

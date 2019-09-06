@@ -11,14 +11,6 @@ import java.util.List;
 
 public class OEDetailRelatedEntity implements Serializable {
 
-    /**
-     * itemList : [{"type":"textCard","data":{"dataType":"TextCard","id":0,"type":"header4","text":"影视类最新视频","subTitle":null,"actionUrl":"eyepetizer://common/?title=%E5%BD%B1%E8%A7%86%E7%B1%BB%E6%9C%80%E6%96%B0%E8%A7%86%E9%A2%91&url=http%3A%2F%2Fbaobab.kaiyanapp.com%2Fapi%2Fv4%2Fvideo%2Fcategory%3Fid%3D8","adTrack":null,"follow":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171025,"title":"西装暴徒高能混剪：还有谁？十个不够打！","description":"前方高能！还有谁十个不够打！\nBGM：Bad Girlfriend\nFrom 白衣Childe","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":760,"shareCount":276,"replyCount":11},"resourceType":"video","slogan":"","provider":{"name":"哔哩哔哩动画","alias":"bilibili","icon":"http://img.kaiyanapp.com/b968890a2b3e9ab5ae234175681f8cd4.png"},"category":"影视","author":{"id":3145,"icon":"http://img.kaiyanapp.com/5f0f992e79639d621aec91fe760a4836.jpeg?imageMogr2/quality/60/format/jpg","name":"影视杂坛","description":"一个影视相关内容的大杂谈！","link":"","latestReleaseTime":1567094470000,"videoNum":430,"adTrack":null,"follow":{"itemType":"author","itemId":3145,"followed":false},"shield":{"itemType":"author","itemId":3145,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/5b1be5613ab874f30c107f41c4862832.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/5b1be5613ab874f30c107f41c4862832.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/ea53cc92ffe6fbc9d7bf9f6e942dbd11.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/5b1be5613ab874f30c107f41c4862832.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171025&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":"","duration":127,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171025","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171025&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1567008069000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171025&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":14733116},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171025&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":14733116},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171025&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":14733116}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171025&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171025&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":51261841},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171025&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":51261841},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171025&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":51261841}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171025&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"","descriptionPgc":"","remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1567008069000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"前方高能！还有谁十个不够打！\nBGM：Bad Girlfriend\nFrom 白衣Childe","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171861,"title":"这个男人靠着吃人血馒头，走上了人生巅峰","description":"本期咱来聊聊2014年由丹\u2022吉尔罗伊导演，杰克\u2022吉伦哈尔主演的犯罪惊悚片《夜行者》。","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":976,"name":"安利一个电影","actionUrl":"eyepetizer://tag/976/?title=%E5%AE%89%E5%88%A9%E4%B8%80%E4%B8%AA%E7%94%B5%E5%BD%B1","adTrack":null,"desc":"最近看了什么好电影，快来安利一下","bgPicture":"http://img.kaiyanapp.com/c3e70370d1a78d1ad0f8f131ba5c6e4d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/c3e70370d1a78d1ad0f8f131ba5c6e4d.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":6},{"id":570,"name":"电影相关","actionUrl":"eyepetizer://tag/570/?title=%E7%94%B5%E5%BD%B1%E7%9B%B8%E5%85%B3","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/bee7c0cd647345f911c10be60ffcde93.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/bee7c0cd647345f911c10be60ffcde93.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":588,"name":"暗黑","actionUrl":"eyepetizer://tag/588/?title=%E6%9A%97%E9%BB%91","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/b480f95c2bda2438c65956e576ec9a57.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/b480f95c2bda2438c65956e576ec9a57.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":186,"name":"犯罪","actionUrl":"eyepetizer://tag/186/?title=%E7%8A%AF%E7%BD%AA","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/0900e3541cb66f89d504dba38cba953f.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/fa94d59f50029fa8e89f66d5e9c1fba2.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":45,"shareCount":30,"replyCount":3},"resourceType":"video","slogan":null,"provider":{"name":"PGC","alias":"PGC","icon":""},"category":"影视","author":{"id":1940,"icon":"http://img.kaiyanapp.com/713888aa533770af341b26d1d60861d9.png?imageMogr2/quality/60/format/jpg","name":"电影最TOP","description":"八最经典的电影，扯最TOP的观点  每周三、日视频节目更新","link":"","latestReleaseTime":1567049128000,"videoNum":128,"adTrack":null,"follow":{"itemType":"author","itemId":1940,"followed":false},"shield":{"itemType":"author","itemId":1940,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/60c7dc4c591963c07f99e43cddf41738.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/60c7dc4c591963c07f99e43cddf41738.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/f966f50337f6adf3950dae73d48f03ca.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":null},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171861&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":1257,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171861","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171861&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1567049128000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171861&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":76707957},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171861&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":76707957},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171861&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":76707957}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171861&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171861&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":127677724},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171861&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":127677724},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171861&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":127677724}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171861&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"这个男人靠着吃人血馒头，走上了人生巅峰","descriptionPgc":"本期咱来聊聊2014年由丹\u2022吉尔罗伊导演，杰克\u2022吉伦哈尔主演的犯罪惊悚片《夜行者》。","remark":"","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1567049128000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":155415,"title":"陈冠希混剪：我不后悔，我就是我","description":"陈冠希混剪，其中包含了陈冠希将近三十多部影视剧作品以及纪录片，新闻视频等等。完整片单在此(按照电影镜头出场顺序排列）：《新扎师兄》《神qiangshou》《打开我天空》《头文字D》《想飞》《千机变》《咒怨2》（美版）《探灵档案》《狗咬狗》《特警新人类2机动任务》《无间道2》《飞龙再生》《八大豪侠》《时差七小时》《月光浪子》《无间道》《千机变2》《破事儿》《江湖》《生存还是毁灭2逃亡者》《九个女仔一只鬼》《金鸡SSS》《蝙蝠侠：黑暗骑士》《几近完美》《求爱上上签》《绝种铁金刚》《玉女添丁》《愿望树》《A1头条》《触手可及》《自行我路》《烟飞烟灭》《爱君如梦》《陀飞轮》From 解文强","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":697,"name":"香港","actionUrl":"eyepetizer://tag/697/?title=%E9%A6%99%E6%B8%AF","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/9340f809f57c83355e9d5c53011fb8c2.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9340f809f57c83355e9d5c53011fb8c2.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":678,"name":"明星","actionUrl":"eyepetizer://tag/678/?title=%E6%98%8E%E6%98%9F","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/1ba2b63b0e51c55c0a488f2c206c7770.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/45f5ee90bc22990d5bab85b9287b7c09.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":204,"shareCount":82,"replyCount":3},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"影视","author":{"id":3145,"icon":"http://img.kaiyanapp.com/5f0f992e79639d621aec91fe760a4836.jpeg?imageMogr2/quality/60/format/jpg","name":"影视杂坛","description":"一个影视相关内容的大杂谈！","link":"","latestReleaseTime":1567094470000,"videoNum":430,"adTrack":null,"follow":{"itemType":"author","itemId":3145,"followed":false},"shield":{"itemType":"author","itemId":3145,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/25db7c111d987b89acb775cd6864d93f.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/25db7c111d987b89acb775cd6864d93f.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/53af1b9e5cb9c29fc2522a47391e501f.png?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/25db7c111d987b89acb775cd6864d93f.png?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=155415&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":207,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=155415","forWeibo":"http://www.eyepetizer.net/detail.html?vid=155415"},"releaseTime":1567094461000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=155415&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":15832023},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=155415&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":15832023},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=155415&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":15832023}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=155415&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=155415&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":26161618},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=155415&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":26161618},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=155415&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":26161618}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=155415&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":null,"descriptionPgc":null,"remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1567094461000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"陈冠希混剪，其中包含了陈冠希将近三十多部影视剧作品以及纪录片，新闻视频等等。完整片单在此(按照电影镜头出场顺序排列）：《新扎师兄》《神qiangshou》《打开我天空》《头文字D》《想飞》《千机变》《咒怨2》（美版）《探灵档案》《狗咬狗》《特警新人类2机动任务》《无间道2》《飞龙再生》《八大豪侠》《时差七小时》《月光浪子》《无间道》《千机变2》《破事儿》《江湖》《生存还是毁灭2逃亡者》《九个女仔一只鬼》《金鸡SSS》《蝙蝠侠：黑暗骑士》《几近完美》《求爱上上签》《绝种铁金刚》《玉女添丁》《愿望树》《A1头条》《触手可及》《自行我路》《烟飞烟灭》《爱君如梦》《陀飞轮》From 解文强","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171944,"title":"96【狩猎】影史经典！充满愤懑的眼神","description":"他要跟朋友对视，他要让朋友看到他的眼睛，里面什么都没有","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":790,"name":"豆瓣高分电影","actionUrl":"eyepetizer://tag/790/?title=%E8%B1%86%E7%93%A3%E9%AB%98%E5%88%86%E7%94%B5%E5%BD%B1","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/aa58836c24e7878cc096096950bedfc9.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/aa58836c24e7878cc096096950bedfc9.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":506,"name":"经典","actionUrl":"eyepetizer://tag/506/?title=%E7%BB%8F%E5%85%B8","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/1e948eab70737d8beca9f52fce907ab5.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/1e948eab70737d8beca9f52fce907ab5.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":6,"shareCount":0,"replyCount":1},"resourceType":"video","slogan":null,"provider":{"name":"PGC","alias":"PGC","icon":""},"category":"影视","author":{"id":4555,"icon":"http://img.kaiyanapp.com/2c6e507dcc579cb8fc5989184ed921e2.png?imageMogr2/quality/60/format/jpg","name":"冇得电影","description":"分享经典的电影片段，先从豆瓣250开始啦～","link":"","latestReleaseTime":1567137602000,"videoNum":96,"adTrack":null,"follow":{"itemType":"author","itemId":4555,"followed":false},"shield":{"itemType":"author","itemId":4555,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/1d3c38d24a43bc9c49a4abc5703f17ca.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/1d3c38d24a43bc9c49a4abc5703f17ca.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/834ec4b7adc748d8e2744c4310d5b7ee.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":null},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171944&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":184,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171944","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171944&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1567137602000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171944&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":8989196},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171944&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":8989196},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171944&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":8989196}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171944&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171944&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":14053533},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171944&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":14053533},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171944&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":14053533}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171944&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"96【狩猎】影史经典！充满愤懑的眼神","descriptionPgc":"他要跟朋友对视，他要让朋友看到他的眼睛，里面什么都没有","remark":"","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1567137602000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171715,"title":"万能嘤语！「蜘蛛侠 3：无家可归」恶搞预告","description":"up 主英语高考 140，怎么可能翻译错呢？（滑稽）\nFrom 长街听风Burgess","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":516,"name":"恶搞","actionUrl":"eyepetizer://tag/516/?title=%E6%81%B6%E6%90%9E","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/f884134104430c3fe511147e93ea914f.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/f884134104430c3fe511147e93ea914f.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":406,"name":"漫威","actionUrl":"eyepetizer://tag/406/?title=%E6%BC%AB%E5%A8%81","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/19e0cc9af45edd72c76637135ca30f85.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/19e0cc9af45edd72c76637135ca30f85.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":404,"name":"超级英雄","actionUrl":"eyepetizer://tag/404/?title=%E8%B6%85%E7%BA%A7%E8%8B%B1%E9%9B%84","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/54e03e1d8e91ab98b840124bf08e3445.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/54e03e1d8e91ab98b840124bf08e3445.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":514,"name":"城会玩","actionUrl":"eyepetizer://tag/514/?title=%E5%9F%8E%E4%BC%9A%E7%8E%A9","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/8eb06d77ae3f646d2f93b7fdca0995f0.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/8eb06d77ae3f646d2f93b7fdca0995f0.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":149,"shareCount":72,"replyCount":6},"resourceType":"video","slogan":"","provider":{"name":"哔哩哔哩动画","alias":"bilibili","icon":"http://img.kaiyanapp.com/b968890a2b3e9ab5ae234175681f8cd4.png"},"category":"影视","author":{"id":3145,"icon":"http://img.kaiyanapp.com/5f0f992e79639d621aec91fe760a4836.jpeg?imageMogr2/quality/60/format/jpg","name":"影视杂坛","description":"一个影视相关内容的大杂谈！","link":"","latestReleaseTime":1567094470000,"videoNum":430,"adTrack":null,"follow":{"itemType":"author","itemId":3145,"followed":false},"shield":{"itemType":"author","itemId":3145,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/3de309ee2add514917d1a5e9c5709aa9.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/3de309ee2add514917d1a5e9c5709aa9.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/83a0a89ac3cc312fda9ee25a72a0447a.png?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/3de309ee2add514917d1a5e9c5709aa9.png?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171715&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":"","duration":152,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171715","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171715&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1567094470000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171715&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":13725849},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171715&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":13725849},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171715&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":13725849}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171715&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":1080,"width":1920,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171715&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":36917665},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171715&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":36917665},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171715&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":36917665}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171715&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"","descriptionPgc":"","remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1567094470000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"up 主英语高考 140，怎么可能翻译错呢？（滑稽）\nFrom 长街听风Burgess","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"textCard","data":{"dataType":"TextCard","id":0,"type":"header4","text":"迷影放映室相关视频","subTitle":null,"actionUrl":"eyepetizer://common/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4%E7%9B%B8%E5%85%B3%E8%A7%86%E9%A2%91&url=http%3A%2F%2Fbaobab.kaiyanapp.com%2Fapi%2Fv4%2Fvideo%2Ftag%3Fid%3D796","adTrack":null,"follow":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171755,"title":"群星阵容！甜茶主演网飞新片「国王」预告","description":"提莫西·查拉梅主演网飞新片「国王」发布首个预告，甜茶版亨利五世来了，年轻的王子将进入生命中的新篇章。基于莎士比亚的「亨利四世」和「亨利五世」，时间跨越英法百年战争中著名的阿金库尔战役的前中后期，讲述年轻的王子Hal(未来的英格兰国王亨利五世)继承了王位，必须了解成为国王意味着什么，他真正的朋友福斯塔夫担任其导师。甜茶饰演亨利五世，嫩牛五方帕丁森饰演法国王子，德普女儿莉莉饰演法国国王女儿凯瑟琳公主，之后嫁给了亨利五世。将先亮相威尼斯电影节，秋季上线。","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":793,"name":"影视预告","actionUrl":"eyepetizer://tag/793/?title=%E5%BD%B1%E8%A7%86%E9%A2%84%E5%91%8A","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/66a25db995c30f130c433b2422111541.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/528bbba3db1e6388c4a97edce734a743.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":149,"shareCount":15,"replyCount":0},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"影视","author":{"id":339,"icon":"http://img.kaiyanapp.com/c7871e4436ed01d77e02a8b3633a5ed0.jpeg?imageMogr2/quality/60","name":"Netflix 视频网","description":"Netflix 是一间在世界多国提供网络视频点播的公司，并同时在美国经营单一费率邮寄 DVD 出租服务","link":"","latestReleaseTime":1567008078000,"videoNum":566,"adTrack":null,"follow":{"itemType":"author","itemId":339,"followed":false},"shield":{"itemType":"author","itemId":339,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/7192a468332a4cfc4969fb01c3596311.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/7192a468332a4cfc4969fb01c3596311.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/db319a6abe2e3b09ecb9e52417e17028.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/7192a468332a4cfc4969fb01c3596311.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171755&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":99,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171755","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171755&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1567008078000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171755&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":4977221},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171755&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":4977221},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171755&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":4977221}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171755&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171755&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":7536538},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171755&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":7536538},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171755&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":7536538}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171755&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":null,"descriptionPgc":null,"remark":"提莫西·查拉梅主演网飞新片「国王」发布首个预告，甜茶版亨利五世来了，年轻的王子将进入生命中的新篇章。基于莎士比亚的「亨利四世」和「亨利五世」，时间跨越英法百年战争中著名的阿金库尔战役的前中后期，讲述年轻的王子Hal(未来的英格兰国王亨利五世)继承了王位，必须了解成为国王意味着什么，他真正的朋友福斯塔夫担任其导师。甜茶饰演亨利五世，嫩牛五方帕丁森饰演法国王子，德普女儿莉莉饰演法国国王女儿凯瑟琳公主，之后嫁给了亨利五世。将先亮相威尼斯电影节，秋季上线。","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1567008078000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"提莫西·查拉梅主演网飞新片「国王」发布首个预告，甜茶版亨利五世来了，年轻的王子将进入生命中的新篇章。基于莎士比亚的「亨利四世」和「亨利五世」，时间跨越英法百年战争中著名的阿金库尔战役的前中后期，讲述年轻的王子Hal(未来的英格兰国王亨利五世)继承了王位，必须了解成为国王意味着什么，他真正的朋友福斯塔夫担任其导师。甜茶饰演亨利五世，嫩牛五方帕丁森饰演法国王子，德普女儿莉莉饰演法国国王女儿凯瑟琳公主，之后嫁给了亨利五世。将先亮相威尼斯电影节，秋季上线。","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171865,"title":"诺兰新片「信条」首曝法版预告","description":"克里斯托弗·诺兰导演新片「信条」发布首个先导预告。烧脑预警，重复动作的玩时间线预警！一样的弹孔、回文对称的 TENET 有什么玄机？主演约翰·大卫·华盛顿(《黑色党徒》《球手们》)登场，罗伯特·帕丁森、伊丽莎白·德比齐、肯尼思·布拉纳、Dimple Kapadia、亚伦·泰勒-约翰逊、克蕾曼丝·波西等也出演。聚焦国际间谍活动的世界，是一部动作大片，诺兰也任编剧，2020 年 7 月 17 日北美上映。","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":492,"name":"烧脑","actionUrl":"eyepetizer://tag/492/?title=%E7%83%A7%E8%84%91","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/bb7eae359da3e66336269bd61a258f62.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/bb7eae359da3e66336269bd61a258f62.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":793,"name":"影视预告","actionUrl":"eyepetizer://tag/793/?title=%E5%BD%B1%E8%A7%86%E9%A2%84%E5%91%8A","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/66a25db995c30f130c433b2422111541.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/528bbba3db1e6388c4a97edce734a743.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":58,"shareCount":30,"replyCount":2},"resourceType":"video","slogan":"","provider":{"name":"哔哩哔哩动画","alias":"bilibili","icon":"http://img.kaiyanapp.com/b968890a2b3e9ab5ae234175681f8cd4.png"},"category":"影视","author":{"id":2029,"icon":"http://img.kaiyanapp.com/5099175f7c9a9a1796f8fb7ee20fc835.jpeg?imageMogr2/quality/60/format/jpg","name":"最新影视预告","description":"这是一个集合了所有小厂牌和小众电影预告的账号。","link":"","latestReleaseTime":1567094478000,"videoNum":571,"adTrack":null,"follow":{"itemType":"author","itemId":2029,"followed":false},"shield":{"itemType":"author","itemId":2029,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/f149ada27ba4cb7deda910c4d9a396c2.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/f149ada27ba4cb7deda910c4d9a396c2.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/0ddd82a469a88c965b5440c048df3dda.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/f149ada27ba4cb7deda910c4d9a396c2.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171865&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":"","duration":72,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171865","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171865&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1567094478000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171865&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":3573725},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171865&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":3573725},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171865&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":3573725}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171865&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171865&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":9796022},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171865&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":9796022},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171865&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":9796022}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171865&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"","descriptionPgc":"","remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1567094478000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"克里斯托弗·诺兰导演新片「信条」发布首个先导预告。烧脑预警，重复动作的玩时间线预警！一样的弹孔、回文对称的 TENET 有什么玄机？主演约翰·大卫·华盛顿(《黑色党徒》《球手们》)登场，罗伯特·帕丁森、伊丽莎白·德比齐、肯尼思·布拉纳、Dimple Kapadia、亚伦·泰勒-约翰逊、克蕾曼丝·波西等也出演。聚焦国际间谍活动的世界，是一部动作大片，诺兰也任编剧，2020 年 7 月 17 日北美上映。","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171625,"title":"惊悚回归！「美恐 9：1984」预告","description":"「美国恐怖故事」第 9 季「美恐 9：1984」发布正式预告。复古风格，超嗨的夏令营，持刀的杀手上门，带来惊恐和血腥，\u201c你们都会死\u201d。\n艾玛·罗伯茨、科迪·费恩、比莉·洛德、约翰·卡洛·林奇、莱斯利·格罗斯曼 、马修·莫里森、安杰丽卡·罗斯(《姿态》)、DeRon Horton(《亲爱的白人们》)、滑雪运动员 Gus Kenworthy 等出演，9 月 18 日开播。","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":672,"name":"剧集","actionUrl":"eyepetizer://tag/672/?title=%E5%89%A7%E9%9B%86","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/a3de18fb448aa41a140f1901130c380a.png?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/a3de18fb448aa41a140f1901130c380a.png?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":132,"name":"恐怖","actionUrl":"eyepetizer://tag/132/?title=%E6%81%90%E6%80%96","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/1e277a611a564258c8b0599219d222e5.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/1e277a611a564258c8b0599219d222e5.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":793,"name":"影视预告","actionUrl":"eyepetizer://tag/793/?title=%E5%BD%B1%E8%A7%86%E9%A2%84%E5%91%8A","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/66a25db995c30f130c433b2422111541.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/528bbba3db1e6388c4a97edce734a743.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":52,"shareCount":37,"replyCount":0},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"影视","author":{"id":528,"icon":"http://img.kaiyanapp.com/19429ae3cfcb9ff2a35a5902873cf893.jpeg?imageMogr2/quality/60/format/jpg","name":"美国FX有线电视网","description":"FX的系列剧向来是年轻观众和广告商钟爱的剧集。","link":"","latestReleaseTime":1566921634000,"videoNum":4,"adTrack":null,"follow":{"itemType":"author","itemId":528,"followed":false},"shield":{"itemType":"author","itemId":528,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/a332c56107a13180e68582d573e134bb.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/a332c56107a13180e68582d573e134bb.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/4befbcf175ff6bbc09aeff9605b69bd1.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/a332c56107a13180e68582d573e134bb.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171625&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":105,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171625","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171625&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566921634000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171625&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":8458028},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171625&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":8458028},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171625&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":8458028}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171625&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171625&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":12004697},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171625&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":12004697},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171625&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":12004697}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171625&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":null,"descriptionPgc":null,"remark":"「美国恐怖故事」第 9 季「美恐 9：1984」发布正式预告。复古风格，超嗨的夏令营，持刀的杀手上门，带来惊恐和血腥，\u201c你们都会死\u201d。\n艾玛·罗伯茨、科迪·费恩、比莉·洛德、约翰·卡洛·林奇、莱斯利·格罗斯曼 、马修·莫里森、安杰丽卡·罗斯(《姿态》)、DeRon Horton(《亲爱的白人们》)、滑雪运动员 Gus Kenworthy 等出演，9 月 18 日开播。","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566921634000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"「美国恐怖故事」第 9 季「美恐 9：1984」发布正式预告。复古风格，超嗨的夏令营，持刀的杀手上门，带来惊恐和血腥，\u201c你们都会死\u201d。\n艾玛·罗伯茨、科迪·费恩、比莉·洛德、约翰·卡洛·林奇、莱斯利·格罗斯曼 、马修·莫里森、安杰丽卡·罗斯(《姿态》)、DeRon Horton(《亲爱的白人们》)、滑雪运动员 Gus Kenworthy 等出演，9 月 18 日开播。","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171766,"title":"鬼才导演大卫芬奇 欢迎来到暗黑世界","description":"今天是大卫·芬奇的生日，他是一位不落俗套，从不拍烂片的鬼才导演，也是我个人非常喜欢的导演。他喜欢把关注的焦点投向人性与社会的黑暗之处，善于挖掘人们内心深处不为人知的秘密，其电影有极强的个人影像风格，充斥着独特的艺术魅力，往往让人意想不到却又拍案叫绝。","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":588,"name":"暗黑","actionUrl":"eyepetizer://tag/588/?title=%E6%9A%97%E9%BB%91","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/b480f95c2bda2438c65956e576ec9a57.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/b480f95c2bda2438c65956e576ec9a57.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":496,"name":"致敬","actionUrl":"eyepetizer://tag/496/?title=%E8%87%B4%E6%95%AC","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/f9d6f16db9ea2e894f8e5e2ee7071d99.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/f9d6f16db9ea2e894f8e5e2ee7071d99.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":34,"name":"混剪","actionUrl":"eyepetizer://tag/34/?title=%E6%B7%B7%E5%89%AA","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/ebf307197b634f30b2fa4eb867e908c1.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/ebf307197b634f30b2fa4eb867e908c1.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":87,"shareCount":44,"replyCount":2},"resourceType":"video","slogan":null,"provider":{"name":"PGC","alias":"PGC","icon":""},"category":"影视","author":{"id":4709,"icon":"http://img.kaiyanapp.com/8343af4e399dab525ea88da365fbbb76.png?imageMogr2/quality/60/format/jpg","name":"云胡不喜","description":"不可以没有灵魂","link":"","latestReleaseTime":1566969712000,"videoNum":1,"adTrack":null,"follow":{"itemType":"author","itemId":4709,"followed":false},"shield":{"itemType":"author","itemId":4709,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/baf361d4946ffe4d6ce18c78810655c9.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/baf361d4946ffe4d6ce18c78810655c9.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/0c8f89dc3574c2ff611fd047bc3e1fdb.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":null},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171766&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":232,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171766","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171766&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566969712000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171766&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":14049279},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171766&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":14049279},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171766&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":14049279}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171766&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171766&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":22619184},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171766&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":22619184},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171766&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":22619184}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171766&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"鬼才导演大卫芬奇 欢迎来到暗黑世界","descriptionPgc":"今天是大卫·芬奇的生日，他是一位不落俗套，从不拍烂片的鬼才导演，也是我个人非常喜欢的导演。他喜欢把关注的焦点投向人性与社会的黑暗之处，善于挖掘人们内心深处不为人知的秘密，其电影有极强的个人影像风格，充斥着独特的艺术魅力，往往让人意想不到却又拍案叫绝。","remark":"致敬大卫芬奇 生日快乐！","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566969712000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171635,"title":"脑洞大开！爆笑日漫改编电影「生理酱」预告","description":"二阶堂富美主演的电影「生理酱」预告公开，11 月 8 日上映！脑洞是真的大，将女性生理期的各种痛症进行拟人化，女主角忍受姨妈痛的同时，还要面对工作和恋爱，明明腰都直不起来了还要一直强撑着，可能还会被说\u201c女人果然就是麻烦\u201d。男生们不很多都觉得女生\u201c来姨妈\u201d都小题大做吗，能有多痛苦？都来看看这部电影吧。建议直男们反复观看，有男朋友的妹子们拉着自家大猪蹄子一起看，必要时可结合自己实际情况批讲。","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":490,"name":"脑洞","actionUrl":"eyepetizer://tag/490/?title=%E8%84%91%E6%B4%9E","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/c8ac7bb1fa9276ce647d4687d93dea34.png?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/c8ac7bb1fa9276ce647d4687d93dea34.png?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":350,"name":"日本","actionUrl":"eyepetizer://tag/350/?title=%E6%97%A5%E6%9C%AC","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/0e118c56a85899055348d15120841ecf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/0e118c56a85899055348d15120841ecf.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":793,"name":"影视预告","actionUrl":"eyepetizer://tag/793/?title=%E5%BD%B1%E8%A7%86%E9%A2%84%E5%91%8A","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/66a25db995c30f130c433b2422111541.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/528bbba3db1e6388c4a97edce734a743.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":155,"shareCount":125,"replyCount":4},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"影视","author":{"id":2029,"icon":"http://img.kaiyanapp.com/5099175f7c9a9a1796f8fb7ee20fc835.jpeg?imageMogr2/quality/60/format/jpg","name":"最新影视预告","description":"这是一个集合了所有小厂牌和小众电影预告的账号。","link":"","latestReleaseTime":1567094478000,"videoNum":571,"adTrack":null,"follow":{"itemType":"author","itemId":2029,"followed":false},"shield":{"itemType":"author","itemId":2029,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/764aa99a18b4e1d86f6f06e6a6b52fcd.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/764aa99a18b4e1d86f6f06e6a6b52fcd.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/60edccafadb62022dd7c35060559cd05.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/764aa99a18b4e1d86f6f06e6a6b52fcd.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171635&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":99,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171635","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171635&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566921635000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171635&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":5369987},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171635&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":5369987},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171635&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":5369987}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171635&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171635&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":8295728},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171635&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":8295728},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171635&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":8295728}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171635&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":null,"descriptionPgc":null,"remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566921635000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"二阶堂富美主演的电影「生理酱」预告公开，11 月 8 日上映！脑洞是真的大，将女性生理期的各种痛症进行拟人化，女主角忍受姨妈痛的同时，还要面对工作和恋爱，明明腰都直不起来了还要一直强撑着，可能还会被说\u201c女人果然就是麻烦\u201d。男生们不很多都觉得女生\u201c来姨妈\u201d都小题大做吗，能有多痛苦？都来看看这部电影吧。建议直男们反复观看，有男朋友的妹子们拉着自家大猪蹄子一起看，必要时可结合自己实际情况批讲。","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"textCard","data":{"dataType":"TextCard","id":0,"type":"header4","text":"复古相关视频","subTitle":null,"actionUrl":"eyepetizer://common/?title=%E5%A4%8D%E5%8F%A4%E7%9B%B8%E5%85%B3%E8%A7%86%E9%A2%91&url=http%3A%2F%2Fbaobab.kaiyanapp.com%2Fapi%2Fv4%2Fvideo%2Ftag%3Fid%3D194","adTrack":null,"follow":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171039,"title":"绮梦vol.6 | 仲夏之梦","description":"这是一部关于梦的小短片","library":"DEFAULT","tags":[{"id":744,"name":"每日创意灵感","actionUrl":"eyepetizer://tag/744/?title=%E6%AF%8F%E6%97%A5%E5%88%9B%E6%84%8F%E7%81%B5%E6%84%9F","adTrack":null,"desc":"技术与审美结合，探索视觉的无限可能","bgPicture":"http://img.kaiyanapp.com/bc2479c09cd15cb93b69d82e5f21c3fc.png?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/bc2479c09cd15cb93b69d82e5f21c3fc.png?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":194,"name":"复古","actionUrl":"eyepetizer://tag/194/?title=%E5%A4%8D%E5%8F%A4","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/6fb2263db0fce0f730dea0551df17abf.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/6fb2263db0fce0f730dea0551df17abf.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":202,"name":"唯美","actionUrl":"eyepetizer://tag/202/?title=%E5%94%AF%E7%BE%8E","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/965a0a74d0af871eb174b5c7def6fd6d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/965a0a74d0af871eb174b5c7def6fd6d.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":2,"name":"创意","actionUrl":"eyepetizer://tag/2/?title=%E5%88%9B%E6%84%8F","adTrack":null,"desc":"技术与审美结合，探索视觉的无限可能","bgPicture":"http://img.kaiyanapp.com/1b457058cf2b317304ff9f70543c040d.png?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/fdefdb34cbe3d2ac9964d306febe9025.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":183,"shareCount":21,"replyCount":1},"resourceType":"video","slogan":null,"provider":{"name":"PGC","alias":"PGC","icon":""},"category":"创意","author":{"id":2332,"icon":"http://img.kaiyanapp.com/2730c7abf8b6d94eb6cde32beb00d667.png?imageMogr2/quality/60/format/jpg","name":"weirdo_chen","description":"一个有趣的独立制作人","link":"","latestReleaseTime":1566290154000,"videoNum":12,"adTrack":null,"follow":{"itemType":"author","itemId":2332,"followed":false},"shield":{"itemType":"author","itemId":2332,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/cb063ca26d848a684677f6fea4c4407c.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/cb063ca26d848a684677f6fea4c4407c.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/6028450c81db1b50acb29dce161a5917.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":null},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171039&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":221,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171039","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171039&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566290154000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171039&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":11775323},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171039&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":11775323},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171039&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":11775323}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171039&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171039&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":18133999},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171039&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":18133999},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171039&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":18133999}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171039&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"绮梦vol.6 | 仲夏之梦","descriptionPgc":"这是一部关于梦的小短片","remark":"这是一部关于梦的小短片","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566290154000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":169126,"title":"【音乐mv】怀旧动画|经典|蒸汽波","description":"matatabi - Walking In The Moonlight","library":"NOT_RECOMMEND","tags":[{"id":1018,"name":"音乐","actionUrl":"eyepetizer://tag/1018/?title=%E9%9F%B3%E4%B9%90","adTrack":null,"desc":"用眼睛就能「听」的艺术","bgPicture":"http://img.kaiyanapp.com/46b2ed7ccd3e241ff54a314faf2632b8.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/46b2ed7ccd3e241ff54a314faf2632b8.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":825,"name":"另类音乐","actionUrl":"eyepetizer://tag/825/?title=%E5%8F%A6%E7%B1%BB%E9%9F%B3%E4%B9%90","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/cca7a110bf0dad13b55742072cff2e6f.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/cca7a110bf0dad13b55742072cff2e6f.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":194,"name":"复古","actionUrl":"eyepetizer://tag/194/?title=%E5%A4%8D%E5%8F%A4","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/6fb2263db0fce0f730dea0551df17abf.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/6fb2263db0fce0f730dea0551df17abf.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":0,"shareCount":0,"replyCount":0},"resourceType":"video","slogan":null,"provider":{"name":"PGC","alias":"PGC","icon":""},"category":"音乐","author":{"id":2345,"icon":"http://img.kaiyanapp.com/b6d34b4209d54534f0eb00d83ddb287e.png?imageMogr2/quality/60/format/jpg","name":"我的阿路","description":"我叫阿路，我喜欢拍视频，喜欢拍照，喜欢烘焙，喜欢动画，喜欢记录生活，更喜欢分享，谢谢你的关注～佛系更新七七八八的视频，表嫌弃我哈～","link":"","latestReleaseTime":1567137600000,"videoNum":146,"adTrack":null,"follow":{"itemType":"author","itemId":2345,"followed":false},"shield":{"itemType":"author","itemId":2345,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/c4c093674a9aa2039b3522326a8df1ca.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/c4c093674a9aa2039b3522326a8df1ca.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/9367285540b7449dfc95a857995c72e4.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":null},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169126&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":132,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=169126","forWeibo":"http://www.eyepetizer.net/detail.html?vid=169126&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566964800000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169126&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":8669000},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169126&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":8669000},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169126&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":8669000}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169126&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169126&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":13168780},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169126&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":13168780},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169126&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":13168780}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169126&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"【音乐mv】怀旧动画|经典|蒸汽波","descriptionPgc":"matatabi - Walking In The Moonlight","remark":"","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566964800000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":169113,"title":"【音乐mv】电音|蒸汽波|图片音乐","description":"vaporwave songs and their original samples [part 1]","library":"NOT_RECOMMEND","tags":[{"id":1018,"name":"音乐","actionUrl":"eyepetizer://tag/1018/?title=%E9%9F%B3%E4%B9%90","adTrack":null,"desc":"用眼睛就能「听」的艺术","bgPicture":"http://img.kaiyanapp.com/46b2ed7ccd3e241ff54a314faf2632b8.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/46b2ed7ccd3e241ff54a314faf2632b8.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":194,"name":"复古","actionUrl":"eyepetizer://tag/194/?title=%E5%A4%8D%E5%8F%A4","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/6fb2263db0fce0f730dea0551df17abf.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/6fb2263db0fce0f730dea0551df17abf.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":843,"name":"音乐推荐","actionUrl":"eyepetizer://tag/843/?title=%E9%9F%B3%E4%B9%90%E6%8E%A8%E8%8D%90","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/eda1b534e0e497e64e8e3cf00d38a132.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/eda1b534e0e497e64e8e3cf00d38a132.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":0,"shareCount":0,"replyCount":0},"resourceType":"video","slogan":null,"provider":{"name":"PGC","alias":"PGC","icon":""},"category":"音乐","author":{"id":2345,"icon":"http://img.kaiyanapp.com/b6d34b4209d54534f0eb00d83ddb287e.png?imageMogr2/quality/60/format/jpg","name":"我的阿路","description":"我叫阿路，我喜欢拍视频，喜欢拍照，喜欢烘焙，喜欢动画，喜欢记录生活，更喜欢分享，谢谢你的关注～佛系更新七七八八的视频，表嫌弃我哈～","link":"","latestReleaseTime":1567137600000,"videoNum":146,"adTrack":null,"follow":{"itemType":"author","itemId":2345,"followed":false},"shield":{"itemType":"author","itemId":2345,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/455ebe56ffd46fcb1f7193968e8aac16.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/455ebe56ffd46fcb1f7193968e8aac16.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/55cd71ad6c4145256d8212699229e87f.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":null},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169113&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":271,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=169113","forWeibo":"http://www.eyepetizer.net/detail.html?vid=169113&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566878400000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169113&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":6171902},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169113&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":6171902},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169113&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":6171902}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169113&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169113&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":7889435},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169113&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":7889435},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169113&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":7889435}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169113&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"【音乐mv】电音|蒸汽波|图片音乐","descriptionPgc":"vaporwave songs and their original samples [part 1]","remark":"","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566878400000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171014,"title":"这家航空公司好调皮，竟敢拿莱特兄弟开玩笑","description":"1903 年 12 月 17 日，莱特兄弟造出的世界上第一架飞机「飞行者一号」完成首次试飞，从此改变了人类的交通、经济、生产与生活方式。廉航公司捷蓝以莱特兄弟（Wright Brothers）为原型重新构思了这个发生在过去的故事：Alright兄弟开了一间航空公司，信奉「差不多就行」的处事原则，坚决把顾客放在鄙视链最底端。以此，来反衬捷蓝航空的服务贴心周到、娱乐活动丰富、茶点小吃应有尽有。碰瓷碰到发明者身上，胆子可真不小！","library":"DEFAULT","tags":[{"id":748,"name":"这些广告超有梗","actionUrl":"eyepetizer://tag/748/?title=%E8%BF%99%E4%BA%9B%E5%B9%BF%E5%91%8A%E8%B6%85%E6%9C%89%E6%A2%97","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/9056413cfeffaf0c841d894390aa8e08.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/ff0f6d0ad5f4b6211a3f746aaaffd916.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":194,"name":"复古","actionUrl":"eyepetizer://tag/194/?title=%E5%A4%8D%E5%8F%A4","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/6fb2263db0fce0f730dea0551df17abf.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/6fb2263db0fce0f730dea0551df17abf.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":134,"name":"反转","actionUrl":"eyepetizer://tag/134/?title=%E5%8F%8D%E8%BD%AC","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/c4daeee307e8efca77e095faaf5a5ab9.png?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/c4daeee307e8efca77e095faaf5a5ab9.png?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":140,"name":"搞笑","actionUrl":"eyepetizer://tag/140/?title=%E6%90%9E%E7%AC%91","adTrack":null,"desc":"哈哈哈哈哈哈哈哈","bgPicture":"http://img.kaiyanapp.com/f787d5053443499e8d787911cd8b3876.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/f2b803d3c383bba5a3888b2709160b6e.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":758,"name":"欧美广告","actionUrl":"eyepetizer://tag/758/?title=%E6%AC%A7%E7%BE%8E%E5%B9%BF%E5%91%8A","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/4347ee94f8ae98a86f2913db3b8638f3.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/8494d3626c41f8e8cb6316767cc0f573.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":16,"name":"广告","actionUrl":"eyepetizer://tag/16/?title=%E5%B9%BF%E5%91%8A","adTrack":null,"desc":"为广告人的精彩创意点赞","bgPicture":"http://img.kaiyanapp.com/e41e74fe73882b552de00d95d56748d2.jpeg?imageMogr2/quality/60","headerImage":"http://img.kaiyanapp.com/3054658dbd559ac42c4c282e9cab7a32.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":154,"shareCount":45,"replyCount":3},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"广告","author":{"id":938,"icon":"http://img.kaiyanapp.com/e44ed5fcfa424ba35761ce5f1339bc16.jpeg?imageMogr2/quality/60/format/jpg","name":"欧美广告精选","description":"持续推送新奇、有趣、大开眼界的欧美创意广告","link":"","latestReleaseTime":1567094474000,"videoNum":933,"adTrack":null,"follow":{"itemType":"author","itemId":938,"followed":false},"shield":{"itemType":"author","itemId":938,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/1432112cd45b9deaaed09f792e6c31f6.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/1432112cd45b9deaaed09f792e6c31f6.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/36b64d2b4b38400fae7db67bd899c581.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/1432112cd45b9deaaed09f792e6c31f6.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171014&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":90,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171014","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171014&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566835270000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171014&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":6777894},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171014&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":6777894},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171014&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":6777894}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171014&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171014&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":12302347},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171014&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":12302347},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171014&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":12302347}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171014&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":null,"descriptionPgc":null,"remark":"捷蓝航空 广告","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566835270000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"1903 年 12 月 17 日，莱特兄弟造出的世界上第一架飞机「飞行者一号」完成首次试飞，从此改变了人类的交通、经济、生产与生活方式。廉航公司捷蓝以莱特兄弟（Wright Brothers）为原型重新构思了这个发生在过去的故事：Alright兄弟开了一间航空公司，信奉「差不多就行」的处事原则，坚决把顾客放在鄙视链最底端。以此，来反衬捷蓝航空的服务贴心周到、娱乐活动丰富、茶点小吃应有尽有。碰瓷碰到发明者身上，胆子可真不小！","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171397,"title":"家庭录影带《Let's Summer》","description":"谁说家庭录影带不能变大片，我们夏天的玩水混剪，用了老电影的滤镜和音效，后期用了抽帧，模拟以前12帧电影的效果。","library":"DEFAULT","tags":[{"id":666,"name":"生活","actionUrl":"eyepetizer://tag/666/?title=%E7%94%9F%E6%B4%BB","adTrack":null,"desc":"匠心、健康、生活感悟","bgPicture":"http://img.kaiyanapp.com/95ba262a92ac99db76794ca56233d5d1.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/314a1e399de4c5708058e7f391619647.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1091,"name":"趁盛夏去放假","actionUrl":"eyepetizer://tag/1091/?title=%E8%B6%81%E7%9B%9B%E5%A4%8F%E5%8E%BB%E6%94%BE%E5%81%87","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/f280043e9df9cf4d6da416d2714e7a08.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/f280043e9df9cf4d6da416d2714e7a08.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":930,"name":"摄影师日常","actionUrl":"eyepetizer://tag/930/?title=%E6%91%84%E5%BD%B1%E5%B8%88%E6%97%A5%E5%B8%B8","adTrack":null,"desc":"透过镜头，我看到了更加真实的世界","bgPicture":"http://img.kaiyanapp.com/586d2cdc4a807eb84bed71fc523ed24b.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/586d2cdc4a807eb84bed71fc523ed24b.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":2},{"id":194,"name":"复古","actionUrl":"eyepetizer://tag/194/?title=%E5%A4%8D%E5%8F%A4","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/6fb2263db0fce0f730dea0551df17abf.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/6fb2263db0fce0f730dea0551df17abf.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":140,"name":"搞笑","actionUrl":"eyepetizer://tag/140/?title=%E6%90%9E%E7%AC%91","adTrack":null,"desc":"哈哈哈哈哈哈哈哈","bgPicture":"http://img.kaiyanapp.com/f787d5053443499e8d787911cd8b3876.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/f2b803d3c383bba5a3888b2709160b6e.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":32,"name":"萌宠","actionUrl":"eyepetizer://tag/32/?title=%E8%90%8C%E5%AE%A0","adTrack":null,"desc":"来自汪星、喵星、蠢萌星的你","bgPicture":"http://img.kaiyanapp.com/bd689302a738a5d2156243a2b74f15d1.png?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/1ea685a0d2757701741a4a9be0f7e269.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":25,"shareCount":0,"replyCount":1},"resourceType":"video","slogan":null,"provider":{"name":"PGC","alias":"PGC","icon":""},"category":"生活","author":{"id":4659,"icon":"http://img.kaiyanapp.com/2fc288fab4b80591961b3419c7063b26.png?imageMogr2/quality/60/format/jpg","name":"宝葫芦爱旅行","description":"摄影师、FilmMaker、旅行者","link":"","latestReleaseTime":1566625944000,"videoNum":4,"adTrack":null,"follow":{"itemType":"author","itemId":4659,"followed":false},"shield":{"itemType":"author","itemId":4659,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/aced1f9abdad3948a2fe9aa82c82e959.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/aced1f9abdad3948a2fe9aa82c82e959.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/8f249f36b15a055b616f74901f9b5dd2.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":null},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171397&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":93,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171397","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171397&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566625944000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171397&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":16733552},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171397&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":16733552},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171397&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":16733552}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171397&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171397&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":29468297},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171397&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":29468297},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171397&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":29468297}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171397&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"家庭录影带《Let's Summer》","descriptionPgc":"谁说家庭录影带不能变大片，我们夏天的玩水混剪，用了老电影的滤镜和音效，后期用了抽帧，模拟以前12帧电影的效果。","remark":"开眼首发","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566625944000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"textCard","data":{"dataType":"TextCard","id":0,"type":"header4","text":"DC相关视频","subTitle":null,"actionUrl":"eyepetizer://common/?title=DC%E7%9B%B8%E5%85%B3%E8%A7%86%E9%A2%91&url=http%3A%2F%2Fbaobab.kaiyanapp.com%2Fapi%2Fv4%2Fvideo%2Ftag%3Fid%3D408","adTrack":null,"follow":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":168830,"title":"「踩点/高燃/转场」HP/漫威/DC 反派混剪","description":"bgm：《bad guy》《you should see me in a crown》\u2014\u2014Billie Eilish","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":408,"name":"DC","actionUrl":"eyepetizer://tag/408/?title=DC","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/5a39da6e967ced78c70ac26515bc88f5.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/5a39da6e967ced78c70ac26515bc88f5.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":406,"name":"漫威","actionUrl":"eyepetizer://tag/406/?title=%E6%BC%AB%E5%A8%81","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/19e0cc9af45edd72c76637135ca30f85.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/19e0cc9af45edd72c76637135ca30f85.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":508,"name":"燃","actionUrl":"eyepetizer://tag/508/?title=%E7%87%83","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/920aa45f3abacad813d475e9bd0b2c73.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/920aa45f3abacad813d475e9bd0b2c73.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":432,"shareCount":123,"replyCount":9},"resourceType":"video","slogan":"","provider":{"name":"哔哩哔哩动画","alias":"bilibili","icon":"http://img.kaiyanapp.com/b968890a2b3e9ab5ae234175681f8cd4.png"},"category":"影视","author":{"id":3145,"icon":"http://img.kaiyanapp.com/5f0f992e79639d621aec91fe760a4836.jpeg?imageMogr2/quality/60/format/jpg","name":"影视杂坛","description":"一个影视相关内容的大杂谈！","link":"","latestReleaseTime":1567094470000,"videoNum":430,"adTrack":null,"follow":{"itemType":"author","itemId":3145,"followed":false},"shield":{"itemType":"author","itemId":3145,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/a0d146d0ba94388df2a4c80ce1c4dc50.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/a0d146d0ba94388df2a4c80ce1c4dc50.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/9c91c0e97f4ae978e18652fc01f1248e.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/a0d146d0ba94388df2a4c80ce1c4dc50.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=168830&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":"","duration":205,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=168830","forWeibo":"http://www.eyepetizer.net/detail.html?vid=168830&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1565020821000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=168830&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":15707181},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=168830&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":15707181},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=168830&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":15707181}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=168830&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=168830&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":80341946},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=168830&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":80341946},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=168830&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":80341946}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=168830&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"","descriptionPgc":"","remark":"【踩点/高燃/转场】【HP/漫威/DC】BAD GUY","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1565020821000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"bgm：《bad guy》《you should see me in a crown》\u2014\u2014Billie Eilish","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":167620,"title":"动画版小丑女！DC 新剧「哈莉·奎恩」预告片","description":"「生活大爆炸」的\u201c潘小花\u201d卡蕾·库科将为 DC 宇宙动画剧集「哈莉·奎因」配音。剧集以哈莉为主角，还有毒藤等多名哥谭著名新旧角色、反派和英雄。将聚焦哈莉与小丑彻底分手，独自作为哥谭犯罪女王行动的故事。主创为「无能为力」班底 Justin Halpern & Patrick Schumacker 组合和 Dean Lorey。该剧首季共 26 集，预计今年秋季开播，将在 DC 新流媒体平台 DC 宇宙上线。","library":"DEFAULT","tags":[{"id":14,"name":"动画梦工厂","actionUrl":"eyepetizer://tag/14/?title=%E5%8A%A8%E7%94%BB%E6%A2%A6%E5%B7%A5%E5%8E%82","adTrack":null,"desc":"有趣的人永远不缺童心","bgPicture":"http://img.kaiyanapp.com/afb9e7d7f061d10ade5ebcb524dc8679.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/f9eae3e0321fa1e99a7b38641b5536a2.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":793,"name":"影视预告","actionUrl":"eyepetizer://tag/793/?title=%E5%BD%B1%E8%A7%86%E9%A2%84%E5%91%8A","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/66a25db995c30f130c433b2422111541.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/528bbba3db1e6388c4a97edce734a743.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":408,"name":"DC","actionUrl":"eyepetizer://tag/408/?title=DC","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/5a39da6e967ced78c70ac26515bc88f5.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/5a39da6e967ced78c70ac26515bc88f5.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":672,"name":"剧集","actionUrl":"eyepetizer://tag/672/?title=%E5%89%A7%E9%9B%86","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/a3de18fb448aa41a140f1901130c380a.png?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/a3de18fb448aa41a140f1901130c380a.png?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1023,"name":"动画","actionUrl":"eyepetizer://tag/1023/?title=%E5%8A%A8%E7%94%BB","adTrack":null,"desc":"有趣的人永远不缺童心","bgPicture":"http://img.kaiyanapp.com/349cbd33cdf71fc74d5e9c7a00b444fd.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/208aa67386c045497389f015ae28dd29.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":116,"shareCount":58,"replyCount":6},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"动画","author":{"id":562,"icon":"http://img.kaiyanapp.com/ecd66042db51547c6a6da1c040735665.jpeg?imageMogr2/quality/60/format/jpg","name":"DC 娱乐","description":"DC 娱乐（DC Entertainment）旗下包括超人，蝙蝠侠，绿灯侠，神奇女侠，闪电侠等著名动漫人物形象。","link":"","latestReleaseTime":1563897673000,"videoNum":22,"adTrack":null,"follow":{"itemType":"author","itemId":562,"followed":false},"shield":{"itemType":"author","itemId":562,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/bd13da17cafe51249c4fb308b4a12f2e.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/bd13da17cafe51249c4fb308b4a12f2e.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/3ae2be307b43751db6dc287020206b87.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/bd13da17cafe51249c4fb308b4a12f2e.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=167620&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":72,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=167620","forWeibo":"http://www.eyepetizer.net/detail.html?vid=167620&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1563897673000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=167620&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":8052372},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=167620&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":8052372},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=167620&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":8052372}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=167620&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=167620&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":12886277},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=167620&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":12886277},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=167620&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":12886277}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=167620&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":null,"descriptionPgc":null,"remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1563897673000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"「生活大爆炸」的\u201c潘小花\u201d卡蕾·库科将为 DC 宇宙动画剧集「哈莉·奎因」配音。剧集以哈莉为主角，还有毒藤等多名哥谭著名新旧角色、反派和英雄。将聚焦哈莉与小丑彻底分手，独自作为哥谭犯罪女王行动的故事。主创为「无能为力」班底 Justin Halpern & Patrick Schumacker 组合和 Dean Lorey。该剧首季共 26 集，预计今年秋季开播，将在 DC 新流媒体平台 DC 宇宙上线。","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":169694,"title":"超人演员是如何练就「钢铁之躯」的？","description":"亨利·卡维尔拥有帅气外表和磁性声音，这使他成为扮演超人的自然之选，但是成为超人还需要有完美的身材。他究竟是如何练出电影里的完美身材呢，让我们一起看看他是如何健身的吧。From Looper","library":"DEFAULT","tags":[{"id":4,"name":"运动健身","actionUrl":"eyepetizer://tag/4/?title=%E8%BF%90%E5%8A%A8%E5%81%A5%E8%BA%AB","adTrack":null,"desc":"冲浪、滑板、健身、跑酷，我过着停不下来的生活","bgPicture":"http://img.kaiyanapp.com/d9163ebc9c8ffcdccee2d7855b441d17.png?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/60ddce3880b4600474a329f772d10695.png?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":678,"name":"明星","actionUrl":"eyepetizer://tag/678/?title=%E6%98%8E%E6%98%9F","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/1ba2b63b0e51c55c0a488f2c206c7770.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/45f5ee90bc22990d5bab85b9287b7c09.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":408,"name":"DC","actionUrl":"eyepetizer://tag/408/?title=DC","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/5a39da6e967ced78c70ac26515bc88f5.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/5a39da6e967ced78c70ac26515bc88f5.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":664,"name":"健身","actionUrl":"eyepetizer://tag/664/?title=%E5%81%A5%E8%BA%AB","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/9ae2257d8d569498c07c6b04b3257f66.gif","headerImage":"http://img.kaiyanapp.com/9ae2257d8d569498c07c6b04b3257f66.gif","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":128,"shareCount":45,"replyCount":0},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"运动","author":{"id":4419,"icon":"http://img.kaiyanapp.com/bfccc0ae55fb9ace6d65fabf717f15ee.jpeg?imageMogr2/quality/60/format/jpg","name":"好莱坞私教","description":"关于明星健身的一切","link":"","latestReleaseTime":1566835264000,"videoNum":20,"adTrack":null,"follow":{"itemType":"author","itemId":4419,"followed":false},"shield":{"itemType":"author","itemId":4419,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/2b00c7a6e46898255c5f3d8b8c39adaa.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/2b00c7a6e46898255c5f3d8b8c39adaa.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/a4d9d9b788580a0b06b9be1435250efb.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/2b00c7a6e46898255c5f3d8b8c39adaa.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169694&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":289,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=169694","forWeibo":"http://www.eyepetizer.net/detail.html?vid=169694&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566835264000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169694&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":26681464},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169694&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":26681464},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169694&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":26681464}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169694&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169694&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":30409466},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169694&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":30409466},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169694&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":30409466}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=169694&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":null,"descriptionPgc":null,"remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566835264000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"亨利·卡维尔拥有帅气外表和磁性声音，这使他成为扮演超人的自然之选，但是成为超人还需要有完美的身材。他究竟是如何练出电影里的完美身材呢，让我们一起看看他是如何健身的吧。From Looper","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":164121,"title":"帅到炸裂！带你体验一场踩点与衔接的视听盛宴","description":"漫威、DC、「头号玩家」、「哥斯拉」、「美女与野兽」\u2026\u2026甚至还有鬼泣 5 的游戏 CG 画面。强大的内容量，加上张弛有度的音乐与画面的转场，一场踩点与衔接的视听盛宴即将拉开帷幕，你准备好了吗？From 名字君不会混剪","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":406,"name":"漫威","actionUrl":"eyepetizer://tag/406/?title=%E6%BC%AB%E5%A8%81","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/19e0cc9af45edd72c76637135ca30f85.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/19e0cc9af45edd72c76637135ca30f85.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":408,"name":"DC","actionUrl":"eyepetizer://tag/408/?title=DC","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/5a39da6e967ced78c70ac26515bc88f5.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/5a39da6e967ced78c70ac26515bc88f5.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":404,"name":"超级英雄","actionUrl":"eyepetizer://tag/404/?title=%E8%B6%85%E7%BA%A7%E8%8B%B1%E9%9B%84","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/54e03e1d8e91ab98b840124bf08e3445.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/54e03e1d8e91ab98b840124bf08e3445.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":508,"name":"燃","actionUrl":"eyepetizer://tag/508/?title=%E7%87%83","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/920aa45f3abacad813d475e9bd0b2c73.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/920aa45f3abacad813d475e9bd0b2c73.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":806,"shareCount":221,"replyCount":11},"resourceType":"video","slogan":"","provider":{"name":"哔哩哔哩动画","alias":"bilibili","icon":"http://img.kaiyanapp.com/b968890a2b3e9ab5ae234175681f8cd4.png"},"category":"影视","author":{"id":3145,"icon":"http://img.kaiyanapp.com/5f0f992e79639d621aec91fe760a4836.jpeg?imageMogr2/quality/60/format/jpg","name":"影视杂坛","description":"一个影视相关内容的大杂谈！","link":"","latestReleaseTime":1567094470000,"videoNum":430,"adTrack":null,"follow":{"itemType":"author","itemId":3145,"followed":false},"shield":{"itemType":"author","itemId":3145,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/2fd85e3c1cdd713f4f2f1d4779e8d4dd.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/2fd85e3c1cdd713f4f2f1d4779e8d4dd.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/d8964e95a25fc795cb2ffa5685f5baea.png?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/2fd85e3c1cdd713f4f2f1d4779e8d4dd.png?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=164121&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":"","duration":151,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=164121","forWeibo":"http://www.eyepetizer.net/detail.html?vid=164121&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1561219225000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=164121&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":15504578},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=164121&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":15504578},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=164121&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":15504578}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=164121&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=164121&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":24550104},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=164121&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":24550104},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=164121&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":24550104}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=164121&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"","descriptionPgc":"","remark":"","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1561219225000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"漫威、DC、「头号玩家」、「哥斯拉」、「美女与野兽」\u2026\u2026甚至还有鬼泣 5 的游戏 CG 画面。强大的内容量，加上张弛有度的音乐与画面的转场，一场踩点与衔接的视听盛宴即将拉开帷幕，你准备好了吗？From 名字君不会混剪","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":165379,"title":"10 分钟超强健身：你也能化身神奇女侠","description":"如何打造出真的接近盖儿·加朵的运动和日常惯例？大多数运动都可以根据你的体型来调整运动难易度。根据她的私人教练的运动计划，要得到像短跑员那样结实， 像神奇女侠那般值得夸耀的身材，你需要在健身房进行一小时的全身锻炼。以下就是整个锻炼的组成部分。\n\n时间轴戳记：\n划船0:27\n登山者1:15\n鸟狗式2:12\n大波比跳3:01\n引体向上3:53\n伏地挺身4:52\n盖儿·加朵的饮食6:59","library":"DEFAULT","tags":[{"id":4,"name":"运动健身","actionUrl":"eyepetizer://tag/4/?title=%E8%BF%90%E5%8A%A8%E5%81%A5%E8%BA%AB","adTrack":null,"desc":"冲浪、滑板、健身、跑酷，我过着停不下来的生活","bgPicture":"http://img.kaiyanapp.com/d9163ebc9c8ffcdccee2d7855b441d17.png?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/60ddce3880b4600474a329f772d10695.png?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":408,"name":"DC","actionUrl":"eyepetizer://tag/408/?title=DC","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/5a39da6e967ced78c70ac26515bc88f5.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/5a39da6e967ced78c70ac26515bc88f5.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":664,"name":"健身","actionUrl":"eyepetizer://tag/664/?title=%E5%81%A5%E8%BA%AB","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/9ae2257d8d569498c07c6b04b3257f66.gif","headerImage":"http://img.kaiyanapp.com/9ae2257d8d569498c07c6b04b3257f66.gif","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1022,"name":"运动","actionUrl":"eyepetizer://tag/1022/?title=%E8%BF%90%E5%8A%A8","adTrack":null,"desc":"冲浪、滑板、健身、跑酷，我过着停不下来的生活","bgPicture":"http://img.kaiyanapp.com/cb87116785473e4064687036b53b5af3.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/481837cc0b1c52a3a87d6156d52cfdfa.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":364,"shareCount":87,"replyCount":1},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"运动","author":{"id":3522,"icon":"http://img.kaiyanapp.com/5bde6e81943ba60ce3a1fd47c552ce76.jpeg?imageMogr2/quality/60/format/jpg","name":"BRIGHT SIDE 闪光面","description":"向你展示生活中闪光的一面。","link":"","latestReleaseTime":1566489630000,"videoNum":403,"adTrack":null,"follow":{"itemType":"author","itemId":3522,"followed":false},"shield":{"itemType":"author","itemId":3522,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/fa85df8bf5c85f1c2295c3e60e5f6474.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/fa85df8bf5c85f1c2295c3e60e5f6474.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/ba69e7d8f554f2be992ccf64470f51ef.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/fa85df8bf5c85f1c2295c3e60e5f6474.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=165379&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":504,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=165379","forWeibo":"http://www.eyepetizer.net/detail.html?vid=165379&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1561996870000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=165379&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":32584857},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=165379&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":32584857},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=165379&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":32584857}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=165379&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=165379&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":49185899},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=165379&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":49185899},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=165379&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":49185899}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=165379&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":null,"descriptionPgc":null,"remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1561996870000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"如何打造出真的接近盖儿·加朵的运动和日常惯例？大多数运动都可以根据你的体型来调整运动难易度。根据她的私人教练的运动计划，要得到像短跑员那样结实， 像神奇女侠那般值得夸耀的身材，你需要在健身房进行一小时的全身锻炼。以下就是整个锻炼的组成部分。\n\n时间轴戳记：\n划船0:27\n登山者1:15\n鸟狗式2:12\n大波比跳3:01\n引体向上3:53\n伏地挺身4:52\n盖儿·加朵的饮食6:59","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"textCard","data":{"dataType":"TextCard","id":0,"type":"header4","text":"影视相关视频","subTitle":null,"actionUrl":"eyepetizer://common/?title=%E5%BD%B1%E8%A7%86%E7%9B%B8%E5%85%B3%E8%A7%86%E9%A2%91&url=http%3A%2F%2Fbaobab.kaiyanapp.com%2Fapi%2Fv4%2Fvideo%2Ftag%3Fid%3D1025","adTrack":null,"follow":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171717,"title":"大卫芬奇混剪：这是你喜欢的暗黑风格吗？","description":"今天是美国导演大卫·芬奇的生日，芬奇是一位不落俗套与常规电影语言分道扬镳的鬼才导演，也是很多人非常喜欢的导演！他喜欢把关注的焦点投向人性与社会的黑暗之处，善于挖掘人们内心深处不为人知的秘密，其电影有极强的个人影像风格，充斥着独特的艺术魅力，往往让人意想不到却又拍案叫绝。风格偏暗黑，谨慎食用。From 云胡不喜_30","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":478,"shareCount":109,"replyCount":4},"resourceType":"video","slogan":"","provider":{"name":"哔哩哔哩动画","alias":"bilibili","icon":"http://img.kaiyanapp.com/b968890a2b3e9ab5ae234175681f8cd4.png"},"category":"影视","author":{"id":3145,"icon":"http://img.kaiyanapp.com/5f0f992e79639d621aec91fe760a4836.jpeg?imageMogr2/quality/60/format/jpg","name":"影视杂坛","description":"一个影视相关内容的大杂谈！","link":"","latestReleaseTime":1567094470000,"videoNum":430,"adTrack":null,"follow":{"itemType":"author","itemId":3145,"followed":false},"shield":{"itemType":"author","itemId":3145,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/1c54f969b91e64022108f2433afe54d4.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/1c54f969b91e64022108f2433afe54d4.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/101b0fa1478f54b6ce153bf930b2ef3e.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/1c54f969b91e64022108f2433afe54d4.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171717&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":"","duration":232,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171717","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171717&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566921641000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171717&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":15478453},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171717&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":15478453},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171717&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":15478453}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171717&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171717&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":93814936},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171717&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":93814936},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171717&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":93814936}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171717&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"","descriptionPgc":"","remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566921641000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"今天是美国导演大卫·芬奇的生日，芬奇是一位不落俗套与常规电影语言分道扬镳的鬼才导演，也是很多人非常喜欢的导演！他喜欢把关注的焦点投向人性与社会的黑暗之处，善于挖掘人们内心深处不为人知的秘密，其电影有极强的个人影像风格，充斥着独特的艺术魅力，往往让人意想不到却又拍案叫绝。风格偏暗黑，谨慎食用。From 云胡不喜_30","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":170933,"title":"94【断背山】山上牧羊的美好时光","description":"如果一生不能和最爱的人渡过，那贫富喜怒又有什么区别，责任信仰又有什么意义","library":"NOT_RECOMMEND","tags":[{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":114,"name":"基情","actionUrl":"eyepetizer://tag/114/?title=%E5%9F%BA%E6%83%85","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/6cb9b31408605f500a6170ca0eb2a66e.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/6cb9b31408605f500a6170ca0eb2a66e.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":116,"name":"LGBTQIA","actionUrl":"eyepetizer://tag/116/?title=LGBTQIA","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/d8b988ac15cdcf6605b4d0b3a080569a.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/3d3cb19d13cc16e8c3c2eddb12284fa3.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":790,"name":"豆瓣高分电影","actionUrl":"eyepetizer://tag/790/?title=%E8%B1%86%E7%93%A3%E9%AB%98%E5%88%86%E7%94%B5%E5%BD%B1","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/aa58836c24e7878cc096096950bedfc9.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/aa58836c24e7878cc096096950bedfc9.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":506,"name":"经典","actionUrl":"eyepetizer://tag/506/?title=%E7%BB%8F%E5%85%B8","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/1e948eab70737d8beca9f52fce907ab5.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/1e948eab70737d8beca9f52fce907ab5.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":25,"shareCount":0,"replyCount":2},"resourceType":"video","slogan":null,"provider":{"name":"PGC","alias":"PGC","icon":""},"category":"影视","author":{"id":4555,"icon":"http://img.kaiyanapp.com/2c6e507dcc579cb8fc5989184ed921e2.png?imageMogr2/quality/60/format/jpg","name":"冇得电影","description":"分享经典的电影片段，先从豆瓣250开始啦～","link":"","latestReleaseTime":1567137602000,"videoNum":96,"adTrack":null,"follow":{"itemType":"author","itemId":4555,"followed":false},"shield":{"itemType":"author","itemId":4555,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/a7dcdfcb50ca1f0ef07ee4db28461ab8.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/a7dcdfcb50ca1f0ef07ee4db28461ab8.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/598a43c9644f3b83264c9606d16e1a2b.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":null},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170933&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":264,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=170933","forWeibo":"http://www.eyepetizer.net/detail.html?vid=170933&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566950401000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170933&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":20652545},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170933&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":20652545},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170933&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":20652545}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170933&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170933&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":33592960},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170933&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":33592960},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170933&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":33592960}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170933&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"94【断背山】山上牧羊的美好时光","descriptionPgc":"如果一生不能和最爱的人渡过，那贫富喜怒又有什么区别，责任信仰又有什么意义","remark":"","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566950401000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171624,"title":"「星球大战 9：天行者崛起」特别版预告","description":"「星战 9」在 D 23 上发布新预告，回顾整个经典系列，女主角蕾伊黑化！并与反派 Kylo Ren 展开光剑大战，已死去的帕尔帕廷皇帝以某种方式回归，也是「卢克·天行者」马克·哈米尔最后一次出演星战电影，已去世的凯丽·费雪饰演的莱娅公主也会回归，用「星战 7」时拍摄的未曝光画面加工。「星战 7」导演 J·J·艾布拉姆斯继续执导，上一部演员悉数回归，还有系列经典配乐师约翰·威廉姆斯。今年 12 月 20 日北美上映。终结之作，不容错过！","library":"DAILY","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":506,"name":"经典","actionUrl":"eyepetizer://tag/506/?title=%E7%BB%8F%E5%85%B8","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/1e948eab70737d8beca9f52fce907ab5.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/1e948eab70737d8beca9f52fce907ab5.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":122,"name":"科幻","actionUrl":"eyepetizer://tag/122/?title=%E7%A7%91%E5%B9%BB","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/417a8466c670ccde688bb4b525ddf23d.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/114beec25470880881352171834ddf43.jpeg?imageMogr2/quality/60","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":604,"name":"星战","actionUrl":"eyepetizer://tag/604/?title=%E6%98%9F%E6%88%98","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/dafb3cb4dca4a394b70bee58f0d7da1e.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/dafb3cb4dca4a394b70bee58f0d7da1e.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":793,"name":"影视预告","actionUrl":"eyepetizer://tag/793/?title=%E5%BD%B1%E8%A7%86%E9%A2%84%E5%91%8A","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/66a25db995c30f130c433b2422111541.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/528bbba3db1e6388c4a97edce734a743.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":853,"shareCount":710,"replyCount":17},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"影视","author":{"id":2173,"icon":"http://img.kaiyanapp.com/003829087e85ce7310b2210d9575ce67.jpeg","name":"开眼影视精选","description":"关于电影、剧集的一切","link":"","latestReleaseTime":1567040417000,"videoNum":493,"adTrack":null,"follow":{"itemType":"author","itemId":2173,"followed":false},"shield":{"itemType":"author","itemId":2173,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/08a19f6bbdede5d70d68506b63d8c4c8.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/08a19f6bbdede5d70d68506b63d8c4c8.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/c7d4be6910bc48797ab79f5a3447e3ac.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/08a19f6bbdede5d70d68506b63d8c4c8.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171624&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":131,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171624","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171624&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566879664000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171624&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":6562898},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171624&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":6562898},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171624&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":6562898}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171624&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171624&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":8757080},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171624&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":8757080},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171624&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":8757080}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171624&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":null,"descriptionPgc":null,"remark":"帕尔帕廷(预告中声音醒目)和兰多将回归该片，也是「卢克·天行者」马克·哈米尔最后一次出演星战电影，已去世的凯丽·费雪饰演的莱娅公主也会回归，用「星战 7」时拍摄的未曝光画面加工。「星战 7」导演 J·J·艾布拉姆斯继续执导，黛西·雷德利、亚当·德赖弗等也回归，还有系列经典配乐师约翰·威廉姆斯。今年 12 月 20 日北美上映。","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566879664000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"「星战 9」在 D 23 上发布新预告，回顾整个经典系列，女主角蕾伊黑化！并与反派 Kylo Ren 展开光剑大战，已死去的帕尔帕廷皇帝以某种方式回归，也是「卢克·天行者」马克·哈米尔最后一次出演星战电影，已去世的凯丽·费雪饰演的莱娅公主也会回归，用「星战 7」时拍摄的未曝光画面加工。「星战 7」导演 J·J·艾布拉姆斯继续执导，上一部演员悉数回归，还有系列经典配乐师约翰·威廉姆斯。今年 12 月 20 日北美上映。终结之作，不容错过！","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171928,"title":"苏州河里的女孩","description":"电影中令人惊艳的女孩","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":570,"name":"电影相关","actionUrl":"eyepetizer://tag/570/?title=%E7%94%B5%E5%BD%B1%E7%9B%B8%E5%85%B3","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/bee7c0cd647345f911c10be60ffcde93.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/bee7c0cd647345f911c10be60ffcde93.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":34,"name":"混剪","actionUrl":"eyepetizer://tag/34/?title=%E6%B7%B7%E5%89%AA","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/ebf307197b634f30b2fa4eb867e908c1.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/ebf307197b634f30b2fa4eb867e908c1.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":25,"shareCount":22,"replyCount":0},"resourceType":"video","slogan":null,"provider":{"name":"PGC","alias":"PGC","icon":""},"category":"影视","author":{"id":4686,"icon":"http://img.kaiyanapp.com/9d1582a45aa6f29187f38a0f88798829.png?imageMogr2/quality/60/format/jpg","name":"面条","description":"你的信口与开河","link":"","latestReleaseTime":1567071198000,"videoNum":7,"adTrack":null,"follow":{"itemType":"author","itemId":4686,"followed":false},"shield":{"itemType":"author","itemId":4686,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/ac0ad0546907a4e33e781b4cb5af79d8.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/ac0ad0546907a4e33e781b4cb5af79d8.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/81e2c8a9560c34fa71240823745756e4.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":null},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171928&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":140,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171928","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171928&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1567071198000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171928&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":13143600},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171928&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":13143600},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171928&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":13143600}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171928&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171928&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":23921394},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171928&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":23921394},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171928&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":23921394}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171928&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"苏州河里的女孩","descriptionPgc":"电影中令人惊艳的女孩","remark":"","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1567071198000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":170932,"title":"93【第六感】医生终于意识到自己已经死去","description":"他们像我们一样走来走去，互相看不见对方，他们只看得到他们想看到的。","library":"NOT_RECOMMEND","tags":[{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":790,"name":"豆瓣高分电影","actionUrl":"eyepetizer://tag/790/?title=%E8%B1%86%E7%93%A3%E9%AB%98%E5%88%86%E7%94%B5%E5%BD%B1","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/aa58836c24e7878cc096096950bedfc9.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/aa58836c24e7878cc096096950bedfc9.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":785,"name":"悬疑电影","actionUrl":"eyepetizer://tag/785/?title=%E6%82%AC%E7%96%91%E7%94%B5%E5%BD%B1","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/e1261b589014ecaeb5502e5ac9b11508.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/e1261b589014ecaeb5502e5ac9b11508.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":506,"name":"经典","actionUrl":"eyepetizer://tag/506/?title=%E7%BB%8F%E5%85%B8","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/1e948eab70737d8beca9f52fce907ab5.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/1e948eab70737d8beca9f52fce907ab5.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":12,"shareCount":0,"replyCount":0},"resourceType":"video","slogan":null,"provider":{"name":"PGC","alias":"PGC","icon":""},"category":"影视","author":{"id":4555,"icon":"http://img.kaiyanapp.com/2c6e507dcc579cb8fc5989184ed921e2.png?imageMogr2/quality/60/format/jpg","name":"冇得电影","description":"分享经典的电影片段，先从豆瓣250开始啦～","link":"","latestReleaseTime":1567137602000,"videoNum":96,"adTrack":null,"follow":{"itemType":"author","itemId":4555,"followed":false},"shield":{"itemType":"author","itemId":4555,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/9c3d2144093baa86d34dd758717941a9.png?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/9c3d2144093baa86d34dd758717941a9.png?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/3e34a861ad19a0a98da254a1951b0788.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":null},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170932&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":350,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=170932","forWeibo":"http://www.eyepetizer.net/detail.html?vid=170932&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566907209000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170932&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":12362301},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170932&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":12362301},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170932&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":12362301}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170932&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170932&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":19271927},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170932&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":19271927},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170932&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":19271927}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=170932&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"93【第六感】医生终于意识到自己已经死去","descriptionPgc":"他们像我们一样走来走去，互相看不见对方，他们只看得到他们想看到的。","remark":"","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566907209000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"textCard","data":{"dataType":"TextCard","id":0,"type":"header4","text":"影视预告相关视频","subTitle":null,"actionUrl":"eyepetizer://common/?title=%E5%BD%B1%E8%A7%86%E9%A2%84%E5%91%8A%E7%9B%B8%E5%85%B3%E8%A7%86%E9%A2%91&url=http%3A%2F%2Fbaobab.kaiyanapp.com%2Fapi%2Fv4%2Fvideo%2Ftag%3Fid%3D793","adTrack":null,"follow":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171166,"title":"威尼斯电影节获奖影片「夜莺」预告","description":"影片「夜莺」获得威尼斯电影节评审团特别奖和新锐演员奖。讲述 1920 年代塔斯马尼亚岛的一名 21 岁爱尔兰囚犯克莱尔被判 7 年徒刑，她非常渴望摆脱虐待她的主人霍金斯中尉，而后者拒绝释放克莱尔。克莱尔的丈夫艾丹进行了报复，而中尉和他的密友们因此对她犯下了可怕的罪行。由于无法从英国当局得到公正的审判，克莱尔决定追捕霍金斯，霍金斯却突然离开岗位，想得到北部的一个上尉职位。她只能求助于年轻的土著猎人比利，比利不情愿地带领她穿过崎岖的荒野，去寻找霍金斯。 ","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":737,"name":"获奖作品","actionUrl":"eyepetizer://tag/737/?title=%E8%8E%B7%E5%A5%96%E4%BD%9C%E5%93%81","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/ce225210636a1d9ee4804bed55437698.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/ce225210636a1d9ee4804bed55437698.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":793,"name":"影视预告","actionUrl":"eyepetizer://tag/793/?title=%E5%BD%B1%E8%A7%86%E9%A2%84%E5%91%8A","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/66a25db995c30f130c433b2422111541.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/528bbba3db1e6388c4a97edce734a743.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":193,"shareCount":67,"replyCount":1},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"影视","author":{"id":2029,"icon":"http://img.kaiyanapp.com/5099175f7c9a9a1796f8fb7ee20fc835.jpeg?imageMogr2/quality/60/format/jpg","name":"最新影视预告","description":"这是一个集合了所有小厂牌和小众电影预告的账号。","link":"","latestReleaseTime":1567094478000,"videoNum":571,"adTrack":null,"follow":{"itemType":"author","itemId":2029,"followed":false},"shield":{"itemType":"author","itemId":2029,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/a4b2d1ae747bea2c43aac2b0ff080dc9.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/a4b2d1ae747bea2c43aac2b0ff080dc9.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/8667e665c0f87d3eb43bff110f094684.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/a4b2d1ae747bea2c43aac2b0ff080dc9.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171166&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":148,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171166","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171166&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566748826000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171166&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":10381201},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171166&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":10381201},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171166&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":10381201}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171166&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171166&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":16788275},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171166&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":16788275},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171166&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":16788275}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171166&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":null,"descriptionPgc":null,"remark":"影片「夜莺」获得威尼斯电影节评审团特别奖和新锐演员奖。讲述 1920 年代塔斯马尼亚岛的一名 21 岁爱尔兰囚犯克莱尔被判 7 年徒刑，她非常渴望摆脱虐待她的主人霍金斯中尉，而后者拒绝释放克莱尔。克莱尔的丈夫艾丹进行了报复，而中尉和他的密友们因此对她犯下了可怕的罪行。由于无法从英国当局得到公正的审判，克莱尔决定追捕霍金斯，霍金斯却突然离开岗位，想得到北部的一个上尉职位。她只能求助于年轻的土著猎人比利，比利不情愿地带领她穿过崎岖的荒野，去寻找霍金斯。 ","ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566748826000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"影片「夜莺」获得威尼斯电影节评审团特别奖和新锐演员奖。讲述 1920 年代塔斯马尼亚岛的一名 21 岁爱尔兰囚犯克莱尔被判 7 年徒刑，她非常渴望摆脱虐待她的主人霍金斯中尉，而后者拒绝释放克莱尔。克莱尔的丈夫艾丹进行了报复，而中尉和他的密友们因此对她犯下了可怕的罪行。由于无法从英国当局得到公正的审判，克莱尔决定追捕霍金斯，霍金斯却突然离开岗位，想得到北部的一个上尉职位。她只能求助于年轻的土著猎人比利，比利不情愿地带领她穿过崎岖的荒野，去寻找霍金斯。 ","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171523,"title":"2 分钟看完电视剧版「大叔之爱」，电影你期待吗","description":"2018 年度基情神剧「大叔之爱」的电影版已经于 8 月 23 日在日本上映了，即将在 9 月 6 日在台湾上映。片方公布了一只新片花，加进了电视剧版的浓缩剧情。即使没看过电视剧，这个 2 分钟补课也够了。这个多角男男恋电影，你期待吗？","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":116,"name":"LGBTQIA","actionUrl":"eyepetizer://tag/116/?title=LGBTQIA","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/d8b988ac15cdcf6605b4d0b3a080569a.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/3d3cb19d13cc16e8c3c2eddb12284fa3.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":108,"name":"爱情","actionUrl":"eyepetizer://tag/108/?title=%E7%88%B1%E6%83%85","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/67025fb5bf4f8ff4ccd63cdcfd0cd6c6.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/67025fb5bf4f8ff4ccd63cdcfd0cd6c6.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":793,"name":"影视预告","actionUrl":"eyepetizer://tag/793/?title=%E5%BD%B1%E8%A7%86%E9%A2%84%E5%91%8A","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/66a25db995c30f130c433b2422111541.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/528bbba3db1e6388c4a97edce734a743.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":116,"shareCount":117,"replyCount":6},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"影视","author":{"id":2029,"icon":"http://img.kaiyanapp.com/5099175f7c9a9a1796f8fb7ee20fc835.jpeg?imageMogr2/quality/60/format/jpg","name":"最新影视预告","description":"这是一个集合了所有小厂牌和小众电影预告的账号。","link":"","latestReleaseTime":1567094478000,"videoNum":571,"adTrack":null,"follow":{"itemType":"author","itemId":2029,"followed":false},"shield":{"itemType":"author","itemId":2029,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/07f919b2d7329b69aa1fbc9ed50317c6.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/07f919b2d7329b69aa1fbc9ed50317c6.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/359aa621cacc7b1c489bd6ff133e7e39.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/07f919b2d7329b69aa1fbc9ed50317c6.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171523&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":138,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171523","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171523&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566835275000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171523&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":12044235},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171523&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":12044235},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171523&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":12044235}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171523&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171523&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":19383092},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171523&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":19383092},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171523&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":19383092}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171523&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":null,"descriptionPgc":null,"remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566835275000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"2018 年度基情神剧「大叔之爱」的电影版已经于 8 月 23 日在日本上映了，即将在 9 月 6 日在台湾上映。片方公布了一只新片花，加进了电视剧版的浓缩剧情。即使没看过电视剧，这个 2 分钟补课也够了。这个多角男男恋电影，你期待吗？","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171420,"title":"影视时刻 天使降临","description":"杰拉德·巴特勒( Gerard Butler )饰演的迈克·班宁( Mike ban )又回来了，这一次，他被诬陷企图暗杀总统(摩根·弗里曼[ Morgan Freeman ]饰)。你会去看「天使降临」吗?","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":793,"name":"影视预告","actionUrl":"eyepetizer://tag/793/?title=%E5%BD%B1%E8%A7%86%E9%A2%84%E5%91%8A","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/66a25db995c30f130c433b2422111541.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/528bbba3db1e6388c4a97edce734a743.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":6,"shareCount":0,"replyCount":0},"resourceType":"video","slogan":null,"provider":{"name":"定制来源","alias":"CustomSrc","icon":""},"category":"影视","author":{"id":558,"icon":"http://img.kaiyanapp.com/aedd39fcc29cc8f5754747d4395f1059.jpeg?imageMogr2/quality/60/format/jpg","name":"电影预告片 Movieclips","description":"最新最热的电影预告片。","link":"","latestReleaseTime":1566650681000,"videoNum":81,"adTrack":null,"follow":{"itemType":"author","itemId":558,"followed":false},"shield":{"itemType":"author","itemId":558,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/7b1db9e94fc924f94542420591b561a9.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/7b1db9e94fc924f94542420591b561a9.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/989d24e590afea8d953af94be4cbcbe7.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":null},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171420&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":159,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171420","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171420&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566650558000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171420&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":13613072},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171420&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":13613072},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171420&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":13613072}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171420&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171420&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":21872092},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171420&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":21872092},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171420&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":21872092}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171420&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"影视时刻 天使降临","descriptionPgc":"杰拉德·巴特勒( Gerard Butler )饰演的迈克·班宁( Mike ban )又回来了，这一次，他被诬陷企图暗杀总统(摩根·弗里曼[ Morgan Freeman ]饰)。你会去看「天使降临」吗?","remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566650558000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171430,"title":"「洛瑞&火柴男人」HD 中文正式电影","description":"作画欲望凌驾一切！他那咄咄逼人的控制狂母亲,成就了二十世纪英国最伟大的画家之一... 坎城影帝「提摩西司伯」饰演这位伟大的画家，以及坎城影后「凡妮莎蕾格烈芙」饰演控制狂的母亲。","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":793,"name":"影视预告","actionUrl":"eyepetizer://tag/793/?title=%E5%BD%B1%E8%A7%86%E9%A2%84%E5%91%8A","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/66a25db995c30f130c433b2422111541.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/528bbba3db1e6388c4a97edce734a743.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":570,"name":"电影相关","actionUrl":"eyepetizer://tag/570/?title=%E7%94%B5%E5%BD%B1%E7%9B%B8%E5%85%B3","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/bee7c0cd647345f911c10be60ffcde93.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/bee7c0cd647345f911c10be60ffcde93.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":18,"shareCount":0,"replyCount":1},"resourceType":"video","slogan":null,"provider":{"name":"定制来源","alias":"CustomSrc","icon":""},"category":"影视","author":{"id":160,"icon":"http://img.kaiyanapp.com/ab353217fc20da6c7dfce3b3fe8337fe.jpeg?imageMogr2/quality/60","name":"触电网","description":"电影情报入口网。","link":"","latestReleaseTime":1566652987000,"videoNum":207,"adTrack":null,"follow":{"itemType":"author","itemId":160,"followed":false},"shield":{"itemType":"author","itemId":160,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/e70f990ab038685c693f01a2c632bc83.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/e70f990ab038685c693f01a2c632bc83.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/71ab741d1daaf7b08e654168c986f79f.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":null},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171430&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":139,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171430","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171430&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566652902000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171430&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":8384802},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171430&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":8384802},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171430&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":8384802}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171430&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171430&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":12943149},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171430&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":12943149},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171430&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":12943149}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171430&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":"「洛瑞&火柴男人」HD 中文正式电影","descriptionPgc":"作画欲望凌驾一切！他那咄咄逼人的控制狂母亲,成就了二十世纪英国最伟大的画家之一... 坎城影帝「提摩西司伯」饰演这位伟大的画家，以及坎城影后「凡妮莎蕾格烈芙」饰演控制狂的母亲。","remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566652902000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1},{"type":"videoSmallCard","data":{"dataType":"VideoBeanForClient","id":171293,"title":"知名女同剧集「拉字至上」续集「Q世代」预告","description":"知名女同剧集「拉字至上」续集「Q世代」10 年后回归。前作主演 Jennifer Beals、Katherine Moennig、Leisha Hailey 回归，并和前作制作人 Ilene Chaiken 一起任执行制作。新季是老版的续集，聚焦洛杉矶东边一群 LGBTQIA 人群的故事，讲述\u201c从老版剧集到如今，女同族群的成员、关系和生活的变化，及没有变的东西\u201d。运作人为 Marja-Lewis Ryan，共 8 集。12 月 8 日 Showtime 开播。","library":"DEFAULT","tags":[{"id":796,"name":"迷影放映室","actionUrl":"eyepetizer://tag/796/?title=%E8%BF%B7%E5%BD%B1%E6%94%BE%E6%98%A0%E5%AE%A4","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/64f2b2ed039bd92c3be10d003d6041bf.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/56a8818adb038c59ab04ffc781db2f50.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":116,"name":"LGBTQIA","actionUrl":"eyepetizer://tag/116/?title=LGBTQIA","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/d8b988ac15cdcf6605b4d0b3a080569a.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/3d3cb19d13cc16e8c3c2eddb12284fa3.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":108,"name":"爱情","actionUrl":"eyepetizer://tag/108/?title=%E7%88%B1%E6%83%85","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/67025fb5bf4f8ff4ccd63cdcfd0cd6c6.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/67025fb5bf4f8ff4ccd63cdcfd0cd6c6.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":1025,"name":"影视","actionUrl":"eyepetizer://tag/1025/?title=%E5%BD%B1%E8%A7%86","adTrack":null,"desc":"电影、剧集、戏剧抢先看","bgPicture":"http://img.kaiyanapp.com/8a298964e7c9fc2ae16342832e36d88d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9d7fe42c1445031e4c8f2421b652a011.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0},{"id":793,"name":"影视预告","actionUrl":"eyepetizer://tag/793/?title=%E5%BD%B1%E8%A7%86%E9%A2%84%E5%91%8A","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/66a25db995c30f130c433b2422111541.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/528bbba3db1e6388c4a97edce734a743.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"communityIndex":0}],"consumption":{"collectionCount":67,"shareCount":52,"replyCount":4},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"影视","author":{"id":2029,"icon":"http://img.kaiyanapp.com/5099175f7c9a9a1796f8fb7ee20fc835.jpeg?imageMogr2/quality/60/format/jpg","name":"最新影视预告","description":"这是一个集合了所有小厂牌和小众电影预告的账号。","link":"","latestReleaseTime":1567094478000,"videoNum":571,"adTrack":null,"follow":{"itemType":"author","itemId":2029,"followed":false},"shield":{"itemType":"author","itemId":2029,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://img.kaiyanapp.com/420699026659dae2142a159def92af19.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://img.kaiyanapp.com/420699026659dae2142a159def92af19.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://img.kaiyanapp.com/7999d6f08b4cad2a8ff884da0db2df19.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/420699026659dae2142a159def92af19.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171293&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss","thumbPlayUrl":null,"duration":77,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=171293","forWeibo":"http://www.eyepetizer.net/detail.html?vid=171293&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1566662440000,"playInfo":[{"height":480,"width":854,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171293&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":8757630},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171293&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":8757630},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171293&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":8757630}],"name":"标清","type":"normal","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171293&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss"},{"height":720,"width":1280,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171293&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss","size":14762043},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171293&resourceType=video&editionType=high&source=qcloud&playUrlType=url_oss","size":14762043},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171293&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss","size":14762043}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171293&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss"}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":null,"type":"NORMAL","titlePgc":null,"descriptionPgc":null,"remark":null,"ifLimitVideo":false,"searchWeight":0,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1566662440000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"知名女同剧集「拉字至上」续集「Q世代」10 年后回归。前作主演 Jennifer Beals、Katherine Moennig、Leisha Hailey 回归，并和前作制作人 Ilene Chaiken 一起任执行制作。新季是老版的续集，聚焦洛杉矶东边一群 LGBTQIA 人群的故事，讲述\u201c从老版剧集到如今，女同族群的成员、关系和生活的变化，及没有变的东西\u201d。运作人为 Marja-Lewis Ryan，共 8 集。12 月 8 日 Showtime 开播。","collected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null},"tag":null,"id":0,"adIndex":-1}]
-     * count : 36
-     * total : 0
-     * nextPageUrl : null
-     * adExist : false
-     */
-
     private int count;
     private int total;
     private Object nextPageUrl;
@@ -65,10 +57,10 @@ public class OEDetailRelatedEntity implements Serializable {
         this.itemList = itemList;
     }
 
-    public static class ItemListBean  implements Serializable{
+    public static class ItemListBean implements Serializable{
         /**
          * type : textCard
-         * data : {"dataType":"TextCard","id":0,"type":"header4","text":"影视类最新视频","subTitle":null,"actionUrl":"eyepetizer://common/?title=%E5%BD%B1%E8%A7%86%E7%B1%BB%E6%9C%80%E6%96%B0%E8%A7%86%E9%A2%91&url=http%3A%2F%2Fbaobab.kaiyanapp.com%2Fapi%2Fv4%2Fvideo%2Fcategory%3Fid%3D8","adTrack":null,"follow":null}
+         * data : {"dataType":"TextCard","id":0,"type":"header4","text":"音乐类最新视频","subTitle":null,"actionUrl":"eyepetizer://common/?title=%E9%9F%B3%E4%B9%90%E7%B1%BB%E6%9C%80%E6%96%B0%E8%A7%86%E9%A2%91&url=http%3A%2F%2Fbaobab.kaiyanapp.com%2Fapi%2Fv4%2Fvideo%2Fcategory%3Fid%3D20","adTrack":null,"follow":null}
          * tag : null
          * id : 0
          * adIndex : -1
@@ -120,14 +112,14 @@ public class OEDetailRelatedEntity implements Serializable {
             this.adIndex = adIndex;
         }
 
-        public static class DataBean  implements Serializable{
+        public static class DataBean implements Serializable{
             /**
              * dataType : TextCard
              * id : 0
              * type : header4
-             * text : 影视类最新视频
+             * text : 音乐类最新视频
              * subTitle : null
-             * actionUrl : eyepetizer://common/?title=%E5%BD%B1%E8%A7%86%E7%B1%BB%E6%9C%80%E6%96%B0%E8%A7%86%E9%A2%91&url=http%3A%2F%2Fbaobab.kaiyanapp.com%2Fapi%2Fv4%2Fvideo%2Fcategory%3Fid%3D8
+             * actionUrl : eyepetizer://common/?title=%E9%9F%B3%E4%B9%90%E7%B1%BB%E6%9C%80%E6%96%B0%E8%A7%86%E9%A2%91&url=http%3A%2F%2Fbaobab.kaiyanapp.com%2Fapi%2Fv4%2Fvideo%2Fcategory%3Fid%3D20
              * adTrack : null
              * follow : null
              */
@@ -140,6 +132,46 @@ public class OEDetailRelatedEntity implements Serializable {
             private String actionUrl;
             private Object adTrack;
             private Object follow;
+            private String title;
+            private String description;
+            private String library;
+            private ConsumptionBean consumption;
+            private String resourceType;
+            private Object slogan;
+            private ProviderBean provider;
+            private String category;
+            private AuthorBean author;
+            private CoverBean cover;
+            private String playUrl;
+            private Object thumbPlayUrl;
+            private int duration;
+            private WebUrlBean webUrl;
+            private long releaseTime;
+            private Object campaign;
+            private Object waterMarks;
+            private boolean ad;
+            private Object titlePgc;
+            private Object descriptionPgc;
+            private String remark;
+            private boolean ifLimitVideo;
+            private int searchWeight;
+            private int idx;
+            private Object shareAdTrack;
+            private Object favoriteAdTrack;
+            private Object webAdTrack;
+            private long date;
+            private Object promotion;
+            private Object label;
+            private String descriptionEditor;
+            private boolean collected;
+            private boolean played;
+            private Object lastViewTime;
+            private Object playlists;
+            private Object src;
+            private List<TagsBean> tags;
+            private List<PlayInfoBean> playInfo;
+            private List<?> labelList;
+            private List<?> subtitles;
 
             public String getDataType() {
                 return dataType;
@@ -157,12 +189,340 @@ public class OEDetailRelatedEntity implements Serializable {
                 this.id = id;
             }
 
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
+
+            public String getDescription() {
+                return description;
+            }
+
+            public void setDescription(String description) {
+                this.description = description;
+            }
+
+            public String getLibrary() {
+                return library;
+            }
+
+            public void setLibrary(String library) {
+                this.library = library;
+            }
+
+            public ConsumptionBean getConsumption() {
+                return consumption;
+            }
+
+            public void setConsumption(ConsumptionBean consumption) {
+                this.consumption = consumption;
+            }
+
+            public String getResourceType() {
+                return resourceType;
+            }
+
+            public void setResourceType(String resourceType) {
+                this.resourceType = resourceType;
+            }
+
+            public Object getSlogan() {
+                return slogan;
+            }
+
+            public void setSlogan(Object slogan) {
+                this.slogan = slogan;
+            }
+
+            public ProviderBean getProvider() {
+                return provider;
+            }
+
+            public void setProvider(ProviderBean provider) {
+                this.provider = provider;
+            }
+
+            public String getCategory() {
+                return category;
+            }
+
+            public void setCategory(String category) {
+                this.category = category;
+            }
+
+            public AuthorBean getAuthor() {
+                return author;
+            }
+
+            public void setAuthor(AuthorBean author) {
+                this.author = author;
+            }
+
+            public CoverBean getCover() {
+                return cover;
+            }
+
+            public void setCover(CoverBean cover) {
+                this.cover = cover;
+            }
+
+            public String getPlayUrl() {
+                return playUrl;
+            }
+
+            public void setPlayUrl(String playUrl) {
+                this.playUrl = playUrl;
+            }
+
+            public Object getThumbPlayUrl() {
+                return thumbPlayUrl;
+            }
+
+            public void setThumbPlayUrl(Object thumbPlayUrl) {
+                this.thumbPlayUrl = thumbPlayUrl;
+            }
+
+            public int getDuration() {
+                return duration;
+            }
+
+            public void setDuration(int duration) {
+                this.duration = duration;
+            }
+
+            public WebUrlBean getWebUrl() {
+                return webUrl;
+            }
+
+            public void setWebUrl(WebUrlBean webUrl) {
+                this.webUrl = webUrl;
+            }
+
+            public long getReleaseTime() {
+                return releaseTime;
+            }
+
+            public void setReleaseTime(long releaseTime) {
+                this.releaseTime = releaseTime;
+            }
+
+            public Object getCampaign() {
+                return campaign;
+            }
+
+            public void setCampaign(Object campaign) {
+                this.campaign = campaign;
+            }
+
+            public Object getWaterMarks() {
+                return waterMarks;
+            }
+
+            public void setWaterMarks(Object waterMarks) {
+                this.waterMarks = waterMarks;
+            }
+
+            public boolean isAd() {
+                return ad;
+            }
+
+            public void setAd(boolean ad) {
+                this.ad = ad;
+            }
+
+            public Object getAdTrack() {
+                return adTrack;
+            }
+
+            public void setAdTrack(Object adTrack) {
+                this.adTrack = adTrack;
+            }
+
             public String getType() {
                 return type;
             }
 
             public void setType(String type) {
                 this.type = type;
+            }
+
+            public Object getTitlePgc() {
+                return titlePgc;
+            }
+
+            public void setTitlePgc(Object titlePgc) {
+                this.titlePgc = titlePgc;
+            }
+
+            public Object getDescriptionPgc() {
+                return descriptionPgc;
+            }
+
+            public void setDescriptionPgc(Object descriptionPgc) {
+                this.descriptionPgc = descriptionPgc;
+            }
+
+            public String getRemark() {
+                return remark;
+            }
+
+            public void setRemark(String remark) {
+                this.remark = remark;
+            }
+
+            public boolean isIfLimitVideo() {
+                return ifLimitVideo;
+            }
+
+            public void setIfLimitVideo(boolean ifLimitVideo) {
+                this.ifLimitVideo = ifLimitVideo;
+            }
+
+            public int getSearchWeight() {
+                return searchWeight;
+            }
+
+            public void setSearchWeight(int searchWeight) {
+                this.searchWeight = searchWeight;
+            }
+
+            public int getIdx() {
+                return idx;
+            }
+
+            public void setIdx(int idx) {
+                this.idx = idx;
+            }
+
+            public Object getShareAdTrack() {
+                return shareAdTrack;
+            }
+
+            public void setShareAdTrack(Object shareAdTrack) {
+                this.shareAdTrack = shareAdTrack;
+            }
+
+            public Object getFavoriteAdTrack() {
+                return favoriteAdTrack;
+            }
+
+            public void setFavoriteAdTrack(Object favoriteAdTrack) {
+                this.favoriteAdTrack = favoriteAdTrack;
+            }
+
+            public Object getWebAdTrack() {
+                return webAdTrack;
+            }
+
+            public void setWebAdTrack(Object webAdTrack) {
+                this.webAdTrack = webAdTrack;
+            }
+
+            public long getDate() {
+                return date;
+            }
+
+            public void setDate(long date) {
+                this.date = date;
+            }
+
+            public Object getPromotion() {
+                return promotion;
+            }
+
+            public void setPromotion(Object promotion) {
+                this.promotion = promotion;
+            }
+
+            public Object getLabel() {
+                return label;
+            }
+
+            public void setLabel(Object label) {
+                this.label = label;
+            }
+
+            public String getDescriptionEditor() {
+                return descriptionEditor;
+            }
+
+            public void setDescriptionEditor(String descriptionEditor) {
+                this.descriptionEditor = descriptionEditor;
+            }
+
+            public boolean isCollected() {
+                return collected;
+            }
+
+            public void setCollected(boolean collected) {
+                this.collected = collected;
+            }
+
+            public boolean isPlayed() {
+                return played;
+            }
+
+            public void setPlayed(boolean played) {
+                this.played = played;
+            }
+
+            public Object getLastViewTime() {
+                return lastViewTime;
+            }
+
+            public void setLastViewTime(Object lastViewTime) {
+                this.lastViewTime = lastViewTime;
+            }
+
+            public Object getPlaylists() {
+                return playlists;
+            }
+
+            public void setPlaylists(Object playlists) {
+                this.playlists = playlists;
+            }
+
+            public Object getSrc() {
+                return src;
+            }
+
+            public void setSrc(Object src) {
+                this.src = src;
+            }
+
+            public List<TagsBean> getTags() {
+                return tags;
+            }
+
+            public void setTags(List<TagsBean> tags) {
+                this.tags = tags;
+            }
+
+            public List<PlayInfoBean> getPlayInfo() {
+                return playInfo;
+            }
+
+            public void setPlayInfo(List<PlayInfoBean> playInfo) {
+                this.playInfo = playInfo;
+            }
+
+            public List<?> getLabelList() {
+                return labelList;
+            }
+
+            public void setLabelList(List<?> labelList) {
+                this.labelList = labelList;
+            }
+
+            public List<?> getSubtitles() {
+                return subtitles;
+            }
+
+            public void setSubtitles(List<?> subtitles) {
+                this.subtitles = subtitles;
             }
 
             public String getText() {
@@ -189,20 +549,600 @@ public class OEDetailRelatedEntity implements Serializable {
                 this.actionUrl = actionUrl;
             }
 
-            public Object getAdTrack() {
-                return adTrack;
-            }
-
-            public void setAdTrack(Object adTrack) {
-                this.adTrack = adTrack;
-            }
-
             public Object getFollow() {
                 return follow;
             }
 
             public void setFollow(Object follow) {
                 this.follow = follow;
+            }
+
+            public static class ConsumptionBean implements Serializable{
+                /**
+                 * collectionCount : 1799
+                 * shareCount : 860
+                 * replyCount : 14
+                 */
+
+                private int collectionCount;
+                private int shareCount;
+                private int replyCount;
+
+                public int getCollectionCount() {
+                    return collectionCount;
+                }
+
+                public void setCollectionCount(int collectionCount) {
+                    this.collectionCount = collectionCount;
+                }
+
+                public int getShareCount() {
+                    return shareCount;
+                }
+
+                public void setShareCount(int shareCount) {
+                    this.shareCount = shareCount;
+                }
+
+                public int getReplyCount() {
+                    return replyCount;
+                }
+
+                public void setReplyCount(int replyCount) {
+                    this.replyCount = replyCount;
+                }
+            }
+
+            public static class ProviderBean implements Serializable{
+                /**
+                 * name : Vimeo
+                 * alias : vimeo
+                 * icon : http://img.kaiyanapp.com/c3ad630be461cbb081649c9e21d6cbe3.png
+                 */
+
+                private String name;
+                private String alias;
+                private String icon;
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public String getAlias() {
+                    return alias;
+                }
+
+                public void setAlias(String alias) {
+                    this.alias = alias;
+                }
+
+                public String getIcon() {
+                    return icon;
+                }
+
+                public void setIcon(String icon) {
+                    this.icon = icon;
+                }
+            }
+
+            public static class AuthorBean implements Serializable{
+                /**
+                 * id : 2163
+                 * icon : http://img.kaiyanapp.com/9279c17b4da5ba5e7e4f21afb5bb0a74.jpeg
+                 * name : 开眼音乐精选
+                 * description : 全球最酷、最炫、最有态度的音乐集合
+                 * link :
+                 * latestReleaseTime : 1567472410000
+                 * videoNum : 631
+                 * adTrack : null
+                 * follow : {"itemType":"author","itemId":2163,"followed":false}
+                 * shield : {"itemType":"author","itemId":2163,"shielded":false}
+                 * approvedNotReadyVideoCount : 0
+                 * ifPgc : true
+                 * recSort : 0
+                 * expert : false
+                 */
+
+                private int id;
+                private String icon;
+                private String name;
+                private String description;
+                private String link;
+                private long latestReleaseTime;
+                private int videoNum;
+                private Object adTrack;
+                private FollowBean follow;
+                private ShieldBean shield;
+                private int approvedNotReadyVideoCount;
+                private boolean ifPgc;
+                private int recSort;
+                private boolean expert;
+
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
+
+                public String getIcon() {
+                    return icon;
+                }
+
+                public void setIcon(String icon) {
+                    this.icon = icon;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public String getDescription() {
+                    return description;
+                }
+
+                public void setDescription(String description) {
+                    this.description = description;
+                }
+
+                public String getLink() {
+                    return link;
+                }
+
+                public void setLink(String link) {
+                    this.link = link;
+                }
+
+                public long getLatestReleaseTime() {
+                    return latestReleaseTime;
+                }
+
+                public void setLatestReleaseTime(long latestReleaseTime) {
+                    this.latestReleaseTime = latestReleaseTime;
+                }
+
+                public int getVideoNum() {
+                    return videoNum;
+                }
+
+                public void setVideoNum(int videoNum) {
+                    this.videoNum = videoNum;
+                }
+
+                public Object getAdTrack() {
+                    return adTrack;
+                }
+
+                public void setAdTrack(Object adTrack) {
+                    this.adTrack = adTrack;
+                }
+
+                public FollowBean getFollow() {
+                    return follow;
+                }
+
+                public void setFollow(FollowBean follow) {
+                    this.follow = follow;
+                }
+
+                public ShieldBean getShield() {
+                    return shield;
+                }
+
+                public void setShield(ShieldBean shield) {
+                    this.shield = shield;
+                }
+
+                public int getApprovedNotReadyVideoCount() {
+                    return approvedNotReadyVideoCount;
+                }
+
+                public void setApprovedNotReadyVideoCount(int approvedNotReadyVideoCount) {
+                    this.approvedNotReadyVideoCount = approvedNotReadyVideoCount;
+                }
+
+                public boolean isIfPgc() {
+                    return ifPgc;
+                }
+
+                public void setIfPgc(boolean ifPgc) {
+                    this.ifPgc = ifPgc;
+                }
+
+                public int getRecSort() {
+                    return recSort;
+                }
+
+                public void setRecSort(int recSort) {
+                    this.recSort = recSort;
+                }
+
+                public boolean isExpert() {
+                    return expert;
+                }
+
+                public void setExpert(boolean expert) {
+                    this.expert = expert;
+                }
+
+                public static class FollowBean implements Serializable{
+                    /**
+                     * itemType : author
+                     * itemId : 2163
+                     * followed : false
+                     */
+
+                    private String itemType;
+                    private int itemId;
+                    private boolean followed;
+
+                    public String getItemType() {
+                        return itemType;
+                    }
+
+                    public void setItemType(String itemType) {
+                        this.itemType = itemType;
+                    }
+
+                    public int getItemId() {
+                        return itemId;
+                    }
+
+                    public void setItemId(int itemId) {
+                        this.itemId = itemId;
+                    }
+
+                    public boolean isFollowed() {
+                        return followed;
+                    }
+
+                    public void setFollowed(boolean followed) {
+                        this.followed = followed;
+                    }
+                }
+
+                public static class ShieldBean implements Serializable{
+                    /**
+                     * itemType : author
+                     * itemId : 2163
+                     * shielded : false
+                     */
+
+                    private String itemType;
+                    private int itemId;
+                    private boolean shielded;
+
+                    public String getItemType() {
+                        return itemType;
+                    }
+
+                    public void setItemType(String itemType) {
+                        this.itemType = itemType;
+                    }
+
+                    public int getItemId() {
+                        return itemId;
+                    }
+
+                    public void setItemId(int itemId) {
+                        this.itemId = itemId;
+                    }
+
+                    public boolean isShielded() {
+                        return shielded;
+                    }
+
+                    public void setShielded(boolean shielded) {
+                        this.shielded = shielded;
+                    }
+                }
+            }
+
+            public static class CoverBean implements Serializable{
+                /**
+                 * feed : http://img.kaiyanapp.com/20a2d60c40c8cb6983e05918b5488d37.jpeg?imageMogr2/quality/60/format/jpg
+                 * detail : http://img.kaiyanapp.com/20a2d60c40c8cb6983e05918b5488d37.jpeg?imageMogr2/quality/60/format/jpg
+                 * blurred : http://img.kaiyanapp.com/3346238101b8cf4d3f3bee3a133e8990.jpeg?imageMogr2/quality/60/format/jpg
+                 * sharing : null
+                 * homepage : http://img.kaiyanapp.com/20a2d60c40c8cb6983e05918b5488d37.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim
+                 */
+
+                private String feed;
+                private String detail;
+                private String blurred;
+                private Object sharing;
+                private String homepage;
+
+                public String getFeed() {
+                    return feed;
+                }
+
+                public void setFeed(String feed) {
+                    this.feed = feed;
+                }
+
+                public String getDetail() {
+                    return detail;
+                }
+
+                public void setDetail(String detail) {
+                    this.detail = detail;
+                }
+
+                public String getBlurred() {
+                    return blurred;
+                }
+
+                public void setBlurred(String blurred) {
+                    this.blurred = blurred;
+                }
+
+                public Object getSharing() {
+                    return sharing;
+                }
+
+                public void setSharing(Object sharing) {
+                    this.sharing = sharing;
+                }
+
+                public String getHomepage() {
+                    return homepage;
+                }
+
+                public void setHomepage(String homepage) {
+                    this.homepage = homepage;
+                }
+            }
+            public static class WebUrlBean implements Serializable{
+                /**
+                 * raw : http://www.eyepetizer.net/detail.html?vid=171095
+                 * forWeibo : http://www.eyepetizer.net/detail.html?vid=171095&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0
+                 */
+
+                private String raw;
+                private String forWeibo;
+
+                public String getRaw() {
+                    return raw;
+                }
+
+                public void setRaw(String raw) {
+                    this.raw = raw;
+                }
+
+                public String getForWeibo() {
+                    return forWeibo;
+                }
+
+                public void setForWeibo(String forWeibo) {
+                    this.forWeibo = forWeibo;
+                }
+            }
+            public static class TagsBean implements Serializable{
+                /**
+                 * id : 18
+                 * name : 音乐电台
+                 * actionUrl : eyepetizer://tag/18/?title=%E9%9F%B3%E4%B9%90%E7%94%B5%E5%8F%B0
+                 * adTrack : null
+                 * desc : null
+                 * bgPicture : http://img.kaiyanapp.com/70e1bedfdff53729402f1998788c3ee9.jpeg?imageMogr2/quality/60/format/jpg
+                 * headerImage : http://img.kaiyanapp.com/a27b2660a5c84adaf5c9fc1ea8cc9946.jpeg?imageMogr2/quality/60/format/jpg
+                 * tagRecType : IMPORTANT
+                 * childTagList : null
+                 * childTagIdList : null
+                 * communityIndex : 0
+                 */
+
+                private int id;
+                private String name;
+                private String actionUrl;
+                private Object adTrack;
+                private Object desc;
+                private String bgPicture;
+                private String headerImage;
+                private String tagRecType;
+                private Object childTagList;
+                private Object childTagIdList;
+                private int communityIndex;
+
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public String getActionUrl() {
+                    return actionUrl;
+                }
+
+                public void setActionUrl(String actionUrl) {
+                    this.actionUrl = actionUrl;
+                }
+
+                public Object getAdTrack() {
+                    return adTrack;
+                }
+
+                public void setAdTrack(Object adTrack) {
+                    this.adTrack = adTrack;
+                }
+
+                public Object getDesc() {
+                    return desc;
+                }
+
+                public void setDesc(Object desc) {
+                    this.desc = desc;
+                }
+
+                public String getBgPicture() {
+                    return bgPicture;
+                }
+
+                public void setBgPicture(String bgPicture) {
+                    this.bgPicture = bgPicture;
+                }
+
+                public String getHeaderImage() {
+                    return headerImage;
+                }
+
+                public void setHeaderImage(String headerImage) {
+                    this.headerImage = headerImage;
+                }
+
+                public String getTagRecType() {
+                    return tagRecType;
+                }
+
+                public void setTagRecType(String tagRecType) {
+                    this.tagRecType = tagRecType;
+                }
+
+                public Object getChildTagList() {
+                    return childTagList;
+                }
+
+                public void setChildTagList(Object childTagList) {
+                    this.childTagList = childTagList;
+                }
+
+                public Object getChildTagIdList() {
+                    return childTagIdList;
+                }
+
+                public void setChildTagIdList(Object childTagIdList) {
+                    this.childTagIdList = childTagIdList;
+                }
+
+                public int getCommunityIndex() {
+                    return communityIndex;
+                }
+
+                public void setCommunityIndex(int communityIndex) {
+                    this.communityIndex = communityIndex;
+                }
+            }
+
+            public static class PlayInfoBean implements Serializable{
+                /**
+                 * height : 480
+                 * width : 854
+                 * urlList : [{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171095&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss","size":20077971},{"name":"qcloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171095&resourceType=video&editionType=normal&source=qcloud&playUrlType=url_oss","size":20077971},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171095&resourceType=video&editionType=normal&source=ucloud&playUrlType=url_oss","size":20077971}]
+                 * name : 标清
+                 * type : normal
+                 * url : http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171095&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss
+                 */
+
+                private int height;
+                private int width;
+                private String name;
+                private String type;
+                private String url;
+                private List<UrlListBean> urlList;
+
+                public int getHeight() {
+                    return height;
+                }
+
+                public void setHeight(int height) {
+                    this.height = height;
+                }
+
+                public int getWidth() {
+                    return width;
+                }
+
+                public void setWidth(int width) {
+                    this.width = width;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public String getType() {
+                    return type;
+                }
+
+                public void setType(String type) {
+                    this.type = type;
+                }
+
+                public String getUrl() {
+                    return url;
+                }
+
+                public void setUrl(String url) {
+                    this.url = url;
+                }
+
+                public List<UrlListBean> getUrlList() {
+                    return urlList;
+                }
+
+                public void setUrlList(List<UrlListBean> urlList) {
+                    this.urlList = urlList;
+                }
+
+                public static class UrlListBean implements Serializable{
+                    /**
+                     * name : aliyun
+                     * url : http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171095&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss
+                     * size : 20077971
+                     */
+
+                    private String name;
+                    private String url;
+                    private int size;
+
+                    public String getName() {
+                        return name;
+                    }
+
+                    public void setName(String name) {
+                        this.name = name;
+                    }
+
+                    public String getUrl() {
+                        return url;
+                    }
+
+                    public void setUrl(String url) {
+                        this.url = url;
+                    }
+
+                    public int getSize() {
+                        return size;
+                    }
+
+                    public void setSize(int size) {
+                        this.size = size;
+                    }
+                }
             }
         }
     }

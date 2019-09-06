@@ -1,7 +1,9 @@
 package com.example.lanhuajian.blues.module_study.model_android.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ViewGroup;
@@ -28,17 +30,18 @@ public class AndroidImagesAdapter extends BaseQuickAdapter<String, BaseViewHolde
     protected void convert(BaseViewHolder helper, String url) {
         //设置每张图片的长度
         int width = ScreenUtil.getScreenWidth();
-        helper.getView(R.id.iv_item).setLayoutParams(new ViewGroup.LayoutParams(width / 3, SizeUtil.dp2px(150)));
+        ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(width / 4, SizeUtil.dp2px(150));
+        params.setMargins(SizeUtil.dp2px(5),0 , SizeUtil.dp2px(5), SizeUtil.dp2px(5));
+        helper.getView(R.id.iv_item).setLayoutParams(params);
 
         if (url != null && !TextUtils.isEmpty(url)) {
             Glide.with(mContext).load(url).placeholder(R.drawable.shape_place_holder).into((ImageView) helper.getView(R.id.iv_item));
 
             helper.getView(R.id.iv_item).setOnClickListener(v -> {
-                Intent intent = new Intent();
-                intent.putExtra("url", url);
-                Log.i("Blues", url);
-                intent.setClass(mContext, ShowImageActivity.class);
-                mContext.startActivity(intent);
+                Intent intent = new Intent(mContext, ShowImageActivity.class);
+                intent.putExtra("imgUrl", url);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) mContext, helper.getView(R.id.iv_item), "transitionImage");
+                mContext.startActivity(intent, options.toBundle());
             });
         }
     }

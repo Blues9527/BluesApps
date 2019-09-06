@@ -69,8 +69,11 @@ public class MainActivity extends BaseActivity {
             if (currentMillis - mLastMillis > 2000) {
                 mLastMillis = currentMillis;
                 HelperUtil.showToastShort("再按一次退出程序");
-                return true;
+            } else {
+                //返回退出界面，但不销毁
+                moveTaskToBack(true);
             }
+            return true;
         }
         return super.onKeyDown(keyCode, event);
     }

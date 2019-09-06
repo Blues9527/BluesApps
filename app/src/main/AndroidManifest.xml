@@ -27,32 +27,37 @@
         </activity>
 
         <activity
-            android:name="com.example.lanhuajian.blues.framework.widget.ShowImageActivity"
+            android:name=".framework.widget.ShowImageActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:launchMode="singleInstance"
+            android:launchMode="standard"
             android:theme="@style/ZoomInOutAnimation" />
 
         <activity
             android:name=".splash.SplashActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleInstance"
-            android:theme="@style/Theme.Custom"></activity>
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.Custom" />
         <activity
             android:name=".module_login.LoginActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
             android:theme="@style/Theme.Custom"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".module_register.view.RegisterActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
             android:theme="@style/Theme.Custom"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".module_kaiyan.search.OpenEyeSearchActivity" />
         <activity
             android:name=".module_kaiyan.detail.OEDetailActivity"
-            android:launchMode="singleInstance" />
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:theme="@style/Theme.Custom"
+            android:launchMode="standard" />
     </application>
 
 </manifest>

@@ -50,7 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:transitionName="@string/transitionName_Image" />
 
         <com.jude.easyrecyclerview.EasyRecyclerView
             android:id="@+id/rv_images"
@@ -79,8 +80,8 @@
         android:layout_below="@id/ll_container"
         android:layout_alignBaseline="@+id/tv_publish_time"
         android:layout_alignParentRight="true"
-        android:text="来自web"
         android:layout_marginRight="10dp"
+        android:text="来自web"
         android:textColor="@color/color_dark_gray"
         android:textSize="11sp" />
 </RelativeLayout>

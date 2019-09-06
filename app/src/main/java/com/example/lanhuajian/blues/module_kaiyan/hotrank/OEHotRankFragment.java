@@ -1,24 +1,19 @@
 package com.example.lanhuajian.blues.module_kaiyan.hotrank;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.framework.utils.HelperUtil;
 import com.example.lanhuajian.blues.module_kaiyan.OpenEyeContract;
 import com.example.lanhuajian.blues.module_kaiyan.OpenEyeEntity;
 import com.example.lanhuajian.blues.module_kaiyan.OpenEyePresenter;
-import com.example.lanhuajian.blues.module_kaiyan.detail.OEDetailActivity;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -40,7 +35,6 @@ public class OEHotRankFragment extends BaseFragment implements OpenEyeContract.i
     private ViewStub networkVS;
     private OpenEyeContract.iOpenEyePresenter iPresenter;
     private RecyclerArrayAdapter<OpenEyeEntity.ItemListBean> mAdapter;
-    private List<OpenEyeEntity.ItemListBean> itemListBeans;
 
     @Override
     public int setLayoutResourceId() {
@@ -117,15 +111,6 @@ public class OEHotRankFragment extends BaseFragment implements OpenEyeContract.i
 
     @Override
     public void showRankList(List<OpenEyeEntity.ItemListBean> openEyeList) {
-        itemListBeans = openEyeList;
-        mAdapter.setOnItemClickListener(position -> {
-            if (itemListBeans != null) {
-                Intent intent = new Intent();
-                intent.putExtra("itemDetail", itemListBeans.get(position));
-                intent.setClass(mContext, OEDetailActivity.class);
-                startActivity(intent);
-            }
-        });
         if (hotRankSr.isRefreshing()) {
             mAdapter.clear();
         }

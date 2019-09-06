@@ -76,15 +76,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         super.onBackPressed();
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            //返回退出界面，但不销毁
-            moveTaskToBack(true);
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 
     /**
      * 方便父类打印日志

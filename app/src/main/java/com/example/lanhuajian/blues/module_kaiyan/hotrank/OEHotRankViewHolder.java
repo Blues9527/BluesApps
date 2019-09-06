@@ -1,5 +1,8 @@
 package com.example.lanhuajian.blues.module_kaiyan.hotrank;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -8,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.framework.utils.TimeFormatUtil;
 import com.example.lanhuajian.blues.module_kaiyan.OpenEyeEntity;
+import com.example.lanhuajian.blues.module_kaiyan.detail.OEDetailActivity;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 
 /**
@@ -45,5 +49,12 @@ public class OEHotRankViewHolder extends BaseViewHolder<OpenEyeEntity.ItemListBe
         }
         tvTags.setText(String.format("#%s%s", sb, TimeFormatUtil.formatTime(data.getData().getDuration())));
         tvCategory.setText(String.format("#%s", data.getData().getCategory()));
+
+        coverHotRank.setOnClickListener(v->{
+            Intent intent = new Intent(getContext(), OEDetailActivity.class);
+            intent.putExtra("itemDetail",data);
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)getContext(), coverHotRank, "transitionOEObject");
+            getContext().startActivity(intent, options.toBundle());
+        });
     }
 }
