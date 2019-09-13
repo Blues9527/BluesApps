@@ -1,7 +1,7 @@
 package com.example.lanhuajian.blues.module_study.model_android.view;
 
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,20 +9,26 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.LinearLayout;
 
-import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.module_study.model_android.AndroidContract;
 import com.example.lanhuajian.blues.module_study.model_android.model.AndroidEntity;
 import com.example.lanhuajian.blues.module_study.model_android.presenter.AndroidPresenter;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
-public class AndroidFragment extends BaseFragment implements AndroidContract.iContractView, SwipeRefreshLayout.OnRefreshListener {
+public class AndroidFragment extends BaseFragment implements AndroidContract.iContractView, OnRefreshListener, OnLoadMoreListener {
 
-    private SwipeRefreshLayout androidSr;
+    private SmartRefreshLayout androidSr;
     private ViewStub networkVS;
     private View v;
     private AndroidContract.iContractPresenter iPresenter;
@@ -39,6 +45,10 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
         EasyRecyclerView androidErv = rootView.findViewById(R.id.rv_android);
         androidSr = rootView.findViewById(R.id.sr_android);
         networkVS = rootView.findViewById(R.id.view_stub_network);
+        //设置 Header 为 贝塞尔雷达 样式
+        androidSr.setRefreshHeader(new ClassicsHeader(getmContext()).setEnableLastTime(true));
+        androidSr.setRefreshFooter(new ClassicsFooter(getmContext()));
+        androidSr.setEnableHeaderTranslationContent(true);
 
         mPresenter = new AndroidPresenter(this);
 
@@ -52,19 +62,19 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
                 return new AndroidViewHolder(parent);
             }
         });
-        mAdapter.setMore(R.layout.view_loading_more, new RecyclerArrayAdapter.OnMoreListener() {
-            @Override
-            public void onMoreShow() {
-                iPresenter.loadMore();
-            }
+//        mAdapter.setMore(R.layout.view_loading_more, new RecyclerArrayAdapter.OnMoreListener() {
+//            @Override
+//            public void onMoreShow() {
+//
+//            }
+//
+//            @Override
+//            public void onMoreClick() {
+//
+//            }
+//        });
 
-            @Override
-            public void onMoreClick() {
-
-            }
-        });
-
-        mAdapter.setNoMore(R.layout.view_load_no_more);
+//        mAdapter.setNoMore(R.layout.view_load_no_more);
     }
 
     @Override
@@ -75,13 +85,12 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
     @Override
     public void setListener() {
         androidSr.setOnRefreshListener(this);
+        androidSr.setOnLoadMoreListener(this);
     }
 
     @Override
     public void setData(List<AndroidEntity.ResultsBean> result) {
-        if (androidSr.isRefreshing()) {
-            mAdapter.clear();
-        }
+        mAdapter.clear();
 
         if (v != null) {
             v.setVisibility(View.GONE);
@@ -90,7 +99,7 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
             mAdapter.add(data);
         }
         mAdapter.notifyDataSetChanged();
-        androidSr.setRefreshing(false);
+        androidSr.finishRefresh();
     }
 
     @Override
@@ -115,9 +124,7 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
 
     @Override
     public void showError() {
-        if (androidSr.isRefreshing()) {
-            androidSr.setRefreshing(false);
-        }
+        androidSr.finishRefresh();
         try {
             v = networkVS.inflate();
             LinearLayout blankLl = v.findViewById(R.id.error_blank);
@@ -137,8 +144,13 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
     }
 
     @Override
-    public void onRefresh() {
+    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
         mAdapter.clear();
         iPresenter.initData();
+    }
+
+    @Override
+    public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+        iPresenter.loadMore();
     }
 }
