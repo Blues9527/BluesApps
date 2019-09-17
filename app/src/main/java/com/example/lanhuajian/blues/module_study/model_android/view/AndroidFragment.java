@@ -26,7 +26,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
-public class AndroidFragment extends BaseFragment implements AndroidContract.iContractView, OnRefreshListener, OnLoadMoreListener {
+public class AndroidFragment extends BaseFragment implements AndroidContract.iContractView, OnRefreshListener {
 
     private SmartRefreshLayout androidSr;
     private ViewStub networkVS;
@@ -45,9 +45,8 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
         EasyRecyclerView androidErv = rootView.findViewById(R.id.rv_android);
         androidSr = rootView.findViewById(R.id.sr_android);
         networkVS = rootView.findViewById(R.id.view_stub_network);
-        //设置 Header 为 贝塞尔雷达 样式
+        //设置 Header 为 经典 样式 带最后刷新时间
         androidSr.setRefreshHeader(new ClassicsHeader(getmContext()).setEnableLastTime(true));
-        androidSr.setRefreshFooter(new ClassicsFooter(getmContext()));
         androidSr.setEnableHeaderTranslationContent(true);
 
         mPresenter = new AndroidPresenter(this);
@@ -62,19 +61,19 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
                 return new AndroidViewHolder(parent);
             }
         });
-//        mAdapter.setMore(R.layout.view_loading_more, new RecyclerArrayAdapter.OnMoreListener() {
-//            @Override
-//            public void onMoreShow() {
-//
-//            }
-//
-//            @Override
-//            public void onMoreClick() {
-//
-//            }
-//        });
+        mAdapter.setMore(R.layout.view_loading_more, new RecyclerArrayAdapter.OnMoreListener() {
+            @Override
+            public void onMoreShow() {
+                iPresenter.loadMore();
+            }
 
-//        mAdapter.setNoMore(R.layout.view_load_no_more);
+            @Override
+            public void onMoreClick() {
+
+            }
+        });
+
+        mAdapter.setNoMore(R.layout.view_load_no_more);
     }
 
     @Override
@@ -84,14 +83,12 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
 
     @Override
     public void setListener() {
+        androidSr.setEnableRefresh(true);
         androidSr.setOnRefreshListener(this);
-        androidSr.setOnLoadMoreListener(this);
     }
 
     @Override
     public void setData(List<AndroidEntity.ResultsBean> result) {
-        mAdapter.clear();
-
         if (v != null) {
             v.setVisibility(View.GONE);
         }
@@ -99,7 +96,6 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
             mAdapter.add(data);
         }
         mAdapter.notifyDataSetChanged();
-        androidSr.finishRefresh();
     }
 
     @Override
@@ -119,12 +115,11 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
 
     @Override
     public void showFinished() {
-
+        androidSr.finishRefresh();
     }
 
     @Override
     public void showError() {
-        androidSr.finishRefresh();
         try {
             v = networkVS.inflate();
             LinearLayout blankLl = v.findViewById(R.id.error_blank);
@@ -147,10 +142,5 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
     public void onRefresh(@NonNull RefreshLayout refreshLayout) {
         mAdapter.clear();
         iPresenter.initData();
-    }
-
-    @Override
-    public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-        iPresenter.loadMore();
     }
 }

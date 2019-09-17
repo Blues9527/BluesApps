@@ -1,6 +1,7 @@
 package com.example.lanhuajian.blues.module_study.model_ios.view;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +17,16 @@ import com.example.lanhuajian.blues.module_study.model_ios.presenter.IOSPresente
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
-public class _iOSFragment extends BaseFragment implements IOSContract.iContractView {
+public class _iOSFragment extends BaseFragment implements IOSContract.iContractView, OnRefreshListener {
 
+    private SmartRefreshLayout iOSSr;
     private ViewStub networkVS;
     private IOSContract.iContractPresenter iPresenter;
     private RecyclerArrayAdapter<IOSEntity.ResultsBean> mAdapter;
@@ -36,7 +42,10 @@ public class _iOSFragment extends BaseFragment implements IOSContract.iContractV
 
         EasyRecyclerView iOSErv = rootView.findViewById(R.id.rv_ios);
         networkVS = rootView.findViewById(R.id.view_stub_network);
-
+        iOSSr = rootView.findViewById(R.id.sr_ios);
+        //设置 Header 为 经典 样式 带最后刷新时间
+        iOSSr.setRefreshHeader(new ClassicsHeader(getmContext()).setEnableLastTime(true));
+        iOSSr.setEnableHeaderTranslationContent(true);
         mPresenter = new IOSPresenter(this);
 
         iPresenter.initData();
@@ -70,7 +79,8 @@ public class _iOSFragment extends BaseFragment implements IOSContract.iContractV
 
     @Override
     public void setListener() {
-
+        iOSSr.setEnableRefresh(true);
+        iOSSr.setOnRefreshListener(this);
     }
 
     @Override
@@ -108,7 +118,7 @@ public class _iOSFragment extends BaseFragment implements IOSContract.iContractV
 
     @Override
     public void showFinished() {
-
+        iOSSr.finishRefresh();
     }
 
     @Override
@@ -129,5 +139,11 @@ public class _iOSFragment extends BaseFragment implements IOSContract.iContractV
     @Override
     public void showEmpty() {
 
+    }
+
+    @Override
+    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+        mAdapter.clear();
+        iPresenter.initData();
     }
 }

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.example.lanhuajian.blues.constant.UsedConstant;
 import com.example.lanhuajian.blues.framework.utils.ScreenUtil;
 import com.example.lanhuajian.blues.framework.utils.SizeUtil;
 import com.example.lanhuajian.blues.framework.widget.ShowImageActivity;
@@ -40,7 +41,7 @@ public class IOSImagesAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
             helper.getView(R.id.iv_item).setOnClickListener(v -> {
                 Intent intent = new Intent(mContext, ShowImageActivity.class);
-                intent.putExtra("imgUrl", url);
+                intent.putExtra(UsedConstant.IMAGE_URL, url);
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) mContext, helper.getView(R.id.iv_item), "transitionImage");
                 mContext.startActivity(intent, options.toBundle());
             });

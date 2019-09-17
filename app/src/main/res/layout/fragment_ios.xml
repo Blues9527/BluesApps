@@ -4,13 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.jude.easyrecyclerview.EasyRecyclerView
-        android:id="@+id/rv_ios"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/sr_ios"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/shape_overall_background"
-        android:paddingTop="10dp"
-        app:scrollbars="none" />
+        android:background="@drawable/shape_overall_background">
+
+        <com.jude.easyrecyclerview.EasyRecyclerView
+            android:id="@+id/rv_ios"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_overall_background"
+            android:paddingTop="10dp"
+            app:scrollbars="none" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     <ViewStub
         android:id="@+id/view_stub_network"

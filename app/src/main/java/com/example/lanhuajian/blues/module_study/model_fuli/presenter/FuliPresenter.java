@@ -10,14 +10,14 @@ import com.example.lanhuajian.blues.module_study.model_fuli.model.FuliModel;
 public class FuliPresenter extends RxPresenter implements FuliContract.iContractPresenter {
 
     private FuliContract.iContractModel mModel;
-    private FuliContract.iContractView mView;
+    private FuliContract.iContractView iView;
 
     private static final int LIMIT = 10;
     private int mCurrentPage = 1;
 
-    public FuliPresenter(BaseView mView) {
-        super(mView);
-        this.mView = (FuliContract.iContractView) mView;
+    public FuliPresenter(BaseView iView) {
+        super(iView);
+        this.iView = (FuliContract.iContractView) iView;
         mModel = new FuliModel();
     }
 
@@ -28,20 +28,28 @@ public class FuliPresenter extends RxPresenter implements FuliContract.iContract
 
     @Override
     public void loadMore() {
-        getData(LIMIT, mCurrentPage++);
+        getData(LIMIT, ++mCurrentPage);
     }
 
     @Override
     public void getData(int limit, int page) {
+        iView.showBegin();
+        iView.showLoading();
         subscribe(mModel.getData(limit, page, new HttpCallBack<FuliEntity>() {
             @Override
             public void onSuccess(FuliEntity data) {
-                mView.setData(data.getResults());
+                if (data != null) {
+                    iView.setData(data.getResults());
+                } else {
+                    iView.showEmpty();
+                }
+                iView.showFinished();
             }
 
             @Override
             public void onFailure(String error) {
-                mView.showError();
+                iView.showError();
+                iView.showFinished();
             }
         }));
     }

@@ -1,12 +1,13 @@
 package com.example.lanhuajian.blues.module_kaiyan.hotrank;
 
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.widget.LinearLayout;
 
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
@@ -18,6 +19,10 @@ import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.DividerDecoration;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
@@ -28,9 +33,9 @@ import java.util.List;
  * Time : 11:18
  */
 
-public class OEHotRankFragment extends BaseFragment implements OpenEyeContract.iOpenEyeView, SwipeRefreshLayout.OnRefreshListener {
+public class OEHotRankFragment extends BaseFragment implements OpenEyeContract.iOpenEyeView, OnRefreshListener {
 
-    private SwipeRefreshLayout hotRankSr;
+    private SmartRefreshLayout hotRankSr;
     private View v;
     private ViewStub networkVS;
     private OpenEyeContract.iOpenEyePresenter iPresenter;
@@ -46,6 +51,9 @@ public class OEHotRankFragment extends BaseFragment implements OpenEyeContract.i
         EasyRecyclerView hotRankErv = rootView.findViewById(R.id.rv_hotrank);
         hotRankSr = rootView.findViewById(R.id.sr_hotrank);
         networkVS = rootView.findViewById(R.id.view_stub_network);
+        //设置 Header 为 经典 样式 带最后刷新时间
+        hotRankSr.setRefreshHeader(new ClassicsHeader(getmContext()).setEnableLastTime(true));
+        hotRankSr.setEnableHeaderTranslationContent(true);
 
         mPresenter = new OpenEyePresenter(this);
 
@@ -70,6 +78,7 @@ public class OEHotRankFragment extends BaseFragment implements OpenEyeContract.i
 
     @Override
     public void setListener() {
+        hotRankSr.setEnableRefresh(true);
         hotRankSr.setOnRefreshListener(this);
     }
 
@@ -90,12 +99,22 @@ public class OEHotRankFragment extends BaseFragment implements OpenEyeContract.i
 
     @Override
     public void showFinished() {
-
+        hotRankSr.finishRefresh();
     }
 
     @Override
     public void showError() {
-
+        try {
+            v = networkVS.inflate();
+            LinearLayout blankLl = v.findViewById(R.id.error_blank);
+            blankLl.setOnClickListener(v1 -> {
+                mAdapter.clear();
+                iPresenter.getRankList();
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            v.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -104,26 +123,13 @@ public class OEHotRankFragment extends BaseFragment implements OpenEyeContract.i
     }
 
     @Override
-    public void onRefresh() {
-        mAdapter.clear();
-        iPresenter.getRankList();
-    }
-
-    @Override
     public void showRankList(List<OpenEyeEntity.ItemListBean> openEyeList) {
-        if (hotRankSr.isRefreshing()) {
-            mAdapter.clear();
-        }
         mAdapter.addAll(openEyeList);
         mAdapter.notifyDataSetChanged();
-        hotRankSr.setRefreshing(false);
     }
 
     @Override
     public void showRequestError(String msg) {
-        if (hotRankSr.isRefreshing()) {
-            hotRankSr.setRefreshing(false);
-        }
         HelperUtil.showToastShort(msg);
     }
 
@@ -135,5 +141,11 @@ public class OEHotRankFragment extends BaseFragment implements OpenEyeContract.i
     @Override
     public void showSearchResult(List<OpenEyeEntity.ItemListBean> openEyeList) {
 
+    }
+
+    @Override
+    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+        mAdapter.clear();
+        iPresenter.getRankList();
     }
 }

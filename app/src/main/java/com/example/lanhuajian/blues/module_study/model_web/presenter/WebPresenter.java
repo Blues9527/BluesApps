@@ -9,16 +9,16 @@ import com.example.lanhuajian.blues.module_study.model_web.model.WebModel;
 
 public class WebPresenter extends RxPresenter implements WebContract.iContractPresenter {
 
-    private WebContract.iContractModel mModel;
-    private WebContract.iContractView mView;
+    private WebContract.iContractModel iModel;
+    private WebContract.iContractView iView;
 
     private static final int LIMIT = 10;
     private int mCurrentPage = 1;
 
-    public WebPresenter(BaseView mView) {
-        super(mView);
-        this.mView = (WebContract.iContractView) mView;
-        mModel = new WebModel();
+    public WebPresenter(BaseView iView) {
+        super(iView);
+        this.iView = (WebContract.iContractView) iView;
+        iModel = new WebModel();
     }
 
     @Override
@@ -28,20 +28,28 @@ public class WebPresenter extends RxPresenter implements WebContract.iContractPr
 
     @Override
     public void loadMore() {
-        getData(LIMIT, mCurrentPage++);
+        getData(LIMIT, ++mCurrentPage);
     }
 
     @Override
     public void getData(int limit, int page) {
-        subscribe(mModel.getData(limit, page, new HttpCallBack<WebEntity>() {
+        iView.showBegin();
+        iView.showLoading();
+        subscribe(iModel.getData(limit, page, new HttpCallBack<WebEntity>() {
             @Override
             public void onSuccess(WebEntity data) {
-                mView.setData(data.getResults());
+                if (data != null) {
+                    iView.setData(data.getResults());
+                } else {
+                    iView.showEmpty();
+                }
+                iView.showFinished();
             }
 
             @Override
             public void onFailure(String error) {
-                mView.showError();
+                iView.showError();
+                iView.showFinished();
             }
         }));
     }

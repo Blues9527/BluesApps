@@ -25,10 +25,16 @@ public class OpenEyePresenter extends RxPresenter implements OpenEyeContract.iOp
 
     @Override
     public void getRankList() {
+        iView.showBegin();
+        iView.showLoading();
         subscribe(iModel.getRankList(new HttpCallBack<OpenEyeEntity>() {
             @Override
             public void onSuccess(OpenEyeEntity data) {
-                iView.showRankList(data.getItemList());
+                if (data != null) {
+                    iView.showRankList(data.getItemList());
+                } else {
+                    iView.showEmpty();
+                }
             }
 
             @Override
@@ -36,29 +42,44 @@ public class OpenEyePresenter extends RxPresenter implements OpenEyeContract.iOp
                 iView.showRequestError(error);
             }
         }));
+        iView.showFinished();
     }
 
     @Override
     public void getRankList(String strategy) {
+        iView.showBegin();
+        iView.showLoading();
         subscribe(iModel.getRankList(strategy, new HttpCallBack<OpenEyeEntity>() {
             @Override
             public void onSuccess(OpenEyeEntity data) {
-                iView.showRankList(data.getItemList());
+                if (data != null) {
+                    iView.showRankList(data.getItemList());
+                } else {
+                    iView.showEmpty();
+                }
             }
 
             @Override
             public void onFailure(String error) {
                 iView.showRequestError(error);
+
             }
         }));
+        iView.showFinished();
     }
 
     @Override
     public void getSearchResult(String query) {
+        iView.showBegin();
+        iView.showLoading();
         subscribe(iModel.getSearchResult(query, new HttpCallBack<OpenEyeEntity>() {
             @Override
             public void onSuccess(OpenEyeEntity data) {
-                iView.showSearchResult(data.getItemList());
+                if (data != null) {
+                    iView.showSearchResult(data.getItemList());
+                } else {
+                    iView.showEmpty();
+                }
             }
 
             @Override
@@ -66,10 +87,13 @@ public class OpenEyePresenter extends RxPresenter implements OpenEyeContract.iOp
                 iView.showRequestError(error);
             }
         }));
+        iView.showFinished();
     }
 
     @Override
     public void getHotSearch() {
+        iView.showBegin();
+        iView.showLoading();
         subscribe(iModel.getHotSearch(new HttpCallBack<List<String>>() {
             @Override
             public void onSuccess(List<String> searches) {
@@ -81,5 +105,6 @@ public class OpenEyePresenter extends RxPresenter implements OpenEyeContract.iOp
                 iView.showRequestError(error);
             }
         }));
+        iView.showFinished();
     }
 }

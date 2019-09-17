@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.constant.UsedConstant;
 
 /**
  * User : Blues
@@ -34,7 +35,7 @@ public class ShowImageActivity extends Activity {
 
         ivImageShow = findViewById(R.id.image_show);
 
-        String imgUrl = (String) getIntent().getExtras().get("imgUrl");
+        String imgUrl = (String) getIntent().getExtras().get(UsedConstant.IMAGE_URL);
         Glide.with(this).load(imgUrl).into(ivImageShow);
 
         //单击图图片退出

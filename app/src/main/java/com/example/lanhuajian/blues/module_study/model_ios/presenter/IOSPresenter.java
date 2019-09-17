@@ -9,16 +9,16 @@ import com.example.lanhuajian.blues.module_study.model_ios.model.IOSModel;
 
 public class IOSPresenter extends RxPresenter implements IOSContract.iContractPresenter {
 
-    private IOSContract.iContractModel mModel;
-    private IOSContract.iContractView mView;
+    private IOSContract.iContractModel iModel;
+    private IOSContract.iContractView iView;
 
     private static final int LIMIT = 10;
     private int mCurrentPage = 1;
 
-    public IOSPresenter(BaseView mView) {
-        super(mView);
-        this.mView = (IOSContract.iContractView) mView;
-        mModel = new IOSModel();
+    public IOSPresenter(BaseView iView) {
+        super(iView);
+        this.iView = (IOSContract.iContractView) iView;
+        iModel = new IOSModel();
     }
 
     @Override
@@ -28,20 +28,28 @@ public class IOSPresenter extends RxPresenter implements IOSContract.iContractPr
 
     @Override
     public void loadMore() {
-        getData(LIMIT, mCurrentPage++);
+        getData(LIMIT, ++mCurrentPage);
     }
 
     @Override
     public void getData(int limit, int page) {
-        subscribe(mModel.getData(limit, page, new HttpCallBack<IOSEntity>() {
+        iView.showBegin();
+        iView.showLoading();
+        subscribe(iModel.getData(limit, page, new HttpCallBack<IOSEntity>() {
             @Override
             public void onSuccess(IOSEntity data) {
-                mView.setData(data.getResults());
+                if (data != null) {
+                    iView.setData(data.getResults());
+                } else {
+                    iView.showEmpty();
+                }
+                iView.showFinished();
             }
 
             @Override
             public void onFailure(String error) {
-                mView.showError();
+                iView.showError();
+                iView.showFinished();
             }
         }));
     }

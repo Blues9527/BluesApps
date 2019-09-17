@@ -1,6 +1,7 @@
 package com.example.lanhuajian.blues.module_study.model_web.view;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +17,16 @@ import com.example.lanhuajian.blues.module_study.model_web.presenter.WebPresente
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
-public class WebFragment extends BaseFragment implements WebContract.iContractView {
+public class WebFragment extends BaseFragment implements WebContract.iContractView, OnRefreshListener {
 
+    private SmartRefreshLayout webSr;
     private ViewStub networkVS;
     private View v;
     private WebContract.iContractPresenter iPresenter;
@@ -36,7 +42,11 @@ public class WebFragment extends BaseFragment implements WebContract.iContractVi
 
         EasyRecyclerView iOSErv = rootView.findViewById(R.id.rv_web);
         networkVS = rootView.findViewById(R.id.view_stub_network);
-
+        webSr = rootView.findViewById(R.id.sr_web);
+        //设置 Header 为 经典 样式 带最后刷新时间
+        webSr.setRefreshHeader(new ClassicsHeader(getmContext()).setEnableLastTime(true));
+        webSr.setEnableHeaderTranslationContent(true);
+        
         mPresenter = new WebPresenter(this);
 
         iPresenter.initData();
@@ -70,7 +80,8 @@ public class WebFragment extends BaseFragment implements WebContract.iContractVi
 
     @Override
     public void setListener() {
-
+        webSr.setEnableRefresh(true);
+        webSr.setOnRefreshListener(this);
     }
 
     @Override
@@ -108,7 +119,7 @@ public class WebFragment extends BaseFragment implements WebContract.iContractVi
 
     @Override
     public void showFinished() {
-
+        webSr.finishRefresh();
     }
 
     @Override
@@ -128,5 +139,11 @@ public class WebFragment extends BaseFragment implements WebContract.iContractVi
     @Override
     public void showEmpty() {
 
+    }
+
+    @Override
+    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+        mAdapter.clear();
+        iPresenter.initData();
     }
 }

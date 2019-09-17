@@ -1,6 +1,7 @@
 package com.example.lanhuajian.blues.module_study.model_fuli.view;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +17,16 @@ import com.example.lanhuajian.blues.module_study.model_fuli.presenter.FuliPresen
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
-public class FuliFragment extends BaseFragment implements FuliContract.iContractView {
+public class FuliFragment extends BaseFragment implements FuliContract.iContractView, OnRefreshListener {
 
+    private SmartRefreshLayout fuliSr;
     private ViewStub networkVS;
     private View v;
     private FuliContract.iContractPresenter iPresenter;
@@ -35,8 +41,11 @@ public class FuliFragment extends BaseFragment implements FuliContract.iContract
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         EasyRecyclerView fuliErv = rootView.findViewById(R.id.rv_fuli);
-
+        fuliSr = rootView.findViewById(R.id.sr_fuli);
         networkVS = rootView.findViewById(R.id.view_stub_network);
+        //设置 Header 为 经典 样式 带最后刷新时间
+        fuliSr.setRefreshHeader(new ClassicsHeader(getmContext()).setEnableLastTime(true));
+        fuliSr.setEnableHeaderTranslationContent(true);
 
         mPresenter = new FuliPresenter(this);
 
@@ -71,6 +80,8 @@ public class FuliFragment extends BaseFragment implements FuliContract.iContract
 
     @Override
     public void setListener() {
+        fuliSr.setEnableRefresh(true);
+        fuliSr.setOnRefreshListener(this);
     }
 
     @Override
@@ -108,7 +119,7 @@ public class FuliFragment extends BaseFragment implements FuliContract.iContract
 
     @Override
     public void showFinished() {
-
+        fuliSr.finishRefresh();
     }
 
     @Override
@@ -129,5 +140,11 @@ public class FuliFragment extends BaseFragment implements FuliContract.iContract
     @Override
     public void showEmpty() {
 
+    }
+
+    @Override
+    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+        mAdapter.clear();
+        iPresenter.initData();
     }
 }

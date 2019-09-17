@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.lanhuajian.blues.constant.UsedConstant;
 import com.example.lanhuajian.blues.framework.utils.ResourcesUtils;
 import com.example.lanhuajian.blues.framework.utils.ScreenUtil;
 import com.example.lanhuajian.blues.framework.widget.ShowImageActivity;
@@ -47,7 +48,7 @@ public class FuliViewHolder extends BaseViewHolder<FuliEntity.ResultsBean> {
 
         ivUrl.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), ShowImageActivity.class);
-            intent.putExtra("imgUrl", data.getUrl());
+            intent.putExtra(UsedConstant.IMAGE_URL, data.getUrl());
             ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) getContext(), ivUrl, "transitionImage");
             getContext().startActivity(intent, options.toBundle());
         });

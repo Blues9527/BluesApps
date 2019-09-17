@@ -1,7 +1,5 @@
 package com.example.lanhuajian.blues.module_study.model_android.presenter;
 
-import android.util.Log;
-
 import com.example.lanhuajian.blues.framework.base.BaseView;
 import com.example.lanhuajian.blues.framework.base.RxPresenter;
 import com.example.lanhuajian.blues.framework.http.HttpCallBack;
@@ -39,26 +37,31 @@ public class AndroidPresenter extends RxPresenter implements AndroidContract.iCo
     @Override
     public void initData() {
         mDatas.clear();
-        getData(LIMIT, mCurrentPage);
+        getData(LIMIT, mCurrentPage = 1);
     }
 
     @Override
     public void loadMore() {
-        getData(LIMIT, mCurrentPage++);
+        getData(LIMIT, ++mCurrentPage);
     }
 
     @Override
     public void getData(int limit, int page) {
+        iView.showFinished();
         subscribe(iModel.getData(limit, page, new HttpCallBack<AndroidEntity>() {
             @Override
             public void onSuccess(AndroidEntity data) {
-                mDatas.addAll(data.getResults());
-                iView.setData(data.getResults());
+                if (data != null) {
+                    mDatas.addAll(data.getResults());
+                    iView.setData(data.getResults());
+                } else {
+                    iView.showEmpty();
+                }
             }
 
             @Override
             public void onFailure(String error) {
-               iView.showError();
+                iView.showError();
             }
         }));
     }
