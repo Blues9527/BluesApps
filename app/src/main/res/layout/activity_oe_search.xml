@@ -67,8 +67,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
         android:text="输入标题或者描述中的关键词找到更多视频"
-        android:textColor="#ffcdcdcd"
+        android:textColor="@color/color_weak_white"
         android:textSize="11sp" />
 
     <include layout="@layout/layout_search_result" />

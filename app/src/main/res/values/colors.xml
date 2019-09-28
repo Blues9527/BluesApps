@@ -43,6 +43,8 @@
     <color name="color_dark_gray">#ff666666</color>
     <!--苍白色-->
     <color name="color_pale">#fff7f7f7</color>
+    <!--不知道什么色-->
+    <color name="color_weak_white">#ffcdcdcd</color>
     <!--苍白色半透明-->
     <color name="color_pale_translucent50">#50f7f7f7</color>
     <!--暗苍白色-->

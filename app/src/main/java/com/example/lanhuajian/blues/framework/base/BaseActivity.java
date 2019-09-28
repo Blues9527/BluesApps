@@ -1,14 +1,20 @@
 package com.example.lanhuajian.blues.framework.base;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.framework.injection.InjectManager;
+import com.example.lanhuajian.blues.framework.widget.immersionbar.ImmersionBar;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 
 /**
@@ -55,6 +61,12 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        immersionInit();
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
         NiceVideoPlayerManager.instance().releaseNiceVideoPlayer();
@@ -74,6 +86,20 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     public void onBackPressed() {
         if (NiceVideoPlayerManager.instance().onBackPressd()) return;
         super.onBackPressed();
+    }
+
+    public void immersionInit() {
+        //安卓系统低于6.0,不进行换色
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return;
+        }
+        ImmersionBar.with(mContext)
+                .transparentBar()
+                .fitsSystemWindows(true)
+                .statusBarColorRes(R.color.color_transparent)
+                .statusBarColorTransformRes(R.color.color_transparent)
+                .statusBarDarkFont(true)
+                .init();
     }
 
 

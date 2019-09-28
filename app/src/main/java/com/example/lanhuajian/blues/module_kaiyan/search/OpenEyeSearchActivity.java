@@ -1,17 +1,19 @@
 package com.example.lanhuajian.blues.module_kaiyan.search;
 
-import android.media.Image;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lanhuajian.blues.R;
@@ -35,8 +37,8 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
 
     private EditText etSearch;
     private ImageView ivClear;
-    private TextView tvCancel;
     private TextView tvSearchResult;
+    private LinearLayout llHotSearch;
 
     private EasyRecyclerView rvSearchResult;
     private EasyRecyclerView rvHotSearchResult;
@@ -45,6 +47,7 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
 
     private OpenEyeContract.iOpenEyePresenter iPresenter;
     private RecyclerArrayAdapter<String> mAdapter;
+    private RecyclerArrayAdapter<OpenEyeEntity.ItemListBean.DataBean> mResultAdapter;
 
     @Override
     public int setLayoutResourceId() {
@@ -55,16 +58,18 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
     public void initView(Bundle savedInstanceState) {
         etSearch = findViewById(R.id.et_search);
         ivClear = findViewById(R.id.iv_clear);
-        tvCancel = findViewById(R.id.tv_cancel);
         tvSearchResult = findViewById(R.id.tv_search_result);
 
         rvSearchResult = findViewById(R.id.rv_search_result);
         rvHotSearchResult = findViewById(R.id.rv_hot_search);
+        llHotSearch = findViewById(R.id.ll_hot_search);
 
 
         ivClear.setVisibility(View.GONE);
         rvSearchResult.setVisibility(View.GONE);
-        rvHotSearchResult.setVisibility(View.VISIBLE);
+        llHotSearch.setVisibility(View.VISIBLE);
+        tvSearchResult.setTextColor(getResources().getColor(R.color.color_weak_white));
+        tvSearchResult.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11F);
 
         mPresenter = new OpenEyePresenter(this);
         iPresenter.getHotSearch();
@@ -75,6 +80,15 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
             @Override
             public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
                 return new OEHotSearchViewHolder(parent);
+            }
+        });
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
+        rvSearchResult.setLayoutManager(linearLayoutManager);
+        rvSearchResult.setAdapter(mResultAdapter = new RecyclerArrayAdapter<OpenEyeEntity.ItemListBean.DataBean>(mContext) {
+            @Override
+            public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
+                return new OESearchResultViewHolder(parent);
             }
         });
     }
@@ -115,6 +129,9 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
                 etSearch.setText("");
                 textInput = "";
                 break;
+            case R.id.tv_cancel:
+                finish();
+                break;
         }
     }
 
@@ -136,7 +153,17 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
 
     @Override
     public void showSearchResult(List<OpenEyeEntity.ItemListBean> openEyeList) {
+        llHotSearch.setVisibility(View.GONE);
+        rvSearchResult.setVisibility(View.VISIBLE);
 
+        tvSearchResult.setTextColor(getResources().getColor(R.color.color_black));
+        tvSearchResult.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13F);
+        tvSearchResult.setText(String.format("『%s』共有%s条搜索结果", textInput, openEyeList.size()));
+
+        for (OpenEyeEntity.ItemListBean item : openEyeList) {
+            mResultAdapter.add(item.getData());
+        }
+        mResultAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -151,7 +178,6 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
 
     @Override
     public void showLoading() {
-
     }
 
     @Override
@@ -172,6 +198,7 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            mResultAdapter.clear();
             iPresenter.getSearchResult(textInput);
             return true;
         }
