@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="—— 热门搜索词 ——"
+            android:text="@string/hot_search_tips"
             android:textColor="@color/color_black"
             android:textSize="15sp" />
 

@@ -3,9 +3,9 @@ package com.example.lanhuajian.blues.module_kaiyan;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -61,7 +61,8 @@ public class OpenEyeFragment extends BaseFragment {
     public void setListener() {
         ivSearch.setOnClickListener(v -> {
             Intent intent = new Intent(getmContext(), OpenEyeSearchActivity.class);
-            startActivity(intent);
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getmContext(), ivSearch, "transitionSearch");
+            startActivity(intent, options.toBundle());
         });
     }
 }

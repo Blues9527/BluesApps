@@ -42,11 +42,12 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
 
     private EasyRecyclerView rvSearchResult;
     private EasyRecyclerView rvHotSearchResult;
+    private TextView tvCancel;
 
     private String textInput;
 
     private OpenEyeContract.iOpenEyePresenter iPresenter;
-    private RecyclerArrayAdapter<String> mAdapter;
+    private RecyclerArrayAdapter<String> mHotSearchAdapter;
     private RecyclerArrayAdapter<OpenEyeEntity.ItemListBean.DataBean> mResultAdapter;
 
     @Override
@@ -63,6 +64,7 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
         rvSearchResult = findViewById(R.id.rv_search_result);
         rvHotSearchResult = findViewById(R.id.rv_hot_search);
         llHotSearch = findViewById(R.id.ll_hot_search);
+        tvCancel = findViewById(R.id.tv_cancel);
 
 
         ivClear.setVisibility(View.GONE);
@@ -76,7 +78,7 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
 
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         rvHotSearchResult.setLayoutManager(layoutManager);
-        rvHotSearchResult.setAdapter(mAdapter = new RecyclerArrayAdapter<String>(mContext) {
+        rvHotSearchResult.setAdapter(mHotSearchAdapter = new RecyclerArrayAdapter<String>(mContext) {
             @Override
             public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
                 return new OEHotSearchViewHolder(parent);
@@ -96,10 +98,18 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
     @Override
     public void setListener() {
         etSearch.addTextChangedListener(this);
-
         etSearch.setOnEditorActionListener(this);
-
         ivClear.setOnClickListener(this);
+        tvCancel.setOnClickListener(this);
+
+        if (mHotSearchAdapter != null) {
+
+            mHotSearchAdapter.setOnItemClickListener(position -> {
+                textInput = mHotSearchAdapter.getItem(position);
+                etSearch.setText(textInput);
+                iPresenter.getSearchResult(textInput);
+            });
+        }
     }
 
     @Override
@@ -110,11 +120,7 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         textInput = etSearch.getText().toString().trim();
-        if (textInput != null && !TextUtils.isEmpty(textInput)) {
-            ivClear.setVisibility(View.VISIBLE);
-        } else {
-            ivClear.setVisibility(View.GONE);
-        }
+        ivClear.setVisibility(!TextUtils.isEmpty(textInput) ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -147,8 +153,8 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
 
     @Override
     public void showHotSearch(List<String> searches) {
-        mAdapter.addAll(searches);
-        mAdapter.notifyDataSetChanged();
+        mHotSearchAdapter.addAll(searches);
+        mHotSearchAdapter.notifyDataSetChanged();
     }
 
     @Override
