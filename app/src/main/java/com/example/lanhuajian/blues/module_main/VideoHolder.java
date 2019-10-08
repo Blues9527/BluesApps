@@ -1,14 +1,8 @@
 package com.example.lanhuajian.blues.module_main;
 
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.lanhuajian.blues.R;
-import com.example.lanhuajian.blues.framework.utils.SizeUtil;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
@@ -39,6 +33,7 @@ public class VideoHolder extends BaseViewHolder<VideoInfoEntity> {
         TxVideoPlayerController controller = new TxVideoPlayerController(getContext());
         controller.setTitle(data.getVideo_title());
         controller.setImage(R.mipmap.ic_background);
+        controller.setShouldShowLength(false);
         nvPlayer.setController(controller);
 
         //自动播放

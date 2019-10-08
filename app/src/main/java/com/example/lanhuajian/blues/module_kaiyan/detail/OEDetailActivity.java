@@ -69,7 +69,7 @@ public class OEDetailActivity extends BaseActivity implements OEDetailRelatedCon
         nvpVideo.setUp(data.getData().getPlayUrl(), null);
         TxVideoPlayerController controller = new TxVideoPlayerController(mContext);
         controller.setTitle(null);
-        controller.setLenght((long) data.getData().getDuration() * 1000L);//这里将long类型时间长度转换成时分秒的单位是毫秒
+        controller.setLength((long) data.getData().getDuration() * 1000L);//这里将long类型时间长度转换成时分秒的单位是毫秒
         Glide.with(mContext).load(data.getData().getCover().getBlurred()).into(controller.imageView());
         nvpVideo.setController(controller);
 

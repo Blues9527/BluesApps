@@ -52,7 +52,8 @@
             android:excludeFromRecents="true"
             android:theme="@style/Theme.Custom"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".module_kaiyan.search.OpenEyeSearchActivity" />
+        <activity android:name=".module_kaiyan.search.OpenEyeSearchActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"/>
         <activity
             android:name=".module_kaiyan.detail.OEDetailActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
