@@ -1,7 +1,5 @@
 package com.example.lanhuajian.blues.module_main.banner;
 
-import com.example.lanhuajian.blues.constant.RequestUrl;
-import com.example.lanhuajian.blues.framework.http.HttpResponse;
 import com.example.lanhuajian.blues.framework.http.RetrofitManager;
 import com.example.lanhuajian.blues.framework.utils.RxUtil;
 import com.example.lanhuajian.blues.module_study.model_android.AndroidAPI;
@@ -22,8 +20,8 @@ public class BannerAPI {
     private BannerAPI() {
     }
 
-    public static BannerAPI getInstance() {
-        RetrofitManager.setBaseUrl(RequestUrl.BASE_WANANDROID_URL);
+    public static BannerAPI getInstance(String url) {
+        RetrofitManager.setBaseUrl(url);
         if (null == instance) {
             synchronized (AndroidAPI.class) {
                 if (null == instance) {
@@ -34,8 +32,14 @@ public class BannerAPI {
         return instance;
     }
 
+
     public Subscription getBanner(Subscriber<BannerEntity> subscriber) {
         Observable observable = RetrofitManager.getInstance().create(BannerContractRequest.class).getBanner();
+        return RxUtil.setSubscribe(observable, subscriber);
+    }
+
+    public Subscription getMicroSpec(Subscriber<MicroSpecEntity> subscriber) {
+        Observable observable = RetrofitManager.getInstance().create(BannerContractRequest.class).getMicroSpec();
         return RxUtil.setSubscribe(observable, subscriber);
     }
 }

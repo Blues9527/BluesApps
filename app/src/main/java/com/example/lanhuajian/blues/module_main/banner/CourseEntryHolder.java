@@ -1,5 +1,9 @@
 package com.example.lanhuajian.blues.module_main.banner;
 
+import android.app.Activity;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;

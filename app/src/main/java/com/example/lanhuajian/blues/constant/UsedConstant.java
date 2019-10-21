@@ -9,4 +9,6 @@ package com.example.lanhuajian.blues.constant;
 public class UsedConstant {
 
     public static final String IMAGE_URL = "imgUrl";
+
+    public static final String DIALOGFRAGMENT_TITLE = "dialogfragment_title";
 }

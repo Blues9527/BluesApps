@@ -4,8 +4,10 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +70,12 @@ public class BannerHeaderView extends LinearLayout implements RecyclerArrayAdapt
         });
         mEntryAdapter.addAll(CourseEntryConstant.getEntries());
         mEntryAdapter.notifyDataSetChanged();
+
+        mEntryAdapter.setOnItemClickListener(v -> {
+            if (getContext() instanceof FragmentActivity) {
+                MicroSpecDialogFragment.newInstance("免费课程").show(((FragmentActivity) getContext()).getSupportFragmentManager(), "microspec");
+            }
+        });
     }
 
     public void initBanner(Context ctx, BannerEntity bannerEntity) {

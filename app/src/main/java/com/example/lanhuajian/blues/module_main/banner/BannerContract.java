@@ -22,17 +22,25 @@ public interface BannerContract {
 
         void onFailure(String result);
 
+        void onFetchMicroSuccess(MicroSpecEntity microSpec);
+
+        void onFetchMicroFailed(String msg);
+
     }
 
     interface iBannerContractPresenter extends BasePresenter {
 
         void getBanner();
 
+        void getMicroSpec();
+
     }
 
     interface iBannerContractModel {
 
         Subscription getBanner(HttpCallBack<BannerEntity> callBack);
+
+        Subscription getMicroSpec(HttpCallBack<MicroSpecEntity> callBack);
 
     }
 }

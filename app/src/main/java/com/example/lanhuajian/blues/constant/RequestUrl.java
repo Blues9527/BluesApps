@@ -11,6 +11,8 @@ public class RequestUrl {
 
     public static final String BASE_WANANDROID_URL = "https://www.wanandroid.com/";
 
+    public static final String BASE_NETEASE_URL = "https://m.study.163.com/";
+
     //微博内容url,containerid=102803 热门微博， 102803_ctg1_4388_-_ctg1_4388 搞笑微博 102803_ctg1_7978_-_ctg1_7978 新鲜事 102803_ctg1_1388_-_ctg1_1388 体育
     // https://m.weibo.cn/api/lbs/near?page=2 获取附近的人微博
     // https://m.weibo.cn/api/container/getIndex?containerid=102803&since_id=3

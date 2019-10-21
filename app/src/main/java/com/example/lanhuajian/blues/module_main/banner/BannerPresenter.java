@@ -37,4 +37,20 @@ public class BannerPresenter extends RxPresenter implements BannerContract.iBann
             }
         }));
     }
+
+    @Override
+    public void getMicroSpec() {
+        subscribe(iModel.getMicroSpec(new HttpCallBack<MicroSpecEntity>() {
+
+            @Override
+            public void onSuccess(MicroSpecEntity data) {
+                iView.onFetchMicroSuccess(data);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                iView.onFetchMicroFailed(error);
+            }
+        }));
+    }
 }

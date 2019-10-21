@@ -32,7 +32,7 @@ public class VideoHolder extends BaseViewHolder<VideoInfoEntity> {
 
         TxVideoPlayerController controller = new TxVideoPlayerController(getContext());
         controller.setTitle(data.getVideo_title());
-        controller.setImage(R.mipmap.ic_background);
+        controller.setImage(R.color.color_black);
         controller.setShouldShowLength(false);
         nvPlayer.setController(controller);
 

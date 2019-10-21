@@ -14,4 +14,7 @@ public interface BannerContractRequest {
 
     @GET("/banner/json")
     Observable<BannerEntity> getBanner();
+
+    @GET("/j/microSpec/fetchLiveData.json")
+    Observable<MicroSpecEntity> getMicroSpec();
 }
