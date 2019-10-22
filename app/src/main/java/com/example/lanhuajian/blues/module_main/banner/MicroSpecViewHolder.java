@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lanhuajian.blues.R;
-import com.example.lanhuajian.blues.framework.utils.HelperUtil;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 
 import java.text.SimpleDateFormat;
@@ -39,7 +38,7 @@ public class MicroSpecViewHolder extends BaseViewHolder<MicroSpecEntity.ResultBe
         Log.i("Bluesss", "进入此页面");
 
         Glide.with(getContext()).load(data.getImgUrl()).into(ivMicroTeacher);
-        tvMicroTime.setText(new SimpleDateFormat("yyyy年MM月dd日 hh:mm").format(new Date(data.getLiveStartTime())));
+        tvMicroTime.setText(new SimpleDateFormat("yyyy年MM月dd日 w晚上hh:mm").format(new Date(data.getLiveStartTime())));
         tvMicroTitle.setText(data.getProductName());
         tvMicroTeacherDesc.setText(String.format("讲师:%s", data.getInstructor()));
     }
