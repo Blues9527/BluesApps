@@ -26,6 +26,13 @@ public interface BannerContract {
 
         void onFetchMicroFailed(String msg);
 
+        void onFetchCategorySuccess(CategoryEntity category);
+
+        void onFetchCategoryFailed(String msg);
+
+        void onFetchCategoryCourseSuccess(CategoryCourseEntity categoryCourse);
+
+        void onFetchCategoryCourseFailed(String msg);
     }
 
     interface iBannerContractPresenter extends BasePresenter {
@@ -34,6 +41,9 @@ public interface BannerContract {
 
         void getMicroSpec();
 
+        void getCategory(String id);
+
+        void getCategoryCourse(int pageIndex);
     }
 
     interface iBannerContractModel {
@@ -41,6 +51,15 @@ public interface BannerContract {
         Subscription getBanner(HttpCallBack<BannerEntity> callBack);
 
         Subscription getMicroSpec(HttpCallBack<MicroSpecEntity> callBack);
+
+        Subscription getCategory(String id, HttpCallBack<CategoryEntity> callBack);
+
+        Subscription getCategoryCourse(int activityId,
+                                       int priceType,
+                                       int orderType,
+                                       String categoryId,
+                                       int pageIndex,
+                                       int pageSize, HttpCallBack<CategoryCourseEntity> callBack);
 
     }
 }

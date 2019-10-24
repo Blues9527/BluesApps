@@ -22,19 +22,19 @@ import static com.example.lanhuajian.blues.constant.UsedConstant.DIALOGFRAGMENT_
  * Time : 16:35
  */
 
-public class MicroSpecDialogFragment extends BaseDialogFragment implements BannerContract.iBannerContractView {
+public class CategoryDialogFragment extends BaseDialogFragment implements BannerContract.iBannerContractView {
 
-    private RecyclerArrayAdapter<MicroSpecEntity.ResultBean> mAdapter;
+    private RecyclerArrayAdapter<CategoryEntity.ResultBean.SectionDtoListBean.ElementDtoListBean> mAdapter;
     private BannerContract.iBannerContractPresenter iPresenter;
 
-    public MicroSpecDialogFragment() {
+    public CategoryDialogFragment() {
 
     }
 
-    public static MicroSpecDialogFragment newInstance(String title) {
-        MicroSpecDialogFragment fragment = new MicroSpecDialogFragment();
+    public static CategoryDialogFragment newInstance(String id) {
+        CategoryDialogFragment fragment = new CategoryDialogFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(DIALOGFRAGMENT_TITLE, title);
+        bundle.putString("categoryId", id);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -46,25 +46,28 @@ public class MicroSpecDialogFragment extends BaseDialogFragment implements Banne
 
     @Override
     public void initView() {
-        mPresenter = new BannerPresenter(this);
-        iPresenter.getMicroSpec();
 
-        EasyRecyclerView ervMicroSpec = rootView.findViewById(R.id.erv_microspec);
+        String id = this.getArguments().getString("categoryId");
+        mPresenter = new BannerPresenter(this);
+        Log.i("Bluesss", "传过来的id是：" + id);
+        iPresenter.getCategory(id);
+
+        EasyRecyclerView ervCategory = rootView.findViewById(R.id.erv_category);
         DividerDecoration decoration = new DividerDecoration(getResources().getColor(R.color.color_black_translucent50), SizeUtil.dp2px(1));
-        ervMicroSpec.addItemDecoration(decoration);
-        ervMicroSpec.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mAdapter = new RecyclerArrayAdapter<MicroSpecEntity.ResultBean>(getActivity()) {
+        ervCategory.addItemDecoration(decoration);
+        ervCategory.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mAdapter = new RecyclerArrayAdapter<CategoryEntity.ResultBean.SectionDtoListBean.ElementDtoListBean>(getActivity()) {
             @Override
             public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-                return new MicroSpecViewHolder(parent);
+                return new CategoryViewHolder(parent);
             }
         };
-        ervMicroSpec.setAdapter(mAdapter);
+        ervCategory.setAdapter(mAdapter);
     }
 
     @Override
     public int setLayoutResourceId() {
-        return R.layout.dialogfragment_microspec;
+        return R.layout.dialogfragment_category;
     }
 
     @Override
@@ -79,8 +82,7 @@ public class MicroSpecDialogFragment extends BaseDialogFragment implements Banne
 
     @Override
     public void onFetchMicroSuccess(MicroSpecEntity microSpec) {
-        mAdapter.addAll(microSpec.getResult());
-        mAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -90,7 +92,10 @@ public class MicroSpecDialogFragment extends BaseDialogFragment implements Banne
 
     @Override
     public void onFetchCategorySuccess(CategoryEntity category) {
-
+        for (CategoryEntity.ResultBean.SectionDtoListBean sectionDtoListBean : category.getResult().getSectionDtoList()) {
+            mAdapter.addAll(sectionDtoListBean.getElementDtoList());
+        }
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override

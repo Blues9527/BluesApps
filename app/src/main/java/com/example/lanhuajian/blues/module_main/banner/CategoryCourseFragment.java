@@ -1,8 +1,6 @@
 package com.example.lanhuajian.blues.module_main.banner;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.ViewGroup;
 
 import com.example.lanhuajian.blues.R;
@@ -14,29 +12,24 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.DividerDecoration;
 
-import static com.example.lanhuajian.blues.constant.UsedConstant.DIALOGFRAGMENT_TITLE;
-
 /**
  * User : Blues
  * Date : 2019/10/21
  * Time : 16:35
  */
 
-public class MicroSpecDialogFragment extends BaseDialogFragment implements BannerContract.iBannerContractView {
+public class CategoryCourseFragment extends BaseDialogFragment implements BannerContract.iBannerContractView {
 
-    private RecyclerArrayAdapter<MicroSpecEntity.ResultBean> mAdapter;
+    private RecyclerArrayAdapter<CategoryCourseEntity.ResultBean.CourseDtoListBean> mAdapter;
     private BannerContract.iBannerContractPresenter iPresenter;
+    private static int DEFAULT_PAGE_INDEX = 1;
 
-    public MicroSpecDialogFragment() {
+    public CategoryCourseFragment() {
 
     }
 
-    public static MicroSpecDialogFragment newInstance(String title) {
-        MicroSpecDialogFragment fragment = new MicroSpecDialogFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString(DIALOGFRAGMENT_TITLE, title);
-        fragment.setArguments(bundle);
-        return fragment;
+    public static CategoryCourseFragment newInstance() {
+        return new CategoryCourseFragment();
     }
 
     @Override
@@ -47,24 +40,43 @@ public class MicroSpecDialogFragment extends BaseDialogFragment implements Banne
     @Override
     public void initView() {
         mPresenter = new BannerPresenter(this);
-        iPresenter.getMicroSpec();
+        iPresenter.getCategoryCourse(DEFAULT_PAGE_INDEX = 1);
 
-        EasyRecyclerView ervMicroSpec = rootView.findViewById(R.id.erv_microspec);
+        EasyRecyclerView ervCategoryCourseSpec = rootView.findViewById(R.id.erv_categorycourse);
         DividerDecoration decoration = new DividerDecoration(getResources().getColor(R.color.color_black_translucent50), SizeUtil.dp2px(1));
-        ervMicroSpec.addItemDecoration(decoration);
-        ervMicroSpec.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mAdapter = new RecyclerArrayAdapter<MicroSpecEntity.ResultBean>(getActivity()) {
+        ervCategoryCourseSpec.addItemDecoration(decoration);
+        ervCategoryCourseSpec.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mAdapter = new RecyclerArrayAdapter<CategoryCourseEntity.ResultBean.CourseDtoListBean>(getActivity()) {
             @Override
             public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-                return new MicroSpecViewHolder(parent);
+                return new CategoryCourseViewHolder(parent);
             }
         };
-        ervMicroSpec.setAdapter(mAdapter);
+        mAdapter.setMore(R.layout.view_loading_more, new RecyclerArrayAdapter.OnMoreListener() {
+            @Override
+            public void onMoreShow() {
+                iPresenter.getCategoryCourse(++DEFAULT_PAGE_INDEX);
+            }
+
+            @Override
+            public void onMoreClick() {
+
+            }
+        });
+
+        mAdapter.setNoMore(R.layout.view_load_no_more);
+
+        ervCategoryCourseSpec.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void setLayout(int width, int height) {
+        super.setLayout(getDisplayMetrics().widthPixels, getDisplayMetrics().heightPixels);
     }
 
     @Override
     public int setLayoutResourceId() {
-        return R.layout.dialogfragment_microspec;
+        return R.layout.dialogfragment_categorycourse;
     }
 
     @Override
@@ -79,8 +91,7 @@ public class MicroSpecDialogFragment extends BaseDialogFragment implements Banne
 
     @Override
     public void onFetchMicroSuccess(MicroSpecEntity microSpec) {
-        mAdapter.addAll(microSpec.getResult());
-        mAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -100,7 +111,8 @@ public class MicroSpecDialogFragment extends BaseDialogFragment implements Banne
 
     @Override
     public void onFetchCategoryCourseSuccess(CategoryCourseEntity categoryCourse) {
-
+        mAdapter.addAll(categoryCourse.getResult().getCourseDtoList());
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override

@@ -53,4 +53,36 @@ public class BannerPresenter extends RxPresenter implements BannerContract.iBann
             }
         }));
     }
+
+    @Override
+    public void getCategory(String id) {
+        subscribe(iModel.getCategory(id, new HttpCallBack<CategoryEntity>() {
+
+            @Override
+            public void onSuccess(CategoryEntity data) {
+                iView.onFetchCategorySuccess(data);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                iView.onFetchCategoryFailed(error);
+            }
+        }));
+    }
+
+    @Override
+    public void getCategoryCourse( int pageIndex) {
+        subscribe(iModel.getCategoryCourse(0, 0, 0, "480000003126038", pageIndex, 10, new HttpCallBack<CategoryCourseEntity>() {
+
+            @Override
+            public void onSuccess(CategoryCourseEntity data) {
+                iView.onFetchCategoryCourseSuccess(data);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                iView.onFetchCategoryCourseFailed(error);
+            }
+        }));
+    }
 }

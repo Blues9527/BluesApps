@@ -13,6 +13,8 @@ import com.example.lanhuajian.blues.module_main.banner.BannerContract;
 import com.example.lanhuajian.blues.module_main.banner.BannerEntity;
 import com.example.lanhuajian.blues.module_main.banner.BannerHeaderView;
 import com.example.lanhuajian.blues.module_main.banner.BannerPresenter;
+import com.example.lanhuajian.blues.module_main.banner.CategoryCourseEntity;
+import com.example.lanhuajian.blues.module_main.banner.CategoryEntity;
 import com.example.lanhuajian.blues.module_main.banner.MicroSpecEntity;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
@@ -45,9 +47,7 @@ public class MainPageFragment extends BaseFragment implements BannerContract.iBa
         iPresenter.getBanner();
 
         EasyRecyclerView mainErv = rootView.findViewById(R.id.ev_main);
-        Log.i("Bluesss","2222222");
         mainErv.setLayoutManager(new LinearLayoutManager(getmContext()));
-        Log.i("Bluesss","111111111");
         mainErv.setAdapter(mAdapter = new RecyclerArrayAdapter<VideoInfoEntity>(getmContext()) {
             @Override
             public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
@@ -88,6 +88,26 @@ public class MainPageFragment extends BaseFragment implements BannerContract.iBa
 
     @Override
     public void onFetchMicroFailed(String msg) {
+
+    }
+
+    @Override
+    public void onFetchCategorySuccess(CategoryEntity category) {
+
+    }
+
+    @Override
+    public void onFetchCategoryFailed(String msg) {
+
+    }
+
+    @Override
+    public void onFetchCategoryCourseSuccess(CategoryCourseEntity categoryCourse) {
+
+    }
+
+    @Override
+    public void onFetchCategoryCourseFailed(String msg) {
 
     }
 

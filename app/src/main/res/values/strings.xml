@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BluesTest</string>
+    <string name="app_name">Blues</string>
 
     <string name="hot_search_tips">—— 热门搜索词 ——</string>
     <string name="search_tips">输入标题或者描述中的关键词找到更多视频</string>

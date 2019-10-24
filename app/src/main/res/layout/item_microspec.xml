@@ -42,10 +42,4 @@
         android:textSize="15sp"
         tools:text="彭锡 网易特邀安卓高级工程师" />
 
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:layout_below="@+id/tv_micro_teacher_desc"
-        android:layout_marginTop="5dp"
-        android:background="@color/color_black_translucent50" />
 </RelativeLayout>

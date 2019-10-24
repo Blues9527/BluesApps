@@ -23,7 +23,7 @@ import com.example.lanhuajian.blues.module_study.model_web.view.WebFragment;
 
 public class StudyPageFragment extends BaseFragment {
 
-    private String[] tabs = {"Android", "iOS", "Web", "福利"};
+    private String[] tabs = {"Android", "iOS", "Web", "美女"};
 
     @Override
     public int setLayoutResourceId() {

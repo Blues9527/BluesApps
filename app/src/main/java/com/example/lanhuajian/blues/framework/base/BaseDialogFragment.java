@@ -1,5 +1,6 @@
 package com.example.lanhuajian.blues.framework.base;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
@@ -8,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ public abstract class BaseDialogFragment<P extends BasePresenter> extends Dialog
     public BaseActivity mContext;
     public P mPresenter;
     public View rootView;
+    private Window window;
 
     @Nullable
     @Override
@@ -64,20 +67,33 @@ public abstract class BaseDialogFragment<P extends BasePresenter> extends Dialog
         super.onStart();
 
         Dialog dialog = getDialog();
-        Window window = dialog.getWindow();
+        window = dialog.getWindow();
 
+        if (getDisplayMetrics() != null) {
+            setLayout(getDisplayMetrics().widthPixels, getDisplayMetrics().heightPixels / 2);
+        }
+        setGravity(Gravity.CENTER);
+    }
+
+    public DisplayMetrics getDisplayMetrics() {
+        DisplayMetrics dm = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (getActivity() != null) {
-                DisplayMetrics dm = new DisplayMetrics();
+                dm = new DisplayMetrics();
                 getActivity().getWindowManager().getDefaultDisplay().getRealMetrics(dm);
-                window.setLayout(dm.widthPixels, dm.heightPixels/2);
             }
         } else {
-            DisplayMetrics dm = getResources().getDisplayMetrics();
-            window.setLayout(dm.widthPixels, dm.heightPixels/2);
+            dm = getResources().getDisplayMetrics();
         }
+        return dm;
+    }
 
+    public void setLayout(int width, int height) {
+        window.setLayout(width, height);
+    }
 
+    public void setGravity(int gravity) {
+        window.setGravity(gravity);
     }
 
     public abstract void setListener();

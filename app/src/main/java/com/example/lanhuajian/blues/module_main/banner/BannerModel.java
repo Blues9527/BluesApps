@@ -56,4 +56,46 @@ public class BannerModel implements BannerContract.iBannerContractModel {
             }
         });
     }
+
+    @Override
+    public Subscription getCategory(String id, HttpCallBack<CategoryEntity> callBack) {
+        return BannerAPI.getInstance(RequestUrl.BASE_NETEASE_URL).getCategory(id, new Subscriber<CategoryEntity>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                e.printStackTrace();
+                callBack.onFailure(e);
+            }
+
+            @Override
+            public void onNext(CategoryEntity categoryEntity) {
+                callBack.onSuccess(categoryEntity);
+            }
+        });
+    }
+
+    @Override
+    public Subscription getCategoryCourse(int activityId, int priceType, int orderType, String categoryId, int pageIndex, int pageSize, HttpCallBack<CategoryCourseEntity> callBack) {
+        return BannerAPI.getInstance(RequestUrl.BASE_NETEASE_URL).getCategoryCourse(activityId, priceType, orderType, categoryId, pageIndex, pageSize, new Subscriber<CategoryCourseEntity>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                e.printStackTrace();
+                callBack.onFailure(e);
+            }
+
+            @Override
+            public void onNext(CategoryCourseEntity categoryCourseEntity) {
+                callBack.onSuccess(categoryCourseEntity);
+            }
+        });
+    }
 }

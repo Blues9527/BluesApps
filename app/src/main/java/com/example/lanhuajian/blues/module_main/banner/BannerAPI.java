@@ -42,4 +42,19 @@ public class BannerAPI {
         Observable observable = RetrofitManager.getInstance().create(BannerContractRequest.class).getMicroSpec();
         return RxUtil.setSubscribe(observable, subscriber);
     }
+
+    public Subscription getCategory(String id, Subscriber<CategoryEntity> subscriber) {
+        Observable observable = RetrofitManager.getInstance().create(BannerContractRequest.class).getCategory(id);
+        return RxUtil.setSubscribe(observable, subscriber);
+    }
+
+    public Subscription getCategoryCourse(int activityId,
+                                          int priceType,
+                                          int orderType,
+                                          String categoryId,
+                                          int pageIndex,
+                                          int pageSize, Subscriber<CategoryCourseEntity> subscriber) {
+        Observable observable = RetrofitManager.getInstance().create(BannerContractRequest.class).getCategoryCourse(activityId, priceType, orderType, categoryId, pageIndex, pageSize);
+        return RxUtil.setSubscribe(observable, subscriber);
+    }
 }

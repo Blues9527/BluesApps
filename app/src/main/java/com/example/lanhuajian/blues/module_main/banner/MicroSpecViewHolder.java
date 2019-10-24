@@ -35,8 +35,6 @@ public class MicroSpecViewHolder extends BaseViewHolder<MicroSpecEntity.ResultBe
     public void setData(MicroSpecEntity.ResultBean data) {
         super.setData(data);
 
-        Log.i("Bluesss", "进入此页面");
-
         Glide.with(getContext()).load(data.getImgUrl()).into(ivMicroTeacher);
         tvMicroTime.setText(new SimpleDateFormat("yyyy年MM月dd日 w晚上hh:mm").format(new Date(data.getLiveStartTime())));
         tvMicroTitle.setText(data.getProductName());

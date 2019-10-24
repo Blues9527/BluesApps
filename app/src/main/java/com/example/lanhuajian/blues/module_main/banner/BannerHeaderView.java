@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.constant.UsedConstant;
 import com.example.lanhuajian.blues.framework.widget.endlessbannerview.BannerAdapter;
 import com.example.lanhuajian.blues.framework.widget.endlessbannerview.BannerView;
 import com.example.lanhuajian.blues.mock.CourseEntryConstant;
@@ -71,9 +72,35 @@ public class BannerHeaderView extends LinearLayout implements RecyclerArrayAdapt
         mEntryAdapter.addAll(CourseEntryConstant.getEntries());
         mEntryAdapter.notifyDataSetChanged();
 
-        mEntryAdapter.setOnItemClickListener(v -> {
+        mEntryAdapter.setOnItemClickListener(position -> {
             if (getContext() instanceof FragmentActivity) {
-                MicroSpecDialogFragment.newInstance("免费课程").show(((FragmentActivity) getContext()).getSupportFragmentManager(), "microspec");
+                switch (position) {
+                    case 0:
+                        MicroSpecDialogFragment.newInstance("免费课程").show(((FragmentActivity) getContext()).getSupportFragmentManager(), "microspec");
+                        break;
+                    case 1:
+                        CategoryDialogFragment.newInstance(UsedConstant.NETEASE_JOB_ID).show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category1");
+                        break;
+                    case 2:
+                        CategoryDialogFragment.newInstance(UsedConstant.NETEASE_PROGRAM_ID).show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category2");
+                        break;
+                    case 3:
+                        CategoryDialogFragment.newInstance(UsedConstant.NETEASE_AI_ID).show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category3");
+                        break;
+                    case 4:
+                        CategoryDialogFragment.newInstance(UsedConstant.NETEASE_PRODUCT_ID).show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category4");
+                        break;
+                    case 5:
+                        CategoryDialogFragment.newInstance(UsedConstant.NETEASE_DESIGN_ID).show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category5");
+                        break;
+                    case 6:
+                        CategoryDialogFragment.newInstance(UsedConstant.NETEASE_BUSINESS_ID).show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category6");
+                        break;
+                    case 7:
+                        CategoryCourseFragment.newInstance().show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category7");
+                        break;
+                }
+
             }
         });
     }
