@@ -1,8 +1,6 @@
 package com.example.lanhuajian.blues.module_login;
 
-import com.example.lanhuajian.blues.framework.http.HttpResponse;
-
-import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -14,6 +12,6 @@ import rx.Observable;
 
 public interface LoginContractRequest {
 
-    @GET("/login")
-    Observable<HttpResponse> doLogin(@Query("username") String username, @Query("password") String password);
+    @POST("/user/login")
+    Observable<LoginResponse> doLogin(@Query("username") String username, @Query("password") String password);
 }

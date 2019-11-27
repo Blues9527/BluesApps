@@ -1,4 +1,4 @@
-package com.example.lanhuajian.blues.module_login;
+package com.example.lanhuajian.blues.module_register;
 
 import com.example.lanhuajian.blues.constant.RequestUrl;
 import com.example.lanhuajian.blues.framework.http.RetrofitManager;
@@ -15,26 +15,26 @@ import rx.Subscription;
  * Time : 17:16
  */
 
-public class LoginAPI {
-    private static volatile LoginAPI instance;
+public class RegisterAPI {
+    private static volatile RegisterAPI instance;
 
-    private LoginAPI() {
+    private RegisterAPI() {
     }
 
-    public static LoginAPI getInstance() {
+    public static RegisterAPI getInstance() {
         RetrofitManager.setBaseUrl(RequestUrl.BASE_WANANDROID_URL);
         if (null == instance) {
             synchronized (AndroidAPI.class) {
                 if (null == instance) {
-                    instance = new LoginAPI();
+                    instance = new RegisterAPI();
                 }
             }
         }
         return instance;
     }
 
-    public Subscription doLogin(String username, String password, Subscriber<LoginResponse> subscriber) {
-        Observable observable = RetrofitManager.getInstance().create(LoginContractRequest.class).doLogin(username, password);
+    public Subscription doRegister(String username, String password, String repassword, Subscriber<RegisterResponse> subscriber) {
+        Observable observable = RetrofitManager.getInstance().create(RegisterContractRequest.class).doRegister(username, password, repassword);
         return RxUtil.setSubscribe(observable, subscriber);
     }
 }

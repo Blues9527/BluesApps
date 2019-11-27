@@ -1,4 +1,4 @@
-package com.example.lanhuajian.blues.module_login;
+package com.example.lanhuajian.blues.module_register;
 
 import com.example.lanhuajian.blues.framework.http.HttpCallBack;
 
@@ -7,14 +7,15 @@ import rx.Subscription;
 
 /**
  * User : Blues
- * Date : 2019/5/8
+ * Date : 2019/11/26
  * Time : 17:25
  */
 
-public class LoginModel implements LoginContract.iLoginContractModel {
+public class RegisterModel implements RegisterContract.iRegisterContractModel {
+
     @Override
-    public Subscription doLogin(String username, String password, HttpCallBack<LoginResponse> callBack) {
-        return LoginAPI.getInstance().doLogin(username, password, new Subscriber<LoginResponse>() {
+    public Subscription doRegister(String username, String password, String repassword, HttpCallBack<RegisterResponse> callBack) {
+        return RegisterAPI.getInstance().doRegister(username, password, repassword, new Subscriber<RegisterResponse>() {
             @Override
             public void onCompleted() {
 
@@ -27,7 +28,7 @@ public class LoginModel implements LoginContract.iLoginContractModel {
             }
 
             @Override
-            public void onNext(LoginResponse httpResponse) {
+            public void onNext(RegisterResponse httpResponse) {
                 callBack.onSuccess(httpResponse);
             }
         });

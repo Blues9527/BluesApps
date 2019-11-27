@@ -3,7 +3,6 @@ package com.example.lanhuajian.blues.module_login;
 import com.example.lanhuajian.blues.framework.base.BaseView;
 import com.example.lanhuajian.blues.framework.base.RxPresenter;
 import com.example.lanhuajian.blues.framework.http.HttpCallBack;
-import com.example.lanhuajian.blues.framework.http.HttpResponse;
 
 /**
  * User : Blues
@@ -24,15 +23,20 @@ public class LoginPresenter extends RxPresenter implements LoginContract.iLoginC
 
     @Override
     public void doLogin(String username, String password) {
-        subscribe(iModel.doLogin(username, password, new HttpCallBack<HttpResponse>() {
+        subscribe(iModel.doLogin(username, password, new HttpCallBack<LoginResponse>() {
             @Override
-            public void onSuccess(HttpResponse data) {
-                iView.onSuccess(data);
+            public void onSuccess(LoginResponse data) {
+                if (data.getErrorCode() == 0) {
+                    iView.onSuccess(data);
+                } else {
+                    iView.onFailure(data.getErrorMsg());
+                }
+
             }
 
             @Override
             public void onFailure(String error) {
-                iView.onFailure(error);
+
             }
         }));
     }

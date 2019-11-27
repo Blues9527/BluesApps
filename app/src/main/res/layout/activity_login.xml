@@ -17,6 +17,7 @@
         android:textSize="15sp" />
 
     <LinearLayout
+        android:id="@+id/ll_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -30,6 +31,7 @@
             android:background="@mipmap/ic_login_icon" />
 
         <TextView
+            android:id="@+id/tv_phone_login"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
@@ -43,6 +45,7 @@
             android:textStyle="normal" />
 
         <TextView
+            android:id="@+id/tv_account_login"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
@@ -50,7 +53,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/shape_background_transparent_green"
             android:gravity="center"
-            android:text="手机号快捷注册"
+            android:text="账号登陆"
             android:textColor="#ff2CC17B"
             android:textSize="18sp"
             android:textStyle="normal" />
@@ -100,6 +103,11 @@
             android:textSize="11sp" />
 
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </FrameLayout>

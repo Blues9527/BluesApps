@@ -6,13 +6,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.application.BluesApplication;
 import com.example.lanhuajian.blues.framework.injection.InjectManager;
 import com.example.lanhuajian.blues.framework.widget.immersionbar.ImmersionBar;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
@@ -75,6 +72,10 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        //启用leak canary
+        BluesApplication.getRefWatcher(this).watch(this);
+
         //当视图被销毁时presenter不为空，手动解除订阅
         if (mPresenter != null) {
             mPresenter.unSubscribe();

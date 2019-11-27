@@ -1,115 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="80dp"
-        android:background="@drawable/shape_item_background"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:id="@+id/iv_user_avatar"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="10dp"
-            android:background="@mipmap/ic_avatar_default" />
-
-        <EditText
-            android:id="@+id/et_input_account"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@null"
-            android:hint="请留下阁下的大名"
-            android:inputType="text|textUri"
-            android:textColorHint="@color/color_gray"
-            android:theme="@style/CustomEditText" />
-
-        <ImageView
-            android:id="@+id/iv_clean_act"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@mipmap/ic_delete" />
-
-        <ImageView
-            android:id="@+id/iv_drag_dowm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="80dp"
-        android:background="@drawable/shape_item_background"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <FrameLayout
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="10dp">
-
-            <ImageView
-                android:id="@+id/iv_eyes_on"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:background="@mipmap/ic_eyes_on"
-                android:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/iv_eyes_off"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:background="@mipmap/ic_eyes_off"
-                android:visibility="gone" />
-
-        </FrameLayout>
-
-        <EditText
-            android:id="@+id/et_input_pwd"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@null"
-            android:hint="请留下阁下的暗号"
-            android:inputType="textPassword"
-            android:theme="@style/CustomEditText" />
-
-        <ImageView
-            android:id="@+id/iv_clean_pwd"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginRight="15dp"
-            android:background="@mipmap/ic_delete" />
-    </LinearLayout>
+    android:background="@mipmap/ic_login_bg">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="让世界铭记您的大名吧"
-        android:textColor="@color/color_light_blue"
-        android:textSize="15sp"
-        android:textStyle="normal" />
+        android:id="@+id/tv_account_register"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_background_green"
+        android:gravity="center"
+        android:text="使用账号注册"
+        android:textColor="@color/color_white"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tv_phone_register"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_background_transparent_green"
+        android:gravity="center"
+        android:text="使用手机号注册"
+        android:textColor="#ff2CC17B"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_account_register"
+        app:layout_constraintRight_toRightOf="@+id/tv_account_register"
+        app:layout_constraintTop_toBottomOf="@+id/tv_account_register" />
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+
+</android.support.constraint.ConstraintLayout>

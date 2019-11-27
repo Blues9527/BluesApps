@@ -8,8 +8,8 @@ import android.view.KeyEvent;
 import com.example.lanhuajian.blues.framework.base.BaseActivity;
 import com.example.lanhuajian.blues.framework.base.BaseViewPagerAdapter;
 import com.example.lanhuajian.blues.framework.utils.HelperUtil;
-import com.example.lanhuajian.blues.module_main.MainPageFragment;
 import com.example.lanhuajian.blues.module_kaiyan.OpenEyeFragment;
+import com.example.lanhuajian.blues.module_main.MainPageFragment;
 import com.example.lanhuajian.blues.module_study.StudyPageFragment;
 
 

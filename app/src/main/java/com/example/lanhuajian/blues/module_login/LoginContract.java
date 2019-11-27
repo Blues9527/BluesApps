@@ -3,7 +3,6 @@ package com.example.lanhuajian.blues.module_login;
 import com.example.lanhuajian.blues.framework.base.BasePresenter;
 import com.example.lanhuajian.blues.framework.base.BaseView;
 import com.example.lanhuajian.blues.framework.http.HttpCallBack;
-import com.example.lanhuajian.blues.framework.http.HttpResponse;
 
 import rx.Subscription;
 
@@ -16,7 +15,7 @@ import rx.Subscription;
 public interface LoginContract {
     interface iLoginContractView extends BaseView<iLoginContractPresenter> {
 
-        void onSuccess(HttpResponse result);
+        void onSuccess(LoginResponse result);
 
         void onFailure(String result);
 
@@ -30,7 +29,7 @@ public interface LoginContract {
 
     interface iLoginContractModel {
 
-        Subscription doLogin(String username, String password, HttpCallBack<HttpResponse> callBack);
+        Subscription doLogin(String username, String password, HttpCallBack<LoginResponse> callBack);
 
     }
 }

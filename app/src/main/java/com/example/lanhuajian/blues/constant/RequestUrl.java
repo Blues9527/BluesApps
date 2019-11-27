@@ -2,13 +2,17 @@ package com.example.lanhuajian.blues.constant;
 
 public class RequestUrl {
 
+
+    //干货
     public static final String BASE_GANKIO_URL = "http://gank.io";
 
     //本地服务器
     public static final String BASE_LOCAL_URL = "http://192.168.33.93:8090/";
 
+    //easy-mock
     public static final String BASE_MOCK_URL = "https://easy-mock.com/";
 
+    //wan android
     public static final String BASE_WANANDROID_URL = "https://www.wanandroid.com/";
 
     public static final String BASE_NETEASE_URL = "https://m.study.163.com/";

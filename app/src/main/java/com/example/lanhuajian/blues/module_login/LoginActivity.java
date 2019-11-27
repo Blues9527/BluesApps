@@ -2,18 +2,20 @@ package com.example.lanhuajian.blues.module_login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.lanhuajian.blues.framework.http.HttpResponse;
 import com.example.lanhuajian.blues.MainActivity;
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.framework.base.BaseActivity;
+import com.example.lanhuajian.blues.module_register.RegisterActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -22,13 +24,17 @@ import com.example.lanhuajian.blues.framework.base.BaseActivity;
  * Time : 14:22
  */
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener, LoginContract.iLoginContractView {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView ivSkip;
-
     private TextView tvForgetPwd, tvUserReg;
+    private TextView tvAccountLogin, tvPhoneLogin;
 
-    private LoginContract.iLoginContractPresenter iPresenter;
+    private List<Fragment> fragments = new ArrayList<>();
+    private Fragment mCurrentFragment;
+    private FrameLayout flContainer;
+    private LinearLayout llContainer;
+
 
     @Override
     public int setLayoutResourceId() {
@@ -40,18 +46,24 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     public void initView(Bundle savedInstanceState) {
 
         ivSkip = findViewById(R.id.tv_skip);
-
         tvForgetPwd = findViewById(R.id.tv_forget_pwd);
         tvUserReg = findViewById(R.id.tv_user_reg);
+        tvAccountLogin = findViewById(R.id.tv_account_login);
+        tvPhoneLogin = findViewById(R.id.tv_phone_login);
+        flContainer = findViewById(R.id.fl_container);
+        llContainer = findViewById(R.id.ll_container);
 
-
-        mPresenter = new LoginPresenter(this);
-
+        fragments.add(new AccountLoginFragment());
+        fragments.add(new PhoneLoginFragment());
     }
 
     @Override
     public void setListener() {
         ivSkip.setOnClickListener(this);
+        tvUserReg.setOnClickListener(this);
+        tvForgetPwd.setOnClickListener(this);
+        tvAccountLogin.setOnClickListener(this);
+        tvPhoneLogin.setOnClickListener(this);
     }
 
     @Override
@@ -62,50 +74,51 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 overridePendingTransition(R.anim.anim_zoom_in, R.anim.anim_slide_to_bottom);
                 finish();
                 break;
+            case R.id.tv_account_login:
+                //TODO 跳转账号登陆fragment
+                llContainer.setVisibility(View.GONE);
+                flContainer.setVisibility(View.VISIBLE);
+                showFragment(mCurrentFragment, fragments.get(0));
+                break;
+            case R.id.tv_phone_login:
+                //TODO 跳转手机登陆fragment
+                llContainer.setVisibility(View.GONE);
+                flContainer.setVisibility(View.VISIBLE);
+                showFragment(mCurrentFragment, fragments.get(1));
+                break;
+            case R.id.tv_user_reg:
+                startActivity(new Intent(this, RegisterActivity.class));
+                finish();
+                break;
         }
     }
 
-    @Override
-    public void onSuccess(HttpResponse result) {
-        if (result.getCode() == 200) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            overridePendingTransition(R.anim.anim_zoom_in, 0);
-            finish();
+    private void showFragment(Fragment from, Fragment to) {
+        if (to == null) return;
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        boolean isAdded = to.isAdded();
+        if (!isAdded) {
+            if (from != null) {
+                transaction.hide(from)
+                        .add(R.id.fl_container, to, null)
+                        .show(to)
+                        .commitAllowingStateLoss();
+            } else {
+                transaction.add(R.id.fl_container, to, null)
+                        .show(to)
+                        .commitAllowingStateLoss();
+            }
+        } else {
+            if (from != null) {
+                transaction.hide(from)
+                        .show(to)
+                        .commitAllowingStateLoss();
+            } else {
+                transaction.show(to)
+                        .commitAllowingStateLoss();
+            }
         }
-    }
 
-    @Override
-    public void onFailure(String result) {
-        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void setPresenter(LoginContract.iLoginContractPresenter presenter) {
-        iPresenter = presenter;
-    }
-
-    @Override
-    public void showBegin() {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void showFinished() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
-    public void showEmpty() {
-
+        mCurrentFragment = to;
     }
 }
