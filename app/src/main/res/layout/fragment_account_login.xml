@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
-        android:text="skip"
+        android:text="back"
         android:textColor="@color/color_black"
         android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
         android:text="账号"
         android:textColor="#ff2CC17B"
         android:textSize="15sp"
@@ -48,7 +48,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
         android:text="密码"
         android:textColor="#ff2CC17B"
         android:textSize="15sp"

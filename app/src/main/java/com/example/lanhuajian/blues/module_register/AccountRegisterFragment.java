@@ -1,5 +1,6 @@
 package com.example.lanhuajian.blues.module_register;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.framework.utils.HelperUtil;
+import com.example.lanhuajian.blues.module_login.AccountLoginFragment;
 
 public class AccountRegisterFragment extends BaseFragment implements View.OnClickListener, TextWatcher, RegisterContract.iRegisterContractView {
 
@@ -88,6 +90,9 @@ public class AccountRegisterFragment extends BaseFragment implements View.OnClic
     @Override
     public void onSuccess(RegisterResponse result) {
         HelperUtil.showToastShort("注册成功");
+        //跳转登陆界面
+        getmContext().startActivity(new Intent(getmContext(), AccountLoginFragment.class));
+        getmContext().finish();
     }
 
     @Override

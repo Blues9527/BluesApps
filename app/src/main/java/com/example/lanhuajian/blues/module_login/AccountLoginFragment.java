@@ -1,5 +1,6 @@
 package com.example.lanhuajian.blues.module_login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.lanhuajian.blues.MainActivity;
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.framework.utils.HelperUtil;
@@ -57,7 +59,7 @@ public class AccountLoginFragment extends BaseFragment implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_skip:
-
+                getActivity().finish();
                 break;
             case R.id.tv_login:
                 //调用登陆接口
@@ -87,10 +89,15 @@ public class AccountLoginFragment extends BaseFragment implements View.OnClickLi
     @Override
     public void onSuccess(LoginResponse result) {
         HelperUtil.showToastShort("登陆成功");
+        //登陆成功进行跳转
+        getmContext().startActivity(new Intent(getmContext(), MainActivity.class));
+        //跳转结束 finish上一个activity
+        getmContext().finish();
     }
 
     @Override
     public void onFailure(String result) {
+        //登陆失败进行提示
         HelperUtil.showToastShort(result);
     }
 
