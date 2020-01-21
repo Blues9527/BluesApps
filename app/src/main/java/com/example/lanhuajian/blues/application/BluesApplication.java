@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
+import com.example.lanhuajian.blues.database.course.CourseManger;
+import com.example.lanhuajian.blues.framework.utils.ThreadManager;
 import com.example.lanhuajian.blues.framework.utils.Utils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -35,6 +37,9 @@ public class BluesApplication extends MultiDexApplication {
 
         //初始化工具类
         Utils.init(this);
+
+        //初始化数据库
+        ThreadManager.getInstance().executeRunnable(() -> CourseManger.getInstance().initDataBase(getApplicationContext()));
     }
 
     private RefWatcher setupLeakCanary() {
@@ -45,6 +50,7 @@ public class BluesApplication extends MultiDexApplication {
         return LeakCanary.install(this);
     }
 
+    //使用leak canary
     public static RefWatcher getRefWatcher(Context context) {
         BluesApplication application = (BluesApplication) context.getApplicationContext();
         return application.refWatcher;

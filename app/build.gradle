@@ -73,6 +73,10 @@ dependencies {
     //leakcanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
 
+    //room google官方数据库
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+
     //nicevideoplayer通过library库来依赖，因为需要做一些小修改
     api project(':nicevideoplayer')
 }

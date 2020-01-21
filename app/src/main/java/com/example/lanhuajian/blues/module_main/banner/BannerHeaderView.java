@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +15,9 @@ import android.widget.LinearLayout;
 
 import com.example.lanhuajian.blues.R;
 import com.example.lanhuajian.blues.constant.UsedConstant;
+import com.example.lanhuajian.blues.database.course.CourseManger;
 import com.example.lanhuajian.blues.framework.widget.endlessbannerview.BannerAdapter;
 import com.example.lanhuajian.blues.framework.widget.endlessbannerview.BannerView;
-import com.example.lanhuajian.blues.mock.CourseEntryConstant;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -69,7 +68,7 @@ public class BannerHeaderView extends LinearLayout implements RecyclerArrayAdapt
                 return new CourseEntryHolder(parent);
             }
         });
-        mEntryAdapter.addAll(CourseEntryConstant.getEntries());
+        mEntryAdapter.addAll(CourseManger.getInstance().getAllCourse());
         mEntryAdapter.notifyDataSetChanged();
 
         mEntryAdapter.setOnItemClickListener(position -> {

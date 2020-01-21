@@ -1,23 +1,34 @@
 package com.example.lanhuajian.blues;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.lanhuajian.blues.framework.base.BaseActivity;
-import com.example.lanhuajian.blues.framework.base.BaseViewPagerAdapter;
 import com.example.lanhuajian.blues.framework.utils.HelperUtil;
+import com.example.lanhuajian.blues.framework.utils.SizeUtil;
 import com.example.lanhuajian.blues.module_kaiyan.OpenEyeFragment;
 import com.example.lanhuajian.blues.module_main.MainPageFragment;
 import com.example.lanhuajian.blues.module_study.StudyPageFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends BaseActivity {
 
     private String[] tabs = {"主页", "学习", "开眼"};
-    private int[] icons = {R.drawable.ic_svg_home, R.drawable.ic_svg_book, R.drawable.ic_svg_user};
+    private int[] icons = {R.drawable.ic_svg_home_grey, R.drawable.ic_svg_book_grey, R.drawable.ic_svg_user_grey};
+    private int[] icons_selected = {R.drawable.ic_svg_home_blue, R.drawable.ic_svg_book_blue, R.drawable.ic_svg_user_blue};
     private long mLastMillis;
+    private List<Fragment> fragmentList = new ArrayList<>();
 
     @Override
     public int setLayoutResourceId() {
@@ -28,24 +39,42 @@ public class MainActivity extends BaseActivity {
     public void initView(Bundle savedInstanceState) {
 
         TabLayout mTab = findViewById(R.id.tl_activity_bottom);
-        ViewPager mViewPager = findViewById(R.id.vp_show);
 
-        BaseViewPagerAdapter mFragmentAdapter = new BaseViewPagerAdapter(getSupportFragmentManager(), tabs);
-        mFragmentAdapter.addFragment(new MainPageFragment());
-        mFragmentAdapter.addFragment(new StudyPageFragment());
-        mFragmentAdapter.addFragment(new OpenEyeFragment());
+        fragmentList.add(new MainPageFragment());
+        fragmentList.add(new StudyPageFragment());
+        fragmentList.add(new OpenEyeFragment());
 
-        mViewPager.setAdapter(mFragmentAdapter);
-        mTab.setupWithViewPager(mViewPager, false);
+        //先设置监听再添加tab，selected 标识就能起作用
+        mTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                updateTabItem(tab, true);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_container, fragmentList.get(tab.getPosition())).commit();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                updateTabItem(tab, false);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        //隐藏指示器
+        mTab.setSelectedTabIndicatorHeight(0);
+
+        //添加自定义的tab item
         for (int i = 0; i < tabs.length; i++) {
-            mTab.getTabAt(i).setText(tabs[i]).setIcon(icons[i]);
+            mTab.addTab(mTab.newTab().setCustomView(getCustomView(mContext, i)), i == 0);
         }
-        mViewPager.setCurrentItem(0);
-        mViewPager.setOffscreenPageLimit(1);
     }
 
     @Override
     public void setListener() {
+
     }
 
     @Override
@@ -76,5 +105,28 @@ public class MainActivity extends BaseActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    private View getCustomView(Context context, int position) {
+        View container = LayoutInflater.from(context).inflate(R.layout.view_tablayout_item, null);
+        ImageView iv = container.findViewById(R.id.tabv_icon);
+        TextView tv = container.findViewById(R.id.tabv_title);
+
+        iv.setImageResource(icons[position]);
+        tv.setText(tabs[position]);
+        tv.setTextColor(tv.getResources().getColor(R.color.color_black));
+        tv.setTextSize(SizeUtil.dp2px(5f));
+
+        return container;
+    }
+
+    private void updateTabItem(TabLayout.Tab tab, boolean selected) {
+        View view = tab.getCustomView();
+        if (view instanceof ConstraintLayout) {
+            ImageView imageView = (ImageView) ((ConstraintLayout) view).getChildAt(0);
+            imageView.setImageResource(selected ? icons_selected[tab.getPosition()] : icons[tab.getPosition()]);
+            TextView textView = (TextView) ((ConstraintLayout) view).getChildAt(1);
+            textView.setTextColor(textView.getResources().getColor(selected ? R.color.color_light_blue : R.color.color_black));
+        }
     }
 }

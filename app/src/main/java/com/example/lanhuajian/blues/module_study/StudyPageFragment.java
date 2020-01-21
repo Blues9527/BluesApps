@@ -1,13 +1,17 @@
 package com.example.lanhuajian.blues.module_study;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.framework.base.BaseFragment;
 import com.example.lanhuajian.blues.framework.base.BaseViewPagerAdapter;
 import com.example.lanhuajian.blues.module_study.model_android.view.AndroidFragment;
 import com.example.lanhuajian.blues.module_study.model_fuli.view.FuliFragment;
@@ -42,10 +46,43 @@ public class StudyPageFragment extends BaseFragment {
         mFragmentAdapter.addFragment(new WebFragment());
         mFragmentAdapter.addFragment(new FuliFragment());
 
-        mTab.setupWithViewPager(mViewPager, false);
         mViewPager.setAdapter(mFragmentAdapter);
-        mViewPager.setCurrentItem(0);
         mViewPager.setOffscreenPageLimit(1);
+
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTab));
+
+        mTab.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager) {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+
+                View view = tab.getCustomView();
+                if (view instanceof TextView) {
+                    ((TextView) view).setTextColor(view.getResources().getColor(R.color.color_light_blue));
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                View view = tab.getCustomView();
+                if (view instanceof TextView) {
+                    ((TextView) view).setTextColor(view.getResources().getColor(R.color.color_black));
+                }
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        mTab.setSelectedTabIndicatorColor(mTab.getResources().getColor(R.color.color_light_blue));
+        //因为fragment不销毁，所以添加新tabs前最好把旧的都移除掉先，否则就会出现重复的
+        mTab.removeAllTabs();
+
+        for (int i = 0; i < tabs.length; i++) {
+            mTab.addTab(mTab.newTab().setCustomView(getTabView(getmContext(), tabs[i])), i == 0);
+        }
     }
 
     @Override
@@ -56,5 +93,12 @@ public class StudyPageFragment extends BaseFragment {
     @Override
     public void setListener() {
 
+    }
+
+    private View getTabView(Context context, String text) {
+        TextView textView = new TextView(context);
+        textView.setGravity(Gravity.CENTER);
+        textView.setText(text);
+        return textView;
     }
 }

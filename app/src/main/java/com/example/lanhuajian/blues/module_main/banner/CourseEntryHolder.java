@@ -1,17 +1,13 @@
 package com.example.lanhuajian.blues.module_main.banner;
 
-import android.app.Activity;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lanhuajian.blues.R;
+import com.example.lanhuajian.blues.database.course.CourseEntity;
 import com.example.lanhuajian.blues.framework.utils.ScreenUtil;
 import com.example.lanhuajian.blues.framework.utils.SizeUtil;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
@@ -22,7 +18,7 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
  * Time : 15:49
  */
 
-public class CourseEntryHolder extends BaseViewHolder<CourseEntry> {
+public class CourseEntryHolder extends BaseViewHolder<CourseEntity> {
 
     private ImageView ivIcon;
     private TextView tvTitle;
@@ -43,10 +39,10 @@ public class CourseEntryHolder extends BaseViewHolder<CourseEntry> {
     }
 
     @Override
-    public void setData(CourseEntry data) {
+    public void setData(CourseEntity data) {
         super.setData(data);
 
-        Glide.with(getContext()).load(data.getEntryIcon()).into(ivIcon);
-        tvTitle.setText(data.getEntryTitle());
+        Glide.with(getContext()).load(data.getIconUrl()).into(ivIcon);
+        tvTitle.setText(data.getName());
     }
 }

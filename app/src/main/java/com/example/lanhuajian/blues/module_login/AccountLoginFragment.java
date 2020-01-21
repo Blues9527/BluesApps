@@ -59,7 +59,7 @@ public class AccountLoginFragment extends BaseFragment implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_skip:
-                getActivity().finish();
+//                getActivity().finish();
                 break;
             case R.id.tv_login:
                 //调用登陆接口
