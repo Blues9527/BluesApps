@@ -1,0 +1,229 @@
+{
+  "article": [
+    {
+      "id": 1,
+      "title": "Gradle配置技巧",
+      "url": "http://note.youdao.com/noteshare?id=2eb23a0d21cb8ef133c29814e99eec1c"
+    },
+    {
+      "id": 2,
+      "title": "全面屏和虚拟按键的适配",
+      "url": "http://note.youdao.com/noteshare?id=23bc8f61204367ca2636e288a649195c"
+    },
+    {
+      "id": 3,
+      "title": "共享元素的使用",
+      "url": "http://note.youdao.com/noteshare?id=bca351bbf9630eeb0d3394596956cc28"
+    },
+    {
+      "id": 4,
+      "title": "ConstraintLayout",
+      "url": "http://note.youdao.com/noteshare?id=b1bfa749f4e9a511fb4d19f1ec3a7573"
+    },
+    {
+      "id": 5,
+      "title": "View的绘制流程",
+      "url": "http://note.youdao.com/noteshare?id=00a4ef9879acaed64b946ee2dd4599ae"
+    },
+    {
+      "id": 6,
+      "title": "Android自定义View和自定义属性",
+      "url": "http://note.youdao.com/noteshare?id=08b6d79a52aa14a9112a6612ede18de8"
+    },
+    {
+      "id": 7,
+      "title": "Android中内存泄漏的场景分析",
+      "url": "http://note.youdao.com/noteshare?id=ec115a425ce301600c6dc5a9be35883d"
+    },
+    {
+      "id": 8,
+      "title": "Activity的启动流程",
+      "url": "http://note.youdao.com/noteshare?id=605ebb3b8bc14b515f4fd952a5472ec8"
+    },
+    {
+      "id": 9,
+      "title": "AIDL的简单实现",
+      "url": "http://note.youdao.com/noteshare?id=3d18133ba215650345a7ea0602c6b173"
+    },
+    {
+      "id": 10,
+      "title": "Apk的体积优化",
+      "url": "http://note.youdao.com/noteshare?id=310b5a0a12e6a177801ab8f4a822d06f"
+    },
+    {
+      "id": 11,
+      "title": "android 屏幕适配",
+      "url": "http://note.youdao.com/noteshare?id=86fd9f1dc4df2397ad621a649623031f"
+    },
+    {
+      "id": 12,
+      "title": "造成ANR的原因以及相关的解决办法",
+      "url": "http://note.youdao.com/noteshare?id=2e94fae5588c62c27a2af98bee325fa0"
+    },
+    {
+      "id": 13,
+      "title": "android混淆相关",
+      "url": "http://note.youdao.com/noteshare?id=d94dbae5ddd596ff82800194a356f8c6"
+    },
+    {
+      "id": 14,
+      "title": "Android画面卡顿优化",
+      "url": "http://note.youdao.com/noteshare?id=5be20f4c99e2ac27f938f8d724120398"
+    },
+    {
+      "id": 15,
+      "title": "Android踩坑记录",
+      "url": "http://note.youdao.com/noteshare?id=ea725f8df047b88411f6b153e5d55f31"
+    },
+    {
+      "id": 16,
+      "title": "Android的四种LaunchMode",
+      "url": "http://note.youdao.com/noteshare?id=dee151fd534d6b15c71aea250b812f10"
+    },
+    {
+      "id": 17,
+      "title": "Android常用的网络请求框架的简单使用Demo",
+      "url": "http://note.youdao.com/noteshare?id=0b5d045720baa9d9da8b7d47a6891b94"
+    },
+    {
+      "id": 18,
+      "title": "事件分发机制解读及滑动冲突解决思路",
+      "url": "http://note.youdao.com/noteshare?id=1404fcef25d0944c272ed9a3a90b29f4"
+    },
+    {
+      "id": 19,
+      "title": "adb的使用",
+      "url": "http://note.youdao.com/noteshare?id=e616ab717f143af87a075d5c70992c55"
+    },
+    {
+      "id": 20,
+      "title": "android apk打包流程",
+      "url": "http://note.youdao.com/noteshare?id=e78bf5c5adf068110bb94c71dab24b1d"
+    },
+    {
+      "id": 21,
+      "title": "总结一些apk打包失败的原因",
+      "url": "http://note.youdao.com/noteshare?id=8cbbeb208f10081808df17833c294d22"
+    },
+    {
+      "id": 22,
+      "title": "android sdk自带脚本工具命令",
+      "url": "http://note.youdao.com/noteshare?id=652599c65b6cf61b9110e8e8a7e21e61"
+    },
+    {
+      "id": 23,
+      "title": "android中的Dex分包",
+      "url": "http://note.youdao.com/noteshare?id=11712a4f3ebf83ecc04dc2401cd5c424"
+    },
+    {
+      "id": 24,
+      "title": "IntentService源码阅读",
+      "url": "http://note.youdao.com/noteshare?id=8335316b462a9b10ad4477de09da73e5"
+    },
+    {
+      "id": 25,
+      "title": "SharedPreferences源码阅读",
+      "url": "http://note.youdao.com/noteshare?id=9a82d27565244ba327f6c1821deb8b60"
+    },
+    {
+      "id": 26,
+      "title": "AsyncTask源码阅读",
+      "url": "http://note.youdao.com/noteshare?id=2124513e3892bf9ebab9399847c9fd62"
+    },
+    {
+      "id": 27,
+      "title": "Looper源码阅读",
+      "url": "http://note.youdao.com/noteshare?id=552df420985a851fd17183c8132f5a0b"
+    },
+    {
+      "id": 28,
+      "title": "Handler源码阅读",
+      "url": "http://note.youdao.com/noteshare?id=9b50c710b8ec66afbca451e37f3b4db2"
+    },
+    {
+      "id": 29,
+      "title": "SpareArray源码阅读",
+      "url": "http://note.youdao.com/noteshare?id=e2f53a5516b5b29e0598b6b44cec6d55"
+    },
+    {
+      "id": 30,
+      "title": "ThreadPool线程池",
+      "url": "http://note.youdao.com/noteshare?id=67bc46a1385ae1b8549f1d4de227aad5"
+    },
+    {
+      "id": 31,
+      "title": "HandlerThread源码解读",
+      "url": "http://note.youdao.com/noteshare?id=34b5fd09dab8999f79d4e9f18e2e7cca"
+    },
+    {
+      "id": 32,
+      "title": "LruCache源码阅读及简单使用",
+      "url": "http://note.youdao.com/noteshare?id=be21830d31e20c3f2b591875ecabd16a"
+    },
+    {
+      "id": 33,
+      "title": "LiveData源码解读",
+      "url": "http://note.youdao.com/noteshare?id=4f4ad61558e2d656343c73feacc201ab"
+    },
+    {
+      "id": 34,
+      "title": "LifeCycle源码解读",
+      "url": "http://note.youdao.com/noteshare?id=d570c71b77384ed1cecba593c1817d63"
+    },
+    {
+      "id": 35,
+      "title": "ThreadLocal源码解读",
+      "url": "http://note.youdao.com/noteshare?id=b1720f39b2f9aa1958cbc4f484d37f5c"
+    },
+    {
+      "id": 36,
+      "title": "ViewModel源码解读",
+      "url": "http://note.youdao.com/noteshare?id=f64fd05e3b139d3da3200b18ed15ce40"
+    },
+    {
+      "id": 37,
+      "title": "JVM内存模型",
+      "url": "http://note.youdao.com/noteshare?id=0bd4a921edfe9e75125fa64b41d06c9c"
+    },
+    {
+      "id": 38,
+      "title": "final、finally&finalize",
+      "url": "http://note.youdao.com/noteshare?id=a99a57940f4e26c1d46c1bbeeadd38ea"
+    },
+    {
+      "id": 39,
+      "title": "Java基础知识点",
+      "url": "http://note.youdao.com/noteshare?id=0f6d22812025419cbfbd57472c250975"
+    },
+    {
+      "id": 40,
+      "title": "类对象的四种引用类型",
+      "url": "http://note.youdao.com/noteshare?id=b48aaa5dbc51946b5f2f6fdd43d8a76b"
+    },
+    {
+      "id": 41,
+      "title": "网络相关基础知识点",
+      "url": "http://note.youdao.com/noteshare?id=d200a2a4c6c5eee6dd655e6b9179c716"
+    },
+    {
+      "id": 42,
+      "title": "Java中的位运算",
+      "url": "http://note.youdao.com/noteshare?id=134af8bfb234f6040a073626d6eef729"
+    },
+    {
+      "id": 43,
+      "title": "HashMap、HashTable&CurrentHashMap相关",
+      "url": "http://note.youdao.com/noteshare?id=475db8d1872a16a499459862260a32c5"
+    },
+    {
+      "id": 44,
+      "title": "动态代理与静态代理",
+      "url": "http://note.youdao.com/noteshare?id=d009b4acfea5bb9d402bc59d70b88a4e"
+    },
+    {
+      "id": 45,
+      "title": "apk签名相关（v1 v2）",
+      "url": "http://note.youdao.com/noteshare?id=42c1f0de0f2b97540a5e641ec391490b"
+    }
+  ]
+}
