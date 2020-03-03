@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.lanhuajian.blues.framework.widget.TextClockView
+    <com.blues.framework.widget.TextClockView
         android:id="@+id/rclv_splash"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.example.lanhuajian.blues.framework.widget.countdownview.CountDownView
+    <com.blues.framework.widget.countdownview.CountDownView
         android:id="@+id/cdv_count"
         android:layout_width="50dp"
         android:layout_height="50dp"

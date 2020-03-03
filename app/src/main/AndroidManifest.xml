@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lanhuajian.blues">
+    package="com.blues">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -23,24 +23,24 @@
         </activity>
 
         <activity
-            android:name=".framework.widget.ShowImageActivity"
+            android:name=".module_study.ShowImageActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:launchMode="standard"
-            android:theme="@style/ZoomInOutAnimation" />
+            android:launchMode="singleTop"
+            android:theme="@style/ShowImageActivity" />
 
         <activity
             android:name=".splash.SplashActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:launchMode="singleInstance"
             android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
             android:theme="@style/Theme.Custom" />
         <activity
             android:name=".module_login.LoginActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:launchMode="singleInstance"
             android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
             android:theme="@style/Theme.Custom"
-            android:windowSoftInputMode="adjustPan" >
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,17 +50,18 @@
         <activity
             android:name=".module_register.RegisterActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:launchMode="singleInstance"
             android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
             android:theme="@style/Theme.Custom"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".module_kaiyan.search.OpenEyeSearchActivity"
-            android:configChanges="keyboardHidden|screenSize|orientation"/>
+        <activity
+            android:name=".module_kaiyan.search.OpenEyeSearchActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation" />
         <activity
             android:name=".module_kaiyan.detail.OEDetailActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:theme="@style/Theme.Custom"
-            android:launchMode="standard" />
+            android:launchMode="standard"
+            android:theme="@style/Theme.Custom" />
     </application>
 
 </manifest>

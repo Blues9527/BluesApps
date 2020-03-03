@@ -36,7 +36,7 @@
         android:layout_below="@+id/tv_author"
         android:layout_marginLeft="@dimen/dp_10"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/iv_avatar"
+        android:layout_marginRight="@dimen/dp_10"
         android:text="this is title"
         android:textColor="@color/color_black"
         android:textSize="12sp" />
@@ -47,8 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_desc"
         android:layout_marginLeft="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_toRightOf="@+id/iv_avatar" />
+        android:layout_marginTop="@dimen/dp_10" />
 
     <TextView
         android:id="@+id/tv_publish_time"
@@ -57,7 +56,6 @@
         android:layout_below="@+id/rv_images"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
-        android:layout_toRightOf="@+id/iv_avatar"
         android:text="1小时前"
         android:textColor="@color/color_dark_gray"
         android:textSize="11sp" />
@@ -66,7 +64,6 @@
         android:id="@+id/tv_source"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ll_container"
         android:layout_alignBaseline="@+id/tv_publish_time"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
