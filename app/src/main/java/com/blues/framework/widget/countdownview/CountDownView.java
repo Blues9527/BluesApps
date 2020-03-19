@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -20,7 +21,7 @@ import com.blues.R;
  * Time : 11:09
  */
 
-public class CountDownView extends View {
+public class CountDownView extends View implements View.OnClickListener{
 
     //view的中心点X坐标
     private int centerX;
@@ -45,19 +46,19 @@ public class CountDownView extends View {
     private int progressBgColor;
 
     //倒计时颜色
-    private int countDownTextColor;
+    private int textColor;
 
     //是否显示倒计时
     private boolean showCountText;
 
     //倒计时字体大小
-    private float countDownTextSize;
+    private float textSize;
 
     //progressbar宽度
     private float strokeWidth;
 
     //倒计时
-    private int countDownText;
+    private String countDownText;
 
     //形状,默认圆形
     private int progressShape;
@@ -65,10 +66,17 @@ public class CountDownView extends View {
     //计时器，用于更新文本
     private CountDownTimer countDownTimer;
 
-    private CountDownTimerCallBack mCallBack;
+    private CountDownTimerCallBack mTimerCallBack;
+
+    private SkipListener mSkipListener;
+
+    private String drawText;
+
+    private static final String skipText = "跳过";
 
     //倒计时间隔，默认1s
     private static final long INTERVAL_DEFAULT = 1000;
+
 
     public CountDownView(Context context) {
         this(context, null);
@@ -84,7 +92,12 @@ public class CountDownView extends View {
         //抗锯齿
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        startCountDown(countDownText * 1000, INTERVAL_DEFAULT);
+        if (TextUtils.isEmpty(countDownText))
+            throw new NullPointerException("countDownText not null");
+
+        startCountDown(Integer.parseInt(countDownText) * 1000, INTERVAL_DEFAULT);
+
+        setOnClickListener(this);
     }
 
     private void initAttrs(Context context, AttributeSet attrs) {
@@ -95,13 +108,13 @@ public class CountDownView extends View {
         showCountText = ta.getBoolean(R.styleable.CountDownView_showCountText, true);
 
         //倒计时
-        countDownText = ta.getInt(R.styleable.CountDownView_countDownTime, 6);
+        countDownText = ta.getString(R.styleable.CountDownView_countDownTime);
 
-        //倒数字体默认20sp
-        countDownTextSize = ta.getDimension(R.styleable.CountDownView_countDownTextSize, 20);
+        //倒数字体默认15px
+        textSize = ta.getDimension(R.styleable.CountDownView_textSize, px2sp(15));
 
         //倒计时颜色，默认黑色
-        countDownTextColor = ta.getColor(R.styleable.CountDownView_countDownTextColor, 0xff000000);
+        textColor = ta.getColor(R.styleable.CountDownView_textColor, 0xff000000);
 
         //进度条宽度默认 5dp
         strokeWidth = ta.getFloat(R.styleable.CountDownView_progressStrokeWidth, 5);
@@ -127,12 +140,11 @@ public class CountDownView extends View {
 
         radius = centerX - dp2px(strokeWidth) / 2;
 
-        if (progressShape == 0)
+        if (progressShape == 0) {
             drawLinearProgressBar(canvas, mPaint);
-        else
+        } else {
             drawRoundProgressBar(canvas, mPaint);
-
-
+        }
     }
 
     /**
@@ -154,22 +166,22 @@ public class CountDownView extends View {
         RectF oval = new RectF(centerX - radius, centerY - radius, radius + centerX, radius + centerY);
         canvas.drawArc(oval, -90, getAngle(), false, paint);
 
-        if (showCountText) {
-            paint.setStyle(Paint.Style.FILL);
-            paint.setColor(countDownTextColor);
-            paint.setTextSize(px2sp(countDownTextSize));
+        //开始绘制文字
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(textColor);
+        paint.setTextSize(px2sp(textSize));
+        Rect rect = new Rect();
+        drawText = showCountText && !TextUtils.equals(countDownText, skipText) ? String.valueOf(Integer.parseInt(countDownText) + 1) : skipText;
 
-            Rect rect = new Rect();
-
-            paint.getTextBounds(String.valueOf(countDownText + 1), 0, String.valueOf(countDownText).length(), rect);
-            float textWidth = rect.width();
-            float textHeight = rect.height();
-            if (textWidth >= radius * 2) {
-                textWidth = radius * 2;
-            }
-
-            canvas.drawText(String.valueOf(countDownText + 1), centerX - textWidth / 2, centerY + textHeight / 2, paint);
+        paint.getTextBounds(drawText, 0, drawText.length(), rect);
+        float textWidth = rect.width();
+        float textHeight = rect.height();
+        if (textWidth >= radius * 2) {
+            textWidth = radius * 2;
         }
+        //绘制倒计时
+        canvas.drawText(drawText, centerX - textWidth / 2, centerY + textHeight / 2, paint);
+
     }
 
     /**
@@ -192,7 +204,6 @@ public class CountDownView extends View {
 
         canvas.drawRoundRect(new RectF(0, 0, getProgress() / 100 * getWidth(), dp2px(strokeWidth)), 0, 0, paint);
 
-
     }
 
     /**
@@ -200,7 +211,7 @@ public class CountDownView extends View {
      *
      * @param countDownText
      */
-    private void setCountDownText(int countDownText) {
+    private void setCountDownText(String countDownText) {
         this.countDownText = countDownText;
         postInvalidate();
     }
@@ -210,10 +221,13 @@ public class CountDownView extends View {
      *
      * @param progress
      */
-    public void setProgress(float progress) {
-        this.progress = progress > 100 ? max : progress;
-        //调用此方法刷新view
-        postInvalidate();
+    private void setProgress(float progress) {
+        if (progress > 100)
+            this.progress = max;
+        else {
+            this.progress = progress;
+            postInvalidate();
+        }
     }
 
     /**
@@ -231,9 +245,11 @@ public class CountDownView extends View {
      * @return 度数
      */
     public float getAngle() {
-        float angle = 360 * (max - progress) / max;
-
-        return 360 - (angle > 360 ? 360 : angle);
+        float percent = 360 * (max - progress) / max;
+        if (percent > 360)
+            percent = 360;
+        percent = 360 - percent;
+        return percent;
     }
 
     /**
@@ -266,6 +282,19 @@ public class CountDownView extends View {
         }
     }
 
+    @Override
+    public void onClick(View view) {
+        //等到文字为跳过时再响应监听
+        if (TextUtils.equals(drawText, skipText) && mSkipListener != null) {
+            mSkipListener.onSkip();
+            //跳过了，取消倒计时了
+            countDownCancel();
+        }
+    }
+
+    /**
+     * 倒计时
+     */
     private class CountDownTimerImpl extends CountDownTimer {
 
         private CountDownTimerImpl(long millisInFuture, long countDownInterval) {
@@ -274,35 +303,64 @@ public class CountDownView extends View {
 
         @Override
         public void onTick(long millisUntilFinished) {
-            setCountDownText((int) (millisUntilFinished / 1000));
+            setCountDownText(String.valueOf((int) (millisUntilFinished / 1000)));
 //            setProgress((float) (millisUntilFinished - 1000) / millisInFuture * 100);
         }
 
         @Override
         public void onFinish() {
-            if (getCountDownTimerCallBack() != null)
-                getCountDownTimerCallBack().onFinish();
+            //更新倒计时文本为:跳过
+            if (!TextUtils.equals(drawText, skipText)) {
+                setCountDownText(skipText);
+            }
+            if (mTimerCallBack != null)
+                mTimerCallBack.onFinish();
         }
+    }
+
+    /**
+     * 设置倒计时结束监听
+     *
+     * @param callBack
+     */
+    public void setCountDownTimerCallBack(CountDownTimerCallBack callBack) {
+        mTimerCallBack = callBack;
+    }
+
+    /**
+     * 设置跳过监听
+     *
+     * @param listener
+     */
+    public void setSkipListener(SkipListener listener) {
+        mSkipListener = listener;
     }
 
     public interface CountDownTimerCallBack {
         void onFinish();
     }
 
-    public void setCountDownTimerCallBack(CountDownTimerCallBack callBack) {
-        mCallBack = callBack;
+    public interface SkipListener {
+        void onSkip();
     }
-
-    public CountDownTimerCallBack getCountDownTimerCallBack() {
-        return mCallBack;
-    }
-
     // --------------工具方法-------------------//
 
+    /**
+     * dp转px
+     *
+     * @param dp
+     * @return
+     */
     int dp2px(float dp) {
         return (int) (getResources().getDisplayMetrics().density * dp);
     }
 
+    /**
+     * px 转 sp
+     *
+     * @param px
+     * @return
+     */
     int px2sp(float px) {
         return (int) (getResources().getDisplayMetrics().scaledDensity * px);
     }

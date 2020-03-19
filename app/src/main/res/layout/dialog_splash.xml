@@ -16,6 +16,7 @@
         android:layout_gravity="top|end"
         android:layout_margin="15dp"
         app:countDownTime="5"
-        app:countDownTextColor="@android:color/white"
+        app:textSize="6sp"
+        app:textColor="@android:color/white"
         app:mode="round" />
 </FrameLayout>

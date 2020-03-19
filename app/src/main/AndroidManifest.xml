@@ -33,7 +33,13 @@
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
-            android:theme="@style/Theme.Custom" />
+            android:theme="@style/Theme.Custom" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".module_login.LoginActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
@@ -41,11 +47,6 @@
             android:launchMode="singleInstance"
             android:theme="@style/Theme.Custom"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".module_register.RegisterActivity"

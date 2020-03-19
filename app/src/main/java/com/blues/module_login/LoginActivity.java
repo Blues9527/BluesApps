@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blues.MainActivity;
 import com.blues.R;
@@ -76,15 +77,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 break;
             case R.id.tv_account_login:
                 //TODO 跳转账号登陆fragment
-                llContainer.setVisibility(View.GONE);
-                flContainer.setVisibility(View.VISIBLE);
-                showFragment(mCurrentFragment, fragments.get(0));
+//                llContainer.setVisibility(View.GONE);
+//                flContainer.setVisibility(View.VISIBLE);
+//                showFragment(mCurrentFragment, fragments.get(0));
+                Toast.makeText(LoginActivity.this,"此功能暂未开发完成，请点击跳过",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_phone_login:
                 //TODO 跳转手机登陆fragment
-                llContainer.setVisibility(View.GONE);
-                flContainer.setVisibility(View.VISIBLE);
-                showFragment(mCurrentFragment, fragments.get(1));
+//                llContainer.setVisibility(View.GONE);
+//                flContainer.setVisibility(View.VISIBLE);
+//                showFragment(mCurrentFragment, fragments.get(1));
+                Toast.makeText(LoginActivity.this,"此功能暂未开发完成，请点击跳过",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_user_reg:
                 startActivity(new Intent(this, RegisterActivity.class));
