@@ -1,5 +1,6 @@
 package com.blues.framework.widget.countdownview;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -61,12 +62,13 @@ public class CountDownView extends View {
     //形状,默认圆形
     private int progressShape;
 
+    //计时器，用于更新文本
     private CountDownTimer countDownTimer;
 
     private CountDownTimerCallBack mCallBack;
 
     //倒计时间隔，默认1s
-    private final long INTERVAL_DEFAULT = 1000;
+    private static final long INTERVAL_DEFAULT = 1000;
 
     public CountDownView(Context context) {
         this(context, null);
@@ -198,9 +200,8 @@ public class CountDownView extends View {
      *
      * @param countDownText
      */
-    public void setCountDownText(int countDownText) {
+    private void setCountDownText(int countDownText) {
         this.countDownText = countDownText;
-        //调用此方法刷新view
         postInvalidate();
     }
 
@@ -215,12 +216,19 @@ public class CountDownView extends View {
         postInvalidate();
     }
 
+    /**
+     * 获取当前进度，百分比
+     *
+     * @return 百分比
+     */
     public float getProgress() {
         return progress;
     }
 
     /**
-     * 获取进度，用于圆形progressbar去设置进度
+     * 获取当前进度对应圆形的角度
+     *
+     * @return 度数
      */
     public float getAngle() {
         float angle = 360 * (max - progress) / max;
@@ -234,10 +242,14 @@ public class CountDownView extends View {
     public void startCountDown(long millisInFuture, long countDownInterval) {
         countDownTimer = new CountDownTimerImpl(millisInFuture, countDownInterval);
         countDownTimer.start();
+        //使用属性动画过度progress的更新，会更加圆滑
+        ObjectAnimator animator = ObjectAnimator.ofFloat(this, "progress", 100.0f, 0.0f);
+        animator.setDuration(millisInFuture);
+        animator.start();
     }
 
     /**
-     * onResume时候开启倒计时
+     * onResume时候开启倒计时，主要用于界面生命周期变化恢复倒计时
      */
     public void countDownResume() {
         if (countDownTimer != null) {
@@ -246,7 +258,7 @@ public class CountDownView extends View {
     }
 
     /**
-     * onStop或者是onPause的时候取消倒计时
+     * onStop或者是onPause的时候取消倒计时，主要用于界面生命周期变化取消倒计时
      */
     public void countDownCancel() {
         if (countDownTimer != null) {
@@ -254,22 +266,16 @@ public class CountDownView extends View {
         }
     }
 
-    /**
-     * CountDownTimer实现类，实现设置倒计时功能
-     */
     private class CountDownTimerImpl extends CountDownTimer {
-
-        private long millisInFuture;
 
         private CountDownTimerImpl(long millisInFuture, long countDownInterval) {
             super(millisInFuture, countDownInterval);
-            this.millisInFuture = millisInFuture;
         }
 
         @Override
         public void onTick(long millisUntilFinished) {
             setCountDownText((int) (millisUntilFinished / 1000));
-            setProgress((float) (millisUntilFinished - 1000) / millisInFuture * 100);
+//            setProgress((float) (millisUntilFinished - 1000) / millisInFuture * 100);
         }
 
         @Override
@@ -283,11 +289,6 @@ public class CountDownView extends View {
         void onFinish();
     }
 
-    /**
-     * 通过传入callback 去实现视图更新等操作
-     *
-     * @param callBack
-     */
     public void setCountDownTimerCallBack(CountDownTimerCallBack callBack) {
         mCallBack = callBack;
     }

@@ -8,12 +8,16 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewStub;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+
+import com.blues.framework.utils.NetWorkUtil;
 
 public class WebViewDialog extends Dialog {
 
@@ -22,6 +26,8 @@ public class WebViewDialog extends Dialog {
     private ImageView backIv;
     private String url;
     private LoadingDialog mDialog;
+    private ViewStub vsNetworkError;
+    private View v;
 
     public WebViewDialog(Context context, String url) {
         super(context);
@@ -54,6 +60,7 @@ public class WebViewDialog extends Dialog {
         showWv = findViewById(R.id.wv_show);
         webViewPb = findViewById(R.id.pb_webview);
         backIv = findViewById(R.id.iv_back);
+        vsNetworkError = findViewById(R.id.vs_network);
 
 
         WebSettings webSettings = showWv.getSettings();
@@ -87,8 +94,24 @@ public class WebViewDialog extends Dialog {
             }
         });
 
-
-        showWv.loadUrl(url);
+        //如果有网状态就加载 url
+        if (NetWorkUtil.isConnected()){
+            if (v != null) {
+                v.setVisibility(View.GONE);
+            }
+            showWv.loadUrl(url);
+        }else {
+            try {
+                v = vsNetworkError.inflate();
+                LinearLayout blankLl = v.findViewById(R.id.error_blank);
+                blankLl.setOnClickListener(v1 -> {
+                    showWv.reload();
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+                v.setVisibility(View.VISIBLE);
+            }
+        }
 
         backIv.setOnClickListener(v -> WebViewDialog.this.dismiss());
 

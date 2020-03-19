@@ -27,5 +27,6 @@ public class ArticleHolder extends BaseViewHolder<Article.ArticleBean> {
         super.setData(data);
 
         tvTitle.setText(data.getTitle());
+
     }
 }

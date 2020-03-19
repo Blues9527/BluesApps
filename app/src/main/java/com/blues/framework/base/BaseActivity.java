@@ -9,7 +9,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.blues.R;
-import com.blues.application.BluesApplication;
 import com.blues.framework.injection.InjectManager;
 import com.blues.framework.widget.immersionbar.ImmersionBar;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
@@ -74,7 +73,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         super.onDestroy();
 
         //启用leak canary
-        BluesApplication.getRefWatcher(this).watch(this);
+//        BluesApplication.getRefWatcher(this).watch(this);
 
         //当视图被销毁时presenter不为空，手动解除订阅
         if (mPresenter != null) {

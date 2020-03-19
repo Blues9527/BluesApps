@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="12dp"
         android:indeterminate="true"
-        android:max="100"
         android:indeterminateTint="@color/color_dark_blue"
+        android:max="100"
         android:visibility="gone" />
 
 
@@ -29,6 +29,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+
+    <ViewStub
+        android:id="@+id/vs_network"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/view_network_error" />
 
 
 </LinearLayout>

@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blues.application.BluesApplication;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 
 public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
@@ -86,7 +85,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
         super.onDestroy();
 
         //启用leak canary
-        BluesApplication.getRefWatcher(getmContext()).watch(this);
+//        BluesApplication.getRefWatcher(getmContext()).watch(this);
     }
 
     @Override

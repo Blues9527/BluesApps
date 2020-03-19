@@ -7,8 +7,6 @@ import android.support.multidex.MultiDexApplication;
 import com.blues.database.course.CourseManager;
 import com.blues.framework.utils.ThreadManager;
 import com.blues.framework.utils.Utils;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
 
 
 /**
@@ -19,7 +17,7 @@ import com.squareup.leakcanary.RefWatcher;
 
 public class BluesApplication extends MultiDexApplication {
 
-    private RefWatcher refWatcher;
+//    private RefWatcher refWatcher;
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -33,7 +31,7 @@ public class BluesApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
 
-        refWatcher = setupLeakCanary();
+//        refWatcher = setupLeakCanary();
 
         //初始化工具类
         Utils.init(this);
@@ -45,17 +43,17 @@ public class BluesApplication extends MultiDexApplication {
 
     }
 
-    private RefWatcher setupLeakCanary() {
-
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            return RefWatcher.DISABLED;
-        }
-        return LeakCanary.install(this);
-    }
+//    private RefWatcher setupLeakCanary() {
+//
+//        if (LeakCanary.isInAnalyzerProcess(this)) {
+//            return RefWatcher.DISABLED;
+//        }
+//        return LeakCanary.install(this);
+//    }
 
     //使用leak canary
-    public static RefWatcher getRefWatcher(Context context) {
-        BluesApplication application = (BluesApplication) context.getApplicationContext();
-        return application.refWatcher;
-    }
+//    public static RefWatcher getRefWatcher(Context context) {
+//        BluesApplication application = (BluesApplication) context.getApplicationContext();
+//        return application.refWatcher;
+//    }
 }
