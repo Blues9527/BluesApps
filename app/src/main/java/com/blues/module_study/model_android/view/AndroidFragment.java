@@ -1,8 +1,6 @@
 package com.blues.module_study.model_android.view;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +22,9 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class AndroidFragment extends BaseFragment implements AndroidContract.iContractView, OnRefreshListener {
 
@@ -53,9 +54,7 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
 
         //初始化数据
         iPresenter.initData();
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-
-        androidErv.setLayoutManager(layoutManager);
+        androidErv.setLayoutManager(new LinearLayoutManager(getmContext()));
         androidErv.setAdapter(mAdapter = new RecyclerArrayAdapter<AndroidEntity.ResultsBean>(getmContext()) {
             @Override
             public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {

@@ -1,2 +1,4 @@
-include ':app', ':nicevideoplayer'
+include ':app'
+include ':nicevideoplayer'
 //include ':framework'
+//include ':gifloader'

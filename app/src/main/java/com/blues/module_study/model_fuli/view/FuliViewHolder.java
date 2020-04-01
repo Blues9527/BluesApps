@@ -2,7 +2,7 @@ package com.blues.module_study.model_fuli.view;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.ActivityOptionsCompat;
+import androidx.core.app.ActivityOptionsCompat;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;

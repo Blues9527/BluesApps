@@ -1,33 +1,28 @@
 package com.blues;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.MenuItem;
 
 import com.blues.framework.base.BaseActivity;
 import com.blues.framework.utils.HelperUtil;
-import com.blues.framework.utils.SizeUtil;
 import com.blues.module_kaiyan.OpenEyeFragment;
 import com.blues.module_main.MainPageFragment;
 import com.blues.module_study.StudyPageFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-public class MainActivity extends BaseActivity {
 
-    private String[] tabs = {"主页", "学习", "开眼"};
-    private int[] icons = {R.drawable.ic_svg_home_grey, R.drawable.ic_svg_book_grey, R.drawable.ic_svg_user_grey};
-    private int[] icons_selected = {R.drawable.ic_svg_home_blue, R.drawable.ic_svg_book_blue, R.drawable.ic_svg_user_blue};
+public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
     private long mLastMillis;
+    private Fragment mCurrentFragment;
     private List<Fragment> fragmentList = new ArrayList<>();
 
     @Override
@@ -38,38 +33,16 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
 
-        TabLayout mTab = findViewById(R.id.tl_activity_bottom);
-
         fragmentList.add(new MainPageFragment());
         fragmentList.add(new StudyPageFragment());
         fragmentList.add(new OpenEyeFragment());
 
         //先设置监听再添加tab，selected 标识就能起作用
-        mTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                updateTabItem(tab, true);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fl_container, fragmentList.get(tab.getPosition())).commit();
-            }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                updateTabItem(tab, false);
-            }
+        BottomNavigationView bottomView = findViewById(R.id.bottom_view);
+        bottomView.setOnNavigationItemSelectedListener(this);
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-        //隐藏指示器
-        mTab.setSelectedTabIndicatorHeight(0);
-
-        //添加自定义的tab item
-        for (int i = 0; i < tabs.length; i++) {
-            mTab.addTab(mTab.newTab().setCustomView(getCustomView(mContext, i)), i == 0);
-        }
+        showFragment(null, fragmentList.get(0));
     }
 
     @Override
@@ -107,26 +80,48 @@ public class MainActivity extends BaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    private View getCustomView(Context context, int position) {
-        View container = LayoutInflater.from(context).inflate(R.layout.view_tablayout_item, null);
-        ImageView iv = container.findViewById(R.id.tabv_icon);
-        TextView tv = container.findViewById(R.id.tabv_title);
-
-        iv.setImageResource(icons[position]);
-        tv.setText(tabs[position]);
-        tv.setTextColor(tv.getResources().getColor(R.color.color_black));
-        tv.setTextSize(SizeUtil.dp2px(5f));
-
-        return container;
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_home:
+                showFragment(mCurrentFragment, fragmentList.get(0));
+                break;
+            case R.id.menu_study:
+                showFragment(mCurrentFragment, fragmentList.get(1));
+                break;
+            case R.id.menu_open_eye:
+                showFragment(mCurrentFragment, fragmentList.get(2));
+                break;
+        }
+        return true;
     }
 
-    private void updateTabItem(TabLayout.Tab tab, boolean selected) {
-        View view = tab.getCustomView();
-        if (view instanceof ConstraintLayout) {
-            ImageView imageView = (ImageView) ((ConstraintLayout) view).getChildAt(0);
-            imageView.setImageResource(selected ? icons_selected[tab.getPosition()] : icons[tab.getPosition()]);
-            TextView textView = (TextView) ((ConstraintLayout) view).getChildAt(1);
-            textView.setTextColor(textView.getResources().getColor(selected ? R.color.color_light_blue : R.color.color_black));
+    private void showFragment(Fragment from, Fragment to) {
+        if (to == null) return;
+        FragmentTransaction transaction = mContext.getSupportFragmentManager().beginTransaction();
+        boolean isAdded = to.isAdded();
+        if (!isAdded) {
+            if (from != null) {
+                transaction.hide(from)
+                        .add(R.id.fl_container, to, null)
+                        .show(to)
+                        .commitAllowingStateLoss();
+            } else {
+                transaction.add(R.id.fl_container, to, null)
+                        .show(to)
+                        .commitAllowingStateLoss();
+            }
+        } else {
+            if (from != null) {
+                transaction.hide(from)
+                        .show(to)
+                        .commitAllowingStateLoss();
+            } else {
+                transaction.show(to)
+                        .commitAllowingStateLoss();
+            }
         }
+
+        mCurrentFragment = to;
     }
 }

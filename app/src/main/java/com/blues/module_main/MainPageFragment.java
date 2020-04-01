@@ -4,13 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.GridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -24,7 +19,6 @@ import com.blues.framework.base.BaseFragment;
 import com.blues.framework.utils.FileUtil;
 import com.blues.framework.widget.endlessbannerview.BannerAdapter;
 import com.blues.framework.widget.endlessbannerview.BannerView;
-import com.blues.module_main.article.ArticleFragment;
 import com.blues.module_main.banner.BannerContract;
 import com.blues.module_main.banner.BannerEntity;
 import com.blues.module_main.banner.BannerPresenter;
@@ -35,7 +29,6 @@ import com.blues.module_main.banner.CategoryEntity;
 import com.blues.module_main.banner.CourseEntryHolder;
 import com.blues.module_main.banner.MicroSpecDialogFragment;
 import com.blues.module_main.banner.MicroSpecEntity;
-import com.blues.module_main.video.VideoFragment;
 import com.google.gson.Gson;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
@@ -47,19 +40,20 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+
 /**
  * User : Blues
  * Date : 2019/4/11
  * Time : 15:27
  */
 
-public class MainPageFragment extends BaseFragment implements BannerContract.iBannerContractView, View.OnClickListener {
+public class MainPageFragment extends BaseFragment implements BannerContract.iBannerContractView {
 
     private BannerContract.iBannerContractPresenter iPresenter;
     private EasyRecyclerView ervEntry;
     private BannerView bannerView;
-    private Fragment mCurrentFragment;
-    private List<Fragment> fragments = new ArrayList<>();
 
     @Override
     public int setLayoutResourceId() {
@@ -75,13 +69,6 @@ public class MainPageFragment extends BaseFragment implements BannerContract.iBa
         bannerView = rootView.findViewById(R.id.bv_header);
         ervEntry = rootView.findViewById(R.id.erv_entry);
         initEntry(getmContext());
-
-        rootView.findViewById(R.id.tv_video).setOnClickListener(this);
-        rootView.findViewById(R.id.tv_article).setOnClickListener(this);
-
-        fragments.add(new VideoFragment());
-        fragments.add(new ArticleFragment());
-        showFragment(null, fragments.get(0));
     }
 
     private void initEntry(Context context) {
@@ -259,7 +246,7 @@ public class MainPageFragment extends BaseFragment implements BannerContract.iBa
         }
     }
 
-    public void initBanner(Context ctx, BannerEntity bannerEntity) {
+    private void initBanner(Context ctx, BannerEntity bannerEntity) {
         List<String> bannerUrls = new ArrayList<>();
         List<String> pathUrls = new ArrayList<>();
         for (BannerEntity.DataBean data : bannerEntity.getData()) {
@@ -277,59 +264,9 @@ public class MainPageFragment extends BaseFragment implements BannerContract.iBa
 //            layoutParams.setMargins(bannerView.dp2px(15f), bannerView.dp2px(10f), bannerView.dp2px(15f), 0);
             bannerView.setLayoutParams(layoutParams);
             BannerAdapter adapter = new BannerAdapter(ctx, bannerUrls, bannerView);
-            adapter.setItemClickListener(new BannerAdapter.ItemClickListener() {
-                @Override
-                public void onClick(int realPosition) {
-                    new WebViewDialog(getContext(), pathUrls.get(realPosition)).show();
-                }
-            });
+            adapter.setItemClickListener(realPosition -> new WebViewDialog(getContext(), pathUrls.get(realPosition)).show());
             //开启轮播
             bannerView.setAdapter(adapter);
-
         });
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_video:
-                //显示video fragment页
-                showFragment(mCurrentFragment, fragments.get(0));
-                break;
-            case R.id.tv_article:
-                //显示article fragment页
-                showFragment(mCurrentFragment, fragments.get(1));
-                break;
-        }
-    }
-
-    private void showFragment(Fragment from, Fragment to) {
-        if (to == null) return;
-        FragmentTransaction transaction = ((FragmentActivity) getContext()).getSupportFragmentManager().beginTransaction();
-        boolean isAdded = to.isAdded();
-        if (!isAdded) {
-            if (from != null) {
-                transaction.hide(from)
-                        .add(R.id.fl_main_container, to, null)
-                        .show(to)
-                        .commitAllowingStateLoss();
-            } else {
-                transaction.add(R.id.fl_main_container, to, null)
-                        .show(to)
-                        .commitAllowingStateLoss();
-            }
-        } else {
-            if (from != null) {
-                transaction.hide(from)
-                        .show(to)
-                        .commitAllowingStateLoss();
-            } else {
-                transaction.show(to)
-                        .commitAllowingStateLoss();
-            }
-        }
-
-        mCurrentFragment = to;
     }
 }

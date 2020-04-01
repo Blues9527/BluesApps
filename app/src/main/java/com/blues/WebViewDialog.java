@@ -18,10 +18,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.blues.framework.utils.NetWorkUtil;
+import com.blues.framework.widget.CWebView;
 
 public class WebViewDialog extends Dialog {
 
-    private WebView showWv;
+    private CWebView showWv;
     private ProgressBar webViewPb;
     private ImageView backIv;
     private String url;

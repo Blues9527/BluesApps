@@ -2,8 +2,8 @@ package com.blues.module_study.model_web.view;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityOptionsCompat;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityOptionsCompat;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;

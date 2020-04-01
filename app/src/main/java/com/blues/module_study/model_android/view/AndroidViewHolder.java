@@ -2,7 +2,6 @@ package com.blues.module_study.model_android.view;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,6 +14,8 @@ import com.blues.module_study.ShowImageActivity;
 import com.blues.module_study.model_android.model.AndroidEntity;
 import com.bumptech.glide.Glide;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+
+import androidx.core.app.ActivityOptionsCompat;
 
 /**
  * User : Blues
@@ -47,15 +48,12 @@ public class AndroidViewHolder extends BaseViewHolder<AndroidEntity.ResultsBean>
             ivCover.setVisibility(View.VISIBLE);
             Glide.with(getContext()).load(data.getImages().get(0)).placeholder(R.mipmap.ic_img_error).into(ivCover);
 
-            ivCover.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //跳转到ShowImageActivity
-                    Intent intent = new Intent(getContext(), ShowImageActivity.class);
-                    intent.putExtra("param", data);
-                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) getContext(), ivCover, "transitionImage");
-                    getContext().startActivity(intent, options.toBundle());
-                }
+            ivCover.setOnClickListener(v -> {
+                //跳转到ShowImageActivity
+                Intent intent = new Intent(getContext(), ShowImageActivity.class);
+                intent.putExtra("param", data);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) getContext(), ivCover, "transitionImage");
+                getContext().startActivity(intent, options.toBundle());
             });
         }
 

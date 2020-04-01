@@ -2,7 +2,7 @@ package com.blues.module_kaiyan.weeklyrank;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.ActivityOptionsCompat;
+import androidx.core.app.ActivityOptionsCompat;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;

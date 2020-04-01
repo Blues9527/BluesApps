@@ -3,15 +3,15 @@ package com.blues.framework.base;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.blues.R;
-import com.blues.framework.injection.InjectManager;
 import com.blues.framework.widget.immersionbar.ImmersionBar;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * User : Blues
@@ -47,13 +47,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         initView(savedInstanceState);
         //设置监听
         setListener();
-    }
-
-
-    @Override
-    public void setContentView(int layoutResID) {
-        super.setContentView(layoutResID);
-        InjectManager.init(this);
     }
 
     @Override

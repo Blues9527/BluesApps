@@ -1,6 +1,5 @@
 package com.blues.module_study;
 
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
@@ -10,6 +9,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 public class ImagesAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 

@@ -1,6 +1,6 @@
 package com.blues.module_study.model_web.view;
 
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;

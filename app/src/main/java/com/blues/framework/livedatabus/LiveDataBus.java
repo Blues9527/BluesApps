@@ -1,15 +1,15 @@
 package com.blues.framework.livedatabus;
 
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
-import android.support.annotation.NonNull;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 public final class LiveDataBus {
 
@@ -38,7 +38,7 @@ public final class LiveDataBus {
     //通过hook去实现事件拦截
     public class BusMutableLiveData<T> extends MutableLiveData<T> {
         @Override
-        public void observe(@NonNull LifecycleOwner owner, @NonNull Observer<T> observer) {
+        public void observe(@NonNull LifecycleOwner owner, @NonNull Observer<? super T> observer) {
             super.observe(owner, observer);
 
 
@@ -49,7 +49,7 @@ public final class LiveDataBus {
             }
         }
 
-        private void hook(Observer<T> observer) throws Exception {
+        private void hook(Observer<? super T> observer) throws Exception {
 
             /**
              * 思路是：要在执行observer的onChanged方法前进行hook

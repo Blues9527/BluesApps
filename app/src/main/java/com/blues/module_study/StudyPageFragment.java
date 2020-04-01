@@ -2,8 +2,6 @@ package com.blues.module_study;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +12,13 @@ import com.blues.R;
 import com.blues.framework.base.BaseFragment;
 import com.blues.framework.base.BaseViewPagerAdapter;
 import com.blues.module_study.model_android.view.AndroidFragment;
-import com.blues.module_study.model_fuli.view.FuliFragment;
+import com.blues.module_study.model_article.ArticleFragment;
 import com.blues.module_study.model_ios.view._iOSFragment;
+import com.blues.module_study.model_video.VideoFragment;
 import com.blues.module_study.model_web.view.WebFragment;
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.viewpager.widget.ViewPager;
 
 
 /**
@@ -27,7 +29,7 @@ import com.blues.module_study.model_web.view.WebFragment;
 
 public class StudyPageFragment extends BaseFragment {
 
-    private String[] tabs = {"Android", "iOS", "Web", "美女"};
+    private String[] tabs = {"Android", "iOS", "Web", "Blues", "Video"};
 
     @Override
     public int setLayoutResourceId() {
@@ -44,7 +46,8 @@ public class StudyPageFragment extends BaseFragment {
         mFragmentAdapter.addFragment(new AndroidFragment());
         mFragmentAdapter.addFragment(new _iOSFragment());
         mFragmentAdapter.addFragment(new WebFragment());
-        mFragmentAdapter.addFragment(new FuliFragment());
+        mFragmentAdapter.addFragment(new ArticleFragment());
+        mFragmentAdapter.addFragment(new VideoFragment());
 
         mViewPager.setAdapter(mFragmentAdapter);
         mViewPager.setOffscreenPageLimit(1);

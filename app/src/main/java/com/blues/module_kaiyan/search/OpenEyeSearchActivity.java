@@ -1,8 +1,8 @@
 package com.blues.module_kaiyan.search;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
