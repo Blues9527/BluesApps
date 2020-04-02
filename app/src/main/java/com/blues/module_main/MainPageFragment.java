@@ -1,6 +1,7 @@
 package com.blues.module_main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -17,8 +18,10 @@ import com.blues.database.course.CourseEntity;
 import com.blues.database.course.CourseManager;
 import com.blues.framework.base.BaseFragment;
 import com.blues.framework.utils.FileUtil;
+import com.blues.framework.widget.DrawableTextView;
 import com.blues.framework.widget.endlessbannerview.BannerAdapter;
 import com.blues.framework.widget.endlessbannerview.BannerView;
+import com.blues.module_kaiyan.search.OpenEyeSearchActivity;
 import com.blues.module_main.banner.BannerContract;
 import com.blues.module_main.banner.BannerEntity;
 import com.blues.module_main.banner.BannerPresenter;
@@ -40,6 +43,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -54,6 +58,7 @@ public class MainPageFragment extends BaseFragment implements BannerContract.iBa
     private BannerContract.iBannerContractPresenter iPresenter;
     private EasyRecyclerView ervEntry;
     private BannerView bannerView;
+    private DrawableTextView tvSearch;
 
     @Override
     public int setLayoutResourceId() {
@@ -68,6 +73,7 @@ public class MainPageFragment extends BaseFragment implements BannerContract.iBa
 
         bannerView = rootView.findViewById(R.id.bv_header);
         ervEntry = rootView.findViewById(R.id.erv_entry);
+        tvSearch = rootView.findViewById(R.id.tv_search);
         initEntry(getmContext());
     }
 
@@ -155,6 +161,12 @@ public class MainPageFragment extends BaseFragment implements BannerContract.iBa
 
     @Override
     public void setListener() {
+        tvSearch.setOnClickListener(v -> {
+            Intent intent = new Intent(getmContext(), OpenEyeSearchActivity.class);
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getmContext(), tvSearch, "transitionSearch");
+            startActivity(intent, options.toBundle());
+        });
+
 
     }
 

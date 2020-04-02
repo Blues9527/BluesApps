@@ -1,22 +1,19 @@
 package com.blues.module_kaiyan;
 
-import android.content.Intent;
 import android.os.Bundle;
-import com.google.android.material.tabs.TabLayout;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
-import com.blues.framework.base.BaseFragment;
 import com.blues.R;
+import com.blues.framework.base.BaseFragment;
 import com.blues.framework.base.BaseViewPagerAdapter;
 import com.blues.module_kaiyan.historicalrank.OEHistoricalRankFragment;
 import com.blues.module_kaiyan.hotrank.OEHotRankFragment;
 import com.blues.module_kaiyan.monthlyrank.OEMonthlyRankFragment;
-import com.blues.module_kaiyan.search.OpenEyeSearchActivity;
 import com.blues.module_kaiyan.weeklyrank.OEWeeklyRankFragment;
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * User : Blues
@@ -27,7 +24,6 @@ import com.blues.module_kaiyan.weeklyrank.OEWeeklyRankFragment;
 public class OpenEyeFragment extends BaseFragment {
 
     private String[] tabs = {"热门排行", "周排行", "月排行", "总排行"};
-    private ImageView ivSearch;
 
     @Override
     public int setLayoutResourceId() {
@@ -39,7 +35,6 @@ public class OpenEyeFragment extends BaseFragment {
 
         TabLayout mTab = rootView.findViewById(R.id.tl_fragment_bottom);
         ViewPager mViewPager = rootView.findViewById(R.id.vp_show);
-        ivSearch = rootView.findViewById(R.id.iv_search);
 
         BaseViewPagerAdapter mFragmentAdapter = new BaseViewPagerAdapter(getChildFragmentManager(), tabs);
         mFragmentAdapter.addFragment(new OEHotRankFragment());
@@ -59,10 +54,5 @@ public class OpenEyeFragment extends BaseFragment {
 
     @Override
     public void setListener() {
-        ivSearch.setOnClickListener(v -> {
-            Intent intent = new Intent(getmContext(), OpenEyeSearchActivity.class);
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getmContext(), ivSearch, "transitionSearch");
-            startActivity(intent, options.toBundle());
-        });
     }
 }

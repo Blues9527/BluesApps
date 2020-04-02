@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/iv_categorycourse_cover"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="8dp" />
+
+
+    <TextView
+        android:id="@+id/tv_categorycourse_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/iv_categorycourse_cover"
+        android:textColor="@color/color_black"
+        android:textSize="15sp"
+        tools:text="大厂面试必考之深入解析图片缓存框架原理" />
+
+    <TextView
+        android:id="@+id/tv_categorycourse_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_categorycourse_title"
+        android:layout_alignBottom="@+id/iv_categorycourse_cover"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/iv_categorycourse_cover"
+        android:textColor="@color/color_black_translucent60"
+        android:textSize="13sp"
+        tools:text="￥ 59" />
+
+</RelativeLayout>
