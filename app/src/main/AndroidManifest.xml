@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
     <application
         android:name=".application.BluesApplication"
         android:allowBackup="true"
@@ -15,7 +16,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Custom"
+        android:theme="@style/BluesAppTheme"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
@@ -38,23 +39,18 @@
             android:name=".splash.SplashActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:excludeFromRecents="true"
-            android:launchMode="singleInstance"
-            android:theme="@style/Theme.Custom" >
-        </activity>
+            android:launchMode="singleInstance"></activity>
         <activity
             android:name=".module_login.LoginActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
-            android:theme="@style/Theme.Custom"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".module_register.RegisterActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
-            android:theme="@style/Theme.Custom"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".module_kaiyan.search.OpenEyeSearchActivity"
@@ -62,8 +58,7 @@
         <activity
             android:name=".module_kaiyan.detail.OEDetailActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:launchMode="standard"
-            android:theme="@style/Theme.Custom" />
+            android:launchMode="standard" />
     </application>
 
 </manifest>
