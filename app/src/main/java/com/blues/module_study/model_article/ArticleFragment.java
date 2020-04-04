@@ -41,12 +41,7 @@ public class ArticleFragment extends BaseFragment {
         mAdapter.addAll(article.getArticle());
         mAdapter.notifyDataSetChanged();
 
-        mAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                new WebViewDialog(getmContext(), article.getArticle().get(position).getUrl()).show();
-            }
-        });
+        mAdapter.setOnItemClickListener(position -> new WebViewDialog(getmContext(), article.getArticle().get(position).getUrl()).show());
     }
 
     @Override

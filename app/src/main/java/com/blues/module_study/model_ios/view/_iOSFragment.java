@@ -1,16 +1,15 @@
 package com.blues.module_study.model_ios.view;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.LinearLayout;
 
-import com.blues.framework.base.BaseFragment;
+import com.blues.LoadingDialog;
 import com.blues.R;
+import com.blues.framework.base.BaseFragment;
 import com.blues.module_study.model_ios.IOSContract;
 import com.blues.module_study.model_ios.model.IOSEntity;
 import com.blues.module_study.model_ios.presenter.IOSPresenter;
@@ -24,6 +23,9 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 public class _iOSFragment extends BaseFragment implements IOSContract.iContractView, OnRefreshListener {
 
     private SmartRefreshLayout iOSSr;
@@ -31,6 +33,7 @@ public class _iOSFragment extends BaseFragment implements IOSContract.iContractV
     private IOSContract.iContractPresenter iPresenter;
     private RecyclerArrayAdapter<IOSEntity.ResultsBean> mAdapter;
     private View v;
+    private LoadingDialog mLoading;
 
     @Override
     public int setLayoutResourceId() {
@@ -92,10 +95,8 @@ public class _iOSFragment extends BaseFragment implements IOSContract.iContractV
 
         if (result != null) {
             for (IOSEntity.ResultsBean ios : result) {
-
                 mAdapter.add(ios);
             }
-
         }
         mAdapter.notifyDataSetChanged();
 
@@ -113,11 +114,15 @@ public class _iOSFragment extends BaseFragment implements IOSContract.iContractV
 
     @Override
     public void showLoading() {
-
+        mLoading = new LoadingDialog(getmContext());
+        mLoading.show();
     }
 
     @Override
     public void showFinished() {
+        if (mLoading != null) {
+            mLoading.dismiss();
+        }
         iOSSr.finishRefresh();
     }
 
@@ -134,11 +139,16 @@ public class _iOSFragment extends BaseFragment implements IOSContract.iContractV
             e.printStackTrace();
             v.setVisibility(View.VISIBLE);
         }
+        if (mLoading != null) {
+            mLoading.dismiss();
+        }
     }
 
     @Override
     public void showEmpty() {
-
+        if (mLoading != null) {
+            mLoading.dismiss();
+        }
     }
 
     @Override

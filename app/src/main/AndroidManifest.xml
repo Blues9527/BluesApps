@@ -16,18 +16,11 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/BluesAppTheme"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:launchMode="standard">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:launchMode="standard"></activity>
 
         <activity
             android:name=".module_study.ShowImageActivity"
@@ -39,7 +32,14 @@
             android:name=".splash.SplashActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:excludeFromRecents="true"
-            android:launchMode="singleInstance"></activity>
+            android:launchMode="singleInstance"
+            android:theme="@style/BluesAppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".module_login.LoginActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"

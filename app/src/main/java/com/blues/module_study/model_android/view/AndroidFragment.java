@@ -116,7 +116,9 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
 
     @Override
     public void showFinished() {
-        mLoading.dismiss();
+        if (mLoading != null) {
+            mLoading.dismiss();
+        }
         androidSr.finishRefresh();
     }
 
@@ -133,11 +135,16 @@ public class AndroidFragment extends BaseFragment implements AndroidContract.iCo
             e.printStackTrace();
             v.setVisibility(View.VISIBLE);
         }
+        if (mLoading != null) {
+            mLoading.dismiss();
+        }
     }
 
     @Override
     public void showEmpty() {
-
+        if (mLoading != null) {
+            mLoading.dismiss();
+        }
     }
 
     @Override

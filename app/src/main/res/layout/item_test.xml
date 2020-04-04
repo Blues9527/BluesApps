@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -13,7 +14,7 @@
         android:id="@+id/iv_avatar"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:background="@mipmap/ic_avatar_default" />
 
@@ -22,12 +23,12 @@
         android:id="@+id/tv_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginStart="@dimen/dp_10"
         android:layout_marginTop="15dp"
-        android:layout_toRightOf="@+id/iv_avatar"
-        android:text="Blues"
+        android:layout_toEndOf="@+id/iv_avatar"
         android:textColor="@color/color_light_blue"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        tools:text="Blues" />
 
     <TextView
         android:id="@+id/tv_desc"
@@ -37,16 +38,16 @@
         android:layout_marginLeft="@dimen/dp_10"
         android:layout_marginTop="10dp"
         android:layout_marginRight="@dimen/dp_10"
-        android:text="this is title"
         android:textColor="@color/color_black"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        tools:text="this is title" />
 
     <com.jude.easyrecyclerview.EasyRecyclerView
         android:id="@+id/rv_images"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_desc"
-        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginStart="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_10" />
 
     <TextView
@@ -54,11 +55,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rv_images"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:text="1小时前"
         android:textColor="@color/color_dark_gray"
-        android:textSize="11sp" />
+        android:textSize="11sp"
+        tools:text="1小时前" />
 
     <TextView
         android:id="@+id/tv_source"
@@ -67,7 +68,7 @@
         android:layout_alignBaseline="@+id/tv_publish_time"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:text="来自web"
         android:textColor="@color/color_dark_gray"
-        android:textSize="11sp" />
+        android:textSize="11sp"
+        tools:text="来自web" />
 </RelativeLayout>

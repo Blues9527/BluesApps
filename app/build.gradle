@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+static def releaseTime() {  //获取时间的方法,在Android节点外,另外的节点
+    return new Date().format("yyyyMMddHHmm", TimeZone.getDefault())
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
@@ -12,7 +16,7 @@ android {
 
         resConfigs "zh"
 
-        ndk{ abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a' }
+        ndk { abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a' }
 
         //multiDex的一些相关配置，这样配置可以让你的编译速度更快
         dexOptions {
@@ -53,10 +57,24 @@ android {
             jniLibs.srcDir 'src/main/jniLibs'
         }
     }
+
     buildTypes {
         release {
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            android.applicationVariants.all {
+                variant ->
+                    if (variant.buildType.name == 'release') {
+                        variant.outputs.all {
+                            outputFileName = "BluesApp_${releaseTime()}.apk"
+                        }
+                    }
+            }
         }
     }
     compileOptions {
