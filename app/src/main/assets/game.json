@@ -1,0 +1,26 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "title": "以下哪个不是Android的四大组件之一？",
+      "answer": "ContentResolver",
+      "selections": [
+        "Activity",
+        "ContentResolver",
+        "Service",
+        "BroadCastReceiver"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "下列哪个不属于Java的面向对象特征",
+      "answer": "接口回调",
+      "selections": [
+        "封装",
+        "继承",
+        "多态",
+        "接口回调"
+      ]
+    }
+  ]
+}
