@@ -104,29 +104,4 @@ public class AccountRegisterFragment extends BaseFragment implements View.OnClic
     public void setPresenter(RegisterContract.iRegisterContractPresenter presenter) {
         iPresenter = presenter;
     }
-
-    @Override
-    public void showBegin() {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void showFinished() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
-    public void showEmpty() {
-
-    }
 }

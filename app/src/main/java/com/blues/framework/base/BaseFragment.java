@@ -105,5 +105,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
 
     public abstract void lazyFetchData();
 
-    public abstract void setListener();
+    public void setListener() {
+    }
 }

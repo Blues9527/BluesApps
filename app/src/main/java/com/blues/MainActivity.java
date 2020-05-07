@@ -8,7 +8,7 @@ import com.blues.framework.base.BaseActivity;
 import com.blues.framework.utils.HelperUtil;
 import com.blues.module_kaiyan.OpenEyeFragment;
 import com.blues.module_main.MainPageFragment;
-import com.blues.module_study.StudyPageFragment;
+import com.blues.module_gank.old.StudyPageFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;

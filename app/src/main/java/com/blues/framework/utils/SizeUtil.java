@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 public final class SizeUtil {
 
     private SizeUtil() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
     /**

@@ -1,8 +1,6 @@
 package com.blues.module_kaiyan.monthlyrank;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +24,9 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 
 /**
@@ -89,16 +90,6 @@ public class OEMonthlyRankFragment extends BaseFragment implements OpenEyeContra
     }
 
     @Override
-    public void showBegin() {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
     public void showFinished() {
         hotRankSr.finishRefresh();
     }
@@ -116,11 +107,6 @@ public class OEMonthlyRankFragment extends BaseFragment implements OpenEyeContra
             e.printStackTrace();
             v.setVisibility(View.VISIBLE);
         }
-    }
-
-    @Override
-    public void showEmpty() {
-
     }
 
     @Override

@@ -8,10 +8,10 @@ import com.google.gson.Gson;
  * Time : 16:35
  */
 
-public class JsonUtil {
+public final class JsonUtil {
 
-    public JsonUtil() {
-        throw new UnsupportedOperationException("please init Utils from JsonUtil");
+    private JsonUtil() {
+
     }
 
     public static <T> T convertToEntity(String source, Class<T> clazz) {

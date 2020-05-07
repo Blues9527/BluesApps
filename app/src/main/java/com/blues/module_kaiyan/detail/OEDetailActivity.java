@@ -2,17 +2,16 @@ package com.blues.module_kaiyan.detail;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import android.transition.AutoTransition;
 import android.transition.Explode;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.blues.R;
 import com.blues.framework.base.BaseActivity;
 import com.blues.module_kaiyan.OpenEyeEntity;
+import com.bumptech.glide.Glide;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -21,6 +20,8 @@ import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 /**
  * User : Blues
@@ -117,30 +118,6 @@ public class OEDetailActivity extends BaseActivity implements OEDetailRelatedCon
         iPresenter = presenter;
     }
 
-    @Override
-    public void showBegin() {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void showFinished() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
-    public void showEmpty() {
-
-    }
 
     @Override
     protected void onNewIntent(Intent intent) {

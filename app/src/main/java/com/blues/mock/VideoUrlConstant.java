@@ -1,7 +1,7 @@
 package com.blues.mock;
 
 
-import com.blues.module_study.model_video.VideoInfoEntity;
+import com.blues.module_gank.old.model_video.VideoInfoEntity;
 
 import java.util.ArrayList;
 import java.util.List;

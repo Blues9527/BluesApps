@@ -13,6 +13,8 @@ import com.blues.module_kaiyan.monthlyrank.OEMonthlyRankFragment;
 import com.blues.module_kaiyan.weeklyrank.OEWeeklyRankFragment;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Arrays;
+
 import androidx.viewpager.widget.ViewPager;
 
 /**
@@ -36,7 +38,7 @@ public class OpenEyeFragment extends BaseFragment {
         TabLayout mTab = rootView.findViewById(R.id.tl_fragment_bottom);
         ViewPager mViewPager = rootView.findViewById(R.id.vp_show);
 
-        BaseViewPagerAdapter mFragmentAdapter = new BaseViewPagerAdapter(getChildFragmentManager(), tabs);
+        BaseViewPagerAdapter mFragmentAdapter = new BaseViewPagerAdapter(getChildFragmentManager(), Arrays.asList(tabs));
         mFragmentAdapter.addFragment(new OEHotRankFragment());
         mFragmentAdapter.addFragment(new OEWeeklyRankFragment());
         mFragmentAdapter.addFragment(new OEMonthlyRankFragment());

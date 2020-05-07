@@ -179,30 +179,6 @@ public class OpenEyeSearchActivity extends BaseActivity implements TextWatcher, 
     }
 
     @Override
-    public void showBegin() {
-
-    }
-
-    @Override
-    public void showLoading() {
-    }
-
-    @Override
-    public void showFinished() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
-    public void showEmpty() {
-
-    }
-
-    @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (actionId == EditorInfo.IME_ACTION_SEARCH) {
             mResultAdapter.clear();

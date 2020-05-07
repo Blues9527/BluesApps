@@ -3,7 +3,7 @@ package com.blues.module_login;
 import com.blues.constant.RequestUrl;
 import com.blues.framework.http.RetrofitManager;
 import com.blues.framework.utils.RxUtil;
-import com.blues.module_study.model_android.AndroidAPI;
+import com.blues.module_gank.old.model_android.AndroidAPI;
 
 import rx.Observable;
 import rx.Subscriber;

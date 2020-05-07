@@ -27,7 +27,6 @@ public class WanAndroidPresenter extends RxPresenter implements WanAndroidContra
 
     @Override
     public void initData() {
-        getBanner();
         getWanAndroidPostList(mCurrentPage = 0);
     }
 

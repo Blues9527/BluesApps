@@ -10,17 +10,17 @@ import android.util.Log;
  * Desc: to get resources.
  */
 public final class ResourcesUtils {
-    public static String ANIMATION = "anim";
-    public static String COLOR = "color";
-    public static String DRAWABLE = "drawable";
-    public static String MIPMAP = "mipmap";
-    public static String LAYOUT = "layout";
-    public static String MENU = "menu";
-    public static String STRING = "string";
-    public static String STYLE = "style";
-    public static String DIMEN = "dimen";
-    public static String ATTR = "attr";
-    public static String ID = "id";
+    private static final String ANIMATION = "anim";
+    private static final String COLOR = "color";
+    private static final String DRAWABLE = "drawable";
+    private static final String MIPMAP = "mipmap";
+    private static final String LAYOUT = "layout";
+    private static final String MENU = "menu";
+    private static final String STRING = "string";
+    private static final String STYLE = "style";
+    private static final String DIMEN = "dimen";
+    private static final String ATTR = "attr";
+    private static final String ID = "id";
 
     public static int getResourcesID(String name, String type, Context context) {
         int id = 0x7f000000;
@@ -28,7 +28,7 @@ public final class ResourcesUtils {
             id = context.getResources().getIdentifier(name, type, context.getPackageName());
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d("ThirdSDK", "get resources exception. resources no found -->" +
+            Log.d("ResourcesUtils", "get resources exception. resources no found -->" +
                     "\nname --> " + name +
                     "\ntype --> " + type);
         }

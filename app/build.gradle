@@ -129,6 +129,9 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.0.0'
     annotationProcessor 'androidx.room:room-compiler:2.0.0'
 
+    //解析markdown格式数据，转换成String类型的html格式数据
+    implementation 'org.commonjava.googlecode.markdown4j:markdown4j:2.2-cj-1.1'
+
     //nicevideoplayer通过library库来依赖，因为需要做一些小修改
     api project(':nicevideoplayer')
 //    api project(':gifloader')

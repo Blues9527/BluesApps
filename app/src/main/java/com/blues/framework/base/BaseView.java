@@ -12,17 +12,22 @@ public interface BaseView<P extends BasePresenter> {
     void setPresenter(P presenter);
 
     //发送请求
-    void showBegin();
+    default void showBegin() {
+    }
 
     //加载进度条
-    void showLoading();
+    default void showLoading() {
+    }
 
     //加载数据
-    void showFinished();
+    default void showFinished() {
+    }
 
     //加载错误
-    void showError();
+    default void showError() {
+    }
 
     //空数据
-    void showEmpty();
+    default void showEmpty() {
+    }
 }

@@ -1,12 +1,15 @@
 package com.blues.application;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkRequest;
 import android.os.Build;
+import android.os.Bundle;
 
 import com.blues.database.course.CourseManager;
 import com.blues.framework.network.NetworkCallbackImpl;
+import com.blues.framework.utils.ActivityManagerUtil;
 import com.blues.framework.utils.ThreadManager;
 import com.blues.framework.utils.Utils;
 
@@ -50,6 +53,45 @@ public class BluesApplication extends MultiDexApplication {
 
         //注册一下网络监听
         initNetworkListener();
+
+
+        //批量管理activity
+        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+            @Override
+            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+                ActivityManagerUtil.activityList.add(activity);
+            }
+
+            @Override
+            public void onActivityStarted(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityResumed(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityStopped(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+            }
+
+            @Override
+            public void onActivityDestroyed(Activity activity) {
+                ActivityManagerUtil.activityList.remove(activity);
+            }
+        });
     }
 
     private void initNetworkListener() {

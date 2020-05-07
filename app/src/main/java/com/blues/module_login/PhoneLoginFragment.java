@@ -98,29 +98,4 @@ public class PhoneLoginFragment extends BaseFragment implements View.OnClickList
     public void setPresenter(LoginContract.iLoginContractPresenter presenter) {
         iPresenter = presenter;
     }
-
-    @Override
-    public void showBegin() {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void showFinished() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
-    public void showEmpty() {
-
-    }
 }

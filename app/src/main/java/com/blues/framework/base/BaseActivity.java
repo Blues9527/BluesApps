@@ -134,5 +134,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     public abstract void initView(Bundle savedInstanceState);
 
-    public abstract void setListener();
+    public void setListener() {
+    }
 }

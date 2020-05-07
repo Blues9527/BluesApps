@@ -19,7 +19,7 @@ import java.nio.charset.StandardCharsets;
 public final class FileUtil {
 
     private FileUtil() {
-        throw new UnsupportedOperationException("please init Utils from FileUtil");
+
     }
 
     /**

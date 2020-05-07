@@ -14,7 +14,6 @@ import android.view.WindowManager;
 public final class ScreenUtil {
 
     private ScreenUtil() {
-        throw new UnsupportedOperationException("please init Utils from ScreenUtil");
     }
 
     /**

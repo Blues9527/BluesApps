@@ -16,10 +16,10 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class BaseViewPagerAdapter extends FragmentPagerAdapter {
 
-    private String[] titles;
+    private List<String> titles;
     private List<Fragment> fragments = new ArrayList<>();
 
-    public BaseViewPagerAdapter(FragmentManager fm, String[] titles) {
+    public BaseViewPagerAdapter(FragmentManager fm, List<String> titles) {
         super(fm);
         this.titles = titles;
     }
@@ -41,6 +41,6 @@ public class BaseViewPagerAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return titles[position];
+        return titles.get(position);
     }
 }

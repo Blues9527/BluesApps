@@ -2,8 +2,6 @@ package com.blues.module_login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -17,6 +15,9 @@ import com.blues.module_register.RegisterActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 
 /**
@@ -81,7 +82,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 //                flContainer.setVisibility(View.VISIBLE);
 //                showFragment(mCurrentFragment, fragments.get(0));
                 Toast.makeText(LoginActivity.this,"此功能暂未开发完成，请点击跳过",Toast.LENGTH_SHORT).show();
-                break;
             case R.id.tv_phone_login:
                 //TODO 跳转手机登陆fragment
 //                llContainer.setVisibility(View.GONE);

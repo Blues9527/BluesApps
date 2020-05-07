@@ -1,11 +1,12 @@
 <resources>
-    <string name="app_name">Blues</string>
+    <string name="app_name">Blues学习</string>
 
     <string name="hot_search_tips">—— 热门搜索词 ——</string>
     <string name="search_tips">输入标题或者描述中的关键词找到更多视频</string>
 
     <!--使用共享元素时的transitionName-->
     <string name="transitionName_Image">transitionImage</string>
+    <string name="transitionName_Gank">transitionGank</string>
     <string name="transitionName_OEObject">transitionOEObject</string>
     <string name="transitionName_Search">transitionSearch</string>
 </resources>

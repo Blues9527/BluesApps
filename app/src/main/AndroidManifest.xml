@@ -20,10 +20,16 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:launchMode="standard"></activity>
+            android:launchMode="standard">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
-            android:name=".module_study.ShowImageActivity"
+            android:name=".module_gank.old.ShowImageActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleTop"
             android:theme="@style/ShowImageActivity" />
@@ -34,11 +40,11 @@
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
             android:theme="@style/BluesAppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".module_login.LoginActivity"
@@ -59,6 +65,12 @@
             android:name=".module_kaiyan.detail.OEDetailActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="standard" />
+        <activity android:name=".module_game.GameActivity" />
+        <activity android:name=".model_wanandroid.WanAndroidActivity" />
+        <activity android:name=".module_gank._new.mvp.view.GankActivity" />
+        <activity android:name=".module_kaiyan.OpenEyeActivity" />
+        <activity android:name=".module_gank._new.detail.GankPostDetailActivity" />
+        <activity android:name=".module_gank._new.girl.GankGirlActivity" />
     </application>
 
 </manifest>

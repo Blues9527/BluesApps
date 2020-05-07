@@ -15,7 +15,6 @@ public class HelperUtil {
     public static boolean LOGGER_SWITCH_ON = true;
 
     private HelperUtil() {
-        throw new UnsupportedOperationException("please init Utils from HelperUtil");
     }
 
     public static void showToastShort(String str) {

@@ -13,21 +13,24 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.blues.R;
 import com.blues.WebViewDialog;
-import com.blues.constant.UsedConstant;
 import com.blues.database.course.CourseEntity;
 import com.blues.database.course.CourseManager;
+import com.blues.framework.utils.ActivityManagerUtil;
 import com.blues.framework.utils.FileUtil;
 import com.blues.framework.widget.DrawableTextView;
 import com.blues.framework.widget.endlessbannerview.BannerAdapter;
 import com.blues.framework.widget.endlessbannerview.BannerView;
+import com.blues.model_wanandroid.WanAndroidActivity;
 import com.blues.model_wanandroid.WanAndroidBannerEntity;
-import com.blues.model_wanandroid.netease.CategoryCourseFragment;
-import com.blues.model_wanandroid.netease.CategoryDialogFragment;
 import com.blues.model_wanandroid.netease.CourseEntryHolder;
-import com.blues.model_wanandroid.netease.MicroSpecDialogFragment;
+import com.blues.module_game.GameActivity;
+import com.blues.module_gank._new.girl.GankGirlActivity;
+import com.blues.module_gank._new.mvp.view.GankActivity;
+import com.blues.module_kaiyan.OpenEyeActivity;
 import com.blues.module_kaiyan.OpenEyeEntity;
 import com.blues.module_kaiyan.search.OpenEyeSearchActivity;
 import com.google.gson.Gson;
@@ -100,35 +103,38 @@ public class MainPageHeaderView extends RelativeLayout implements RecyclerArrayA
                 return new CourseEntryHolder(parent);
             }
         });
-        mEntryAdapter.addAll(getAllCourses(context));
+        mEntryAdapter.addAll(getAllCourse(context));
         mEntryAdapter.notifyDataSetChanged();
 
         mEntryAdapter.setOnItemClickListener(position -> {
             if (getContext() instanceof FragmentActivity) {
                 switch (position) {
                     case 0:
-                        MicroSpecDialogFragment.newInstance("免费课程").show(((FragmentActivity) getContext()).getSupportFragmentManager(), "microspec");
+                        ActivityManagerUtil.start(GankGirlActivity.class, null);
                         break;
                     case 1:
-                        CategoryDialogFragment.newInstance(UsedConstant.NETEASE_JOB_ID).show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category1");
-                        break;
                     case 2:
-                        CategoryDialogFragment.newInstance(UsedConstant.NETEASE_PROGRAM_ID).show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category2");
-                        break;
                     case 3:
-                        CategoryDialogFragment.newInstance(UsedConstant.NETEASE_AI_ID).show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category3");
+                        //商城
+                        Toast.makeText(getContext(), "敬请期待", Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
-                        CategoryDialogFragment.newInstance(UsedConstant.NETEASE_PRODUCT_ID).show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category4");
+                        //干货
+                        ActivityManagerUtil.start(GankActivity.class, null);
                         break;
                     case 5:
-                        CategoryDialogFragment.newInstance(UsedConstant.NETEASE_DESIGN_ID).show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category5");
+                        //开眼
+                        ActivityManagerUtil.start(OpenEyeActivity.class, null);
                         break;
                     case 6:
-                        CategoryDialogFragment.newInstance(UsedConstant.NETEASE_BUSINESS_ID).show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category6");
+                        //玩 Android
+                        ActivityManagerUtil.start(WanAndroidActivity.class, null);
+//                        getContext().startActivity(new Intent(getContext(), WanAndroidActivity.class));
                         break;
                     case 7:
-                        CategoryCourseFragment.newInstance().show(((FragmentActivity) getContext()).getSupportFragmentManager(), "category7");
+                        //答题小游戏
+                        ActivityManagerUtil.start(GameActivity.class, null);
+//                        getContext().startActivity(new Intent(getContext(), GameActivity.class));
                         break;
                 }
 
@@ -143,6 +149,7 @@ public class MainPageHeaderView extends RelativeLayout implements RecyclerArrayA
      * @param ctx 上下文对象
      * @return 返回的是一个course列表
      */
+    @Deprecated
     private List<CourseEntity> getAllCourses(Context ctx) {
         List<CourseEntity> course = CourseManager.getInstance().getAllCourse();
         if (course.size() != 0) {
@@ -166,6 +173,20 @@ public class MainPageHeaderView extends RelativeLayout implements RecyclerArrayA
         }
         Log.i("Blues", "从本地配置表读取course数据");
         return course;
+    }
+
+    private List<CourseEntity> getAllCourse(Context context) {
+        List<CourseEntity> courses = new ArrayList<>();
+        try {
+            JSONArray ja = new JSONArray(FileUtil.getAssetsFile(context, "course.json"));
+            for (int i = 0; i < ja.length(); i++) {
+                CourseEntity entity = new Gson().fromJson(ja.get(i).toString().replaceAll("\\\\", ""), CourseEntity.class);
+                courses.add(entity);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return courses;
     }
 
     @Override

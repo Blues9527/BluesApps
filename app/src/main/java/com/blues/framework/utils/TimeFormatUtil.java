@@ -9,7 +9,6 @@ package com.blues.framework.utils;
 public class TimeFormatUtil {
 
     private TimeFormatUtil() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
     public static String formatTime(int duration) {
