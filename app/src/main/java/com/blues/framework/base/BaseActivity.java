@@ -3,7 +3,13 @@ package com.blues.framework.base;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.blues.R;
@@ -31,7 +37,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        setTheme(R.style.Theme_Custom);
         super.onCreate(savedInstanceState);
 
         mContext = this;
@@ -53,7 +58,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     @Override
     protected void onResume() {
         super.onResume();
-//        immersionInit();
+        //        immersionInit();
     }
 
     @Override
@@ -67,7 +72,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         super.onDestroy();
 
         //启用leak canary
-//        BluesApplication.getRefWatcher(this).watch(this);
+        //        BluesApplication.getRefWatcher(this).watch(this);
 
         //当视图被销毁时presenter不为空，手动解除订阅
         if (mPresenter != null) {
@@ -87,13 +92,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return;
         }
-        ImmersionBar.with(mContext)
-                .transparentBar()
-                .fitsSystemWindows(true)
-                .statusBarColorRes(R.color.color_transparent)
-                .statusBarColorTransformRes(R.color.color_transparent)
-                .statusBarDarkFont(true)
-                .init();
+        ImmersionBar.with(mContext).transparentBar().fitsSystemWindows(true).statusBarColorRes(R.color.color_transparent).statusBarColorTransformRes(R.color.color_transparent).statusBarDarkFont(true).init();
     }
 
 

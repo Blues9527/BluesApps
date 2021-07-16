@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blues.R;
-import com.blues.database.course.CourseEntity;
+import com.blues.bean.CourseEntity;
 import com.blues.framework.utils.ScreenUtil;
 import com.blues.framework.utils.SizeUtil;
 import com.bumptech.glide.Glide;

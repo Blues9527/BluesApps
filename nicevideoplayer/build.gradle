@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
 
@@ -53,4 +54,9 @@ dependencies {
     implementation 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.8'
     implementation 'androidx.annotation:annotation:1.0.0'
     api 'androidx.appcompat:appcompat:1.0.0'
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

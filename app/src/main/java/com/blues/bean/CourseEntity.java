@@ -1,4 +1,4 @@
-package com.blues.database.course;
+package com.blues.bean;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

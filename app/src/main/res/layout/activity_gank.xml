@@ -8,7 +8,8 @@
         android:id="@+id/tl_gank_top"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_gravity="bottom" />
+        android:layout_gravity="bottom"
+        android:layout_marginTop="38dp" />
 
     <com.blues.framework.widget.endlessbannerview.BannerView
         android:id="@+id/bv_header"

@@ -7,10 +7,8 @@ import android.net.NetworkRequest;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.blues.database.course.CourseManager;
 import com.blues.framework.network.NetworkCallbackImpl;
 import com.blues.framework.utils.ActivityManagerUtil;
-import com.blues.framework.utils.ThreadManager;
 import com.blues.framework.utils.Utils;
 
 import androidx.multidex.MultiDex;
@@ -47,9 +45,9 @@ public class BluesApplication extends MultiDexApplication {
         Utils.init(this);
 
         //初始化数据库
-        ThreadManager.getInstance().executeRunnable(() -> {
-            CourseManager.getInstance().initDataBase(getApplicationContext());
-        });
+//        ThreadManager.getInstance().executeRunnable(() -> {
+//            CourseManager.getInstance().initDataBase(getApplicationContext());
+//        });
 
         //注册一下网络监听
         initNetworkListener();

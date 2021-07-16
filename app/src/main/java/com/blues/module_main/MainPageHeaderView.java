@@ -17,8 +17,7 @@ import android.widget.Toast;
 
 import com.blues.R;
 import com.blues.WebViewDialog;
-import com.blues.database.course.CourseEntity;
-import com.blues.database.course.CourseManager;
+import com.blues.bean.CourseEntity;
 import com.blues.framework.utils.ActivityManagerUtil;
 import com.blues.framework.utils.FileUtil;
 import com.blues.framework.widget.DrawableTextView;
@@ -142,39 +141,6 @@ public class MainPageHeaderView extends RelativeLayout implements RecyclerArrayA
         });
     }
 
-
-    /**
-     * 获取course数据，1：优先本地数据库的数据 2：asset目录下的配置
-     *
-     * @param ctx 上下文对象
-     * @return 返回的是一个course列表
-     */
-    @Deprecated
-    private List<CourseEntity> getAllCourses(Context ctx) {
-        List<CourseEntity> course = CourseManager.getInstance().getAllCourse();
-        if (course.size() != 0) {
-            Log.i("Blues", "从本地数据库读取course数据");
-            return course;
-        } else {
-            try {
-                JSONArray ja = new JSONArray(FileUtil.getAssetsFile(ctx, "course.json"));
-                for (int i = 0; i < ja.length(); i++) {
-                    //json转译/有问题，会转译成\/，所以要通过字符串替换掉
-                    Log.i("Blues", ja.get(i).toString().replaceAll("\\\\", ""));
-                    CourseEntity entity = new Gson().fromJson(ja.get(i).toString().replaceAll("\\\\", ""), CourseEntity.class);
-                    course.add(entity);
-                    //再将数据写入数据库
-                    CourseManager.getInstance().insertCourse(entity);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
-        Log.i("Blues", "从本地配置表读取course数据");
-        return course;
-    }
-
     private List<CourseEntity> getAllCourse(Context context) {
         List<CourseEntity> courses = new ArrayList<>();
         try {
@@ -210,11 +176,9 @@ public class MainPageHeaderView extends RelativeLayout implements RecyclerArrayA
         new Handler(Looper.getMainLooper()).post(() -> {
             bannerView.setPlayDelay(3000);
             //启用progressbar形式hintview
-//            bannerView.setHintView(new ProgressHintView(ctx, 0xffffffff, 0xff505050, 3000));
             bannerView.setHintPadding(bannerView.dp2px(10), 0, bannerView.dp2px(10), bannerView.dp2px(10));
             bannerView.setAnimationDuration(1000);
-            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, bannerView.dp2px(185));
-//            layoutParams.setMargins(bannerView.dp2px(15f), bannerView.dp2px(10f), bannerView.dp2px(15f), 0);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, bannerView.dp2px(185));
             bannerView.setLayoutParams(layoutParams);
             BannerAdapter adapter = new BannerAdapter(ctx, bannerUrls, bannerView);
             adapter.setItemClickListener(realPosition -> new WebViewDialog(getContext(), pathUrls.get(realPosition)).show());
