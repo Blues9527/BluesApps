@@ -117,7 +117,7 @@ public class OEWeeklyRankFragment extends BaseFragment implements OpenEyeContrac
 
     @Override
     public void showRequestError(String msg) {
-        HelperUtil.showToastShort(msg);
+        HelperUtil.showToast(msg);
     }
 
     @Override

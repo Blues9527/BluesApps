@@ -116,7 +116,7 @@ public class OEHotRankFragment extends BaseFragment implements OpenEyeContract.i
 
     @Override
     public void showRequestError(String msg) {
-        HelperUtil.showToastShort(msg);
+        HelperUtil.showToast(msg);
     }
 
     @Override

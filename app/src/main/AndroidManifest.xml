@@ -58,7 +58,7 @@
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustPan"></activity>
         <activity
-            android:name=".module_register.RegisterActivity"
+            android:name=".module_register.view.RegisterActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
@@ -71,7 +71,7 @@
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="standard" />
         <activity android:name=".module_game.GameActivity" />
-        <activity android:name=".model_wanandroid.WanAndroidActivity" />
+        <activity android:name=".model_wanandroid.view.WanAndroidActivity" />
         <activity android:name=".module_gank._new.mvp.view.GankActivity" />
         <activity android:name=".module_kaiyan.OpenEyeActivity" />
         <activity android:name=".module_gank._new.detail.GankPostDetailActivity" />

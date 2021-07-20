@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import com.blues.framework.base.BaseActivity;
 import com.blues.framework.utils.HelperUtil;
 import com.blues.module_kaiyan.OpenEyeFragment;
-import com.blues.module_main.MainPageFragment;
+import com.blues.module_main.view.MainPageFragment;
 import com.blues.module_gank.old.StudyPageFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         long currentMillis = System.currentTimeMillis();
         if (currentMillis - mLastMillis > 2000) {
             mLastMillis = currentMillis;
-            HelperUtil.showToastShort("再按一次退出程序");
+            HelperUtil.showToast("再按一次退出程序");
             return;
         }
 
@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
             long currentMillis = System.currentTimeMillis();
             if (currentMillis - mLastMillis > 2000) {
                 mLastMillis = currentMillis;
-                HelperUtil.showToastShort("再按一次退出程序");
+                HelperUtil.showToast("再按一次退出程序");
             } else {
                 //返回退出界面，但不销毁
                 moveTaskToBack(true);

@@ -1,4 +1,4 @@
-package com.blues.module_login;
+package com.blues.module_register.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,35 +10,36 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.blues.MainActivity;
 import com.blues.R;
 import com.blues.framework.base.BaseFragment;
 import com.blues.framework.utils.HelperUtil;
+import com.blues.module_login.AccountLoginFragment;
+import com.blues.module_register.model.RegisterResponse;
 
-public class AccountLoginFragment extends BaseFragment implements View.OnClickListener, TextWatcher, LoginContract.iLoginContractView {
+public class AccountRegisterFragment extends BaseFragment implements View.OnClickListener, TextWatcher, RegisterContract.iRegisterContractView {
 
-    private EditText etAccount, etPassword;
-    private TextView tvLogin, tvSkip;
+    private EditText etAccount, etPassword, etRepassword;
+    private TextView tvRegister, tvSkip;
 
-    private String account, password;
+    private String account, password, repassword;
 
-    private LoginContract.iLoginContractPresenter iPresenter;
-
+    private RegisterContract.iRegisterContractPresenter iPresenter;
 
     @Override
     public int setLayoutResourceId() {
-        return R.layout.fragment_account_login;
+        return R.layout.fragment_account_register;
     }
 
     @Override
     public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         etAccount = rootView.findViewById(R.id.et_input_account);
         etPassword = rootView.findViewById(R.id.et_input_password);
+        etRepassword = rootView.findViewById(R.id.et_input_repassword);
 
         tvSkip = rootView.findViewById(R.id.tv_skip);
-        tvLogin = rootView.findViewById(R.id.tv_login);
+        tvRegister = rootView.findViewById(R.id.tv_register);
 
-        mPresenter = new LoginPresenter(this);
+        mPresenter = new RegisterPresenter(this);
     }
 
     @Override
@@ -50,8 +51,9 @@ public class AccountLoginFragment extends BaseFragment implements View.OnClickLi
     public void setListener() {
         etAccount.addTextChangedListener(this);
         etPassword.addTextChangedListener(this);
+        etRepassword.addTextChangedListener(this);
 
-        tvLogin.setOnClickListener(this);
+        tvRegister.setOnClickListener(this);
         tvSkip.setOnClickListener(this);
     }
 
@@ -59,11 +61,11 @@ public class AccountLoginFragment extends BaseFragment implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_skip:
-//                getActivity().finish();
+
                 break;
-            case R.id.tv_login:
-                //调用登陆接口
-                iPresenter.doLogin(account, password);
+            case R.id.tv_register:
+                //调用注册接口
+                iPresenter.doRegister(account, password, repassword);
                 break;
         }
     }
@@ -77,6 +79,7 @@ public class AccountLoginFragment extends BaseFragment implements View.OnClickLi
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         account = etAccount.getText().toString().trim();
         password = etPassword.getText().toString().trim();
+        repassword = etRepassword.getText().toString().trim();
 
     }
 
@@ -85,24 +88,21 @@ public class AccountLoginFragment extends BaseFragment implements View.OnClickLi
 
     }
 
-
     @Override
-    public void onSuccess(LoginResponse result) {
-        HelperUtil.showToast("登陆成功");
-        //登陆成功进行跳转
-        getmContext().startActivity(new Intent(getmContext(), MainActivity.class));
-        //跳转结束 finish上一个activity
+    public void onSuccess(RegisterResponse result) {
+        HelperUtil.showToast("注册成功");
+        //跳转登陆界面
+        getmContext().startActivity(new Intent(getmContext(), AccountLoginFragment.class));
         getmContext().finish();
     }
 
     @Override
     public void onFailure(String result) {
-        //登陆失败进行提示
         HelperUtil.showToast(result);
     }
 
     @Override
-    public void setPresenter(LoginContract.iLoginContractPresenter presenter) {
+    public void setPresenter(RegisterContract.iRegisterContractPresenter presenter) {
         iPresenter = presenter;
     }
 }

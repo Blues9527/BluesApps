@@ -117,7 +117,7 @@ public class OEMonthlyRankFragment extends BaseFragment implements OpenEyeContra
 
     @Override
     public void showRequestError(String msg) {
-        HelperUtil.showToastShort(msg);
+        HelperUtil.showToast(msg);
     }
 
     @Override

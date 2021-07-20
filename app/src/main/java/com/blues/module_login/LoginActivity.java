@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.blues.MainActivity;
 import com.blues.R;
 import com.blues.framework.base.BaseActivity;
-import com.blues.module_register.RegisterActivity;
+import com.blues.module_register.view.RegisterActivity;
 
 import java.util.ArrayList;
 import java.util.List;

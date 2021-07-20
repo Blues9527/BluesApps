@@ -86,12 +86,12 @@ public class PhoneLoginFragment extends BaseFragment implements View.OnClickList
 
     @Override
     public void onSuccess(LoginResponse result) {
-        HelperUtil.showToastShort("登陆成功");
+        HelperUtil.showToast("登陆成功");
     }
 
     @Override
     public void onFailure(String result) {
-        HelperUtil.showToastShort(result);
+        HelperUtil.showToast(result);
     }
 
     @Override

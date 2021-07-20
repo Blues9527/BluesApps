@@ -114,7 +114,7 @@ public class OEHistoricalRankFragment extends BaseFragment implements OpenEyeCon
 
     @Override
     public void showRequestError(String msg) {
-        HelperUtil.showToastShort(msg);
+        HelperUtil.showToast(msg);
     }
 
     @Override

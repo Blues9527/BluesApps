@@ -96,7 +96,8 @@ public class WebViewDialog extends Dialog {
         });
 
         //如果有网状态就加载 url
-        if (NetWorkUtil.isConnected()){
+
+        if (NetWorkUtil.INSTANCE.isConnected()){
             if (v != null) {
                 v.setVisibility(View.GONE);
             }
