@@ -1,127 +1,109 @@
-package com.blues.module_login.view;
+package com.blues.module_login.view
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.blues.MainActivity;
-import com.blues.R;
-import com.blues.framework.base.BaseActivity;
-import com.blues.module_register.view.RegisterActivity;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
+import android.widget.TextView
+import android.widget.FrameLayout
+import android.widget.LinearLayout
+import com.blues.R
+import android.os.Bundle
+import android.content.Intent
+import android.view.View
+import com.blues.MainActivity
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.blues.framework.base.BaseKoinActivity
+import com.blues.module_register.view.RegisterActivity
 
 /**
  * User : Blues
  * Date : 2019/4/25
  * Time : 14:22
  */
+class LoginActivity : BaseKoinActivity(), View.OnClickListener {
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
+    private val fragments: MutableList<Fragment> = mutableListOf(AccountLoginFragment(), PhoneLoginFragment())
+    private var mCurrentFragment: Fragment? = null
+    private lateinit var flContainer: FrameLayout
+    private lateinit var llContainer: LinearLayout
 
-    private TextView ivSkip;
-    private TextView tvForgetPwd, tvUserReg;
-    private TextView tvAccountLogin, tvPhoneLogin;
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.tv_skip -> {
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                overridePendingTransition(R.anim.anim_zoom_in, R.anim.anim_slide_to_bottom)
+                finish()
+            }
+            R.id.tv_account_login -> {
 
-    private List<Fragment> fragments = new ArrayList<>();
-    private Fragment mCurrentFragment;
-    private FrameLayout flContainer;
-    private LinearLayout llContainer;
+                // 跳转账号登陆fragment
+                llContainer.visibility = View.GONE
+                flContainer.visibility = View.VISIBLE
+                showFragment(mCurrentFragment, fragments[0])
 
+            }
+            R.id.tv_phone_login -> {
 
-    @Override
-    public int setLayoutResourceId() {
-        return R.layout.activity_login;
-    }
-
-
-    @Override
-    public void initView(Bundle savedInstanceState) {
-
-        ivSkip = findViewById(R.id.tv_skip);
-        tvForgetPwd = findViewById(R.id.tv_forget_pwd);
-        tvUserReg = findViewById(R.id.tv_user_reg);
-        tvAccountLogin = findViewById(R.id.tv_account_login);
-        tvPhoneLogin = findViewById(R.id.tv_phone_login);
-        flContainer = findViewById(R.id.fl_container);
-        llContainer = findViewById(R.id.ll_container);
-
-        fragments.add(new AccountLoginFragment());
-        fragments.add(new PhoneLoginFragment());
-    }
-
-    @Override
-    public void setListener() {
-        ivSkip.setOnClickListener(this);
-        tvUserReg.setOnClickListener(this);
-        tvForgetPwd.setOnClickListener(this);
-        tvAccountLogin.setOnClickListener(this);
-        tvPhoneLogin.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_skip:
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                overridePendingTransition(R.anim.anim_zoom_in, R.anim.anim_slide_to_bottom);
-                finish();
-                break;
-            case R.id.tv_account_login:
-                //TODO 跳转账号登陆fragment
-//                llContainer.setVisibility(View.GONE);
-//                flContainer.setVisibility(View.VISIBLE);
-//                showFragment(mCurrentFragment, fragments.get(0));
-                Toast.makeText(LoginActivity.this,"此功能暂未开发完成，请点击跳过",Toast.LENGTH_SHORT).show();
-            case R.id.tv_phone_login:
-                //TODO 跳转手机登陆fragment
-//                llContainer.setVisibility(View.GONE);
-//                flContainer.setVisibility(View.VISIBLE);
-//                showFragment(mCurrentFragment, fragments.get(1));
-                Toast.makeText(LoginActivity.this,"此功能暂未开发完成，请点击跳过",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.tv_user_reg:
-                startActivity(new Intent(this, RegisterActivity.class));
-                finish();
-                break;
+                //跳转手机登陆fragment
+                llContainer.visibility = View.GONE
+                flContainer.visibility = View.VISIBLE
+                showFragment(mCurrentFragment, fragments[1])
+            }
+            R.id.tv_user_reg -> {
+                startActivity(Intent(this, RegisterActivity::class.java))
+                finish()
+            }
         }
     }
 
-    private void showFragment(Fragment from, Fragment to) {
-        if (to == null) return;
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        boolean isAdded = to.isAdded();
+    private fun showFragment(from: Fragment?, to: Fragment?) {
+        if (to == null) return
+        val transaction = supportFragmentManager.beginTransaction()
+        val isAdded = to.isAdded
         if (!isAdded) {
             if (from != null) {
                 transaction.hide(from)
-                        .add(R.id.fl_container, to, null)
-                        .show(to)
-                        .commitAllowingStateLoss();
+                    .add(R.id.fl_container, to, null)
+                    .show(to)
+                    .commitAllowingStateLoss()
             } else {
                 transaction.add(R.id.fl_container, to, null)
-                        .show(to)
-                        .commitAllowingStateLoss();
+                    .show(to)
+                    .commitAllowingStateLoss()
             }
         } else {
             if (from != null) {
                 transaction.hide(from)
-                        .show(to)
-                        .commitAllowingStateLoss();
+                    .show(to)
+                    .commitAllowingStateLoss()
             } else {
                 transaction.show(to)
-                        .commitAllowingStateLoss();
+                    .commitAllowingStateLoss()
             }
         }
+        mCurrentFragment = to
+    }
 
-        mCurrentFragment = to;
+    override fun getLayoutId(): Int {
+        return R.layout.activity_login
+    }
+
+    override fun initData(savedInstanceState: Bundle?) {
+        findViewById<TextView>(R.id.tv_skip).also {
+            it.setOnClickListener(this)
+        }
+        findViewById<TextView>(R.id.tv_forget_pwd).also {
+            it.setOnClickListener(this)
+        }
+
+        findViewById<TextView>(R.id.tv_user_reg).also {
+            it.setOnClickListener(this)
+        }
+        findViewById<TextView>(R.id.tv_account_login).also {
+            it.setOnClickListener(this)
+        }
+        findViewById<TextView>(R.id.tv_phone_login).also {
+            it.setOnClickListener(this)
+        }
+        flContainer = findViewById(R.id.fl_container)
+        llContainer = findViewById(R.id.ll_container)
     }
 }
