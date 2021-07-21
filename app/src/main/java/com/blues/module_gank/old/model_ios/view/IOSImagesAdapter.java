@@ -1,5 +1,7 @@
 package com.blues.module_gank.old.model_ios.view;
 
+import static com.blues.constant.ConstantKt.IMAGE_URL;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
@@ -7,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.blues.R;
-import com.blues.constant.UsedConstant;
 import com.blues.framework.utils.ScreenUtil;
 import com.blues.framework.utils.SizeUtil;
 import com.blues.module_gank.old.ShowImageActivity;
@@ -41,7 +42,7 @@ public class IOSImagesAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
             helper.getView(R.id.iv_item).setOnClickListener(v -> {
                 Intent intent = new Intent(mContext, ShowImageActivity.class);
-                intent.putExtra(UsedConstant.IMAGE_URL, url);
+                intent.putExtra(IMAGE_URL, url);
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) mContext, helper.getView(R.id.iv_item), "transitionImage");
                 mContext.startActivity(intent, options.toBundle());
             });

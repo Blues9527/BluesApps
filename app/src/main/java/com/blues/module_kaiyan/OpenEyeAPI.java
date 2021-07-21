@@ -1,6 +1,7 @@
 package com.blues.module_kaiyan;
 
-import com.blues.constant.RequestUrl;
+import static com.blues.constant.ConstantKt.BASE_KAIYAN_URL;
+
 import com.blues.framework.http.RetrofitManager;
 import com.blues.framework.utils.RxUtil;
 
@@ -24,7 +25,7 @@ public class OpenEyeAPI {
     }
 
     public static OpenEyeAPI getInstance() {
-        RetrofitManager.setBaseUrl(RequestUrl.BASE_KAIYAN_URL);
+        RetrofitManager.setBaseUrl(BASE_KAIYAN_URL);
         if (null == instance) {
             synchronized (OpenEyeAPI.class) {
                 if (null == instance) {

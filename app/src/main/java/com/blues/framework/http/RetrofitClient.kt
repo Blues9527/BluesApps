@@ -1,6 +1,6 @@
 package com.blues.framework.http
 
-import com.blues.constant.RequestUrl
+import com.blues.constant.BASE_WANANDROID_URL
 import com.blues.framework.http.typeadapter.DoubleDefaultAdapter
 import com.blues.framework.http.typeadapter.IntegerDefaultAdapter
 import com.blues.framework.http.typeadapter.LongDefaultAdapter
@@ -28,7 +28,7 @@ fun provideRetrofit(): Retrofit {
         .client(OkHttpClientManager.instance)
         .addConverterFactory(GsonConverterFactory.create(buildGson()))
         .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-        .baseUrl(RequestUrl.BASE_WANANDROID_URL)
+        .baseUrl(BASE_WANANDROID_URL)
         .build()
 }
 

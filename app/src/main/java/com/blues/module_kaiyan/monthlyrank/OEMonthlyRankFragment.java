@@ -8,7 +8,7 @@ import android.view.ViewStub;
 import android.widget.LinearLayout;
 
 import com.blues.R;
-import com.blues.constant.RequestUrl;
+import com.blues.constant.KaiYanType;
 import com.blues.framework.base.BaseFragment;
 import com.blues.framework.utils.HelperUtil;
 import com.blues.module_kaiyan.OpenEyeContract;
@@ -58,7 +58,7 @@ public class OEMonthlyRankFragment extends BaseFragment implements OpenEyeContra
         hotRankSr.setEnableHeaderTranslationContent(true);
         mPresenter = new OpenEyePresenter(this);
 
-        iPresenter.getRankList(RequestUrl.KaiYanType.MONTHLY);
+        iPresenter.getRankList(KaiYanType.MONTHLY);
 
         DividerDecoration decoration = new DividerDecoration(R.color.color_gray, 1);
         hotRankErv.addItemDecoration(decoration);

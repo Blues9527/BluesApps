@@ -1,8 +1,9 @@
 package com.blues.module_gank.old.model_android;
 
+import static com.blues.constant.ConstantKt.BASE_GANKIO_URL;
+
 import com.blues.framework.http.RetrofitManager;
 import com.blues.framework.utils.RxUtil;
-import com.blues.constant.RequestUrl;
 import com.blues.module_gank.old.model_android.model.AndroidEntity;
 
 import rx.Observable;
@@ -23,7 +24,7 @@ public class AndroidAPI {
     }
 
     public static AndroidAPI getInstance() {
-        RetrofitManager.setBaseUrl(RequestUrl.BASE_GANKIO_URL);
+        RetrofitManager.setBaseUrl(BASE_GANKIO_URL);
         if (null == instance) {
             synchronized (AndroidAPI.class) {
                 if (null == instance) {

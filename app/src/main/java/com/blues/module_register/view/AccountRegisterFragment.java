@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.blues.R;
 import com.blues.framework.base.BaseFragment;
 import com.blues.framework.utils.HelperUtil;
-import com.blues.module_login.AccountLoginFragment;
+import com.blues.module_login.view.AccountLoginFragment;
 import com.blues.module_register.model.RegisterResponse;
 
 public class AccountRegisterFragment extends BaseFragment implements View.OnClickListener, TextWatcher, RegisterContract.iRegisterContractView {

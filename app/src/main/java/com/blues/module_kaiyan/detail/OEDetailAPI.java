@@ -1,6 +1,7 @@
 package com.blues.module_kaiyan.detail;
 
-import com.blues.constant.RequestUrl;
+import static com.blues.constant.ConstantKt.BASE_KAIYAN_URL;
+
 import com.blues.framework.http.RetrofitManager;
 import com.blues.framework.utils.RxUtil;
 
@@ -23,7 +24,7 @@ public class OEDetailAPI {
     }
 
     public static OEDetailAPI getInstance() {
-        RetrofitManager.setBaseUrl(RequestUrl.BASE_KAIYAN_URL);
+        RetrofitManager.setBaseUrl(BASE_KAIYAN_URL);
         if (null == instance) {
             synchronized (OEDetailAPI.class) {
                 if (null == instance) {

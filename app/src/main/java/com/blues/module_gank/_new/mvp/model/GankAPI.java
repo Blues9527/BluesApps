@@ -1,6 +1,7 @@
 package com.blues.module_gank._new.mvp.model;
 
-import com.blues.constant.RequestUrl;
+import static com.blues.constant.ConstantKt.BASE_GANKIO_URL;
+
 import com.blues.framework.http.RetrofitManager;
 import com.blues.framework.utils.RxUtil;
 import com.blues.module_gank._new.mvp.GankContractRequest;
@@ -27,7 +28,7 @@ public class GankAPI {
     }
 
     public static GankAPI getInstance() {
-        RetrofitManager.setBaseUrl(RequestUrl.BASE_GANKIO_URL);
+        RetrofitManager.setBaseUrl(BASE_GANKIO_URL);
         if (null == instance) {
             synchronized (GankAPI.class) {
                 if (null == instance) {

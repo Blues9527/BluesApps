@@ -1,11 +1,11 @@
-package com.blues.application
+package com.blues.adapter
 
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 
 /**
- * File: com.blues.application.ActivityLifecycleCallbacksAdapter
+ * File: com.blues.adapter.ActivityLifecycleCallbacksAdapter
  * Description: xxx
  *
  * @author: lanhuajian

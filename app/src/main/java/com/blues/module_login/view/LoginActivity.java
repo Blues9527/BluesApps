@@ -1,4 +1,4 @@
-package com.blues.module_login;
+package com.blues.module_login.view;
 
 import android.content.Intent;
 import android.os.Bundle;

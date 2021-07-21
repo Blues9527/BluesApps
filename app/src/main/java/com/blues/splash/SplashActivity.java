@@ -11,7 +11,7 @@ import com.blues.framework.widget.TextClockView;
 import com.blues.framework.widget.countdownview.CountDownView;
 import com.blues.framework.widget.explosionanimator.ExplosionField;
 import com.blues.framework.widget.explosionanimator.FallingParticleFactory;
-import com.blues.module_login.LoginActivity;
+import com.blues.module_login.view.LoginActivity;
 
 /**
  * User : Blues

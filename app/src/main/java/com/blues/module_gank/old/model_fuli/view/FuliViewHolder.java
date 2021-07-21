@@ -1,5 +1,7 @@
 package com.blues.module_gank.old.model_fuli.view;
 
+import static com.blues.constant.ConstantKt.IMAGE_URL;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.view.ViewGroup;
@@ -8,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blues.R;
-import com.blues.constant.UsedConstant;
 import com.blues.framework.utils.ScreenUtil;
 import com.blues.module_gank.old.ShowImageActivity;
 import com.blues.module_gank.old.model_fuli.model.FuliEntity;
@@ -46,7 +47,7 @@ public class FuliViewHolder extends BaseViewHolder<FuliEntity.ResultsBean> {
 
         ivUrl.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), ShowImageActivity.class);
-            intent.putExtra(UsedConstant.IMAGE_URL, data.getUrl());
+            intent.putExtra(IMAGE_URL, data.getUrl());
             ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) getContext(), ivUrl, "transitionImage");
             getContext().startActivity(intent, options.toBundle());
         });

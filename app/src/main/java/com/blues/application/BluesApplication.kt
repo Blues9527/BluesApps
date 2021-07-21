@@ -10,6 +10,7 @@ import android.os.Build
 import com.blues.framework.network.NetworkCallbackImpl
 import android.net.NetworkRequest
 import android.net.ConnectivityManager
+import com.blues.adapter.ActivityLifecycleCallbacksAdapter
 import com.blues.di.allModules
 import com.blues.framework.utils.Utils
 import org.koin.android.ext.koin.androidContext

@@ -4,6 +4,9 @@ import com.blues.framework.http.networkModule
 import com.blues.model_wanandroid.vm.WanAndroidViewModel
 import com.blues.model_wanandroid.service.WanAndroidRepository
 import com.blues.model_wanandroid.service.provideWanAndroidPostApi
+import com.blues.module_login.service.LoginRepository
+import com.blues.module_login.service.provideLoginApi
+import com.blues.module_login.vm.LoginViewModel
 import com.blues.module_main.vm.WanAndroidBannerViewModel
 import com.blues.module_main.service.WanAndroidBannerRepository
 import com.blues.module_main.service.provideBannerApi
@@ -45,7 +48,20 @@ val registerModule = module {
     }
 }
 
-val allModules = (networkModule + wanAndroidVmModule + registerModule)
+val loginModule = module {
+    factory {
+        provideLoginApi(get())
+    }
+
+    single {
+        LoginRepository(get(), get())
+    }
+    factory {
+        LoginViewModel(get())
+    }
+}
+
+val allModules = (networkModule + wanAndroidVmModule + registerModule + loginModule)
 
 
 

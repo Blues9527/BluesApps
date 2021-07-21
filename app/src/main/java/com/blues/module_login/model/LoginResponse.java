@@ -1,4 +1,4 @@
-package com.blues.module_login;
+package com.blues.module_login.model;
 
 import java.io.Serializable;
 import java.util.List;
