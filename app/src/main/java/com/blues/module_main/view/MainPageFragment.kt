@@ -10,6 +10,7 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter
 import com.blues.model_wanandroid.model.WanAndroidEntity.DataBean.DatasBean
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.blues.framework.base.BaseKoinFragment
 import com.blues.model_wanandroid.view.WanAndroidViewHolder
 import com.blues.module_main.model.WanAndroidBannerEntity
 import com.blues.module_main.vm.WanAndroidBannerViewModel
@@ -21,7 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * Date : 2019/4/11
  * Time : 15:27
  */
-class MainPageFragment : Fragment() {
+class MainPageFragment : BaseKoinFragment() {
 
     private val bannerViewModel: WanAndroidBannerViewModel by viewModel()
 
@@ -36,37 +37,33 @@ class MainPageFragment : Fragment() {
         mHeader?.onBannerResume()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+    override fun getLayoutId(): Int = R.layout.fragment_mainpage
 
-        val root = inflater.inflate(R.layout.fragment_mainpage, container, false)
-        initData(root)
-        return root
-    }
-
-    fun initData(rootView: View) {
-
+    override fun initData(inflater: LayoutInflater, container: ViewGroup?, saveInstanced: Bundle?) {
         bannerViewModel.getBanner()
 
-        val ervMain: EasyRecyclerView = rootView.findViewById(R.id.erv_main)
-        var mAdapter: RecyclerArrayAdapter<DatasBean?>
-        ervMain.apply {
-            setLayoutManager(LinearLayoutManager(requireActivity()))
-            adapter = object : RecyclerArrayAdapter<DatasBean?>(requireActivity()) {
-                override fun OnCreateViewHolder(parent: ViewGroup,
-                    viewType: Int): BaseViewHolder<*> {
-                    return WanAndroidViewHolder(parent)
-                }
-            }.also { mAdapter = it }
-        }
-        mAdapter.addHeader(MainPageHeaderView(requireActivity()).also { mHeader = it })
+        rootView?.apply {
+            val ervMain: EasyRecyclerView = findViewById(R.id.erv_main)
+            var mAdapter: RecyclerArrayAdapter<DatasBean?>
 
-        bannerViewModel.wanAndroidBanner.observe(requireActivity(), { wanAndroidBannerEntity: WanAndroidBannerEntity? ->
-            run {
-                wanAndroidBannerEntity?.let {
-                    mHeader?.initBanner(requireActivity(), it)
-                }
+            ervMain.apply {
+                setLayoutManager(LinearLayoutManager(requireActivity()))
+                adapter = object : RecyclerArrayAdapter<DatasBean?>(requireActivity()) {
+                    override fun OnCreateViewHolder(parent: ViewGroup,
+                        viewType: Int): BaseViewHolder<*> {
+                        return WanAndroidViewHolder(parent)
+                    }
+                }.also { mAdapter = it }
             }
-        })
+            mAdapter.addHeader(MainPageHeaderView(requireActivity()).also { mHeader = it })
+
+            bannerViewModel.wanAndroidBanner.observe(requireActivity(), { wanAndroidBannerEntity: WanAndroidBannerEntity? ->
+                run {
+                    wanAndroidBannerEntity?.let {
+                        mHeader?.initBanner(requireActivity(), it)
+                    }
+                }
+            })
+        }
     }
 }

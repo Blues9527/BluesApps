@@ -1,108 +1,75 @@
-package com.blues.module_register.view;
+package com.blues.module_register.view
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
+import com.blues.framework.utils.HelperUtil.showToast
+import android.widget.EditText
+import android.widget.TextView
+import com.blues.R
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.os.Bundle
+import android.content.Intent
+import android.view.View
+import com.blues.adapter.TextWatcherAdapter
+import com.blues.framework.base.BaseKoinFragment
+import com.blues.module_login.view.LoginActivity
+import com.blues.module_register.vm.RegisterViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-import com.blues.R;
-import com.blues.framework.base.BaseFragment;
-import com.blues.framework.utils.HelperUtil;
-import com.blues.module_login.view.AccountLoginFragment;
-import com.blues.module_register.model.RegisterResponse;
+class AccountRegisterFragment : BaseKoinFragment(), View.OnClickListener, TextWatcherAdapter {
 
-public class AccountRegisterFragment extends BaseFragment implements View.OnClickListener, TextWatcher, RegisterContract.iRegisterContractView {
+    private lateinit var etAccount: EditText
+    private lateinit var etPassword: EditText
+    private lateinit var etRepassword: EditText
+    private var account: String = ""
+    private var password: String = ""
+    private var repassword: String = ""
 
-    private EditText etAccount, etPassword, etRepassword;
-    private TextView tvRegister, tvSkip;
+    private val registerViewModel: RegisterViewModel by viewModel()
 
-    private String account, password, repassword;
-
-    private RegisterContract.iRegisterContractPresenter iPresenter;
-
-    @Override
-    public int setLayoutResourceId() {
-        return R.layout.fragment_account_register;
-    }
-
-    @Override
-    public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        etAccount = rootView.findViewById(R.id.et_input_account);
-        etPassword = rootView.findViewById(R.id.et_input_password);
-        etRepassword = rootView.findViewById(R.id.et_input_repassword);
-
-        tvSkip = rootView.findViewById(R.id.tv_skip);
-        tvRegister = rootView.findViewById(R.id.tv_register);
-
-        mPresenter = new RegisterPresenter(this);
-    }
-
-    @Override
-    public void lazyFetchData() {
-
-    }
-
-    @Override
-    public void setListener() {
-        etAccount.addTextChangedListener(this);
-        etPassword.addTextChangedListener(this);
-        etRepassword.addTextChangedListener(this);
-
-        tvRegister.setOnClickListener(this);
-        tvSkip.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_skip:
-
-                break;
-            case R.id.tv_register:
-                //调用注册接口
-                iPresenter.doRegister(account, password, repassword);
-                break;
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.tv_skip -> startActivity(Intent(requireContext(), LoginActivity::class.java))
+            R.id.tv_register -> registerViewModel.register(account, password, repassword)               //调用注册接口
         }
     }
 
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+        account = etAccount.text.toString()
+            .trim()
+        password = etPassword.text.toString()
+            .trim()
+        repassword = etRepassword.text.toString()
+            .trim()
     }
 
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-        account = etAccount.getText().toString().trim();
-        password = etPassword.getText().toString().trim();
-        repassword = etRepassword.getText().toString().trim();
-
+    override fun observe() {
+        registerViewModel.result.observe(this) {
+            if (it.errorCode == 200) {
+                showToast("注册成功") //跳转登陆界面
+                startActivity(Intent(requireContext(), LoginActivity::class.java))
+            } else {
+                showToast(it.errorMsg)
+            }
+        }
     }
 
-    @Override
-    public void afterTextChanged(Editable s) {
+    override fun getLayoutId(): Int = R.layout.fragment_account_register
 
-    }
+    override fun initData(inflater: LayoutInflater, container: ViewGroup?, saveInstanced: Bundle?) {
 
-    @Override
-    public void onSuccess(RegisterResponse result) {
-        HelperUtil.showToast("注册成功");
-        //跳转登陆界面
-        getmContext().startActivity(new Intent(getmContext(), AccountLoginFragment.class));
-        getmContext().finish();
-    }
+        with(rootView) {
+            etAccount = findViewById<EditText>(R.id.et_input_account).apply {
+                addTextChangedListener(this@AccountRegisterFragment)
+            }
+            etPassword = findViewById<EditText>(R.id.et_input_password).apply {
+                addTextChangedListener(this@AccountRegisterFragment)
+            }
+            etRepassword = findViewById<EditText>(R.id.et_input_repassword).apply {
+                addTextChangedListener(this@AccountRegisterFragment)
+            }
 
-    @Override
-    public void onFailure(String result) {
-        HelperUtil.showToast(result);
-    }
-
-    @Override
-    public void setPresenter(RegisterContract.iRegisterContractPresenter presenter) {
-        iPresenter = presenter;
+            findViewById<TextView>(R.id.tv_skip).setOnClickListener(this@AccountRegisterFragment)
+            findViewById<TextView>(R.id.tv_register).setOnClickListener(this@AccountRegisterFragment)
+        }
     }
 }

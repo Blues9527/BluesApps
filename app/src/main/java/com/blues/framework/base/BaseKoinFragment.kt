@@ -16,12 +16,12 @@ import androidx.fragment.app.Fragment
 
 abstract class BaseKoinFragment : Fragment() {
 
-    protected var rootView: View? = null
+    protected lateinit var rootView: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
 
-        return rootView ?: inflater.inflate(getLayoutId(), container, false)
+        return inflater.inflate(getLayoutId(), container, false)
             .also {
                 rootView = it
                 initData(inflater, container, savedInstanceState)

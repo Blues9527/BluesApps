@@ -7,10 +7,6 @@ import com.blues.R
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.blues.module_register.view.AccountRegisterFragment
-import com.blues.module_register.view.PhoneRegisterFragment
-import org.w3c.dom.Text
-import java.util.ArrayList
 
 /**
  * User : Blues
@@ -55,13 +51,17 @@ class RegisterActivity : BaseKoinActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.tv_account_register -> { //TODO 跳转账号注册fragment
+            R.id.tv_account_register -> {
+
+                // 跳转账号注册fragment
                 tvAccountRegister.visibility = View.GONE
                 tvPhoneRegister.visibility = View.GONE
                 flContainer.visibility = View.VISIBLE
                 showFragment(mCurrentFragment, fragments[0])
             }
-            R.id.tv_phone_register -> { //TODO 跳转手机注册fragment
+            R.id.tv_phone_register -> {
+
+                // 跳转手机注册fragment
                 tvAccountRegister.visibility = View.GONE
                 tvPhoneRegister.visibility = View.GONE
                 flContainer.visibility = View.VISIBLE

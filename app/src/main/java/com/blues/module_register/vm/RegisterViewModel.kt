@@ -28,11 +28,12 @@ class RegisterViewModel(private val registerRepo: RegisterRepository) : BaseView
                 registerRepo.register(username, password, repassword)
             }.catch {
                 HelperUtil.showSimpleLog(this.message)
-            }.next {
-                this.data?.let {
-                    result.value = it
-                }
             }
+                .next {
+                    this.data?.let {
+                        result.value = it
+                    }
+                }
         }
     }
 }

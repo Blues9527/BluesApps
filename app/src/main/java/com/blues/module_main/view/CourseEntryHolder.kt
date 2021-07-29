@@ -1,18 +1,17 @@
-package com.blues.module_main.view;
+package com.blues.module_main.view
 
-import android.view.ViewGroup;
-
-import com.jude.easyrecyclerview.adapter.BaseViewHolder;
-
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.blues.R;
-import com.blues.bean.CourseEntity;
-import com.blues.framework.utils.ScreenUtil;
-import com.blues.framework.utils.SizeUtil;
-import com.bumptech.glide.Glide;
+import com.blues.framework.utils.ScreenUtil.screenWidth
+import android.view.ViewGroup
+import android.widget.ImageView
+import com.blues.bean.CourseEntity
+import com.blues.R
+import android.widget.TextView
+import com.bumptech.glide.Glide
+import android.widget.LinearLayout
+import com.blues.framework.utils.ScreenUtil
+import com.blues.framework.utils.SizeUtil
+import com.blues.framework.utils.dp
+import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
 /**
  * File: com.blues.module_main.CourseEntryHolder
@@ -20,34 +19,38 @@ import com.bumptech.glide.Glide;
  *
  * @author: lanhuajian
  * @time: 2021-07-16 23:45
- **/
+ */
+class CourseEntryHolder(parent: ViewGroup?) :
+    BaseViewHolder<CourseEntity>(parent, R.layout.item_course_entry) {
 
-
-public class CourseEntryHolder extends BaseViewHolder<CourseEntity> {
-
-    private ImageView ivIcon;
-    private TextView tvTitle;
-
-    public CourseEntryHolder(ViewGroup parent) {
-        super(parent, R.layout.item_course_entry);
-
-        ivIcon = $(R.id.iv_entry_icon);
-        tvTitle = $(R.id.tv_entry_title);
-        LinearLayout llContainer = $(R.id.ll_course_entry);
-
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.width = ScreenUtil.getScreenWidth() / 4;
-        params.topMargin = SizeUtil.dp2px(5);
-        params.bottomMargin = SizeUtil.dp2px(5);
-
-        llContainer.setLayoutParams(params);
+    private val tvTitle: TextView by lazy {
+        itemView.findViewById(R.id.tv_entry_title)
     }
 
-    @Override
-    public void setData(CourseEntity data) {
-        super.setData(data);
+    private val ivIcon: ImageView by lazy {
+        itemView.findViewById(R.id.iv_entry_icon)
+    }
 
-        Glide.with(getContext()).load(data.getIcon()).into(ivIcon);
-        tvTitle.setText(data.getName());
+    override fun setData(data: CourseEntity) {
+        super.setData(data)
+
+        Glide.with(context)
+            .load(data.icon)
+            .into(ivIcon)
+
+        tvTitle.text = data.name
+    }
+
+    init {
+        val llContainer = itemView.findViewById<LinearLayout>(R.id.ll_course_entry)
+        LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+            .apply {
+                width = screenWidth / 4
+                topMargin = 5f.dp.toInt()
+                bottomMargin = 5f.dp.toInt()
+            }
+            .also {
+                llContainer.layoutParams = it
+            }
     }
 }
