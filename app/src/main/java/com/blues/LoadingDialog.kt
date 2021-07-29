@@ -1,56 +1,43 @@
-package com.blues;
+package com.blues
 
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import android.view.Gravity;
+import android.app.Dialog
+import android.content.Context
+import android.graphics.Color
+import android.os.Bundle
+import android.graphics.drawable.ColorDrawable
+import android.view.Gravity
 
-public class LoadingDialog extends Dialog {
+class LoadingDialog(context: Context) : Dialog(context, R.style.Theme_LoadingDialog) {
 
-
-
-    public LoadingDialog(@NonNull Context context) {
-        super(context, R.style.Theme_LoadingDialog);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    override fun onCreate(savedInstanceState: Bundle) {
+        super.onCreate(savedInstanceState)
 
         //初始化窗口属性
-        initWindowAttribute();
+        initWindowAttribute()
 
         //设置视图
-        setContentView(R.layout.dialog_loading);
-
+        setContentView(R.layout.dialog_loading)
 
         //设置是否可撤销
-        setCancelable(true);
+        setCancelable(true)
 
         //设置触摸外部是否可撤销
-        setCanceledOnTouchOutside(true);
-
-        initView();
+        setCanceledOnTouchOutside(true)
     }
 
-    private void initView() {
+    private fun initWindowAttribute() {
+
+        window?.apply { //替换掉默认主题的背景，默认主题背景有一个16dp的padding
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            //外边距
+            decorView.setPadding(0, 0, 0, 0)
+
+            //设置重力位置
+            setGravity(Gravity.CENTER)
+
+            //设置弹窗的宽高
+            setLayout(-1, -1)
+        }
     }
-
-    private void initWindowAttribute() {
-        //替换掉默认主题的背景，默认主题背景有一个16dp的padding
-        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        //外边距
-        getWindow().getDecorView().setPadding(0, 0, 0, 0);
-
-        //设置重力位置
-        getWindow().setGravity(Gravity.CENTER);
-
-        //设置弹窗的宽高
-        getWindow().setLayout(-1, -1);
-    }
-
 }

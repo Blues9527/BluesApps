@@ -1,83 +1,70 @@
-package com.blues.splash;
+package com.blues.splash
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-
-import com.blues.framework.base.BaseActivity;
-import com.blues.R;
-import com.blues.framework.widget.TextClockView;
-import com.blues.framework.widget.countdownview.CountDownView;
-import com.blues.framework.widget.explosionanimator.ExplosionField;
-import com.blues.framework.widget.explosionanimator.FallingParticleFactory;
-import com.blues.module_login.view.LoginActivity;
+import com.blues.framework.base.BaseActivity
+import com.blues.framework.widget.countdownview.CountDownView
+import com.blues.framework.widget.explosionanimator.ExplosionField
+import com.blues.framework.widget.TextClockView
+import com.blues.R
+import android.os.Bundle
+import com.blues.framework.widget.explosionanimator.FallingParticleFactory
+import com.blues.framework.widget.countdownview.CountDownView.CountDownTimerCallBack
+import android.os.Looper
+import android.content.Intent
+import android.os.Handler
+import com.blues.framework.base.BaseKoinActivity
+import com.blues.module_login.view.LoginActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * User : Blues
  * Date : 2019/5/6
  * Time : 10:49
  */
+class SplashActivity : BaseKoinActivity() {
 
-public class SplashActivity extends BaseActivity {
-
-    private CountDownView cdView;
-    private ExplosionField mField;
-    private TextClockView tcvSplash;
-
-    @Override
-    public int setLayoutResourceId() {
-        return R.layout.dialog_splash;
+    private val cdView: CountDownView by lazy {
+        findViewById(R.id.cdv_count)
+    }
+    private val mField: ExplosionField by lazy {
+        ExplosionField(this@SplashActivity, FallingParticleFactory())
+    }
+    private val tcvSplash: TextClockView by lazy {
+        findViewById(R.id.rclv_splash)
     }
 
-    @Override
-    public void initView(Bundle savedInstanceState) {
+    override fun getLayoutId(): Int = R.layout.dialog_splash
 
-        tcvSplash = findViewById(R.id.rclv_splash);
-        tcvSplash.startTimerSafely();
-
-        cdView = findViewById(R.id.cdv_count);
-
-        mField = new ExplosionField(SplashActivity.this, new FallingParticleFactory());
-
-        cdView.setCountDownTimerCallBack(() -> {
-            mField.explode(cdView);
-            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-                    overridePendingTransition(R.anim.anim_zoom_in, 0);
-                    finish();
-                }
-            }, 1500);
-
-        });
-
+    override fun initData(savedInstanceState: Bundle?) {
+        tcvSplash.startTimerSafely()
+        cdView.setCountDownTimerCallBack {
+            mField.explode(cdView)
+            CoroutineScope(Dispatchers.Main).launch {
+                delay(1500)
+                startActivity<LoginActivity>()
+                overridePendingTransition(R.anim.anim_zoom_in, 0)
+                finish()
+            }
+        }
     }
 
-    @Override
-    protected void onResume() {
-        cdView.countDownResume();
-        super.onResume();
+    override fun onResume() {
+        cdView.countDownResume()
+        super.onResume()
     }
 
-    @Override
-    protected void onPause() {
-        cdView.countDownCancel();
-        tcvSplash.release();
-        super.onPause();
+    override fun onPause() {
+        cdView.countDownCancel()
+        tcvSplash.release()
+        super.onPause()
     }
 
-    @Override
-    protected void onDestroy() {
-        cdView.countDownCancel();
-        tcvSplash.release();
-        super.onDestroy();
-        System.gc();
-    }
-
-    @Override
-    public void setListener() {
-
+    override fun onDestroy() {
+        cdView.countDownCancel()
+        tcvSplash.release()
+        super.onDestroy()
+        System.gc()
     }
 }

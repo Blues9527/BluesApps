@@ -1,19 +1,15 @@
-package com.blues.splash;
+package com.blues.splash
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-
-import androidx.annotation.Nullable;
-
-import com.blues.MainActivity;
-import com.blues.R;
-import com.blues.framework.base.BaseActivity;
+import android.os.Looper
+import android.widget.FrameLayout
+import com.blues.MainActivity
+import com.blues.R
+import android.os.Bundle
+import android.os.Handler
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.blues.framework.base.BaseKoinActivity
 
 /**
  * File: com.blues.splash.ImageSplashActivity
@@ -21,56 +17,39 @@ import com.blues.framework.base.BaseActivity;
  *
  * @author: lanhuajian
  * @time: 2021-06-17 17:49
- **/
+ */
+class ImageSplashActivity : BaseKoinActivity() {
 
+    companion object {
 
-public class ImageSplashActivity extends BaseActivity {
-
-
-    private static final int SPLASH_ID = 0xff0001;
-    private final Handler mHandler = new Handler(Looper.getMainLooper());
-
-    public ImageSplashActivity() {
+        private const val SPLASH_ID = 0xff0001
     }
 
-    private final Runnable mRunnable = () -> {
-        FrameLayout decorView = (FrameLayout) getWindow().getDecorView();
-        View view = decorView.findViewById(SPLASH_ID);
-        if (view != null) {
-            decorView.removeView(view);
+    private val mHandler = Handler(Looper.getMainLooper())
+    private val mRunnable = Runnable {
+        val decorView = window.decorView as FrameLayout
+        decorView.findViewById<View>(SPLASH_ID)?.also {
+            decorView.removeView(it)
         }
-
-
-
-        startActivity(new Intent(ImageSplashActivity.this, MainActivity.class));
-        ImageSplashActivity.this.finish();
-    };
-
-    @Override
-    public int setLayoutResourceId() {
-        return R.layout.activity_placeholder;
+        startActivity<MainActivity>()
+        finish()
     }
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        FrameLayout decorView = (FrameLayout) getWindow().getDecorView();
-        FrameLayout splashView = (FrameLayout) LayoutInflater.from(this).inflate(R.layout.item_splash, null);
-        splashView.setId(SPLASH_ID);
-        splashView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        decorView.addView(splashView);
+    override fun getLayoutId(): Int = R.layout.activity_placeholder
 
-        mHandler.postDelayed(mRunnable, 2000);
+    override fun initData(savedInstanceState: Bundle?) {
+
+        (LayoutInflater.from(this).inflate(R.layout.item_splash, null) as FrameLayout).apply {
+            id = SPLASH_ID
+            layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        }.also {
+            (window.decorView as FrameLayout).addView(it)
+        }
+        mHandler.postDelayed(mRunnable, 2000)
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mHandler.removeCallbacks(mRunnable);
-    }
-
-    @Override
-    public void initView(Bundle savedInstanceState) {
-
+    override fun onDestroy() {
+        super.onDestroy()
+        mHandler.removeCallbacks(mRunnable)
     }
 }
