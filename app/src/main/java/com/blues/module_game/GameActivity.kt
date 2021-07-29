@@ -1,60 +1,45 @@
-package com.blues.module_game;
+package com.blues.module_game
 
-import android.os.Bundle;
-import android.view.ViewGroup;
+import com.blues.framework.utils.FileUtil.getAssetsFile
+import com.jude.easyrecyclerview.EasyRecyclerView
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter
+import com.blues.module_game.QuestionEntity.QuestionsBean
+import com.blues.R
+import android.os.Bundle
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import android.view.ViewGroup
+import com.blues.framework.base.BaseKoinActivity
+import com.blues.framework.utils.fromJson
+import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
-import com.blues.R;
-import com.blues.framework.base.BaseActivity;
-import com.blues.framework.utils.FileUtil;
-import com.google.gson.Gson;
-import com.jude.easyrecyclerview.EasyRecyclerView;
-import com.jude.easyrecyclerview.adapter.BaseViewHolder;
-import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+class GameActivity : BaseKoinActivity() {
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.PagerSnapHelper;
-import androidx.recyclerview.widget.RecyclerView;
+    private val ervGame: EasyRecyclerView by lazy { findViewById(R.id.erv_game) }
+    private var mAdapter: RecyclerArrayAdapter<QuestionsBean>? = null
 
-public class GameActivity extends BaseActivity {
+    override fun getLayoutId(): Int = R.layout.activity_game
 
-    private EasyRecyclerView ervGame;
-    private RecyclerArrayAdapter<QuestionEntity.QuestionsBean> mAdapter;
-
-    @Override
-    public int setLayoutResourceId() {
-        return R.layout.activity_game;
-    }
-
-    @Override
-    public void initView(Bundle savedInstanceState) {
-        ervGame = findViewById(R.id.erv_game);
-
-        PagerSnapHelper pagerSnapHelper = new PagerSnapHelper();
-        pagerSnapHelper.attachToRecyclerView(ervGame.getRecyclerView());
-        //禁止recyclerview 滑动
-        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false) {
-            @Override
-            public boolean canScrollHorizontally() {
-                return false;
+    override fun initData(savedInstanceState: Bundle?) {
+        val pagerSnapHelper = PagerSnapHelper()
+        pagerSnapHelper.attachToRecyclerView(ervGame.recyclerView) //禁止recyclerview 滑动
+        val layoutManager: LinearLayoutManager = object :
+            LinearLayoutManager(this, RecyclerView.HORIZONTAL, false) {
+            override fun canScrollHorizontally(): Boolean {
+                return false
             }
-        };
-        ervGame.setLayoutManager(layoutManager);
-        ervGame.setAdapter(mAdapter = new RecyclerArrayAdapter<QuestionEntity.QuestionsBean>(mContext) {
-            @Override
-            public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-                return new QuestionViewHolder(parent);
+        }
+        ervGame.setLayoutManager(layoutManager)
+        ervGame.adapter = object : RecyclerArrayAdapter<QuestionsBean>(this) {
+            override fun OnCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
+                return QuestionViewHolder(parent)
             }
-        });
-
-        String gameJson = FileUtil.getAssetsFile(mContext, "game.json");
-        Gson gson = new Gson();
-        QuestionEntity questionEntity = gson.fromJson(gameJson, QuestionEntity.class);
-        mAdapter.addAll(questionEntity.getQuestions());
-        mAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void setListener() {
-
+        }.also { mAdapter = it }
+        val gameJson = getAssetsFile(this, "game.json")
+        mAdapter?.let {
+            it.addAll(gameJson.fromJson<QuestionEntity>().questions)
+            it.notifyDataSetChanged()
+        }
     }
 }

@@ -46,9 +46,7 @@ object FileUtil {
         val fios = FileInputStream(file) //用于循环
         var len: Int //定义一个字节数组，用于存放读出来的内容
         val bytes = ByteArray(1024) //while循环通过fios读数据
-        while (fios.read(bytes)
-                .also { len = it } != -1
-        ) { //将读出来的数据存入StringBuffer，默认使用utf-8 中文字符集
+        while (fios.read(bytes).also { len = it } != -1) { //将读出来的数据存入StringBuffer，默认使用utf-8 中文字符集
             sb.append(String(bytes, 0, len, StandardCharsets.UTF_8))
         } //流用完后记得要关闭
         fios.close()
@@ -91,18 +89,16 @@ object FileUtil {
      * @return
      */
     @JvmStatic
-    fun getAssetsFile(context: Context, fileName: String?): String? {
-        var result: String? = null
+    fun getAssetsFile(context: Context, fileName: String): String {
+        var result = ""
         try {
-            fileName?.let {
-                val assetManager = context.assets
-                val inputStream = assetManager.open(it)
-                val buffer = ByteArray(inputStream.available())
-                val sum = inputStream.read(buffer)
-                if (sum != 0) {
-                    result = String(buffer, Charsets.UTF_8)
+            val assetManager = context.assets
+            val inputStream = assetManager.open(fileName)
+            val buffer = ByteArray(inputStream.available())
+            val sum = inputStream.read(buffer)
+            if (sum != 0) {
+                result = String(buffer, Charsets.UTF_8)
 
-                }
             }
         } catch (e: IOException) {
             e.printStackTrace()

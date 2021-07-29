@@ -1,67 +1,59 @@
-package com.blues.module_game;
+package com.blues.module_game
 
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.ViewGroup
+import com.blues.module_game.QuestionEntity.QuestionsBean
+import com.blues.R
+import android.text.TextUtils
+import android.app.Activity
+import android.view.View
+import android.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.blues.framework.utils.HelperUtil
+import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
-import com.blues.R;
-import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+class QuestionViewHolder(parent: ViewGroup?) :
+    BaseViewHolder<QuestionsBean>(parent, R.layout.item_game) {
 
-import androidx.recyclerview.widget.LinearLayoutManager;
+    private val tvTitle: TextView by lazy { itemView.findViewById(R.id.tv_title) }
+    private val btnSubmit: Button by lazy { itemView.findViewById(R.id.btn_submit) }
+    private val rgAnswers: RadioGroup by lazy { itemView.findViewById(R.id.rg_answer) }
 
-public class QuestionViewHolder extends BaseViewHolder<QuestionEntity.QuestionsBean> {
-
-    private TextView tvTitle;
-    private Button btnSubmit;
-    private RadioGroup rgAnswers;
-
-    public QuestionViewHolder(ViewGroup parent) {
-        super(parent, R.layout.item_game);
-
-        tvTitle = $(R.id.tv_title);
-        btnSubmit = $(R.id.btn_submit);
-        rgAnswers = $(R.id.rg_answer);
-    }
-
-    @Override
-    public void setData(QuestionEntity.QuestionsBean data) {
-        super.setData(data);
+    override fun setData(data: QuestionsBean) {
+        super.setData(data)
 
         //1.问题
-        tvTitle.setText(String.format("%s.%s", data.getId(), data.getTitle()));
+        tvTitle.text = String.format("%s.%s", data.id, data.title)
 
         //设置监听
-        btnSubmit.setOnClickListener(v -> {
+        btnSubmit.setOnClickListener {
+
             //根据焦点radiobutton的id获取对应radiobutton的实例
-            if (TextUtils.equals((((RadioButton) ((Activity) getContext()).findViewById(rgAnswers.getCheckedRadioButtonId())).getText().toString()), data.getAnswer())) {
-                Toast.makeText(getContext(), "回答正确", Toast.LENGTH_SHORT).show();
-                if (getOwnerRecyclerView() != null) {
-                    LinearLayoutManager layoutManager = (LinearLayoutManager) getOwnerRecyclerView().getLayoutManager();
-                    if (layoutManager != null) {
-                        int currentPosition = layoutManager.findFirstVisibleItemPosition();
-                        if (getOwnerRecyclerView().getAdapter() != null && currentPosition + 1 < getOwnerRecyclerView().getAdapter().getItemCount()) {
-                            getOwnerRecyclerView().scrollToPosition(currentPosition + 1);
-                        } else {
-                            Toast.makeText(getContext(), "答题结束", Toast.LENGTH_SHORT).show();
+
+            val answer = ((context as Activity).findViewById<View>(rgAnswers.checkedRadioButtonId) as RadioButton).text.toString()
+            if (answer == data.answer) {
+                HelperUtil.showToast("回答正确")
+                ownerRecyclerView?.let {
+                    val layoutManager = it.layoutManager as LinearLayoutManager?
+                    layoutManager?.let { manager ->
+                        val currentPosition = manager.findFirstVisibleItemPosition()
+                        it.adapter?.takeIf { adapter ->
+                            currentPosition + 1 < adapter.itemCount
+                        }?.apply {
+                            it.scrollToPosition(currentPosition + 1)
                         }
                     }
                 }
             } else {
-                Toast.makeText(getContext(), "回答错误", Toast.LENGTH_SHORT).show();
+                HelperUtil.showToast("回答错误")
             }
-        });
+        }
 
         //动态添加radiobutton
-        for (int i = 0; i < data.getSelections().size(); i++) {
-            RadioButton radioButton = new RadioButton(getContext());
-            radioButton.setText(data.getSelections().get(i));
-            rgAnswers.addView(radioButton);
+        for (i in data.selections.indices) {
+            val radioButton = RadioButton(context)
+            radioButton.text = data.selections[i]
+            rgAnswers.addView(radioButton)
         }
-        ((RadioButton) rgAnswers.getChildAt(0)).setChecked(true);
+        (rgAnswers.getChildAt(0) as RadioButton).isChecked = true
     }
 }

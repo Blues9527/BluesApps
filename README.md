@@ -11,6 +11,7 @@ Java-MVP 往 Kotlin-MVVM(没有databinding)迁移
 - 视频播放:NiceVideoPlayer
 - UI框架:EasyRecyclerView/SmartRefreshLayout
 - 数据库框架:Room
+- 依赖注入库:Koin
 
 ## 主要实现功能
 - 视频播放
