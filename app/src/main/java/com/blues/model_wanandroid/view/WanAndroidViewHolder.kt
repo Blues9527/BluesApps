@@ -1,62 +1,46 @@
-package com.blues.model_wanandroid.view;
+package com.blues.model_wanandroid.view
 
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.blues.R;
-import com.blues.WebViewDialog;
-import com.blues.model_wanandroid.model.WanAndroidEntity;
-import com.bumptech.glide.Glide;
-import com.jude.easyrecyclerview.adapter.BaseViewHolder;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
+import android.view.ViewGroup
+import com.blues.model_wanandroid.model.WanAndroidEntity.DataBean.DatasBean
+import com.blues.R
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import android.text.TextUtils
+import android.view.View
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.blues.WebViewDialog
+import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
 /**
  * User : Blues
  * Date : 2019/3/6
  */
+class WanAndroidViewHolder(parent: ViewGroup?) :
+    BaseViewHolder<DatasBean>(parent, R.layout.item_wan_android) {
 
-public class WanAndroidViewHolder extends BaseViewHolder<WanAndroidEntity.DataBean.DatasBean> {
-
-    private ImageView ivCover;
-    private TextView tvTitle, tvTag, tvDesc, tvAuthor, tvDate;
-    private ConstraintLayout clRoot;
-
-    public WanAndroidViewHolder(ViewGroup parent) {
-        super(parent, R.layout.item_wan_android);
-
-        ivCover = $(R.id.iv_cover);
-        tvTitle = $(R.id.tv_title);
-        tvTag = $(R.id.tv_tag);
-        tvDesc = $(R.id.tv_desc);
-        tvAuthor = $(R.id.tv_author);
-        tvDate = $(R.id.tv_date);
-        clRoot = $(R.id.cl_root);
-    }
-
-    @Override
-    public void setData(WanAndroidEntity.DataBean.DatasBean data) {
-        super.setData(data);
+    private val ivCover: ImageView by lazy { itemView.findViewById(R.id.iv_cover) }
+    private val tvTitle: TextView by lazy { itemView.findViewById(R.id.tv_title) }
+    private val tvTag: TextView by lazy { itemView.findViewById(R.id.tv_tag) }
+    private val tvDesc: TextView by lazy { itemView.findViewById(R.id.tv_desc) }
+    private val tvAuthor: TextView by lazy { itemView.findViewById(R.id.tv_author) }
+    private val tvDate: TextView by lazy { itemView.findViewById(R.id.tv_date) }
+    private val clRoot: ConstraintLayout by lazy { itemView.findViewById(R.id.cl_root) }
+    override fun setData(data: DatasBean) {
+        super.setData(data)
 
         //设置cover
-        if (!TextUtils.isEmpty(data.getEnvelopePic())) {
-            ivCover.setVisibility(View.VISIBLE);
-            Glide.with(getContext()).load(data.getEnvelopePic()).into(ivCover);
+        if (!TextUtils.isEmpty(data.envelopePic)) {
+            ivCover.visibility = View.VISIBLE
+            Glide.with(context).load(data.envelopePic).into(ivCover)
         }
-
-        tvTitle.setText(data.getTitle());
-
-        tvTag.setText(data.getChapterName());
-
-        tvDesc.setText(data.getDesc());
-
-        tvAuthor.setText(data.getAuthor());
-
-        tvDate.setText(data.getNiceDate());
-
-        clRoot.setOnClickListener(v -> new WebViewDialog(getContext(), data.getLink()).show());
+        with(data) {
+            tvTitle.text = title
+            tvTag.text = chapterName
+            tvDesc.text = desc
+            tvAuthor.text = author
+            tvDate.text = niceDate
+            clRoot.setOnClickListener { WebViewDialog(context, data.link).show() }
+        }
     }
 }
