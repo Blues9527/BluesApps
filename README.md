@@ -3,7 +3,7 @@
 > 本项目用于个人学习练手App，使用到栏一些第三方数据源和一些开源框架，如有侵权请联删。
 
 ## 编写语言 
-Java
+Java-MVP 往 Kotlin-MVVM(没有databinding)迁移
 
 ## 使用到的开源框架
 - 网络请求:OkHttp3+RxJava+RxAndroid+Retrofit Gson
