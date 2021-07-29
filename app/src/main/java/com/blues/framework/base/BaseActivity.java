@@ -58,7 +58,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     @Override
     protected void onResume() {
         super.onResume();
-        //        immersionInit();
+//        immersionInit();
     }
 
     @Override

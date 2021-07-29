@@ -6,8 +6,10 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.Message;
+
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +20,7 @@ import android.widget.Scroller;
 import com.blues.R;
 import com.blues.framework.widget.endlessbannerview.hintview.ColorPointHintView;
 import com.blues.framework.widget.endlessbannerview.hintview.HintView;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -62,6 +65,11 @@ public class BannerView extends RelativeLayout implements ViewPager.OnPageChange
         initView(attrs);
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.getSize(heightMeasureSpec));
+    }
 
     /**
      * 读取提示形式  和   提示位置   和    播放延迟
@@ -300,8 +308,7 @@ public class BannerView extends RelativeLayout implements ViewPager.OnPageChange
     private BannerView.HintViewDelegate mHintViewDelegate = new BannerView.HintViewDelegate() {
         @Override
         public void setCurrentPosition(int position, int duration, HintView hintView) {
-            if (hintView != null)
-                hintView.setCurrent(position, duration);
+            if (hintView != null) hintView.setCurrent(position, duration);
         }
 
         @Override

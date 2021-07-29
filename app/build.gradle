@@ -158,6 +158,11 @@ dependencies {
 
     //fast json
     implementation 'com.alibaba:fastjson:1.2.76'
+
+    //viewpager2
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
+
+
 }
 repositories {
     mavenCentral()

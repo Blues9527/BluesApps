@@ -2,10 +2,8 @@ package com.blues.module_main.view
 
 import com.blues.framework.utils.FileUtil.getAssetsFile
 import kotlin.jvm.JvmOverloads
-import android.widget.RelativeLayout
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter
 import com.jude.easyrecyclerview.EasyRecyclerView
-import com.blues.framework.widget.endlessbannerview.BannerView
 import com.blues.framework.widget.DrawableTextView
 import android.view.LayoutInflater
 import com.blues.R
@@ -14,7 +12,6 @@ import com.blues.module_kaiyan.search.OpenEyeSearchActivity
 import androidx.core.app.ActivityOptionsCompat
 import android.app.Activity
 import android.content.Context
-import android.os.Handler
 import androidx.recyclerview.widget.GridLayoutManager
 import com.blues.bean.CourseEntity
 import android.view.ViewGroup
@@ -27,14 +24,11 @@ import com.blues.module_game.GameActivity
 import org.json.JSONArray
 import com.google.gson.Gson
 import com.blues.module_main.model.WanAndroidBannerEntity
-import android.os.Looper
 import android.util.AttributeSet
 import android.view.View
-import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentActivity
-import com.blues.framework.widget.endlessbannerview.BannerAdapter
-import com.blues.WebViewDialog
-import com.blues.framework.utils.dp
+import androidx.viewpager2.widget.ViewPager2
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import org.json.JSONException
 import java.util.ArrayList
@@ -45,25 +39,23 @@ import java.util.ArrayList
  * Time : 15:32
  */
 class MainPageHeaderView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0) : RelativeLayout(context, attrs, defStyleAttr),
+    defStyleAttr: Int = 0) : ConstraintLayout(context, attrs, defStyleAttr),
     RecyclerArrayAdapter.ItemView {
 
     private lateinit var ervEntry: EasyRecyclerView
-    private lateinit var bannerView: BannerView
+    private lateinit var viewPager2: ViewPager2
     private var tvSearch: DrawableTextView? = null
 
     private fun initView(ctx: Context) {
-        val rootView = LayoutInflater.from(ctx)
-            .inflate(R.layout.header_main, this)
-        bannerView = rootView.findViewById(R.id.bv_header)
+        val rootView = LayoutInflater.from(ctx).inflate(R.layout.header_main, this)
+        viewPager2 = rootView.findViewById(R.id.vp_header)
         ervEntry = rootView.findViewById(R.id.erv_entry)
-        tvSearch = rootView.findViewById<DrawableTextView>(R.id.tv_search)
-            .apply {
-                setOnClickListener {
-                    val options = ActivityOptionsCompat.makeSceneTransitionAnimation((ctx as Activity), it, "transitionSearch")
-                    ctx.startActivity(Intent(ctx, OpenEyeSearchActivity::class.java), options.toBundle())
-                }
+        tvSearch = rootView.findViewById<DrawableTextView>(R.id.tv_search).apply {
+            setOnClickListener {
+                val options = ActivityOptionsCompat.makeSceneTransitionAnimation((ctx as Activity), it, "transitionSearch")
+                ctx.startActivity(Intent(ctx, OpenEyeSearchActivity::class.java), options.toBundle())
             }
+        }
         initEntry(ctx)
     }
 
@@ -87,8 +79,7 @@ class MainPageHeaderView @JvmOverloads constructor(context: Context, attrs: Attr
                     when (position) {
                         0 -> ActivityUtil.start(GankGirlActivity::class.java)
                         1, 2, 3 ->                         //商城
-                            Toast.makeText(getContext(), "敬请期待", Toast.LENGTH_SHORT)
-                                .show()
+                            Toast.makeText(getContext(), "敬请期待", Toast.LENGTH_SHORT).show()
                         4 ->                         //干货
                             ActivityUtil.start(GankActivity::class.java)
                         5 ->                         //开眼
@@ -123,34 +114,39 @@ class MainPageHeaderView @JvmOverloads constructor(context: Context, attrs: Attr
     }
 
     override fun onBindView(headerView: View) {}
-    fun initBanner(ctx: Context?, bannerEntity: WanAndroidBannerEntity) {
-        val bannerUrls: MutableList<String> = ArrayList()
-        val pathUrls: MutableList<String> = ArrayList()
-        for (data in bannerEntity.data) {
-            bannerUrls.add(data.imagePath)
-            pathUrls.add(data.url)
-        }
-        Handler(Looper.getMainLooper()).post {
-            val adapter = BannerAdapter(ctx, bannerUrls, bannerView).apply {
-                setItemClickListener { realPosition: Int -> WebViewDialog(context, pathUrls[realPosition]).show() } //开启轮播
-            }
-            val params = LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 185f.dp.toInt())
-            bannerView.apply {
-                setPlayDelay(3000) //启用progressbar形式hintview
-                setHintPadding(10f.dp.toInt(), 0, 10f.dp.toInt(), 10f.dp.toInt())
-                setAnimationDuration(1000)
-                layoutParams = params
-                setAdapter(adapter)
-            }
-        }
-    }
 
-    fun onBannerResume() {
-        bannerView.resume()
-    }
+    //fun initBanner(ctx: Context?, bannerEntity: WanAndroidBannerEntity) {
+    //    val bannerUrls: MutableList<String> = ArrayList()
+    //    val pathUrls: MutableList<String> = ArrayList()
+    //    for (data in bannerEntity.data) {
+    //        bannerUrls.add(data.imagePath)
+    //        pathUrls.add(data.url)
+    //    }
+    //    Handler(Looper.getMainLooper()).post {
+    //        val adapter = BannerAdapter(ctx, bannerUrls, viewPager2).apply {
+    //            setItemClickListener { realPosition: Int -> WebViewDialog(context, pathUrls[realPosition]).show() } //开启轮播
+    //        }
+    //        val params = LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 185f.dp.toInt())
+    //        viewPager2.apply {
+    //            setPlayDelay(3000) //启用progressbar形式hintview
+    //            setHintPadding(10f.dp.toInt(), 0, 10f.dp.toInt(), 10f.dp.toInt())
+    //            setAnimationDuration(1000)
+    //            layoutParams = params
+    //            setAdapter(adapter)
+    //        }
+    //    }
+    //}
 
-    fun onBannerPause() {
-        bannerView.pause()
+    fun initBanner(ctx: Context, bannerEntity: WanAndroidBannerEntity) {
+        val vpAdapter = object : RecyclerArrayAdapter<WanAndroidBannerEntity.DataBean>(ctx) {
+            override fun OnCreateViewHolder(parent: ViewGroup?, viewType: Int): BaseViewHolder<*> {
+                return WanAndroidBannerViewHolder(parent)
+            }
+        }
+
+        vpAdapter.addAll(bannerEntity.data)
+        vpAdapter.notifyDataSetChanged()
+        viewPager2.adapter = vpAdapter
     }
 
     init {

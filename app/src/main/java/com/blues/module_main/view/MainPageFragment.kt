@@ -27,22 +27,13 @@ class MainPageFragment : BaseKoinFragment() {
     private val bannerViewModel: WanAndroidBannerViewModel by viewModel()
 
     private var mHeader: MainPageHeaderView? = null
-    override fun onPause() {
-        super.onPause()
-        mHeader?.onBannerPause()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mHeader?.onBannerResume()
-    }
 
     override fun getLayoutId(): Int = R.layout.fragment_mainpage
 
     override fun initData(inflater: LayoutInflater, container: ViewGroup?, saveInstanced: Bundle?) {
         bannerViewModel.getBanner()
 
-        rootView?.apply {
+        rootView.apply {
             val ervMain: EasyRecyclerView = findViewById(R.id.erv_main)
             var mAdapter: RecyclerArrayAdapter<DatasBean?>
 

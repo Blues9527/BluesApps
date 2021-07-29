@@ -8,8 +8,6 @@ import com.blues.R
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import android.widget.LinearLayout
-import com.blues.framework.utils.ScreenUtil
-import com.blues.framework.utils.SizeUtil
 import com.blues.framework.utils.dp
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
