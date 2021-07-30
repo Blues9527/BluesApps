@@ -1,19 +1,23 @@
 package com.blues.di
 
+import com.blues.constant.KAIYAN
 import com.blues.constant.WANANDROID
 import com.blues.framework.http.networkModule
-import com.blues.model_wanandroid.vm.WanAndroidViewModel
-import com.blues.model_wanandroid.service.WanAndroidRepository
-import com.blues.model_wanandroid.service.provideWanAndroidPostApi
-import com.blues.module_login.service.LoginRepository
-import com.blues.module_login.service.provideLoginApi
-import com.blues.module_login.vm.LoginViewModel
-import com.blues.module_main.vm.WanAndroidBannerViewModel
-import com.blues.module_main.service.WanAndroidBannerRepository
-import com.blues.module_main.service.provideBannerApi
-import com.blues.module_register.service.RegisterRepository
-import com.blues.module_register.service.provideRegisterApi
-import com.blues.module_register.vm.RegisterViewModel
+import com.blues.wanandroid.vm.WanAndroidViewModel
+import com.blues.wanandroid.service.WanAndroidRepository
+import com.blues.wanandroid.service.provideWanAndroidPostApi
+import com.blues.kaiyan.list.service.KaiyanRepository
+import com.blues.kaiyan.list.service.provideKaiyanApi
+import com.blues.login.service.LoginRepository
+import com.blues.login.service.provideLoginApi
+import com.blues.login.vm.LoginViewModel
+import com.blues.home.vm.WanAndroidBannerViewModel
+import com.blues.home.service.WanAndroidBannerRepository
+import com.blues.home.service.provideBannerApi
+import com.blues.kaiyan.list.vm.KaiyanViewModel
+import com.blues.register.service.RegisterRepository
+import com.blues.register.service.provideRegisterApi
+import com.blues.register.vm.RegisterViewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -22,7 +26,7 @@ import org.koin.dsl.module
  * Description: xxx
  *
  * @author: lanhuajian
- * @time: 2021-07-17 13:35
+ * @time: 2021-07-17
  **/
 
 val wanAndroidVmModule = module {
@@ -63,7 +67,21 @@ val loginModule = module {
     }
 }
 
-val allModules = (networkModule + wanAndroidVmModule + registerModule + loginModule)
+val kaiyanModule = module {
+    factory {
+        provideKaiyanApi(get(named(KAIYAN)))
+    }
+
+    single {
+        KaiyanRepository(get(), get())
+    }
+
+    factory {
+        KaiyanViewModel(get())
+    }
+}
+
+val allModules = (networkModule + wanAndroidVmModule + registerModule + loginModule + kaiyanModule)
 
 
 

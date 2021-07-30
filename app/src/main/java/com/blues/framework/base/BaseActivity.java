@@ -1,19 +1,10 @@
 package com.blues.framework.base;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.blues.R;
-import com.blues.framework.widget.immersionbar.ImmersionBar;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 
 import androidx.annotation.Nullable;
@@ -56,12 +47,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-//        immersionInit();
-    }
-
-    @Override
     protected void onStop() {
         super.onStop();
         NiceVideoPlayerManager.instance().releaseNiceVideoPlayer();
@@ -86,15 +71,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         if (NiceVideoPlayerManager.instance().onBackPressd()) return;
         super.onBackPressed();
     }
-
-    public void immersionInit() {
-        //安卓系统低于6.0,不进行换色
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return;
-        }
-        ImmersionBar.with(mContext).transparentBar().fitsSystemWindows(true).statusBarColorRes(R.color.color_transparent).statusBarColorTransformRes(R.color.color_transparent).statusBarDarkFont(true).init();
-    }
-
 
     /**
      * 方便父类打印日志

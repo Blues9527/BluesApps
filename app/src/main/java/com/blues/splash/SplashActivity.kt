@@ -1,18 +1,13 @@
 package com.blues.splash
 
-import com.blues.framework.base.BaseActivity
 import com.blues.framework.widget.countdownview.CountDownView
 import com.blues.framework.widget.explosionanimator.ExplosionField
 import com.blues.framework.widget.TextClockView
 import com.blues.R
 import android.os.Bundle
 import com.blues.framework.widget.explosionanimator.FallingParticleFactory
-import com.blues.framework.widget.countdownview.CountDownView.CountDownTimerCallBack
-import android.os.Looper
-import android.content.Intent
-import android.os.Handler
 import com.blues.framework.base.BaseKoinActivity
-import com.blues.module_login.view.LoginActivity
+import com.blues.login.view.LoginActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

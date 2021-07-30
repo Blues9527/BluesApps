@@ -1,31 +1,31 @@
-package com.blues.module_game;
+package com.blues.game
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.annotation.JSONField
+import java.io.Serializable
 
-import java.io.Serializable;
-import java.util.List;
-
-public class QuestionEntity implements Serializable {
-
+class QuestionEntity : Serializable {
 
     @JSONField(name = "questions")
-    public List<QuestionsBean> questions;
+    var questions: List<QuestionsBean> = mutableListOf()
 
-    public static class QuestionsBean implements Serializable {
+    class QuestionsBean : Serializable {
+
         /**
          * id : 1
          * title : Question1
          * answer : A
          * selections : ["A","B","C","D"]
          */
-
         @JSONField(name = "id")
-        public int id;
+        var id = 0
+
         @JSONField(name = "title")
-        public String title;
+        var title: String = ""
+
         @JSONField(name = "answer")
-        public String answer;
+        var answer: String = ""
+
         @JSONField(name = "selections")
-        public List<String> selections;
+        var selections: List<String> = mutableListOf()
     }
 }

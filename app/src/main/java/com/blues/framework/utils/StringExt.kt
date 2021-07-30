@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSON
  * Description: xxx
  *
  * @author: lanhuajian
- * @time: 2021-07-29 17:33
+ * @time: 2021-07-29
  **/
 
 inline fun <reified T> String.fromJson(): T = JSON.parseObject(this, T::class.java)

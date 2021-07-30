@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.*
  * Description: xxx
  *
  * @author: lanhuajian
- * @time: 2021-07-16 18:23
+ * @time: 2021-07-16
  **/
 
 open class BaseViewModel : ViewModel() {

@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
  * Description: xxx
  *
  * @author: lanhuajian
- * @time: 2021-07-21 10:28
+ * @time: 2021-07-21
  **/
 
 abstract class BaseKoinFragment : Fragment() {

@@ -16,7 +16,7 @@ import com.blues.framework.base.BaseKoinActivity
  * Description: xxx
  *
  * @author: lanhuajian
- * @time: 2021-06-17 17:49
+ * @time: 2021-06-17
  */
 class ImageSplashActivity : BaseKoinActivity() {
 

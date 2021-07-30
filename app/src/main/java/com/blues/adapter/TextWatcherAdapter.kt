@@ -8,7 +8,7 @@ import android.text.TextWatcher
  * Description: xxx
  *
  * @author: lanhuajian
- * @time: 2021-07-21 10:55
+ * @time: 2021-07-21
  **/
 
 interface TextWatcherAdapter : TextWatcher {

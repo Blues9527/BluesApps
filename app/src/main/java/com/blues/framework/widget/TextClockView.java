@@ -369,8 +369,4 @@ public class TextClockView extends View {
             mTimer.cancel();
         }
     }
-
-    private float dp2px(float dp) {
-        return getResources().getDisplayMetrics().density * dp + 0.5f;
-    }
 }

@@ -1,137 +1,107 @@
-package com.blues.module_kaiyan.hotrank;
+package com.blues.kaiyan.list.view
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.widget.LinearLayout;
-
-import com.blues.R;
-import com.blues.framework.base.BaseFragment;
-import com.blues.framework.utils.HelperUtil;
-import com.blues.module_kaiyan.OpenEyeContract;
-import com.blues.module_kaiyan.OpenEyeEntity;
-import com.blues.module_kaiyan.OpenEyePresenter;
-import com.jude.easyrecyclerview.EasyRecyclerView;
-import com.jude.easyrecyclerview.adapter.BaseViewHolder;
-import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
-import com.jude.easyrecyclerview.decoration.DividerDecoration;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-
-import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import android.view.ViewStub
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter
+import com.blues.kaiyan.list.model.OpenEyeEntity
+import com.blues.R
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.os.Bundle
+import com.jude.easyrecyclerview.EasyRecyclerView
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import com.jude.easyrecyclerview.decoration.DividerDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.blues.framework.base.BaseKoinFragment
+import com.blues.kaiyan.list.vm.KaiyanViewModel
+import com.jude.easyrecyclerview.adapter.BaseViewHolder
+import com.scwang.smartrefresh.layout.api.RefreshLayout
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
- * User : Blues
- * Date : 2019/8/26
- * Time : 11:18
- */
+ * File: com.blues.module_kaiyan.main.view.OEHotRankFragment.kt
+ * Description: xxx
+ *
+ * @author: lanhuajian
+ * @time: 2021/7/30
+ **/
 
-public class OEHotRankFragment extends BaseFragment implements OpenEyeContract.iOpenEyeView, OnRefreshListener {
+class OEHotRankFragment : BaseKoinFragment(), OnRefreshListener {
 
-    private SmartRefreshLayout hotRankSr;
-    private View v;
-    private ViewStub networkVS;
-    private OpenEyeContract.iOpenEyePresenter iPresenter;
-    private RecyclerArrayAdapter<OpenEyeEntity.ItemListBean> mAdapter;
+    private val hotrankViewModel: KaiyanViewModel by viewModel()
 
-    @Override
-    public int setLayoutResourceId() {
-        return R.layout.fragment_oe_hot_rank;
+    private lateinit var hotRankSr: SmartRefreshLayout
+
+    //private lateinit var v: View
+    private lateinit var networkVS: ViewStub
+    private lateinit var mAdapter: RecyclerArrayAdapter<OpenEyeEntity.ItemListBean>
+
+    //fun showFinished() {
+    //    hotRankSr.finishRefresh()
+    //}
+    //
+    //fun showError() {
+    //    try {
+    //        v = networkVS.inflate()
+    //        val blankLl = v.findViewById<LinearLayout>(R.id.error_blank)
+    //        blankLl.setOnClickListener {
+    //            mAdapter.clear()
+    //            hotrankViewModel.getRankList()
+    //        }
+    //    } catch (e: Exception) {
+    //        e.printStackTrace()
+    //        v.visibility = View.VISIBLE
+    //    }
+    //}
+
+    override fun onRefresh(refreshLayout: RefreshLayout) {
+        mAdapter.clear()
+        hotrankViewModel.getRankList()
     }
 
-    @Override
-    public void initLayout(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        EasyRecyclerView hotRankErv = rootView.findViewById(R.id.rv_hotrank);
-        hotRankSr = rootView.findViewById(R.id.sr_hotrank);
-        networkVS = rootView.findViewById(R.id.view_stub_network);
-        //设置 Header 为 经典 样式 带最后刷新时间
-        hotRankSr.setRefreshHeader(new ClassicsHeader(getmContext()).setEnableLastTime(true));
-        hotRankSr.setEnableHeaderTranslationContent(true);
-
-        mPresenter = new OpenEyePresenter(this);
-
-        iPresenter.getRankList();
-
-        DividerDecoration decoration = new DividerDecoration(R.color.color_gray, 1);
-        hotRankErv.addItemDecoration(decoration);
-        hotRankErv.setLayoutManager(new LinearLayoutManager(getmContext()));
-        hotRankErv.setAdapter(mAdapter = new RecyclerArrayAdapter<OpenEyeEntity.ItemListBean>(getmContext()) {
-            @Override
-            public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-                return new OEHotRankViewHolder(parent);
+    override fun observe() {
+        hotrankViewModel.rankList.observe(this) {
+            mAdapter.apply {
+                addAll(it.itemList)
+                notifyDataSetChanged()
             }
-        });
-        mAdapter.setNoMore(R.layout.view_load_no_more);
-    }
-
-    @Override
-    public void lazyFetchData() {
-
-    }
-
-    @Override
-    public void setListener() {
-        hotRankSr.setEnableRefresh(true);
-        hotRankSr.setOnRefreshListener(this);
-    }
-
-    @Override
-    public void setPresenter(OpenEyeContract.iOpenEyePresenter presenter) {
-        iPresenter = presenter;
-    }
-
-    @Override
-    public void showFinished() {
-        hotRankSr.finishRefresh();
-    }
-
-    @Override
-    public void showError() {
-        try {
-            v = networkVS.inflate();
-            LinearLayout blankLl = v.findViewById(R.id.error_blank);
-            blankLl.setOnClickListener(v1 -> {
-                mAdapter.clear();
-                iPresenter.getRankList();
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-            v.setVisibility(View.VISIBLE);
+            hotRankSr.finishRefresh()
         }
     }
 
-    @Override
-    public void showRankList(List<OpenEyeEntity.ItemListBean> openEyeList) {
-        mAdapter.addAll(openEyeList);
-        mAdapter.notifyDataSetChanged();
-    }
+    override fun getLayoutId(): Int = R.layout.fragment_oe_hot_rank
 
-    @Override
-    public void showRequestError(String msg) {
-        HelperUtil.showToast(msg);
-    }
+    override fun initData(inflater: LayoutInflater, container: ViewGroup?, saveInstanced: Bundle?) {
 
-    @Override
-    public void showHotSearch(List<String> searches) {
+        hotrankViewModel.getRankList()
 
-    }
+        hotRankSr = rootView.findViewById(R.id.sr_hotrank)
+        networkVS = rootView.findViewById(R.id.view_stub_network)
+        hotRankSr.apply {
 
-    @Override
-    public void showSearchResult(List<OpenEyeEntity.ItemListBean> openEyeList) {
+            //设置 Header 为 经典 样式 带最后刷新时间
+            setRefreshHeader(ClassicsHeader(requireContext()).setEnableLastTime(true))
+            setEnableHeaderTranslationContent(true)
+            setEnableRefresh(true)
+            setOnRefreshListener(this@OEHotRankFragment)
+        }
 
-    }
+        val decoration = DividerDecoration(R.color.color_gray, 1)
+        val hotRankErv: EasyRecyclerView = rootView.findViewById(R.id.rv_hotrank)
+        hotRankErv.apply {
+            addItemDecoration(decoration)
+            setLayoutManager(LinearLayoutManager(requireContext()))
+            adapter = object : RecyclerArrayAdapter<OpenEyeEntity.ItemListBean>(requireContext()) {
+                override fun OnCreateViewHolder(parent: ViewGroup,
+                    viewType: Int): BaseViewHolder<*> {
+                    return OEHotRankViewHolder(parent)
+                }
+            }.also {
+                mAdapter = it
+            }
+        }
 
-    @Override
-    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-        mAdapter.clear();
-        iPresenter.getRankList();
+        mAdapter.setNoMore(R.layout.view_load_no_more)
     }
 }

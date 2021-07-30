@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * Description: xxx
  *
  * @author: lanhuajian
- * @time: 2021-07-16 18:36
+ * @time: 2021-07-16
  **/
 
 val networkModule = module {

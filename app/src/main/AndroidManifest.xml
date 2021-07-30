@@ -34,7 +34,7 @@
         </activity>
 
         <activity
-            android:name=".module_gank.old.ShowImageActivity"
+            android:name=".gankio.old.ShowImageActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleTop"
             android:theme="@style/ShowImageActivity" />
@@ -52,30 +52,30 @@
             <!--            </intent-filter>-->
         </activity>
         <activity
-            android:name=".module_login.view.LoginActivity"
+            android:name=".login.view.LoginActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustPan"></activity>
         <activity
-            android:name=".module_register.view.RegisterActivity"
+            android:name=".register.view.RegisterActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".module_kaiyan.search.OpenEyeSearchActivity"
+            android:name=".kaiyan.list.view.OpenEyeSearchActivity"
             android:configChanges="keyboardHidden|screenSize|orientation" />
         <activity
-            android:name=".module_kaiyan.detail.OEDetailActivity"
+            android:name=".kaiyan.detail.OEDetailActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="standard" />
-        <activity android:name=".module_game.GameActivity" />
-        <activity android:name=".model_wanandroid.view.WanAndroidActivity" />
-        <activity android:name=".module_gank._new.mvp.view.GankActivity" />
-        <activity android:name=".module_kaiyan.OpenEyeActivity" />
-        <activity android:name=".module_gank._new.detail.GankPostDetailActivity" />
-        <activity android:name=".module_gank._new.girl.GankGirlActivity" />
+        <activity android:name=".game.GameActivity" />
+        <activity android:name=".wanandroid.view.WanAndroidActivity" />
+        <activity android:name=".gankio._new.mvp.view.GankActivity" />
+        <activity android:name=".kaiyan.list.view.OpenEyeActivity" />
+        <activity android:name=".gankio._new.detail.GankPostDetailActivity" />
+        <activity android:name=".gankio._new.girl.GankGirlActivity" />
     </application>
 
 </manifest>

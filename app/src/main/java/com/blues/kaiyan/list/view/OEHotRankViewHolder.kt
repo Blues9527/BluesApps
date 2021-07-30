@@ -1,60 +1,54 @@
-package com.blues.module_kaiyan.hotrank;
+package com.blues.kaiyan.list.view
 
-import android.app.Activity;
-import android.content.Intent;
-import androidx.core.app.ActivityOptionsCompat;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.blues.R;
-import com.blues.framework.utils.TimeFormatUtil;
-import com.blues.module_kaiyan.OpenEyeEntity;
-import com.blues.module_kaiyan.detail.OEDetailActivity;
-import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+import com.blues.framework.utils.TimeFormatUtil.formatTime
+import android.view.ViewGroup
+import com.blues.kaiyan.list.model.OpenEyeEntity
+import com.blues.R
+import android.widget.TextView
+import com.bumptech.glide.Glide
+import android.content.Intent
+import com.blues.kaiyan.detail.OEDetailActivity
+import androidx.core.app.ActivityOptionsCompat
+import android.app.Activity
+import android.widget.ImageView
+import com.jude.easyrecyclerview.adapter.BaseViewHolder
+import java.lang.StringBuilder
 
 /**
  * User : Blues
  * Date : 2019/3/6
  */
+class OEHotRankViewHolder(parent: ViewGroup?) :
+    BaseViewHolder<OpenEyeEntity.ItemListBean>(parent, R.layout.item_oe_hotrank_list) {
 
-public class OEHotRankViewHolder extends BaseViewHolder<OpenEyeEntity.ItemListBean> {
+    private val ivAvatar: ImageView = itemView.findViewById(R.id.iv_avatar)
+    private val tvTitle: TextView = itemView.findViewById(R.id.tv_title)
+    private val tvTags: TextView = itemView.findViewById(R.id.tv_tags)
+    private val tvCategory: TextView = itemView.findViewById(R.id.tv_category)
+    private val coverHotRank: ImageView = itemView.findViewById(R.id.iv_hotrank_cover)
 
-    private ImageView ivAvatar;
-    private TextView tvTitle, tvTags, tvCategory;
-    private ImageView coverHotRank;
+    override fun setData(data: OpenEyeEntity.ItemListBean) {
+        super.setData(data)
 
-    public OEHotRankViewHolder(ViewGroup parent) {
-        super(parent, R.layout.item_oe_hotrank_list);
+        val sb = StringBuilder()
 
-        ivAvatar = $(R.id.iv_avatar);
-        tvTitle = $(R.id.tv_title);
-        coverHotRank = $(R.id.iv_hotrank_cover);
-        tvTags = $(R.id.tv_tags);
-        tvCategory = $(R.id.tv_category);
+        Glide.with(context).load(data.data.author.icon).into(ivAvatar)
+        Glide.with(context).load(data.data.cover.detail).into(coverHotRank)
 
-    }
+        tvTitle.text = data.data.title
 
-    @Override
-    public void setData(OpenEyeEntity.ItemListBean data) {
-        super.setData(data);
-        StringBuilder sb = new StringBuilder();
-        Glide.with(getContext()).load(data.getData().getAuthor().getIcon()).into(ivAvatar);
-        Glide.with(getContext()).load(data.getData().getCover().getDetail()).into(coverHotRank);
-        tvTitle.setText(data.getData().getTitle());
-
-        for (OpenEyeEntity.ItemListBean.DataBean.TagsBean tagsBean : data.getData().getTags()) {
-            sb.append(tagsBean.getName() + "/");
+        for (tagsBean in data.data.tags) {
+            sb.append(tagsBean.name + "/")
         }
-        tvTags.setText(String.format("#%s%s", sb, TimeFormatUtil.formatTime(data.getData().getDuration())));
-        tvCategory.setText(String.format("#%s", data.getData().getCategory()));
 
-        coverHotRank.setOnClickListener(v->{
-            Intent intent = new Intent(getContext(), OEDetailActivity.class);
-            intent.putExtra("itemDetail",data);
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)getContext(), coverHotRank, "transitionOEObject");
-            getContext().startActivity(intent, options.toBundle());
-        });
+        tvTags.text = String.format("#%s%s", sb, formatTime(data.data.duration))
+
+        tvCategory.text = String.format("#%s", data.data.category)
+
+        coverHotRank.setOnClickListener {
+            val intent = Intent(context, OEDetailActivity::class.java).putExtra("itemDetail", data)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation((context as Activity), coverHotRank, "transitionOEObject")
+            context.startActivity(intent, options.toBundle())
+        }
     }
 }

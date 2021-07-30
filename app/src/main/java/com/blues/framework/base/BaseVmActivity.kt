@@ -11,7 +11,7 @@ import java.lang.reflect.ParameterizedType
  * Description: xxx
  *
  * @author: lanhuajian
- * @time: 2021-07-16 22:01
+ * @time: 2021-07-16
  **/
 
 abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {

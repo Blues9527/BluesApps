@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
  * Description: xxx
  *
  * @author: lanhuajian
- * @time: 2021-07-16 22:01
+ * @time: 2021-07-16
  **/
 
 abstract class BaseKoinActivity : AppCompatActivity() {
@@ -18,11 +18,16 @@ abstract class BaseKoinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
         initData(savedInstanceState)
+        observe()
     }
 
     abstract fun getLayoutId(): Int
 
     abstract fun initData(savedInstanceState: Bundle?)
+
+    open fun observe() {
+
+    }
 
     inline fun <reified T> startActivity() {
         startActivity(Intent(this, T::class.java))

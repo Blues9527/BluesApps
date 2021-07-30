@@ -9,7 +9,7 @@ import android.os.Bundle
  * Description: xxx
  *
  * @author: lanhuajian
- * @time: 2021-07-16 17:11
+ * @time: 2021-07-16
  **/
 
 open class ActivityLifecycleCallbacksAdapter : Application.ActivityLifecycleCallbacks {
