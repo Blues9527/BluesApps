@@ -11,6 +11,15 @@ const val BASE_KAIYAN_URL = "http://baobab.kaiyanapp.com/"
 
 const val IMAGE_URL = "imgUrl"
 
+//玩android
+const val WANANDROID = "wanandroid"
+
+//开眼
+const val KAIYAN = "kaiyan"
+
+//干货
+const val GANKIO = "gankio"
+
 object KaiYanType {
 
     //周排行

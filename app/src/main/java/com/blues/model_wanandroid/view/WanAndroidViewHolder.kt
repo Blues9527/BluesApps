@@ -19,13 +19,14 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder
 class WanAndroidViewHolder(parent: ViewGroup?) :
     BaseViewHolder<DatasBean>(parent, R.layout.item_wan_android) {
 
-    private val ivCover: ImageView by lazy { itemView.findViewById(R.id.iv_cover) }
-    private val tvTitle: TextView by lazy { itemView.findViewById(R.id.tv_title) }
-    private val tvTag: TextView by lazy { itemView.findViewById(R.id.tv_tag) }
-    private val tvDesc: TextView by lazy { itemView.findViewById(R.id.tv_desc) }
-    private val tvAuthor: TextView by lazy { itemView.findViewById(R.id.tv_author) }
-    private val tvDate: TextView by lazy { itemView.findViewById(R.id.tv_date) }
-    private val clRoot: ConstraintLayout by lazy { itemView.findViewById(R.id.cl_root) }
+    private var ivCover: ImageView = itemView.findViewById(R.id.iv_cover)
+    private var tvTitle: TextView = itemView.findViewById(R.id.tv_title)
+    private var tvTag: TextView = itemView.findViewById(R.id.tv_tag)
+    private var tvDesc: TextView = itemView.findViewById(R.id.tv_desc)
+    private var tvAuthor: TextView = itemView.findViewById(R.id.tv_author)
+    private var tvDate: TextView = itemView.findViewById(R.id.tv_date)
+    private var clRoot: ConstraintLayout = itemView.findViewById(R.id.cl_root)
+
     override fun setData(data: DatasBean) {
         super.setData(data)
 

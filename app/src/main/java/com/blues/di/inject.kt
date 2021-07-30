@@ -1,5 +1,6 @@
 package com.blues.di
 
+import com.blues.constant.WANANDROID
 import com.blues.framework.http.networkModule
 import com.blues.model_wanandroid.vm.WanAndroidViewModel
 import com.blues.model_wanandroid.service.WanAndroidRepository
@@ -13,6 +14,7 @@ import com.blues.module_main.service.provideBannerApi
 import com.blues.module_register.service.RegisterRepository
 import com.blues.module_register.service.provideRegisterApi
 import com.blues.module_register.vm.RegisterViewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 /**
@@ -26,17 +28,17 @@ import org.koin.dsl.module
 val wanAndroidVmModule = module {
     factory { WanAndroidBannerViewModel(get()) }
     single { WanAndroidBannerRepository(get(), get()) }
-    factory { provideBannerApi(get()) }
+    factory { provideBannerApi(get(named(WANANDROID))) }
 
     factory { WanAndroidViewModel(get()) }
     single { WanAndroidRepository(get(), get()) }
-    factory { provideWanAndroidPostApi(get()) }
+    factory { provideWanAndroidPostApi(get(named(WANANDROID))) }
 
 }
 
 val registerModule = module {
     factory {
-        provideRegisterApi(get())
+        provideRegisterApi(get(named(WANANDROID)))
     }
 
     single {
@@ -50,7 +52,7 @@ val registerModule = module {
 
 val loginModule = module {
     factory {
-        provideLoginApi(get())
+        provideLoginApi(get(named(WANANDROID)))
     }
 
     single {

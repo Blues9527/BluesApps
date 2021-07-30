@@ -21,13 +21,9 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder
 class CourseEntryHolder(parent: ViewGroup?) :
     BaseViewHolder<CourseEntity>(parent, R.layout.item_course_entry) {
 
-    private val tvTitle: TextView by lazy {
-        itemView.findViewById(R.id.tv_entry_title)
-    }
+    private val tvTitle: TextView = itemView.findViewById(R.id.tv_entry_title)
 
-    private val ivIcon: ImageView by lazy {
-        itemView.findViewById(R.id.iv_entry_icon)
-    }
+    private val ivIcon: ImageView = itemView.findViewById(R.id.iv_entry_icon)
 
     override fun setData(data: CourseEntity) {
         super.setData(data)
