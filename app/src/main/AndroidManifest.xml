@@ -67,7 +67,7 @@
             android:name=".kaiyan.list.view.OpenEyeSearchActivity"
             android:configChanges="keyboardHidden|screenSize|orientation" />
         <activity
-            android:name=".kaiyan.detail.OEDetailActivity"
+            android:name=".kaiyan.detail.view.OEDetailActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="standard" />
         <activity android:name=".game.GameActivity" />

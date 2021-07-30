@@ -7,7 +7,7 @@ import com.blues.R
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import android.content.Intent
-import com.blues.kaiyan.detail.OEDetailActivity
+import com.blues.kaiyan.detail.view.OEDetailActivity
 import androidx.core.app.ActivityOptionsCompat
 import android.app.Activity
 import android.widget.ImageView

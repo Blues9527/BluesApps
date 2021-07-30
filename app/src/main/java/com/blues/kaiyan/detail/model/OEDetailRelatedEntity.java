@@ -1,4 +1,4 @@
-package com.blues.kaiyan.detail;
+package com.blues.kaiyan.detail.model;
 
 import java.io.Serializable;
 import java.util.List;

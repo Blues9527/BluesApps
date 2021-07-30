@@ -14,6 +14,9 @@ import com.blues.login.vm.LoginViewModel
 import com.blues.home.vm.WanAndroidBannerViewModel
 import com.blues.home.service.WanAndroidBannerRepository
 import com.blues.home.service.provideBannerApi
+import com.blues.kaiyan.detail.service.KaiyanDetailRepository
+import com.blues.kaiyan.detail.service.provideKaiyanDetailApi
+import com.blues.kaiyan.detail.vm.KaiyanDetailViewModel
 import com.blues.kaiyan.list.vm.KaiyanViewModel
 import com.blues.register.service.RegisterRepository
 import com.blues.register.service.provideRegisterApi
@@ -70,14 +73,17 @@ val loginModule = module {
 val kaiyanModule = module {
     factory {
         provideKaiyanApi(get(named(KAIYAN)))
+        provideKaiyanDetailApi(get(named(KAIYAN)))
     }
 
     single {
         KaiyanRepository(get(), get())
+        KaiyanDetailRepository(get(), get())
     }
 
     factory {
         KaiyanViewModel(get())
+        KaiyanDetailViewModel(get())
     }
 }
 
