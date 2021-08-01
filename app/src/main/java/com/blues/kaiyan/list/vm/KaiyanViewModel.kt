@@ -7,7 +7,7 @@ import com.blues.framework.base.BaseViewModel
 import com.blues.framework.base.catch
 import com.blues.framework.base.next
 import com.blues.framework.utils.HelperUtil
-import com.blues.kaiyan.list.model.OpenEyeEntity
+import com.blues.kaiyan.list.model.KaiyanBean
 import com.blues.kaiyan.list.service.KaiyanRepository
 import kotlinx.coroutines.launch
 
@@ -21,14 +21,14 @@ import kotlinx.coroutines.launch
 
 class KaiyanViewModel(private val kaiyanRepo: KaiyanRepository) : BaseViewModel() {
 
-    private val _ranList = MutableLiveData<OpenEyeEntity>()
-    val rankList: LiveData<OpenEyeEntity> = _ranList
+    private val _ranList = MutableLiveData<KaiyanBean>()
+    val rankList: LiveData<KaiyanBean> = _ranList
 
-    private val _videos = MutableLiveData<OpenEyeEntity>()
-    val videos: LiveData<OpenEyeEntity> = _videos
+    private val _videos = MutableLiveData<KaiyanBean>()
+    val videos: LiveData<KaiyanBean> = _videos
 
-    private val _searchResult = MutableLiveData<OpenEyeEntity>()
-    val searchResult: LiveData<OpenEyeEntity> = _searchResult
+    private val _searchResult = MutableLiveData<KaiyanBean>()
+    val searchResult: LiveData<KaiyanBean> = _searchResult
 
     private val _hotSearch = MutableLiveData<List<String?>>()
     val hotSearch: LiveData<List<String?>> = _hotSearch

@@ -1,6 +1,6 @@
 package com.blues.kaiyan.detail.api
 
-import com.blues.kaiyan.detail.model.OEDetailRelatedEntity
+import com.blues.kaiyan.detail.model.KaiyanDetailBean
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -15,5 +15,5 @@ import retrofit2.http.Query
 interface KaiyanDetailApi {
 
     @GET("/api/v4/video/related")
-    suspend fun getRelatedVideos(@Query("id") relatedId: String?): OEDetailRelatedEntity
+    suspend fun getRelatedVideos(@Query("id") relatedId: String?): KaiyanDetailBean
 }

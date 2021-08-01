@@ -34,7 +34,7 @@
         </activity>
 
         <activity
-            android:name=".gankio.old.ShowImageActivity"
+            android:name=".gankio.v1.ShowImageActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleTop"
             android:theme="@style/ShowImageActivity" />
@@ -64,18 +64,18 @@
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".kaiyan.list.view.OpenEyeSearchActivity"
+            android:name=".kaiyan.list.view.KaiyanSearchActivity"
             android:configChanges="keyboardHidden|screenSize|orientation" />
         <activity
-            android:name=".kaiyan.detail.view.OEDetailActivity"
+            android:name=".kaiyan.detail.view.KaiyanDetailActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="standard" />
         <activity android:name=".game.GameActivity" />
         <activity android:name=".wanandroid.view.WanAndroidActivity" />
-        <activity android:name=".gankio._new.mvp.view.GankActivity" />
-        <activity android:name=".kaiyan.list.view.OpenEyeActivity" />
-        <activity android:name=".gankio._new.detail.GankPostDetailActivity" />
-        <activity android:name=".gankio._new.girl.GankGirlActivity" />
+        <activity android:name=".gankio.v2.view.GankActivity" />
+        <activity android:name=".kaiyan.list.view.KaiyanActivity" />
+        <activity android:name=".gankio.v2.view.GankPostDetailActivity" />
+        <activity android:name=".gankio.v2.view.GankGirlActivity" />
     </application>
 
 </manifest>

@@ -8,15 +8,15 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.home.view.MainPageFragment
-import com.blues.gankio.old.StudyPageFragment
-import com.blues.kaiyan.list.view.OpenEyeFragment
+import com.blues.gankio.v1.StudyPageFragment
+import com.blues.kaiyan.list.view.KaiyanFragment
 import com.blues.framework.utils.HelperUtil
 
 class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private var mLastMillis: Long = 0
     private var mCurrentFragment: Fragment? = null
-    private val fragmentList: MutableList<Fragment> = mutableListOf(MainPageFragment(), StudyPageFragment(), OpenEyeFragment())
+    private val fragmentList: MutableList<Fragment> = mutableListOf(MainPageFragment(), StudyPageFragment(), KaiyanFragment())
 
     override fun onBackPressed() {
         showSimpleLog("on back press")

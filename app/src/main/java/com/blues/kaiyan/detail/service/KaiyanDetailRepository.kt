@@ -3,7 +3,7 @@ package com.blues.kaiyan.detail.service
 import com.blues.framework.http.Response
 import com.blues.framework.http.ResponseHandler
 import com.blues.kaiyan.detail.api.KaiyanDetailApi
-import com.blues.kaiyan.detail.model.OEDetailRelatedEntity
+import com.blues.kaiyan.detail.model.KaiyanDetailBean
 import retrofit2.Retrofit
 
 /**
@@ -17,7 +17,7 @@ import retrofit2.Retrofit
 class KaiyanDetailRepository(private val kaiyanDetailApi: KaiyanDetailApi,
     private val responseHandler: ResponseHandler) {
 
-    suspend fun getRelatedVideos(id: String): Response<OEDetailRelatedEntity> {
+    suspend fun getRelatedVideos(id: String): Response<KaiyanDetailBean> {
 
         return try {
             val response = kaiyanDetailApi.getRelatedVideos(id)

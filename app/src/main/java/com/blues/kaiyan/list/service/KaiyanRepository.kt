@@ -3,7 +3,7 @@ package com.blues.kaiyan.list.service
 import com.blues.framework.http.Response
 import com.blues.framework.http.ResponseHandler
 import com.blues.kaiyan.list.api.KaiyanApi
-import com.blues.kaiyan.list.model.OpenEyeEntity
+import com.blues.kaiyan.list.model.KaiyanBean
 import retrofit2.Retrofit
 
 /**
@@ -17,7 +17,7 @@ import retrofit2.Retrofit
 class KaiyanRepository(private val kaiyanApi: KaiyanApi,
     private val responseHandler: ResponseHandler) {
 
-    suspend fun getRankList(): Response<OpenEyeEntity> {
+    suspend fun getRankList(): Response<KaiyanBean> {
         return try {
             val response = kaiyanApi.getRankList()
             return responseHandler.handleSuccess(response)
@@ -26,7 +26,7 @@ class KaiyanRepository(private val kaiyanApi: KaiyanApi,
         }
     }
 
-    suspend fun getRankListVideos(strategy: String): Response<OpenEyeEntity> {
+    suspend fun getRankListVideos(strategy: String): Response<KaiyanBean> {
         return try {
             val response = kaiyanApi.getRankListVideos(strategy)
             return responseHandler.handleSuccess(response)
@@ -35,7 +35,7 @@ class KaiyanRepository(private val kaiyanApi: KaiyanApi,
         }
     }
 
-    suspend fun getSearchResult(query: String): Response<OpenEyeEntity> {
+    suspend fun getSearchResult(query: String): Response<KaiyanBean> {
         return try {
             val response = kaiyanApi.getSearchResult(10, 10, query)
             return responseHandler.handleSuccess(response)

@@ -8,17 +8,17 @@ import com.blues.framework.widget.DrawableTextView
 import android.view.LayoutInflater
 import com.blues.R
 import android.content.Intent
-import com.blues.kaiyan.list.view.OpenEyeSearchActivity
+import com.blues.kaiyan.list.view.KaiyanSearchActivity
 import androidx.core.app.ActivityOptionsCompat
 import android.app.Activity
 import android.content.Context
 import androidx.recyclerview.widget.GridLayoutManager
 import com.blues.bean.CourseEntity
 import android.view.ViewGroup
-import com.blues.gankio._new.girl.GankGirlActivity
+import com.blues.gankio.v2.view.GankGirlActivity
 import android.widget.Toast
-import com.blues.gankio._new.mvp.view.GankActivity
-import com.blues.kaiyan.list.view.OpenEyeActivity
+import com.blues.gankio.v2.view.GankActivity
+import com.blues.kaiyan.list.view.KaiyanActivity
 import com.blues.wanandroid.view.WanAndroidActivity
 import com.blues.game.GameActivity
 import org.json.JSONArray
@@ -53,7 +53,7 @@ class MainPageHeaderView @JvmOverloads constructor(context: Context, attrs: Attr
         tvSearch = rootView.findViewById<DrawableTextView>(R.id.tv_search).apply {
             setOnClickListener {
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation((ctx as Activity), it, "transitionSearch")
-                ctx.startActivity(Intent(ctx, OpenEyeSearchActivity::class.java), options.toBundle())
+                ctx.startActivity(Intent(ctx, KaiyanSearchActivity::class.java), options.toBundle())
             }
         }
         initEntry(ctx)
@@ -83,7 +83,7 @@ class MainPageHeaderView @JvmOverloads constructor(context: Context, attrs: Attr
                         4 ->                         //干货
                             ActivityUtil.start(GankActivity::class.java)
                         5 ->                         //开眼
-                            ActivityUtil.start(OpenEyeActivity::class.java)
+                            ActivityUtil.start(KaiyanActivity::class.java)
                         6 ->                         //玩 Android
                             ActivityUtil.start(WanAndroidActivity::class.java)
                         7 ->                         //答题小游戏

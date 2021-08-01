@@ -1,7 +1,7 @@
 package com.blues.mock;
 
 
-import com.blues.gankio.old.model_video.VideoInfoEntity;
+import com.blues.gankio.v1.model.VideoInfoBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +47,10 @@ public class VideoUrlConstant {
             "90分钟解决界面卡顿，UI布局渲染流程详解",
     };
 
-    public static List<VideoInfoEntity> getVideos() {
-        List<VideoInfoEntity> videos = new ArrayList<>();
+    public static List<VideoInfoBean> getVideos() {
+        List<VideoInfoBean> videos = new ArrayList<>();
         for (int i = 0; i < VideoUrlConstant.urls.length; i++) {
-            videos.add(new VideoInfoEntity(VideoUrlConstant.urls[i], VideoUrlConstant.titles[i]));
+            videos.add(new VideoInfoBean(VideoUrlConstant.urls[i], VideoUrlConstant.titles[i]));
         }
         return videos;
     }

@@ -1,8 +1,15 @@
 package com.blues.di
 
+import com.blues.constant.GANKIO
 import com.blues.constant.KAIYAN
 import com.blues.constant.WANANDROID
 import com.blues.framework.http.networkModule
+import com.blues.gankio.v1.service.GankRepository
+import com.blues.gankio.v1.service.provideGankApi
+import com.blues.gankio.v1.vm.GankViewModel
+import com.blues.gankio.v2.service.GankioRepository
+import com.blues.gankio.v2.service.provideGankioApi
+import com.blues.gankio.v2.vm.GankioViewModel
 import com.blues.wanandroid.vm.WanAndroidViewModel
 import com.blues.wanandroid.service.WanAndroidRepository
 import com.blues.wanandroid.service.provideWanAndroidPostApi
@@ -22,6 +29,7 @@ import com.blues.register.service.RegisterRepository
 import com.blues.register.service.provideRegisterApi
 import com.blues.register.vm.RegisterViewModel
 import org.koin.core.qualifier.named
+import org.koin.core.scope.get
 import org.koin.dsl.module
 
 /**
@@ -87,7 +95,24 @@ val kaiyanModule = module {
     }
 }
 
-val allModules = (networkModule + wanAndroidVmModule + registerModule + loginModule + kaiyanModule)
+val gankioModule = module {
+    factory {
+        provideGankioApi(get(named(GANKIO)))
+        provideGankApi(get(named(GANKIO)))
+    }
+
+    single {
+        GankioRepository(get(), get())
+        GankRepository(get(), get())
+    }
+
+    factory {
+        GankioViewModel(get())
+        GankViewModel(get())
+    }
+}
+
+val allModules = (networkModule + wanAndroidVmModule + registerModule + loginModule + kaiyanModule + gankioModule)
 
 
 
