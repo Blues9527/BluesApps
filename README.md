@@ -5,6 +5,8 @@
 ## 编写语言 
 Java-MVP 往 Kotlin-MVVM(没有databinding)迁移
 
+## 采用Composing Build方式管理依赖
+
 ## 使用到的开源框架
 - 网络请求:OkHttp3+Retrofit+Coroutines
 - 图片加载:Coil

@@ -1,5 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply from:'config/dependencies.gradle'
+
 buildscript {
     ext.kotlin_version = '1.4.32'
 
@@ -15,6 +15,13 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
+
+plugins {
+    // 这个 id 就是在 versionPlugin 文件夹下 build.gradle 文件内定义的id
+    id "com.blues.plugin" apply false
+}
+
+apply from:'config/dependencies.gradle'
 
 allprojects {
     repositories {
