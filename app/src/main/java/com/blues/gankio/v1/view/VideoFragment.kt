@@ -51,7 +51,7 @@ class VideoFragment : BaseKoinFragment() {
                 }
             }
         })
-        mAdapter.addAll(VideoUrlConstant.getVideos())
+        mAdapter.addAll(VideoUrlConstant.videos)
         mAdapter.notifyDataSetChanged()
     }
 }

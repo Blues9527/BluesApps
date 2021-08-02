@@ -1,46 +1,33 @@
-package com.blues.framework.base;
+package com.blues.framework.base
 
-import java.util.ArrayList;
-import java.util.List;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import java.util.ArrayList
 
 /**
  * User : Blues
  * Date : 2019/6/27
  * Time : 11:26
  */
+class BaseViewPagerAdapter(fm: FragmentManager?, private val titles: List<String>) :
+    FragmentPagerAdapter(fm!!) {
 
-public class BaseViewPagerAdapter extends FragmentPagerAdapter {
+    private val fragments: MutableList<Fragment> = ArrayList()
 
-    private List<String> titles;
-    private List<Fragment> fragments = new ArrayList<>();
-
-    public BaseViewPagerAdapter(FragmentManager fm, List<String> titles) {
-        super(fm);
-        this.titles = titles;
+    override fun getItem(i: Int): Fragment {
+        return fragments[i]
     }
 
-    @Override
-    public Fragment getItem(int i) {
-        return fragments.get(i);
+    override fun getCount(): Int {
+        return fragments.size
     }
 
-    @Override
-    public int getCount() {
-        return fragments.size();
+    fun addFragment(fragment: Fragment) {
+        fragments.add(fragment)
     }
 
-    public void addFragment(Fragment fragment) {
-        fragments.add(fragment);
-    }
-
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return titles.get(position);
+    override fun getPageTitle(position: Int): CharSequence? {
+        return titles[position]
     }
 }
