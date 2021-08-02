@@ -17,7 +17,7 @@ android {
 
         resConfigs "zh"
 
-        ndk { abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a' }
+        ndk { abiFilters 'armeabi', 'armeabi-v7a' }
     }
 
     //这个是解决lint报错的代码
@@ -94,12 +94,11 @@ dependencies {
     //网络请求拦截器
     implementation 'com.squareup.okhttp3:logging-interceptor:3.13.1'
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
     //easyrecyclerview
     implementation 'com.jude:easyrecyclerview:4.4.2'
     implementation 'androidx.multidex:multidex:2.0.0'
-    \
-     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //smartRefreshLayout
