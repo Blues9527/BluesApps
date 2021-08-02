@@ -35,7 +35,6 @@ class FuliViewHolder(parent: ViewGroup?) :
             placeholder(R.mipmap.ic_img_error)
             error(R.mipmap.ic_img_error)
         }
-        //Glide.with(ivUrl.context).load(data.url).placeholder(R.mipmap.ic_img_error).into(ivUrl)
         tvAuthor.text = "作者：${data.who}"
         tvSource.text = "来自：${data.source}"
         tvPTime.text = "日期：${data.publishedAt.substring(0, data.publishedAt.indexOf("T"))}"

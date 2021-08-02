@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import com.blues.kaiyan.list.model.KaiyanBean
 import com.blues.R
 import android.widget.TextView
-import com.bumptech.glide.Glide
 import android.content.Intent
 import com.blues.kaiyan.detail.view.KaiyanDetailActivity
 import androidx.core.app.ActivityOptionsCompat
@@ -39,9 +38,6 @@ class KaiyanMonthlyRankViewHolder(parent: ViewGroup?) :
 
         ivAvatar.load(data.data.author.icon)
         coverHotRank.load(data.data.cover.detail)
-
-        //Glide.with(context).load(data.data.author.icon).into(ivAvatar)
-        //Glide.with(context).load(data.data.cover.detail).into(coverHotRank)
 
         tvTitle.text = data.data.title
         for (tagsBean in data.data.tags) {

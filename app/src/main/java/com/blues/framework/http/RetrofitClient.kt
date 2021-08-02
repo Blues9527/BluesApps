@@ -8,7 +8,6 @@ import com.google.gson.GsonBuilder
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
@@ -27,9 +26,11 @@ val networkModule = module {
 }
 
 fun provideRetrofit(baseUrl: String): Retrofit {
-    return Retrofit.Builder().client(OkHttpClientManager.instance)
-        .addConverterFactory(GsonConverterFactory.create(buildGson()))
-        .addCallAdapterFactory(RxJavaCallAdapterFactory.create()).baseUrl(baseUrl).build()
+    return Retrofit.Builder()
+            .client(OkHttpClientManager.instance)
+            .addConverterFactory(GsonConverterFactory.create(buildGson()))
+            .baseUrl(baseUrl)
+            .build()
 }
 
 /**
@@ -39,8 +40,9 @@ fun provideRetrofit(baseUrl: String): Retrofit {
  * 3.long=>0L
  */
 private fun buildGson() = GsonBuilder().registerTypeAdapter(Int::class.java, IntegerDefaultAdapter())
-    .registerTypeAdapter(Int::class.javaPrimitiveType, IntegerDefaultAdapter())
-    .registerTypeAdapter(Double::class.java, DoubleDefaultAdapter())
-    .registerTypeAdapter(Double::class.javaPrimitiveType, DoubleDefaultAdapter())
-    .registerTypeAdapter(Long::class.java, LongDefaultAdapter())
-    .registerTypeAdapter(Long::class.javaPrimitiveType, LongDefaultAdapter()).create()
+        .registerTypeAdapter(Int::class.javaPrimitiveType, IntegerDefaultAdapter())
+        .registerTypeAdapter(Double::class.java, DoubleDefaultAdapter())
+        .registerTypeAdapter(Double::class.javaPrimitiveType, DoubleDefaultAdapter())
+        .registerTypeAdapter(Long::class.java, LongDefaultAdapter())
+        .registerTypeAdapter(Long::class.javaPrimitiveType, LongDefaultAdapter())
+        .create()

@@ -6,7 +6,6 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
 import coil.load
-import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseViewHolder
 
 class ImagesAdapter(data: List<String?>?) :
@@ -19,8 +18,6 @@ class ImagesAdapter(data: List<String?>?) :
             (helper.getView<View>(R.id.iv_item) as ImageView).load(url){
                 error(R.mipmap.ic_network_error)
             }
-            //Glide.with(mContext).load(url).error(R.mipmap.ic_network_error)
-            //    .into((helper.getView<View>(R.id.iv_item) as ImageView))
 
             //            helper.getView(R.id.iv_item).setOnClickListener(v -> {
             //                Intent intent = new Intent(mContext, ShowImageActivity.class);

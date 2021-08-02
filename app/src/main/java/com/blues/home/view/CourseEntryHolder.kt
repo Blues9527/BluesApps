@@ -6,7 +6,6 @@ import android.widget.ImageView
 import com.blues.bean.CourseEntity
 import com.blues.R
 import android.widget.TextView
-import com.bumptech.glide.Glide
 import android.widget.LinearLayout
 import coil.load
 import com.blues.framework.utils.dp
@@ -31,23 +30,19 @@ class CourseEntryHolder(parent: ViewGroup?) :
 
         ivIcon.load(data.icon)
 
-        //Glide.with(context)
-        //    .load(data.icon)
-        //    .into(ivIcon)
-
         tvTitle.text = data.name
     }
 
     init {
         val llContainer = itemView.findViewById<LinearLayout>(R.id.ll_course_entry)
         LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-            .apply {
-                width = screenWidth / 4
-                topMargin = 5f.dp.toInt()
-                bottomMargin = 5f.dp.toInt()
-            }
-            .also {
-                llContainer.layoutParams = it
-            }
+                .apply {
+                    width = screenWidth / 4
+                    topMargin = 5f.dp.toInt()
+                    bottomMargin = 5f.dp.toInt()
+                }
+                .also {
+                    llContainer.layoutParams = it
+                }
     }
 }

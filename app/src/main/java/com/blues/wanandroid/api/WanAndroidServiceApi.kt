@@ -17,7 +17,7 @@ interface WanAndroidServiceApi {
      * @param page 页数，从0开始
      * @return
      */
-    @GET("articleDetail/listproject/{page}/json")
+    @GET("article/listproject/{page}/json")
     suspend fun getPostList(@Path("page") page: Int): WanAndroidEntity
 
 }

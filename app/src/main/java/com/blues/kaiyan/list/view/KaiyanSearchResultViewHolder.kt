@@ -6,7 +6,6 @@ import com.blues.R
 import android.widget.TextView
 import coil.load
 import com.blues.kaiyan.list.model.KaiyanBean
-import com.bumptech.glide.Glide
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
 /**
@@ -26,7 +25,6 @@ class KaiyanSearchResultViewHolder(parent: ViewGroup?) :
     override fun setData(
         data: KaiyanBean.ItemListBean.DataBean) {
 
-        //Glide.with(context).load(data.cover.detail).into(ivCover)
         tvTitle.text = data.title
         ivCover.load(data.cover.detail)
     }

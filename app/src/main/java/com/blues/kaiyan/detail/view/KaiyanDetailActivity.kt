@@ -8,7 +8,6 @@ import com.blues.kaiyan.detail.model.KaiyanDetailBean
 import com.blues.R
 import android.os.Bundle
 import com.xiao.nicevideoplayer.TxVideoPlayerController
-import com.bumptech.glide.Glide
 import com.jude.easyrecyclerview.decoration.DividerDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.ViewGroup
@@ -46,7 +45,6 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
             setTitle(null)
             setLength(data.data.duration.toLong() * 1000L) //这里将long类型时间长度转换成时分秒的单位是毫秒
         }
-        //Glide.with(this).load(data.data.cover.blurred).into(controller.imageView())
         controller.imageView().load(data.data.cover.blurred){
             error(R.mipmap.ic_img_error)
         }

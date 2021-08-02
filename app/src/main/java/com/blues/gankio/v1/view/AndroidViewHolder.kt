@@ -41,9 +41,6 @@ class AndroidViewHolder(parent: ViewGroup?) :
                 error(R.mipmap.ic_img_error)
             }
 
-            //Glide.with(ivCover.context).load(data.images[0]).placeholder(R.mipmap.ic_img_error)
-            //    .into(ivCover)
-
             ivCover.setOnClickListener {   //跳转到ShowImageActivity
                 val intent = Intent(context, ShowImageActivity::class.java).putExtra("param", data)
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation((context as Activity), ivCover, "transitionImage")

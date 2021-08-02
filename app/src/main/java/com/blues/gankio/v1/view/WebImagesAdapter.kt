@@ -34,10 +34,6 @@ class WebImagesAdapter(data: List<String?>?) :
                 error(R.mipmap.ic_img_error)
             }
 
-            //Glide.with(helper.getView<View>(R.id.iv_item).context).load(url)
-            //    .placeholder(R.drawable.shape_place_holder)
-            //    .into((helper.getView<View>(R.id.iv_item) as ImageView))
-
             helper.getView<View>(R.id.iv_item).setOnClickListener {
                 val intent = Intent(mContext, ShowImageActivity::class.java).putExtra(IMAGE_URL, url)
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation((mContext as Activity), helper.getView(R.id.iv_item), "transitionImage")

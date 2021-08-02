@@ -41,7 +41,7 @@ class GankActivity : BaseKoinActivity() {
 
     override fun observe() {
         gankioViewModel.banner.observe(this) { bean ->
-            startBannerLoop(bean.data.map { it.image }, bean.data.map { it.url })
+            startBannerLoop(bean.data.map { it.image } as MutableList<String>, bean.data.map { it.url } as MutableList<String>)
         }
 
         gankioViewModel.category.observe(this) {
@@ -66,14 +66,16 @@ class GankActivity : BaseKoinActivity() {
                     mViewPager.currentItem = tab.position
                     val view = tab.customView
                     if (view is TextView) {
-                        view.setTextColor(view.getResources().getColor(R.color.color_light_blue))
+                        view.setTextColor(view.getResources()
+                                .getColor(R.color.color_light_blue))
                     }
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab) {
                     val view = tab.customView
                     if (view is TextView) {
-                        view.setTextColor(view.getResources().getColor(R.color.color_black))
+                        view.setTextColor(view.getResources()
+                                .getColor(R.color.color_black))
                     }
                 }
 
@@ -84,12 +86,12 @@ class GankActivity : BaseKoinActivity() {
             mTabLayout.removeAllTabs()
             for (i in mTabs.indices) {
                 mTabLayout.addTab(mTabLayout.newTab()
-                    .setCustomView(getTabView(this, mTabs[i])), i == 0)
+                        .setCustomView(getTabView(this, mTabs[i])), i == 0)
             }
         }
     }
 
-    private fun startBannerLoop(images: List<String>, urls: List<String>) {
+    private fun startBannerLoop(images: MutableList<String>, urls: MutableList<String>) {
         Handler(Looper.getMainLooper()).post {
             val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 185f.dp.toInt())
             mBanner.apply {
@@ -99,10 +101,15 @@ class GankActivity : BaseKoinActivity() {
                 layoutParams = lp
             }
             BannerAdapter(this, images, mBanner).apply {
-                setItemClickListener { realPosition: Int -> WebViewDialog(this@GankActivity, urls[realPosition]).show() }
-            }.also { //开启轮播
-                mBanner.setAdapter(it)
+                setItemClickListener(object : BannerAdapter.ItemClickListener {
+                    override fun onClick(realPosition: Int) {
+                        WebViewDialog(this@GankActivity, urls[realPosition]).show()
+                    }
+                })
             }
+                    .also { //开启轮播
+                        mBanner.setAdapter(it)
+                    }
         }
     }
 

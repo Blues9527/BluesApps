@@ -5,7 +5,6 @@ import com.blues.gankio.v2.model.GankioUniversalBean
 import com.blues.R
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.bumptech.glide.Glide
 import android.content.Intent
 import androidx.core.app.ActivityOptionsCompat
 import android.app.Activity
@@ -34,13 +33,8 @@ class GankViewHolder(parent: ViewGroup?) :
                 placeholder(R.mipmap.ic_img_error)
                 error(R.mipmap.ic_img_error)
             }
-            //Glide.with(context).load(data.images[0]).placeholder(R.mipmap.ic_img_error)
-            //    .into(ivPreview)
         } else {
             ivPreview.load(R.mipmap.ic_img_error)
-
-            //Glide.with(context).load(R.mipmap.ic_img_error).placeholder(R.mipmap.ic_img_error)
-            //    .into(ivPreview)
         }
         tvViews.text = data.views.toString()
         tvLikes.text = data.likeCounts.toString()

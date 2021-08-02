@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import com.blues.R
 import com.blues.kaiyan.list.model.KaiyanBean
-import com.bumptech.glide.Glide
 import android.view.ViewGroup
 import android.widget.ImageView
 import coil.load
@@ -20,9 +19,10 @@ import coil.load
  * Date : 2019/9/4
  * Time : 15:32
  */
-class KaiyanDetailHeaderView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0) : RelativeLayout(context, attrs, defStyleAttr),
-    RecyclerArrayAdapter.ItemView {
+class KaiyanDetailHeaderView @JvmOverloads constructor(context: Context,
+                                                       attrs: AttributeSet? = null,
+                                                       defStyleAttr: Int = 0) :
+    RelativeLayout(context, attrs, defStyleAttr), RecyclerArrayAdapter.ItemView {
 
     private lateinit var tvTitle: TextView
     private lateinit var tvDesc: TextView
@@ -34,7 +34,8 @@ class KaiyanDetailHeaderView @JvmOverloads constructor(context: Context, attrs: 
     private lateinit var tvAuthorDesc: TextView
 
     private fun initView(ctx: Context) {
-        val view = LayoutInflater.from(ctx).inflate(R.layout.item_oe_detail_header, this)
+        val view = LayoutInflater.from(ctx)
+                .inflate(R.layout.item_oe_detail_header, this)
         tvTitle = view.findViewById(R.id.tv_title)
         tvDesc = view.findViewById(R.id.tv_desc)
         tvShare = view.findViewById(R.id.tv_share)
@@ -52,7 +53,6 @@ class KaiyanDetailHeaderView @JvmOverloads constructor(context: Context, attrs: 
         tvReply.text = data.data.consumption.replyCount.toString()
         tvLike.text = data.data.consumption.collectionCount.toString()
         ivAvatar.load(data.data.author.icon)
-        //Glide.with(ctx).load(data.data.author.icon).into(ivAvatar)
         tvAuthor.text = data.data.author.name
         tvAuthorDesc.text = data.data.author.description
     }

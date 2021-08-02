@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import com.blues.kaiyan.list.model.KaiyanBean
 import com.blues.R
 import android.widget.TextView
-import com.bumptech.glide.Glide
 import android.content.Intent
 import com.blues.kaiyan.detail.view.KaiyanDetailActivity
 import androidx.core.app.ActivityOptionsCompat

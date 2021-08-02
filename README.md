@@ -6,8 +6,8 @@
 Java-MVP 往 Kotlin-MVVM(没有databinding)迁移
 
 ## 使用到的开源框架
-- 网络请求:OkHttp3+RxJava+RxAndroid+Retrofit Gson
-- 图片加载:Glide
+- 网络请求:OkHttp3+Retrofit+Coroutines
+- 图片加载:Coil
 - 视频播放:NiceVideoPlayer
 - UI框架:EasyRecyclerView/SmartRefreshLayout
 - 数据库框架:Room

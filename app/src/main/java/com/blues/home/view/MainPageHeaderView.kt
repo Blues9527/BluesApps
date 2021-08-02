@@ -39,23 +39,25 @@ import java.util.ArrayList
  * Time : 15:32
  */
 class MainPageHeaderView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0) : ConstraintLayout(context, attrs, defStyleAttr),
-    RecyclerArrayAdapter.ItemView {
+                                                   defStyleAttr: Int = 0) :
+    ConstraintLayout(context, attrs, defStyleAttr), RecyclerArrayAdapter.ItemView {
 
     private lateinit var ervEntry: EasyRecyclerView
     private lateinit var viewPager2: ViewPager2
     private var tvSearch: DrawableTextView? = null
 
     private fun initView(ctx: Context) {
-        val rootView = LayoutInflater.from(ctx).inflate(R.layout.header_main, this)
+        val rootView = LayoutInflater.from(ctx)
+                .inflate(R.layout.header_main, this)
         viewPager2 = rootView.findViewById(R.id.vp_header)
         ervEntry = rootView.findViewById(R.id.erv_entry)
-        tvSearch = rootView.findViewById<DrawableTextView>(R.id.tv_search).apply {
-            setOnClickListener {
-                val options = ActivityOptionsCompat.makeSceneTransitionAnimation((ctx as Activity), it, "transitionSearch")
-                ctx.startActivity(Intent(ctx, KaiyanSearchActivity::class.java), options.toBundle())
-            }
-        }
+        tvSearch = rootView.findViewById<DrawableTextView>(R.id.tv_search)
+                .apply {
+                    setOnClickListener {
+                        val options = ActivityOptionsCompat.makeSceneTransitionAnimation((ctx as Activity), it, "transitionSearch")
+                        ctx.startActivity(Intent(ctx, KaiyanSearchActivity::class.java), options.toBundle())
+                    }
+                }
         initEntry(ctx)
     }
 
@@ -65,7 +67,7 @@ class MainPageHeaderView @JvmOverloads constructor(context: Context, attrs: Attr
             setLayoutManager(GridLayoutManager(getContext(), 4))
             adapter = object : RecyclerArrayAdapter<CourseEntity>(getContext()) {
                 override fun OnCreateViewHolder(parent: ViewGroup,
-                    viewType: Int): BaseViewHolder<*> {
+                                                viewType: Int): BaseViewHolder<*> {
                     return CourseEntryHolder(parent)
                 }
             }.also { mEntryAdapter = it }
@@ -79,15 +81,12 @@ class MainPageHeaderView @JvmOverloads constructor(context: Context, attrs: Attr
                     when (position) {
                         0 -> ActivityUtil.start(GankGirlActivity::class.java)
                         1, 2, 3 ->                         //商城
-                            Toast.makeText(getContext(), "敬请期待", Toast.LENGTH_SHORT).show()
-                        4 ->                         //干货
-                            ActivityUtil.start(GankActivity::class.java)
-                        5 ->                         //开眼
-                            ActivityUtil.start(KaiyanActivity::class.java)
-                        6 ->                         //玩 Android
-                            ActivityUtil.start(WanAndroidActivity::class.java)
-                        7 ->                         //答题小游戏
-                            ActivityUtil.start(GameActivity::class.java)
+                            Toast.makeText(getContext(), "敬请期待", Toast.LENGTH_SHORT)
+                                    .show()
+                        4 -> ActivityUtil.start(GankActivity::class.java)
+                        5 -> ActivityUtil.start(KaiyanActivity::class.java)
+                        6 -> ActivityUtil.start(WanAndroidActivity::class.java)
+                        7 -> ActivityUtil.start(GameActivity::class.java)
                     }
                 }
             }
@@ -100,7 +99,7 @@ class MainPageHeaderView @JvmOverloads constructor(context: Context, attrs: Attr
             val ja = JSONArray(getAssetsFile(context, "course.json"))
             for (i in 0 until ja.length()) {
                 val entity = Gson().fromJson(ja[i].toString()
-                    .replace("\\\\".toRegex(), ""), CourseEntity::class.java)
+                        .replace("\\\\".toRegex(), ""), CourseEntity::class.java)
                 courses.add(entity)
             }
         } catch (e: JSONException) {
