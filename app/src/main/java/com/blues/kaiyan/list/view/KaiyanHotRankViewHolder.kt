@@ -11,6 +11,7 @@ import com.blues.kaiyan.detail.view.KaiyanDetailActivity
 import androidx.core.app.ActivityOptionsCompat
 import android.app.Activity
 import android.widget.ImageView
+import coil.load
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import java.lang.StringBuilder
 
@@ -32,8 +33,14 @@ class KaiyanHotRankViewHolder(parent: ViewGroup?) :
 
         val sb = StringBuilder()
 
-        Glide.with(context).load(data.data.author.icon).into(ivAvatar)
-        Glide.with(context).load(data.data.cover.detail).into(coverHotRank)
+        ivAvatar.load(data.data.author.icon) {
+            placeholder(R.drawable.shape_place_holder)
+            error(R.mipmap.ic_img_error)
+        }
+        coverHotRank.load(data.data.cover.detail) {
+            placeholder(R.drawable.shape_place_holder)
+            error(R.mipmap.ic_img_error)
+        }
 
         tvTitle.text = data.data.title
 

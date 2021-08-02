@@ -2,19 +2,17 @@ package com.blues.gankio.v1.view
 
 import android.app.Activity
 import android.content.Intent
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.app.ActivityOptionsCompat
+import coil.load
 import com.blues.R
 import com.blues.constant.IMAGE_URL
 import com.blues.framework.utils.ScreenUtil.screenHeight
 import com.blues.framework.utils.ScreenUtil.screenWidth
-import com.blues.gankio.v1.ShowImageActivity
 import com.blues.gankio.v1.model.GankBean
-import com.bumptech.glide.Glide
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
 class FuliViewHolder(parent: ViewGroup?) :
@@ -32,7 +30,12 @@ class FuliViewHolder(parent: ViewGroup?) :
 
         //        tvDesc.setText(data.getDesc());
         ivUrl.layoutParams = LinearLayout.LayoutParams(screenWidth * 2 / 3, screenHeight / 3)
-        Glide.with(ivUrl.context).load(data.url).placeholder(R.mipmap.ic_img_error).into(ivUrl)
+
+        ivUrl.load(data.url) {
+            placeholder(R.mipmap.ic_img_error)
+            error(R.mipmap.ic_img_error)
+        }
+        //Glide.with(ivUrl.context).load(data.url).placeholder(R.mipmap.ic_img_error).into(ivUrl)
         tvAuthor.text = "作者：${data.who}"
         tvSource.text = "来自：${data.source}"
         tvPTime.text = "日期：${data.publishedAt.substring(0, data.publishedAt.indexOf("T"))}"

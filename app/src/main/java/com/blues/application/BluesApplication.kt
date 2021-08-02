@@ -10,8 +10,11 @@ import android.os.Build
 import com.blues.framework.network.NetworkCallbackImpl
 import android.net.NetworkRequest
 import android.net.ConnectivityManager
+import android.os.Build.VERSION.SDK_INT
 import coil.Coil
 import coil.ImageLoader
+import coil.decode.GifDecoder
+import coil.decode.ImageDecoderDecoder
 import coil.util.CoilUtils
 import com.blues.adapter.ActivityLifecycleCallbacksAdapter
 import com.blues.di.allModules
@@ -61,7 +64,8 @@ class BluesApplication : MultiDexApplication() {
         }
     }
 
-    private fun initActivityLifecycleListener() { //批量管理activity
+    private fun initActivityLifecycleListener() {
+        //批量管理activity
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacksAdapter() {
 
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
@@ -77,16 +81,29 @@ class BluesApplication : MultiDexApplication() {
     private fun initNetworkListener() {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             val callback = NetworkCallbackImpl(mActivity)
-            val request = NetworkRequest.Builder().build()
+            val request = NetworkRequest.Builder()
+                    .build()
             val manager = this.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
             manager.registerNetworkCallback(request, callback)
         }
     }
 
     private fun initCoil() {
-        val imageLoader = ImageLoader.Builder(applicationContext).crossfade(true).okHttpClient {
-            OkHttpClient.Builder().cache(CoilUtils.createDefaultCache(applicationContext)).build()
-        }.build()
+        val imageLoader = ImageLoader.Builder(applicationContext)
+                .crossfade(true)
+                .componentRegistry {
+                    if (SDK_INT >= 28) {
+                        add(ImageDecoderDecoder(applicationContext))
+                    } else {
+                        add(GifDecoder())
+                    }
+                }
+                .okHttpClient {
+                    OkHttpClient.Builder()
+                            .cache(CoilUtils.createDefaultCache(applicationContext))
+                            .build()
+                }
+                .build()
         Coil.setImageLoader(imageLoader)
     }
 }

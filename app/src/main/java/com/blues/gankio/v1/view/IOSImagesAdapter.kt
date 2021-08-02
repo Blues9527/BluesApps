@@ -5,13 +5,12 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.blues.R
 import android.view.ViewGroup.MarginLayoutParams
 import android.text.TextUtils
-import com.bumptech.glide.Glide
 import android.content.Intent
-import com.blues.gankio.v1.ShowImageActivity
 import androidx.core.app.ActivityOptionsCompat
 import android.app.Activity
 import android.view.View
 import android.widget.ImageView
+import coil.load
 import com.blues.constant.IMAGE_URL
 import com.blues.framework.utils.dp
 import com.chad.library.adapter.base.BaseViewHolder
@@ -31,9 +30,14 @@ class IOSImagesAdapter(data: List<String?>?) :
         url?.let {
             if (!TextUtils.isEmpty(url)) {
 
-                Glide.with(helper.getView<View>(R.id.iv_item).context).load(url)
-                    .placeholder(R.drawable.shape_place_holder)
-                    .into((helper.getView<View>(R.id.iv_item) as ImageView))
+                (helper.getView<View>(R.id.iv_item) as ImageView).load(url){
+                    placeholder(R.drawable.shape_place_holder)
+                    error(R.drawable.shape_place_holder)
+                }
+
+                //Glide.with(helper.getView<View>(R.id.iv_item).context).load(url)
+                //    .placeholder(R.drawable.shape_place_holder)
+                //    .into((helper.getView<View>(R.id.iv_item) as ImageView))
 
                 helper.getView<View>(R.id.iv_item).setOnClickListener {
                     val intent = Intent(mContext, ShowImageActivity::class.java).putExtra(IMAGE_URL, url)

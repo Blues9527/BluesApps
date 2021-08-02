@@ -11,16 +11,17 @@ import com.blues.kaiyan.detail.view.KaiyanDetailActivity
 import androidx.core.app.ActivityOptionsCompat
 import android.app.Activity
 import android.widget.ImageView
+import coil.load
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import java.lang.StringBuilder
 
 /**
-* File: com.blues.kaiyan.list.view.KaiyanMonthlyRankViewHolder.kt
-* Description: xxx
-*
-* @author: lanhuajian
-* @time: 2021/7/30
-**/
+ * File: com.blues.kaiyan.list.view.KaiyanMonthlyRankViewHolder.kt
+ * Description: xxx
+ *
+ * @author: lanhuajian
+ * @time: 2021/7/30
+ **/
 
 class KaiyanMonthlyRankViewHolder(parent: ViewGroup?) :
     BaseViewHolder<KaiyanBean.ItemListBean>(parent, R.layout.item_oe_hotrank_list) {
@@ -35,8 +36,12 @@ class KaiyanMonthlyRankViewHolder(parent: ViewGroup?) :
         super.setData(data)
 
         val sb = StringBuilder()
-        Glide.with(context).load(data.data.author.icon).into(ivAvatar)
-        Glide.with(context).load(data.data.cover.detail).into(coverHotRank)
+
+        ivAvatar.load(data.data.author.icon)
+        coverHotRank.load(data.data.cover.detail)
+
+        //Glide.with(context).load(data.data.author.icon).into(ivAvatar)
+        //Glide.with(context).load(data.data.cover.detail).into(coverHotRank)
 
         tvTitle.text = data.data.title
         for (tagsBean in data.data.tags) {

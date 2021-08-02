@@ -9,7 +9,7 @@ import android.view.Gravity
 
 class LoadingDialog(context: Context) : Dialog(context, R.style.Theme_LoadingDialog) {
 
-    override fun onCreate(savedInstanceState: Bundle) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //初始化窗口属性

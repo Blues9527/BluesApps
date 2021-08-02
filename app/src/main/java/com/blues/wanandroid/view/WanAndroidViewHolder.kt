@@ -8,6 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
+import coil.load
 import com.bumptech.glide.Glide
 import com.blues.WebViewDialog
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
@@ -33,7 +34,9 @@ class WanAndroidViewHolder(parent: ViewGroup?) :
         //设置cover
         if (!TextUtils.isEmpty(data.envelopePic)) {
             ivCover.visibility = View.VISIBLE
-            Glide.with(context).load(data.envelopePic).into(ivCover)
+            ivCover.load(data.envelopePic)
+
+            //Glide.with(context).load(data.envelopePic).into(ivCover)
         }
         with(data) {
             tvTitle.text = title

@@ -1,41 +1,25 @@
 package com.blues.framework.widget;
 
-/*
- * Android-AdvancedWebView (https://github.com/delight-im/Android-AdvancedWebView)
- * Copyright (c) delight.im (https://www.delight.im/)
- * Licensed under the MIT License (https://opensource.org/licenses/MIT)
- */
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.DownloadManager;
-import android.app.DownloadManager.Request;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
-import android.os.Environment;
 import android.os.Message;
-import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.util.Base64;
 import android.view.InputEvent;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.ClientCertRequest;
 import android.webkit.ConsoleMessage;
 import android.webkit.CookieManager;
-import android.webkit.CookieSyncManager;
-import android.webkit.DownloadListener;
 import android.webkit.GeolocationPermissions.Callback;
 import android.webkit.HttpAuthHandler;
 import android.webkit.JsPromptResult;
@@ -53,11 +37,8 @@ import android.webkit.WebStorage.QuotaUpdater;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -65,9 +46,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.MissingResourceException;
 
-/**
- * Advanced WebView component for Android that works as intended out of the box
- */
 @SuppressWarnings("deprecation")
 public class CWebView extends WebView {
 
@@ -85,26 +63,15 @@ public class CWebView extends WebView {
         void onExternalPageRequest(String url);
     }
 
-    public static final String PACKAGE_NAME_DOWNLOAD_MANAGER = "com.android.providers.downloads";
     protected static final int REQUEST_CODE_FILE_PICKER = 51426;
     protected static final String DATABASES_SUB_FOLDER = "/databases";
     protected static final String LANGUAGE_DEFAULT_ISO3 = "eng";
     protected static final String CHARSET_DEFAULT = "UTF-8";
-    /**
-     * Alternative browsers that have their own rendering engine and *may* be installed on this device
-     */
-    protected static final String[] ALTERNATIVE_BROWSERS = new String[]{"org.mozilla.firefox", "com.android.chrome", "com.opera.browser", "org.mozilla.firefox_beta", "com.chrome.beta", "com.opera.browser.beta"};
     protected WeakReference<Activity> mActivity;
     protected WeakReference<Fragment> mFragment;
     protected Listener mListener;
     protected final List<String> mPermittedHostnames = new LinkedList<>();
-    /**
-     * File upload callback for platform versions prior to Android 5.0
-     */
     protected ValueCallback<Uri> mFileUploadCallbackFirst;
-    /**
-     * File upload callback for Android 5.0+
-     */
     protected ValueCallback<Uri[]> mFileUploadCallbackSecond;
     protected long mLastError;
     protected String mLanguageIso3;
@@ -130,38 +97,6 @@ public class CWebView extends WebView {
         init(context);
     }
 
-    public void setListener(final Activity activity, final Listener listener) {
-        setListener(activity, listener, REQUEST_CODE_FILE_PICKER);
-    }
-
-    public void setListener(final Activity activity, final Listener listener, final int requestCodeFilePicker) {
-        if (activity != null) {
-            mActivity = new WeakReference<>(activity);
-        } else {
-            mActivity = null;
-        }
-
-        setListener(listener, requestCodeFilePicker);
-    }
-
-    public void setListener(final Fragment fragment, final Listener listener) {
-        setListener(fragment, listener, REQUEST_CODE_FILE_PICKER);
-    }
-
-    public void setListener(final Fragment fragment, final Listener listener, final int requestCodeFilePicker) {
-        if (fragment != null) {
-            mFragment = new WeakReference<Fragment>(fragment);
-        } else {
-            mFragment = null;
-        }
-
-        setListener(listener, requestCodeFilePicker);
-    }
-
-    protected void setListener(final Listener listener, final int requestCodeFilePicker) {
-        mListener = listener;
-        mRequestCodeFilePicker = requestCodeFilePicker;
-    }
 
     @Override
     public void setWebViewClient(final WebViewClient client) {
@@ -173,77 +108,6 @@ public class CWebView extends WebView {
         mCustomWebChromeClient = client;
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
-    public void setGeolocationEnabled(final boolean enabled) {
-        if (enabled) {
-            getSettings().setJavaScriptEnabled(true);
-            getSettings().setGeolocationEnabled(true);
-            setGeolocationDatabasePath();
-        }
-
-        mGeolocationEnabled = enabled;
-    }
-
-    @SuppressLint("NewApi")
-    protected void setGeolocationDatabasePath() {
-        final Activity activity;
-
-        if (mFragment != null && mFragment.get() != null && Build.VERSION.SDK_INT >= 11 && mFragment.get().getActivity() != null) {
-            activity = mFragment.get().getActivity();
-        } else if (mActivity != null && mActivity.get() != null) {
-            activity = mActivity.get();
-        } else {
-            return;
-        }
-
-        getSettings().setGeolocationDatabasePath(activity.getFilesDir().getPath());
-    }
-
-    public void setUploadableFileTypes(final String mimeType) {
-        mUploadableFileTypes = mimeType;
-    }
-
-    /**
-     * Loads and displays the provided HTML source text
-     *
-     * @param html the HTML source text to load
-     */
-    public void loadHtml(final String html) {
-        loadHtml(html, null);
-    }
-
-    /**
-     * Loads and displays the provided HTML source text
-     *
-     * @param html    the HTML source text to load
-     * @param baseUrl the URL to use as the page's base URL
-     */
-    public void loadHtml(final String html, final String baseUrl) {
-        loadHtml(html, baseUrl, null);
-    }
-
-    /**
-     * Loads and displays the provided HTML source text
-     *
-     * @param html       the HTML source text to load
-     * @param baseUrl    the URL to use as the page's base URL
-     * @param historyUrl the URL to use for the page's history entry
-     */
-    public void loadHtml(final String html, final String baseUrl, final String historyUrl) {
-        loadHtml(html, baseUrl, historyUrl, "utf-8");
-    }
-
-    /**
-     * Loads and displays the provided HTML source text
-     *
-     * @param html       the HTML source text to load
-     * @param baseUrl    the URL to use as the page's base URL
-     * @param historyUrl the URL to use for the page's history entry
-     * @param encoding   the encoding or charset of the HTML source text
-     */
-    public void loadHtml(final String html, final String baseUrl, final String historyUrl, final String encoding) {
-        loadDataWithBaseURL(baseUrl, html, "text/html", encoding, historyUrl);
-    }
 
     @SuppressLint("NewApi")
     @SuppressWarnings("all")
@@ -267,186 +131,6 @@ public class CWebView extends WebView {
         }
     }
 
-    /**
-     * 销毁Webview
-     */
-    public void onDestroy() {
-        // try to remove this view from its parent first
-        try {
-            loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
-            clearHistory();
-            ((ViewGroup) getParent()).removeView(this);
-        } catch (Exception ignored) {
-        }
-
-        // then try to remove all child views from this view
-        try {
-            removeAllViews();
-        } catch (Exception ignored) {
-        }
-
-        // and finally destroy this view
-        destroy();
-    }
-
-    public void onActivityResult(final int requestCode, final int resultCode, final Intent intent) {
-        if (requestCode == mRequestCodeFilePicker) {
-            if (resultCode == Activity.RESULT_OK) {
-                if (intent != null) {
-                    if (mFileUploadCallbackFirst != null) {
-                        /*
-                         * 若当前版本API为19, 则把Uri路径转换成new File性质的Uri路径
-                         * 若非 则按照之前方法调用即可
-                         * */
-                        if (Build.VERSION.SDK_INT == 19) {
-
-                            String realPathFromURI = getRealPathFromURI(intent.getData());
-                            File file = new File(realPathFromURI);
-                            if (file.exists()) {
-                                Uri uri = Uri.fromFile(file);
-                                mFileUploadCallbackFirst.onReceiveValue(uri);
-                            }
-
-                        } else {
-                            mFileUploadCallbackFirst.onReceiveValue(intent.getData());
-                        }
-                        mFileUploadCallbackFirst = null;
-                    } else if (mFileUploadCallbackSecond != null) {
-                        Uri[] dataUris = null;
-
-                        try {
-                            if (intent.getDataString() != null) {
-                                dataUris = new Uri[]{Uri.parse(intent.getDataString())};
-                            } else {
-                                if (Build.VERSION.SDK_INT >= 16) {
-                                    if (intent.getClipData() != null) {
-                                        final int numSelectedFiles = intent.getClipData().getItemCount();
-
-                                        dataUris = new Uri[numSelectedFiles];
-
-                                        for (int i = 0; i < numSelectedFiles; i++) {
-                                            dataUris[i] = intent.getClipData().getItemAt(i).getUri();
-                                        }
-                                    }
-                                }
-                            }
-                        } catch (Exception ignored) {
-                        }
-
-                        mFileUploadCallbackSecond.onReceiveValue(dataUris);
-                        mFileUploadCallbackSecond = null;
-                    }
-                }
-            } else {
-                if (mFileUploadCallbackFirst != null) {
-                    mFileUploadCallbackFirst.onReceiveValue(null);
-                    mFileUploadCallbackFirst = null;
-                } else if (mFileUploadCallbackSecond != null) {
-                    mFileUploadCallbackSecond.onReceiveValue(null);
-                    mFileUploadCallbackSecond = null;
-                }
-            }
-        }
-    }
-
-    /**
-     * 获取Uri图片真实路径的方法
-     */
-    public String getRealPathFromURI(Uri contentUri) {
-        String res = null;
-        String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContext().getContentResolver().query(contentUri, proj, null, null, null);
-        if (cursor != null && cursor.moveToFirst()) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            res = cursor.getString(column_index);
-            cursor.close();
-        }
-        return res;
-    }
-
-    /**
-     * Adds an additional HTTP header that will be sent along with every HTTP `GET` request
-     * <p>
-     * This does only affect the main requests, not the requests to included resources (e.g. images)
-     * <p>
-     * If you later want to delete an HTTP header that was previously added this way, call `removeHttpHeader()`
-     * <p>
-     * The `WebView` implementation may in some cases overwrite headers that you set or unset
-     *
-     * @param name  the name of the HTTP header to add
-     * @param value the value of the HTTP header to send
-     */
-    public void addHttpHeader(final String name, final String value) {
-        mHttpHeaders.put(name, value);
-    }
-
-    /**
-     * Removes one of the HTTP headers that have previously been added via `addHttpHeader()`
-     * <p>
-     * If you want to unset a pre-defined header, set it to an empty string with `addHttpHeader()` instead
-     * <p>
-     * The `WebView` implementation may in some cases overwrite headers that you set or unset
-     *
-     * @param name the name of the HTTP header to remove
-     */
-    public void removeHttpHeader(final String name) {
-        mHttpHeaders.remove(name);
-    }
-
-    public void addPermittedHostname(String hostname) {
-        mPermittedHostnames.add(hostname);
-    }
-
-    public void addPermittedHostnames(Collection<? extends String> collection) {
-        mPermittedHostnames.addAll(collection);
-    }
-
-    public List<String> getPermittedHostnames() {
-        return mPermittedHostnames;
-    }
-
-    public void removePermittedHostname(String hostname) {
-        mPermittedHostnames.remove(hostname);
-    }
-
-    public void clearPermittedHostnames() {
-        mPermittedHostnames.clear();
-    }
-
-    /**
-     * 清除Cookie
-     */
-    public void clearCookie() {
-        //清空所有Cookie
-        CookieSyncManager.createInstance(getContext());  //Create a singleton CookieSyncManager within a context
-        CookieManager cookieManager = CookieManager.getInstance(); // the singleton CookieManager instance
-        cookieManager.removeAllCookie();// Removes all cookies.
-        CookieSyncManager.getInstance().sync(); // forces sync manager to sync now
-
-        setWebChromeClient(null);
-        setWebViewClient(null);
-        getSettings().setJavaScriptEnabled(false);
-        clearCache(true);
-    }
-
-    /**
-     * 清除Cookie后初始化并刷新
-     */
-    public void refresh() {
-        clearCookie();
-        init(getContext());
-        reload();
-    }
-
-    public boolean onBackPressed() {
-        if (canGoBack()) {
-            goBack();
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     @SuppressLint("NewApi")
     protected static void setAllowAccessFromFileUrls(final WebSettings webSettings, final boolean allowed) {
         if (Build.VERSION.SDK_INT >= 16) {
@@ -467,33 +151,12 @@ public class CWebView extends WebView {
         }
     }
 
-    public void setMixedContentAllowed(final boolean allowed) {
-        setMixedContentAllowed(getSettings(), allowed);
-    }
-
     @SuppressWarnings("static-method")
     @SuppressLint("NewApi")
     protected void setMixedContentAllowed(final WebSettings webSettings, final boolean allowed) {
         if (Build.VERSION.SDK_INT >= 21) {
             webSettings.setMixedContentMode(allowed ? WebSettings.MIXED_CONTENT_ALWAYS_ALLOW : WebSettings.MIXED_CONTENT_NEVER_ALLOW);
         }
-    }
-
-    public void setDesktopMode(final boolean enabled) {
-        final WebSettings webSettings = getSettings();
-
-        final String newUserAgent;
-        if (enabled) {
-            newUserAgent = webSettings.getUserAgentString().replace("Mobile", "eliboM").replace("Android", "RSClient");
-        } else {
-            newUserAgent = webSettings.getUserAgentString().replace("eliboM", "Mobile").replace("RSClient", "Android");
-        }
-
-        webSettings.setUserAgentString(newUserAgent);
-        webSettings.setUseWideViewPort(enabled);
-        webSettings.setLoadWithOverviewMode(enabled);
-        webSettings.setSupportZoom(enabled);
-        webSettings.setBuiltInZoomControls(enabled);
     }
 
     @SuppressLint({"SetJavaScriptEnabled"})
@@ -542,14 +205,9 @@ public class CWebView extends WebView {
         setThirdPartyCookiesEnabled(true);
 
         //加快HTML网页加载完成的速度，等页面finish再加载图片
-        if (Build.VERSION.SDK_INT >= 19) {
-            webSettings.setLoadsImagesAutomatically(true);
-        } else {
-            webSettings.setLoadsImagesAutomatically(false);
-        }
+        webSettings.setLoadsImagesAutomatically(Build.VERSION.SDK_INT >= 19);
 
-        String userAgentString = webSettings.getUserAgentString().replace("Mobile", "RSMobile")
-                .replace("Android", "RSClient");
+        String userAgentString = webSettings.getUserAgentString().replace("Mobile", "RSMobile").replace("Android", "RSClient");
         webSettings.setUserAgentString(userAgentString);
 
         //电脑网页适应手机屏幕
@@ -765,9 +423,9 @@ public class CWebView extends WebView {
             public void onUnhandledInputEvent(WebView view, InputEvent event) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     if (mCustomWebViewClient != null) {
-//						mCustomWebViewClient.onUnhandledInputEvent(view, event);
+                        //						mCustomWebViewClient.onUnhandledInputEvent(view, event);
                     } else {
-//						super.onUnhandledInputEvent(view, event);
+                        //						super.onUnhandledInputEvent(view, event);
                     }
                 }
             }
@@ -1080,17 +738,12 @@ public class CWebView extends WebView {
 
         });
 
-        setDownloadListener(new DownloadListener() {
+        setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
+            final String suggestedFilename = URLUtil.guessFileName(url, contentDisposition, mimeType);
 
-            @Override
-            public void onDownloadStart(final String url, final String userAgent, final String contentDisposition, final String mimeType, final long contentLength) {
-                final String suggestedFilename = URLUtil.guessFileName(url, contentDisposition, mimeType);
-
-                if (mListener != null) {
-                    mListener.onDownloadRequested(url, suggestedFilename, mimeType, contentLength, contentDisposition, userAgent);
-                }
+            if (mListener != null) {
+                mListener.onDownloadRequested(url, suggestedFilename, mimeType, contentLength, contentDisposition, userAgent);
             }
-
         });
     }
 
@@ -1112,42 +765,6 @@ public class CWebView extends WebView {
         } else {
             super.loadUrl(url);
         }
-    }
-
-    public void loadUrl(String url, final boolean preventCaching) {
-        if (preventCaching) {
-            url = makeUrlUnique(url);
-        }
-
-        loadUrl(url);
-    }
-
-    public void loadUrl(String url, final boolean preventCaching, final Map<String, String> additionalHttpHeaders) {
-        if (preventCaching) {
-            url = makeUrlUnique(url);
-        }
-
-        loadUrl(url, additionalHttpHeaders);
-    }
-
-    protected static String makeUrlUnique(final String url) {
-        StringBuilder unique = new StringBuilder();
-        unique.append(url);
-
-        if (url.contains("?")) {
-            unique.append('&');
-        } else {
-            if (url.lastIndexOf('/') <= 7) {
-                unique.append('/');
-            }
-            unique.append('?');
-        }
-
-        unique.append(System.currentTimeMillis());
-        unique.append('=');
-        unique.append(1);
-
-        return unique.toString();
     }
 
     protected boolean isHostnameAllowed(final String url) {
@@ -1276,180 +893,6 @@ public class CWebView extends WebView {
         } else if (mActivity != null && mActivity.get() != null) {
             mActivity.get().startActivityForResult(Intent.createChooser(i, getFileUploadPromptLabel()), mRequestCodeFilePicker);
         }
-    }
-
-    /**
-     * Returns whether file uploads can be used on the current device (generally all platform versions except for 4.4)
-     *
-     * @return whether file uploads can be used
-     */
-    public static boolean isFileUploadAvailable() {
-        return isFileUploadAvailable(false);
-    }
-
-    /**
-     * Returns whether file uploads can be used on the current device (generally all platform versions except for 4.4)
-     * <p>
-     * On Android 4.4.3/4.4.4, file uploads may be possible but will come with a wrong MIME type
-     *
-     * @param needsCorrectMimeType whether a correct MIME type is required for file uploads or `application/octet-stream` is acceptable
-     * @return whether file uploads can be used
-     */
-    public static boolean isFileUploadAvailable(final boolean needsCorrectMimeType) {
-        if (Build.VERSION.SDK_INT == 19) {
-            final String platformVersion = (Build.VERSION.RELEASE == null) ? "" : Build.VERSION.RELEASE;
-
-            return !needsCorrectMimeType && (platformVersion.startsWith("4.4.3") || platformVersion.startsWith("4.4.4"));
-        } else {
-            return true;
-        }
-    }
-
-    /**
-     * Handles a download by loading the file from `fromUrl` and saving it to `toFilename` on the external storage
-     * <p>
-     * This requires the two permissions `android.permission.INTERNET` and `android.permission.WRITE_EXTERNAL_STORAGE`
-     * <p>
-     * Only supported on API level 9 (Android 2.3) and above
-     *
-     * @param context    a valid `Context` reference
-     * @param fromUrl    the URL of the file to download, e.g. the one from `AdvancedWebView.onDownloadRequested(...)`
-     * @param toFilename the name of the destination file where the download should be saved, e.g. `myImage.jpg`
-     * @return whether the download has been successfully handled or not
-     * @throws IllegalStateException if the storage or the target directory could not be found or accessed
-     */
-    @SuppressLint("NewApi")
-    public static boolean handleDownload(final Context context, final String fromUrl, final String toFilename) {
-        if (Build.VERSION.SDK_INT < 9) {
-            throw new RuntimeException("Method requires API level 9 or above");
-        }
-
-        final Request request = new Request(Uri.parse(fromUrl));
-        if (Build.VERSION.SDK_INT >= 11) {
-            request.allowScanningByMediaScanner();
-            request.setNotificationVisibility(Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        }
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, toFilename);
-
-        final DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
-        try {
-            try {
-                dm.enqueue(request);
-            } catch (SecurityException e) {
-                if (Build.VERSION.SDK_INT >= 11) {
-                    request.setNotificationVisibility(Request.VISIBILITY_VISIBLE);
-                }
-                dm.enqueue(request);
-            }
-
-            return true;
-        }
-        // if the download manager app has been disabled on the device
-        catch (IllegalArgumentException e) {
-            // show the settings screen where the user can enable the download manager app again
-            openAppSettings(context, CWebView.PACKAGE_NAME_DOWNLOAD_MANAGER);
-
-            return false;
-        }
-    }
-
-    @SuppressLint("NewApi")
-    private static boolean openAppSettings(final Context context, final String packageName) {
-        if (Build.VERSION.SDK_INT < 9) {
-            throw new RuntimeException("Method requires API level 9 or above");
-        }
-
-        try {
-            final Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-            intent.setData(Uri.parse("package:" + packageName));
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            context.startActivity(intent);
-
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    /**
-     * Wrapper for methods related to alternative browsers that have their own rendering engines
-     */
-    public static class Browsers {
-
-        /**
-         * Package name of an alternative browser that is installed on this device
-         */
-        private static String mAlternativePackage;
-
-        /**
-         * Returns whether there is an alternative browser with its own rendering engine currently installed
-         *
-         * @param context a valid `Context` reference
-         * @return whether there is an alternative browser or not
-         */
-        public static boolean hasAlternative(final Context context) {
-            return getAlternative(context) != null;
-        }
-
-        /**
-         * Returns the package name of an alternative browser with its own rendering engine or `null`
-         *
-         * @param context a valid `Context` reference
-         * @return the package name or `null`
-         */
-        public static String getAlternative(final Context context) {
-            if (mAlternativePackage != null) {
-                return mAlternativePackage;
-            }
-
-            final List<String> alternativeBrowsers = Arrays.asList(ALTERNATIVE_BROWSERS);
-            final List<ApplicationInfo> apps = context.getPackageManager().getInstalledApplications(PackageManager.GET_META_DATA);
-
-            for (ApplicationInfo app : apps) {
-                if (!app.enabled) {
-                    continue;
-                }
-
-                if (alternativeBrowsers.contains(app.packageName)) {
-                    mAlternativePackage = app.packageName;
-
-                    return app.packageName;
-                }
-            }
-
-            return null;
-        }
-
-        /**
-         * Opens the given URL in an alternative browser
-         *
-         * @param context a valid `Activity` reference
-         * @param url     the URL to open
-         */
-        public static void openUrl(final Activity context, final String url) {
-            openUrl(context, url, false);
-        }
-
-        /**
-         * Opens the given URL in an alternative browser
-         *
-         * @param context           a valid `Activity` reference
-         * @param url               the URL to open
-         * @param withoutTransition whether to switch to the browser `Activity` without a transition
-         */
-        public static void openUrl(final Activity context, final String url, final boolean withoutTransition) {
-            final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            intent.setPackage(getAlternative(context));
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            context.startActivity(intent);
-
-            if (withoutTransition) {
-                context.overridePendingTransition(0, 0);
-            }
-        }
-
     }
 
     /**

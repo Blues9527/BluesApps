@@ -24,7 +24,7 @@
         android:background="@mipmap/ic_back"
         android:tint="@color/color_black" />
 
-    <com.blues.framework.widget.CWebView
+    <WebView
         android:id="@+id/wv_show"
         android:layout_width="match_parent"
         android:layout_height="0dp"

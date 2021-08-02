@@ -47,6 +47,8 @@ class IOSFragment : BaseKoinFragment(), OnRefreshListener {
 
     override fun initData(inflater: LayoutInflater, container: ViewGroup?, saveInstanced: Bundle?) {
 
+        iOSViewModel.initData(GankType.IOS.type)
+
         iOSSr = rootView.findViewById<SmartRefreshLayout>(R.id.sr_ios)
             .apply { //设置 Header 为 经典 样式 带最后刷新时间
                 setRefreshHeader(ClassicsHeader(requireContext()).setEnableLastTime(true))
@@ -54,10 +56,6 @@ class IOSFragment : BaseKoinFragment(), OnRefreshListener {
                 setEnableRefresh(true)
                 setOnRefreshListener(this@IOSFragment)
             }
-
-        onRefresh(iOSSr)
-
-        //iOSViewModel.initData(GankType.IOS.type)
 
         rootView.findViewById<EasyRecyclerView>(R.id.rv_ios).apply {
             setLayoutManager(LinearLayoutManager(requireContext()))

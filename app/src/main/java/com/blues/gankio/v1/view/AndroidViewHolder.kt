@@ -4,14 +4,14 @@ import android.view.ViewGroup
 import com.blues.R
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.bumptech.glide.Glide
 import android.content.Intent
-import com.blues.gankio.v1.ShowImageActivity
 import androidx.core.app.ActivityOptionsCompat
 import android.app.Activity
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import coil.load
 import com.blues.WebViewDialog
 import com.blues.gankio.v1.model.GankBean
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
@@ -36,8 +36,13 @@ class AndroidViewHolder(parent: ViewGroup?) :
         tvAuthor.text = data.who
         if (data.images != null && data.images.size != 0) {
             ivCover.visibility = View.VISIBLE
-            Glide.with(ivCover.context).load(data.images[0]).placeholder(R.mipmap.ic_img_error)
-                .into(ivCover)
+            ivCover.load(data.images[0]) {
+                placeholder(R.mipmap.ic_img_error)
+                error(R.mipmap.ic_img_error)
+            }
+
+            //Glide.with(ivCover.context).load(data.images[0]).placeholder(R.mipmap.ic_img_error)
+            //    .into(ivCover)
 
             ivCover.setOnClickListener {   //跳转到ShowImageActivity
                 val intent = Intent(context, ShowImageActivity::class.java).putExtra("param", data)
@@ -49,7 +54,9 @@ class AndroidViewHolder(parent: ViewGroup?) :
         tvPublisher.text = "来自：${data.source}"
 
         if (!TextUtils.isEmpty(data.url)) {
-            clRoot.setOnClickListener { WebViewDialog(context, data.url).show() }
+            clRoot.setOnClickListener {
+                WebViewDialog(context, data.url).show()
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ import android.widget.ImageView
 import com.blues.gankio.v2.model.GankioUniversalBean
 import com.blues.R
 import android.widget.TextView
+import coil.load
 import com.bumptech.glide.Glide
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
@@ -29,7 +30,8 @@ class GankGirlsViewHolder(parent: ViewGroup?) :
         tvTag.text = "#${data.type}#"
         tvLikes.text = data.likeCounts.toString()
         tvViews.text = data.views.toString()
-        Glide.with(context).load(data.images[0]).into(ivCover)
+        //Glide.with(context).load(data.images[0]).into(ivCover)
+        ivCover.load(data.images[0])
     }
 
 }

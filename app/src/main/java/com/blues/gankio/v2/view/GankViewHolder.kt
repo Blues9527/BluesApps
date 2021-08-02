@@ -11,6 +11,7 @@ import androidx.core.app.ActivityOptionsCompat
 import android.app.Activity
 import android.view.View
 import android.widget.ImageView
+import coil.load
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
 class GankViewHolder(parent: ViewGroup?) :
@@ -29,11 +30,17 @@ class GankViewHolder(parent: ViewGroup?) :
         tvTitle.text = data.title
         tvAuthor.text = "作者：${data.author}"
         if (data.images.size != 0) {
-            Glide.with(context).load(data.images[0]).placeholder(R.mipmap.ic_img_error)
-                .into(ivPreview)
+            ivPreview.load(data.images[0]){
+                placeholder(R.mipmap.ic_img_error)
+                error(R.mipmap.ic_img_error)
+            }
+            //Glide.with(context).load(data.images[0]).placeholder(R.mipmap.ic_img_error)
+            //    .into(ivPreview)
         } else {
-            Glide.with(context).load(R.mipmap.ic_img_error).placeholder(R.mipmap.ic_img_error)
-                .into(ivPreview)
+            ivPreview.load(R.mipmap.ic_img_error)
+
+            //Glide.with(context).load(R.mipmap.ic_img_error).placeholder(R.mipmap.ic_img_error)
+            //    .into(ivPreview)
         }
         tvViews.text = data.views.toString()
         tvLikes.text = data.likeCounts.toString()

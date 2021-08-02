@@ -8,6 +8,7 @@ import com.blues.R
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import android.widget.LinearLayout
+import coil.load
 import com.blues.framework.utils.dp
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
@@ -28,9 +29,11 @@ class CourseEntryHolder(parent: ViewGroup?) :
     override fun setData(data: CourseEntity) {
         super.setData(data)
 
-        Glide.with(context)
-            .load(data.icon)
-            .into(ivIcon)
+        ivIcon.load(data.icon)
+
+        //Glide.with(context)
+        //    .load(data.icon)
+        //    .into(ivIcon)
 
         tvTitle.text = data.name
     }

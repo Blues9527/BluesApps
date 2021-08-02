@@ -1,4 +1,4 @@
-package com.blues.gankio.v1
+package com.blues.gankio.v1.view
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,6 @@ import com.blues.R
 import com.jude.easyrecyclerview.EasyRecyclerView
 import android.widget.TextView
 import com.blues.gankio.v1.model.GankBean.ResultsBean
-import androidx.recyclerview.widget.SnapHelper
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

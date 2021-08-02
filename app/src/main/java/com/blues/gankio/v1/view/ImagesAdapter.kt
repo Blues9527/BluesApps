@@ -1,4 +1,4 @@
-package com.blues.gankio.v1
+package com.blues.gankio.v1.view
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.blues.R
@@ -17,10 +17,10 @@ class ImagesAdapter(data: List<String?>?) :
         //设置每张图片的长度
         if (url != null && !TextUtils.isEmpty(url)) {
             (helper.getView<View>(R.id.iv_item) as ImageView).load(url){
-
+                error(R.mipmap.ic_network_error)
             }
-            Glide.with(mContext).load(url).error(R.mipmap.ic_network_error)
-                .into((helper.getView<View>(R.id.iv_item) as ImageView))
+            //Glide.with(mContext).load(url).error(R.mipmap.ic_network_error)
+            //    .into((helper.getView<View>(R.id.iv_item) as ImageView))
 
             //            helper.getView(R.id.iv_item).setOnClickListener(v -> {
             //                Intent intent = new Intent(mContext, ShowImageActivity.class);

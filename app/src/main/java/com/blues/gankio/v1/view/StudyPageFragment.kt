@@ -1,4 +1,4 @@
-package com.blues.gankio.v1
+package com.blues.gankio.v1.view
 
 import android.content.Context
 import com.blues.R
@@ -8,17 +8,11 @@ import android.os.Bundle
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import com.blues.framework.base.BaseViewPagerAdapter
-import com.blues.gankio.v1.view.VideoFragment
-import com.blues.gankio.v1.view.AndroidFragment
-import com.blues.gankio.v1.view.IOSFragment
-import com.blues.gankio.v1.view.WebFragment
-import com.blues.gankio.v1.view.ArticleFragment
 import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
 import android.widget.TextView
 import android.view.Gravity
 import android.view.View
 import com.blues.framework.base.BaseKoinFragment
-import java.util.*
 
 /**
  * User : Blues
@@ -27,8 +21,8 @@ import java.util.*
  */
 class StudyPageFragment : BaseKoinFragment() {
 
-    private val tabs = arrayOf("Video", "Android", "iOS", "Web", "Blues")
-    private val fragments = arrayOf(VideoFragment(), AndroidFragment(), IOSFragment(), WebFragment(), ArticleFragment())
+    private val tabs = arrayOf("Android", "iOS", "Web", "Blues")
+    private val fragments = arrayOf(AndroidFragment(), IOSFragment(), WebFragment(), ArticleFragment())
 
     private fun getTabView(context: Context, text: String): View {
         val textView = TextView(context)

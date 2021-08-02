@@ -13,6 +13,7 @@ import com.blues.kaiyan.list.model.KaiyanBean
 import com.bumptech.glide.Glide
 import android.view.ViewGroup
 import android.widget.ImageView
+import coil.load
 
 /**
  * User : Blues
@@ -50,7 +51,8 @@ class KaiyanDetailHeaderView @JvmOverloads constructor(context: Context, attrs: 
         tvShare.text = data.data.consumption.shareCount.toString()
         tvReply.text = data.data.consumption.replyCount.toString()
         tvLike.text = data.data.consumption.collectionCount.toString()
-        Glide.with(ctx).load(data.data.author.icon).into(ivAvatar)
+        ivAvatar.load(data.data.author.icon)
+        //Glide.with(ctx).load(data.data.author.icon).into(ivAvatar)
         tvAuthor.text = data.data.author.name
         tvAuthorDesc.text = data.data.author.description
     }

@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
+import coil.load
 import com.bumptech.glide.Glide
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
@@ -38,7 +39,8 @@ class KaiyanDetailRelatedViewHolder(parent: ViewGroup?) :
         } else if (TextUtils.equals(data.type, "videoSmallCard")) {
             itemText.visibility = View.GONE
             itemVideo.visibility = View.VISIBLE
-            Glide.with(context).load(data.data.cover.feed).into(ivCover)
+            ivCover.load(data.data.cover.feed)
+            //Glide.with(context).load(data.data.cover.feed).into(ivCover)
             tvTitle.text = data.data.title
         }
     }

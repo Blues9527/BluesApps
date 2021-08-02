@@ -21,23 +21,15 @@ import java.lang.Exception
 
 class WebViewDialog(context: Context, private val url: String) : Dialog(context) {
 
-    private val showWv: CWebView by lazy {
-        findViewById(R.id.wv_show)
-    }
-    private val webViewPb: ProgressBar by lazy {
-        findViewById(R.id.pb_webview)
-    }
-    private val backIv: ImageView by lazy {
-        findViewById(R.id.iv_back)
-    }
-    private val mDialog: LoadingDialog by lazy {
-        LoadingDialog(getContext())
-    }
-    private val vsNetworkError: ViewStub by lazy {
-        findViewById(R.id.vs_network)
-    }
+    private lateinit var showWv: WebView
+    private lateinit var webViewPb: ProgressBar
+    private lateinit var backIv: ImageView
+    private lateinit var mDialog: LoadingDialog
+    private lateinit var vsNetworkError: ViewStub
+
     private var v: View? = null
-    override fun onCreate(savedInstanceState: Bundle) {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //初始化窗口属性
@@ -51,10 +43,19 @@ class WebViewDialog(context: Context, private val url: String) : Dialog(context)
 
         //设置触摸外部是否可撤销
         setCanceledOnTouchOutside(true)
+
         initView()
     }
 
     private fun initView() {
+
+        showWv = findViewById(R.id.wv_show)
+        vsNetworkError = findViewById(R.id.vs_network)
+        mDialog = LoadingDialog(context)
+        backIv = findViewById(R.id.iv_back)
+        webViewPb = findViewById(R.id.pb_webview)
+
+
         showWv.settings.apply {
             loadWithOverviewMode = true // 缩放至屏幕的大小
             loadsImagesAutomatically = true //支持自动加载图片
@@ -63,21 +64,23 @@ class WebViewDialog(context: Context, private val url: String) : Dialog(context)
             useWideViewPort = true
             domStorageEnabled = true
         }
+
+
         showWv.webViewClient = object : WebViewClient() {
-            override fun onPageStarted(view: WebView, url: String, favicon: Bitmap) {
+            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
                 webViewPb.visibility = View.VISIBLE
                 mDialog.show()
             }
 
-            override fun onPageFinished(view: WebView, url: String) {
+            override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 webViewPb.visibility = View.GONE
                 mDialog.dismiss()
             }
         }
         showWv.webChromeClient = object : WebChromeClient() {
-            override fun onProgressChanged(view: WebView, newProgress: Int) {
+            override fun onProgressChanged(view: WebView?, newProgress: Int) {
                 super.onProgressChanged(view, newProgress)
                 webViewPb.progress = newProgress
             }

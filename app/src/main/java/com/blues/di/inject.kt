@@ -81,33 +81,45 @@ val loginModule = module {
 val kaiyanModule = module {
     factory {
         provideKaiyanApi(get(named(KAIYAN)))
-        provideKaiyanDetailApi(get(named(KAIYAN)))
     }
+
+    factory { provideKaiyanDetailApi(get(named(KAIYAN))) }
 
     single {
         KaiyanRepository(get(), get())
-        KaiyanDetailRepository(get(), get())
     }
+
+    single { KaiyanDetailRepository(get(), get()) }
 
     factory {
         KaiyanViewModel(get())
-        KaiyanDetailViewModel(get())
     }
+
+    factory { KaiyanDetailViewModel(get()) }
 }
 
 val gankioModule = module {
     factory {
         provideGankioApi(get(named(GANKIO)))
+
+    }
+    factory {
         provideGankApi(get(named(GANKIO)))
     }
 
     single {
         GankioRepository(get(), get())
+    }
+
+    single {
         GankRepository(get(), get())
     }
 
     factory {
         GankioViewModel(get())
+
+    }
+    factory {
         GankViewModel(get())
     }
 }

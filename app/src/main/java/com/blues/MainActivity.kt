@@ -8,7 +8,7 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.home.view.MainPageFragment
-import com.blues.gankio.v1.StudyPageFragment
+import com.blues.gankio.v1.view.StudyPageFragment
 import com.blues.kaiyan.list.view.KaiyanFragment
 import com.blues.framework.utils.HelperUtil
 

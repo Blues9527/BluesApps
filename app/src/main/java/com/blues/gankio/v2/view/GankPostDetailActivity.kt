@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.text.Html
 import android.widget.ImageView
+import coil.load
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.gankio.v2.vm.GankioViewModel
 import org.markdown4j.Markdown4jProcessor
@@ -48,7 +49,8 @@ class GankPostDetailActivity : BaseKoinActivity() {
                         e.printStackTrace()
                     }
                 }
-                Glide.with(this).load(postDetail.images[0]).into(ivContent)
+                //Glide.with(this).load(postDetail.images[0]).into(ivContent)
+                ivContent.load(postDetail.images[0])
             }
         }
     }
