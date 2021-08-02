@@ -57,7 +57,7 @@ class GankPostDetailActivity : BaseKoinActivity() {
 
     override fun initData(savedInstanceState: Bundle?) {
         val postId = intent.getStringExtra("postId") //初始化数据
-        if (!TextUtils.isEmpty(postId)) {
+        if (postId != null && !TextUtils.isEmpty(postId)) {
             gankioViewModel.getPostDetail(postId)
         }
 

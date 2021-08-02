@@ -18,5 +18,5 @@ object NetWorkUtil {
     //需要添加权限 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     private val activeNetworkInfo: NetworkInfo
         get() = (Utils.getContext()
-            .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo
+            .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo!!
 }

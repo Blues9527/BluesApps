@@ -1,19 +1,18 @@
 package com.blues.gankio.v1.view
 
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.blues.gankio.v1.model_ios.model.IOSEntity
 import com.blues.R
 import android.widget.TextView
 import com.jude.easyrecyclerview.EasyRecyclerView
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.blues.WebViewDialog
+import com.blues.gankio.v1.model.GankBean
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
 class IOSViewHolder(parent: ViewGroup?) :
-    BaseViewHolder<IOSEntity.ResultsBean>(parent, R.layout.item_test) {
+    BaseViewHolder<GankBean.ResultsBean>(parent, R.layout.item_test) {
 
     private val ivAvatar: ImageView = itemView.findViewById(R.id.iv_avatar)
     private val tvDesc: TextView = itemView.findViewById(R.id.tv_desc)
@@ -23,7 +22,7 @@ class IOSViewHolder(parent: ViewGroup?) :
     private val rvImages: EasyRecyclerView = itemView.findViewById(R.id.rv_images)
     private val rlRoot: RelativeLayout = itemView.findViewById(R.id.rl_root)
 
-    override fun setData(data: IOSEntity.ResultsBean) {
+    override fun setData(data: GankBean.ResultsBean) {
         super.setData(data)
         tvDesc.text = data.desc
         tvAuthor.text = "作者：${data.who}"

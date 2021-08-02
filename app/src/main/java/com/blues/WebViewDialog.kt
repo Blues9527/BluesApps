@@ -19,7 +19,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import java.lang.Exception
 
-class WebViewDialog(context: Context?, private val url: String) : Dialog(context) {
+class WebViewDialog(context: Context, private val url: String) : Dialog(context) {
 
     private val showWv: CWebView by lazy {
         findViewById(R.id.wv_show)

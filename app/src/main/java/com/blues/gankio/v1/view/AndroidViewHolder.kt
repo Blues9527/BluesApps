@@ -1,7 +1,6 @@
 package com.blues.gankio.v1.view
 
 import android.view.ViewGroup
-import com.blues.gankio.v1.model_android.model.AndroidEntity
 import com.blues.R
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -14,6 +13,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
 import com.blues.WebViewDialog
+import com.blues.gankio.v1.model.GankBean
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
 /**
@@ -21,7 +21,7 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder
  * Date : 2019/3/6
  */
 class AndroidViewHolder(parent: ViewGroup?) :
-    BaseViewHolder<AndroidEntity.ResultsBean>(parent, R.layout.item_android) {
+    BaseViewHolder<GankBean.ResultsBean>(parent, R.layout.item_android) {
 
     private val tvDesc: TextView = itemView.findViewById(R.id.tv_desc)
     private val tvAuthor: TextView = itemView.findViewById(R.id.tv_author)
@@ -30,7 +30,7 @@ class AndroidViewHolder(parent: ViewGroup?) :
     private val ivCover: ImageView = itemView.findViewById(R.id.iv_cover)
     private val clRoot: ConstraintLayout = itemView.findViewById(R.id.cl_root)
 
-    override fun setData(data: AndroidEntity.ResultsBean) {
+    override fun setData(data: GankBean.ResultsBean) {
         super.setData(data)
         tvDesc.text = data.desc
         tvAuthor.text = data.who

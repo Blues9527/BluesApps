@@ -13,12 +13,12 @@ import com.blues.constant.IMAGE_URL
 import com.blues.framework.utils.ScreenUtil.screenHeight
 import com.blues.framework.utils.ScreenUtil.screenWidth
 import com.blues.gankio.v1.ShowImageActivity
-import com.blues.gankio.v1.model_fuli.model.FuliEntity
+import com.blues.gankio.v1.model.GankBean
 import com.bumptech.glide.Glide
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
 class FuliViewHolder(parent: ViewGroup?) :
-    BaseViewHolder<FuliEntity.ResultsBean>(parent, R.layout.item_fuli) {
+    BaseViewHolder<GankBean.ResultsBean>(parent, R.layout.item_fuli) {
 
     private val ivAvatar: ImageView = itemView.findViewById(R.id.tv_author)
     private val ivUrl: ImageView = itemView.findViewById(R.id.iv_url)
@@ -27,7 +27,7 @@ class FuliViewHolder(parent: ViewGroup?) :
     private val tvSource: TextView = itemView.findViewById(R.id.tv_source)
     private val tvPTime: TextView = itemView.findViewById(R.id.tv_publish_time)
 
-    override fun setData(data: FuliEntity.ResultsBean) {
+    override fun setData(data: GankBean.ResultsBean) {
         super.setData(data)
 
         //        tvDesc.setText(data.getDesc());

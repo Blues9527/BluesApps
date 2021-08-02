@@ -58,7 +58,7 @@ object FileUtil {
      * @param fileName json格式文件名
      * @return json字符串
      */
-    fun readJson(fileName: String?): String { //用StringBuffer 线程安全
+    fun readJson(fileName: String): String { //用StringBuffer 线程安全
         val sb = StringBuilder()
         var inputStream: InputStream? = null
         try {

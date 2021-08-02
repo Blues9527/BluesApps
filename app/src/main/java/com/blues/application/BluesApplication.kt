@@ -10,9 +10,13 @@ import android.os.Build
 import com.blues.framework.network.NetworkCallbackImpl
 import android.net.NetworkRequest
 import android.net.ConnectivityManager
+import coil.Coil
+import coil.ImageLoader
+import coil.util.CoilUtils
 import com.blues.adapter.ActivityLifecycleCallbacksAdapter
 import com.blues.di.allModules
 import com.blues.framework.utils.Utils
+import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -44,6 +48,9 @@ class BluesApplication : MultiDexApplication() {
 
         //初始化koin
         initKoin()
+
+        //初始化coil
+        initCoil()
     }
 
     private fun initKoin() {
@@ -57,16 +64,12 @@ class BluesApplication : MultiDexApplication() {
     private fun initActivityLifecycleListener() { //批量管理activity
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacksAdapter() {
 
-            override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
-                activity?.let {
-                    ActivityUtil.activities.add(activity)
-                }
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+                ActivityUtil.activities.add(activity)
             }
 
-            override fun onActivityDestroyed(activity: Activity?) {
-                activity?.let {
-                    ActivityUtil.activities.remove(activity)
-                }
+            override fun onActivityDestroyed(activity: Activity) {
+                ActivityUtil.activities.remove(activity)
             }
         })
     }
@@ -74,10 +77,16 @@ class BluesApplication : MultiDexApplication() {
     private fun initNetworkListener() {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             val callback = NetworkCallbackImpl(mActivity)
-            val request = NetworkRequest.Builder()
-                .build()
+            val request = NetworkRequest.Builder().build()
             val manager = this.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
             manager.registerNetworkCallback(request, callback)
         }
+    }
+
+    private fun initCoil() {
+        val imageLoader = ImageLoader.Builder(applicationContext).crossfade(true).okHttpClient {
+            OkHttpClient.Builder().cache(CoilUtils.createDefaultCache(applicationContext)).build()
+        }.build()
+        Coil.setImageLoader(imageLoader)
     }
 }
