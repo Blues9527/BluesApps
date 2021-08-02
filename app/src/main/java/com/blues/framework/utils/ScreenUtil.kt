@@ -3,6 +3,7 @@ package com.blues.framework.utils
 import android.content.Context
 import android.view.WindowManager
 import android.util.DisplayMetrics
+import com.blues.application.BluesApplication
 
 /**
  * User : Blues
@@ -20,8 +21,7 @@ object ScreenUtil {
     @JvmStatic
     val screenWidth: Int
         get() {
-            val wm = Utils.getContext()
-                .getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val wm = BluesApplication.app.getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
             val dm = DisplayMetrics()
 
@@ -38,8 +38,7 @@ object ScreenUtil {
     @JvmStatic
     val screenHeight: Int
         get() {
-            val wm = Utils.getContext()
-                .getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val wm = BluesApplication.app.getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
             val dm = DisplayMetrics()
 

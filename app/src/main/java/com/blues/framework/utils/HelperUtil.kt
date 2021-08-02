@@ -2,6 +2,7 @@ package com.blues.framework.utils
 
 import android.util.Log
 import android.widget.Toast
+import com.blues.application.BluesApplication
 import com.blues.framework.utils.HelperUtil
 import com.google.android.material.snackbar.BaseTransientBottomBar
 
@@ -18,7 +19,7 @@ object HelperUtil {
     @JvmStatic
     @JvmOverloads
     fun showToast(str: String?, duration: Int = Toast.LENGTH_SHORT) {
-        Toast.makeText(Utils.getContext(), str, duration)
+        Toast.makeText(BluesApplication.app, str, duration)
             .show()
     }
 
