@@ -1,8 +1,9 @@
 package com.blues.framework.base
 
-import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.blues.LoadingDialog
 import com.blues.framework.http.Response
 import com.blues.framework.utils.HelperUtil
 import kotlinx.coroutines.Dispatchers
@@ -18,37 +19,33 @@ import kotlinx.coroutines.flow.*
 
 open class BaseViewModel : ViewModel() {
 
-    val loadingEvent = MutableLiveData<Boolean>()
+    private val _loadingEvent = MutableLiveData<Boolean>()
+    val loadingEvent: LiveData<Boolean> = _loadingEvent
 
     suspend fun <T> requestByFlow(showLoading: Boolean = true,
         request: suspend () -> Response<T>?): Flow<Response<T>> {
 
-        if (showLoading) {
-            showLoading()
-        }
+        if (showLoading) showLoading()
 
         return flow {
             val response = request() ?: throw IllegalArgumentException("数据非法，获取响应数据为空")
-            Log.e("requestFow", "==result==>$response")
             emit(response)
-        }.flowOn(Dispatchers.IO)
-            .onCompletion { cause ->
-                run {
-                    closeLoading()
-                    Log.e("requestFow", "==onCompletion==cause==>${cause}")
-                    cause?.let {
-                        HelperUtil.showToast(it.message ?: "")
-                    }
+        }.flowOn(Dispatchers.IO).onCompletion { cause ->
+            run {
+                closeLoading()
+                cause?.let {
+                    HelperUtil.showToast(it.message ?: "")
                 }
             }
+        }
     }
 
     private fun showLoading() {
-        loadingEvent.value = true
+        _loadingEvent.value = true
     }
 
     private fun closeLoading() {
-        loadingEvent.value = false
+        _loadingEvent.value = false
     }
 }
 

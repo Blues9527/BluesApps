@@ -73,4 +73,9 @@ object Versions {
     //coil base
     const val coil = "1.3.1"
 
+    //annotation
+    const val annotation = "1.0.0"
+
+    //ijkplayer
+    const val ijkplayer = "0.8.8"
 }

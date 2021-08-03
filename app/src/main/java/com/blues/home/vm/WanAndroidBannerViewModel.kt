@@ -30,10 +30,10 @@ class WanAndroidBannerViewModel(private val wanAndroidRepo: WanAndroidBannerRepo
             }.catch {
                 HelperUtil.showSimpleLog(this.message)
             }.next {
-                    this.data?.let {
-                        wanAndroidBanner.value = it
-                    }
+                data?.let {
+                    wanAndroidBanner.value = it
                 }
+            }
         }
     }
 }

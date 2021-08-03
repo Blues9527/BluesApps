@@ -1,21 +1,24 @@
+import com.blues.plugin.AndroidX
+import com.blues.plugin.BaseConfig
+import com.blues.plugin.Kotlin
+import com.blues.plugin.Video
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
 
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion BaseConfig.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdkVersion BaseConfig.minSdkVersion
+        targetSdkVersion BaseConfig.targetSdkVersion
+        versionCode BaseConfig.versionCode
+        versionName BaseConfig.versionName
+        buildToolsVersion BaseConfig.buildToolsVersion
 
         ndk {
-            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
+            abiFilters 'armeabi', 'armeabi-v7a'
         }
     }
     sourceSets {
@@ -45,17 +48,14 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
-    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'
-    implementation 'tv.danmaku.ijk.media:ijkplayer-armv5:0.8.8'
-    implementation 'tv.danmaku.ijk.media:ijkplayer-arm64:0.8.8'
-    implementation 'tv.danmaku.ijk.media:ijkplayer-x86:0.8.8'
-    implementation 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.8.8'
-    implementation 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.8'
-    implementation 'androidx.annotation:annotation:1.0.0'
-    api 'androidx.appcompat:appcompat:1.0.0'
-    implementation "androidx.core:core-ktx:+"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation Video.ijkplayerJava
+    implementation Video.ijkplayerArmv7a
+    implementation Video.ijkplayerArm64
+    implementation Video.ijkplayerExo
+    implementation AndroidX.annotation
+    api AndroidX.appcompat
+    implementation AndroidX.ktx
+    implementation Kotlin.stdlibJdk8
 }
 repositories {
     mavenCentral()

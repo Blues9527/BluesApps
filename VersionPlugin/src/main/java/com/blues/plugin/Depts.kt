@@ -15,7 +15,7 @@ object BaseConfig {
     const val targetSdkVersion = 30
     const val versionCode = 103
     const val versionName = "1.0.3"
-    const val applicationId ="com.blues.app"
+    const val applicationId = "com.blues.app"
 }
 
 object AndroidX {
@@ -25,7 +25,7 @@ object AndroidX {
     const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
     const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewmodel}"
     const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.livedata}"
-
+    const val annotation = "androidx.annotation:annotation:${Versions.annotation}"
 }
 
 object Room {
@@ -41,8 +41,6 @@ object Kotlin {
     const val plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
-
-    const val ktx = "androidx.core:core-ktx:${Versions.ktx}"
 }
 
 object Koin {
@@ -81,6 +79,14 @@ object UiComponent {
     const val markdown4j = "org.commonjava.googlecode.markdown4j:markdown4j:${Versions.markdown4j}"
 
     const val material = "com.google.android.material:material:${Versions.material}"
+}
+
+object Video {
+
+    const val ijkplayerJava = "tv.danmaku.ijk.media:ijkplayer-java:${Versions.ijkplayer}"
+    const val ijkplayerArmv7a = "tv.danmaku.ijk.media:ijkplayer-armv7a:${Versions.ijkplayer}"
+    const val ijkplayerArm64 = "tv.danmaku.ijk.media:ijkplayer-arm64:${Versions.ijkplayer}"
+    const val ijkplayerExo = "tv.danmaku.ijk.media:ijkplayer-exo:${Versions.ijkplayer}"
 }
 
 object Others {

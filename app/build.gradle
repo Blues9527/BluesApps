@@ -97,6 +97,7 @@ dependencies {
     implementation AndroidX.constraintlayout
     implementation AndroidX.viewmodel
     implementation AndroidX.livedata
+    implementation AndroidX.ktx
 
     implementation Network.retrofit
     implementation Network.okhttp3
@@ -115,8 +116,7 @@ dependencies {
     implementation Room.runtime
     annotationProcessor Room.compiler
 
-    implementation Kotlin.ktx
-    implementation Kotlin.stdlibJdk7
+    implementation Kotlin.stdlibJdk8
     implementation Kotlin.coroutines
 
     implementation Koin.core

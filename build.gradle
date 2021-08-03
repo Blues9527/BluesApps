@@ -21,8 +21,6 @@ plugins {
     id "com.blues.plugin" apply false
 }
 
-apply from:'config/dependencies.gradle'
-
 allprojects {
     repositories {
         maven { url "https://jitpack.io" }
