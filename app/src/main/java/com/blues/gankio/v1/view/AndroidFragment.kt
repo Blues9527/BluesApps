@@ -59,12 +59,12 @@ class AndroidFragment : BaseKoinFragment(), OnRefreshListener {
             }.also { mAdapter = it }
         }
         androidSr = rootView.findViewById<SmartRefreshLayout>(R.id.sr_android)
-            .apply { //设置 Header 为 经典 样式 带最后刷新时间
-                setRefreshHeader(ClassicsHeader(requireContext()).setEnableLastTime(true))
-                setEnableHeaderTranslationContent(true)
-                setEnableRefresh(true)
-                setOnRefreshListener(this@AndroidFragment)
-            }
+                .apply { //设置 Header 为 经典 样式 带最后刷新时间
+                    setRefreshHeader(ClassicsHeader(requireContext()).setEnableLastTime(true))
+                    setEnableHeaderTranslationContent(true)
+                    setEnableRefresh(true)
+                    setOnRefreshListener(this@AndroidFragment)
+                }
 
         mAdapter.apply {
             setNoMore(R.layout.view_load_no_more)

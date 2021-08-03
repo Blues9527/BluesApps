@@ -8,13 +8,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter
 import com.blues.wanandroid.model.WanAndroidEntity.DataBean.DatasBean
 import android.view.ViewGroup
-import com.blues.LoadingDialog
 import com.blues.framework.base.BaseKoinFragment
 import com.blues.wanandroid.view.WanAndroidViewHolder
 import com.blues.home.model.WanAndroidBannerEntity
 import com.blues.home.vm.WanAndroidBannerViewModel
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
-import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -35,13 +33,9 @@ class MainPageFragment : BaseKoinFragment() {
     override fun observe() {
         bannerViewModel.loadingEvent.observe(this) {
             if (it) {
-                if (!mLoading.isShowing) {
-                    mLoading.show()
-                }
+                showLoading()
             } else {
-                if (mLoading.isShowing) {
-                    mLoading.dismiss()
-                }
+                hideLoading()
             }
         }
 

@@ -19,7 +19,7 @@ abstract class BaseKoinFragment : Fragment() {
 
     protected lateinit var rootView: View
 
-    val mLoading: LoadingDialog by lazy {
+    private val mLoading: LoadingDialog by lazy {
         LoadingDialog(requireContext())
     }
 
@@ -27,9 +27,9 @@ abstract class BaseKoinFragment : Fragment() {
         savedInstanceState: Bundle?): View? {
 
         return inflater.inflate(getLayoutId(), container, false).also {
-                    rootView = it
-                    initData(inflater, container, savedInstanceState)
-                }
+            rootView = it
+            initData(inflater, container, savedInstanceState)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,4 +42,16 @@ abstract class BaseKoinFragment : Fragment() {
     abstract fun initData(inflater: LayoutInflater, container: ViewGroup?, saveInstanced: Bundle?)
 
     open fun observe() {}
+
+    protected fun showLoading() {
+        if (!mLoading.isShowing) {
+            mLoading.show()
+        }
+    }
+
+    protected fun hideLoading() {
+        if (mLoading.isShowing) {
+            mLoading.dismiss()
+        }
+    }
 }

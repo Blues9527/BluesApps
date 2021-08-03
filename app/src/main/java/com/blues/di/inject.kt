@@ -3,6 +3,7 @@ package com.blues.di
 import com.blues.constant.GANKIO
 import com.blues.constant.KAIYAN
 import com.blues.constant.WANANDROID
+import com.blues.framework.base.BaseViewModel
 import com.blues.framework.http.networkModule
 import com.blues.gankio.v1.service.GankRepository
 import com.blues.gankio.v1.service.provideGankApi
