@@ -11,12 +11,14 @@ import com.blues.home.view.MainPageFragment
 import com.blues.gankio.v1.view.StudyPageFragment
 import com.blues.kaiyan.list.view.KaiyanFragment
 import com.blues.framework.utils.HelperUtil
+import com.blues.kaiyan.list.view.KaiyanHotRankFragment
 
 class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private var mLastMillis: Long = 0
     private var mCurrentFragment: Fragment? = null
-    private val fragmentList: MutableList<Fragment> = mutableListOf(MainPageFragment(), StudyPageFragment(), KaiyanFragment())
+    //private val fragmentList: MutableList<Fragment> = mutableListOf(MainPageFragment(), StudyPageFragment(), KaiyanFragment())
+    private val fragmentList: MutableList<Fragment> = mutableListOf(KaiyanHotRankFragment(), StudyPageFragment(), KaiyanFragment())
 
     override fun onBackPressed() {
         showSimpleLog("on back press")

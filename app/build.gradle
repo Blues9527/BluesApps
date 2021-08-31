@@ -1,6 +1,7 @@
 import com.blues.plugin.AndroidX
 import com.blues.plugin.BaseConfig
 import com.blues.plugin.Coil
+import com.blues.plugin.Glide
 import com.blues.plugin.Koin
 import com.blues.plugin.Kotlin
 import com.blues.plugin.Network
@@ -122,6 +123,9 @@ dependencies {
     implementation Koin.core
     implementation Coil.core
     implementation Coil.gif
+
+    implementation Glide.glide
+    implementation Glide.compiler
     //leakcanary
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
 

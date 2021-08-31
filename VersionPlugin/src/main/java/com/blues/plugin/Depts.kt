@@ -94,3 +94,8 @@ object Others {
     const val multidex = "androidx.multidex:multidex:${Versions.multidex}"
 }
 
+object Glide{
+    const val glide  = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val compiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+}
+

@@ -78,4 +78,7 @@ object Versions {
 
     //ijkplayer
     const val ijkplayer = "0.8.8"
+
+    //glide
+    const val glide = "4.11.0"
 }
