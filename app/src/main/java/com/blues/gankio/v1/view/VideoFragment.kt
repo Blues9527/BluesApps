@@ -11,8 +11,8 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter
 import com.blues.gankio.v1.model.VideoInfoBean
 import androidx.recyclerview.widget.RecyclerView
 import com.blues.framework.base.BaseKoinFragment
-import com.xiao.nicevideoplayer.NiceVideoPlayerManager
 import com.blues.mock.VideoUrlConstant
+import com.blues.nicevideoplayer.NiceVideoPlayerManager
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
 class VideoFragment : BaseKoinFragment() {
@@ -46,7 +46,7 @@ class VideoFragment : BaseKoinFragment() {
                     val firstVisible = layoutManager.findFirstVisibleItemPosition()
                     if (firstVisible != mCurrentPosition) {
                         mCurrentPosition = firstVisible //停止当前视频的播放
-                        NiceVideoPlayerManager.instance().releaseNiceVideoPlayer()
+                        NiceVideoPlayerManager.instance.releaseNiceVideoPlayer()
                     }
                 }
             }

@@ -46,7 +46,7 @@ class KaiyanDetailHeaderView @JvmOverloads constructor(context: Context,
         tvAuthorDesc = view.findViewById(R.id.tv_author_desc)
     }
 
-    fun initDefault(ctx: Context, data: KaiyanBean.ItemListBean) {
+    fun initDefault(data: KaiyanBean.ItemListBean) {
         tvTitle.text = data.data.title
         tvDesc.text = data.data.description
         tvShare.text = data.data.consumption.shareCount.toString()

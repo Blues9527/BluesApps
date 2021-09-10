@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,60 +11,61 @@
         android:id="@+id/iv_hotrank_cover"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scaleType="fitXY"
         android:transitionName="@string/transitionName_OEObject"
-        android:scaleType="fitXY" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_avatar"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_below="@+id/iv_hotrank_cover"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_hotrank_cover"
         tool:background="@mipmap/ic_avatar_default" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_hotrank_cover"
-        android:layout_marginLeft="@dimen/dp_10"
-        android:layout_toRightOf="@+id/iv_avatar"
-        android:orientation="horizontal">
+        android:layout_marginStart="5dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/color_black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+        app:layout_constraintEnd_toStartOf="@+id/tv_category"
+        app:layout_constraintTop_toTopOf="@+id/iv_avatar"
+        tool:text="终于来了！蜘蛛侠3收支中字预告炸裂来袭！" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="10"
-            android:orientation="vertical">
+    <TextView
+        android:id="@+id/tv_tags"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textColor="@color/color_gray"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_title"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        tool:text="「蜘蛛侠：英雄无归」全球首支预告炸裂来袭！漫威电影宇宙新格局开启，蜘蛛侠携手奇异博士打开多元宇宙，探索无限可能！更有绿魔、章鱼博士、电光人加入！影片将于 12 月 17 日北美大荧幕献映，2021 年度必看超级英雄巨制敬请期待！" />
 
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/color_black"
-                android:textSize="16sp"
-                tool:text="Blues" />
+    <TextView
+        android:id="@+id/tv_category"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:gravity="center"
+        android:textSize="13sp"
+        android:textColor="@color/color_light_skyblue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintTop_toBottomOf="@+id/iv_hotrank_cover"
+        tool:text="#音乐" />
 
-            <TextView
-                android:id="@+id/tv_tags"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_gray"
-                android:textSize="13sp" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_category"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:gravity="center"
-            android:textSize="13sp"
-            tool:text="#音乐" />
-
-    </LinearLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

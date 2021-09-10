@@ -77,7 +77,7 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
             llHotSearch.visibility = View.GONE
             rvSearchResult.visibility = View.VISIBLE
             tvSearchResult.apply {
-                setTextColor(resources.getColor(R.color.color_black))
+                setTextColor(resources.getColor(R.color.color_black, null))
                 setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
                 text = String.format("『%s』共有%s条搜索结果", textInput, it.itemList.size)
             }
@@ -113,7 +113,7 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
             setOnClickListener(this@KaiyanSearchActivity)
         }
         tvSearchResult = findViewById<TextView>(R.id.tv_search_result).apply {
-            setTextColor(resources.getColor(R.color.color_weak_white))
+            setTextColor(resources.getColor(R.color.color_weak_white, null))
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 11f)
         }
         rvSearchResult = findViewById<EasyRecyclerView>(R.id.rv_search_result).apply {

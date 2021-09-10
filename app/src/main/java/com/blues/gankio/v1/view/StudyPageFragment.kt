@@ -22,7 +22,8 @@ import com.blues.framework.base.BaseKoinFragment
 class StudyPageFragment : BaseKoinFragment() {
 
     private val tabs = arrayOf("Android", "iOS", "Web", "Blues")
-    private val fragments = arrayOf(AndroidFragment(), IOSFragment(), WebFragment(), ArticleFragment())
+    private val fragments = arrayOf(AndroidFragment(), IOSFragment(), WebFragment(),
+            ArticleFragment())
 
     private fun getTabView(context: Context, text: String): View {
         val textView = TextView(context)
@@ -51,20 +52,22 @@ class StudyPageFragment : BaseKoinFragment() {
                     mViewPager.currentItem = tab.position
                     val view = tab.customView
                     if (view is TextView) {
-                        view.setTextColor(view.getResources().getColor(R.color.color_light_blue))
+                        view.setTextColor(
+                                view.getResources().getColor(R.color.color_light_blue, null))
                     }
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab) {
                     val view = tab.customView
                     if (view is TextView) {
-                        view.setTextColor(view.getResources().getColor(R.color.color_black))
+                        view.setTextColor(view.getResources().getColor(R.color.color_black, null))
                     }
                 }
 
                 override fun onTabReselected(tab: TabLayout.Tab) {}
             })
-            setSelectedTabIndicatorColor(mTab.resources.getColor(R.color.color_light_blue)) //因为fragment不销毁，所以添加新tabs前最好把旧的都移除掉先，否则就会出现重复的
+            setSelectedTabIndicatorColor(mTab.resources.getColor(R.color.color_light_blue,
+                    null)) //因为fragment不销毁，所以添加新tabs前最好把旧的都移除掉先，否则就会出现重复的
             removeAllTabs()
         }
         for (i in tabs.indices) {

@@ -1,13 +1,12 @@
 package com.blues.kaiyan.detail.view
 
-import com.xiao.nicevideoplayer.NiceVideoPlayer
+import com.blues.nicevideoplayer.TxVideoPlayerController
 import com.jude.easyrecyclerview.EasyRecyclerView
 import com.blues.kaiyan.list.model.KaiyanBean
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter
 import com.blues.kaiyan.detail.model.KaiyanDetailBean
 import com.blues.R
 import android.os.Bundle
-import com.xiao.nicevideoplayer.TxVideoPlayerController
 import com.jude.easyrecyclerview.decoration.DividerDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.ViewGroup
@@ -19,6 +18,7 @@ import android.widget.ImageView
 import coil.load
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.kaiyan.detail.vm.KaiyanDetailViewModel
+import com.blues.nicevideoplayer.NiceVideoPlayer
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -45,7 +45,7 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
             setTitle(null)
             setLength(data.data.duration.toLong() * 1000L) //这里将long类型时间长度转换成时分秒的单位是毫秒
         }
-        controller.imageView().load(data.data.cover.blurred){
+        controller.imageView().load(data.data.cover.blurred) {
             error(R.mipmap.ic_img_error)
         }
 
@@ -81,7 +81,7 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
             addHeader(KaiyanDetailHeaderView(this@KaiyanDetailActivity).also { mHeader = it })
             notifyDataSetChanged()
         }
-        mHeader.initDefault(this, data)
+        mHeader.initDefault(data)
         window.apply {
             enterTransition = AutoTransition()
             exitTransition = Explode()

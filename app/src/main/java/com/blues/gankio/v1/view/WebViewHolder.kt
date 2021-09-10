@@ -33,6 +33,6 @@ class WebViewHolder(parent: ViewGroup?) :
         val layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         rvImages.setLayoutManager(layoutManager)
         rvImages.adapter = WebImagesAdapter(data.images)
-        rlRoot.setOnClickListener { v: View? -> WebViewDialog(context, data.url).show() }
+        rlRoot.setOnClickListener { WebViewDialog(context, data.url).show() }
     }
 }

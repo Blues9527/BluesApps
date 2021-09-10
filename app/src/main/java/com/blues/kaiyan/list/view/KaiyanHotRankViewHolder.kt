@@ -11,6 +11,8 @@ import androidx.core.app.ActivityOptionsCompat
 import android.app.Activity
 import android.widget.ImageView
 import coil.load
+import coil.transform.CircleCropTransformation
+import com.bumptech.glide.Glide
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import java.lang.StringBuilder
 
@@ -33,12 +35,13 @@ class KaiyanHotRankViewHolder(parent: ViewGroup?) :
         val sb = StringBuilder()
 
         ivAvatar.load(data.data.author.icon) {
+            crossfade(true)
+            transformations(CircleCropTransformation())
             placeholder(R.drawable.shape_place_holder)
-            error(R.mipmap.ic_img_error)
         }
-        coverHotRank.load(data.data.cover.detail) {
-            placeholder(R.drawable.shape_place_holder)
-            error(R.mipmap.ic_img_error)
+
+        coverHotRank.load(data.data.cover.detail){
+            crossfade(true)
         }
 
         tvTitle.text = data.data.title
@@ -47,13 +50,15 @@ class KaiyanHotRankViewHolder(parent: ViewGroup?) :
             sb.append(tagsBean.name + "/")
         }
 
-        tvTags.text = String.format("#%s%s", sb, formatTime(data.data.duration))
+        tvTags.text = "#${sb}${formatTime(data.data.duration)}"
 
-        tvCategory.text = String.format("#%s", data.data.category)
+        tvCategory.text = "#${data.data.category}"
 
         coverHotRank.setOnClickListener {
-            val intent = Intent(context, KaiyanDetailActivity::class.java).putExtra("itemDetail", data)
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation((context as Activity), coverHotRank, "transitionOEObject")
+            val intent = Intent(context, KaiyanDetailActivity::class.java).putExtra("itemDetail",
+                    data)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation((context as Activity),
+                    coverHotRank, "transitionOEObject")
             context.startActivity(intent, options.toBundle())
         }
     }

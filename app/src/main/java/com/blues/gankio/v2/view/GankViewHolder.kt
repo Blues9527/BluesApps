@@ -39,7 +39,7 @@ class GankViewHolder(parent: ViewGroup?) :
         tvViews.text = data.views.toString()
         tvLikes.text = data.likeCounts.toString()
         tvPTime.text = "日期:${data.publishedAt}"
-        clRoot.setOnClickListener { v: View? ->
+        clRoot.setOnClickListener {
             val intent = Intent(context, GankPostDetailActivity::class.java).putExtra("postId", data._id)
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation((context as Activity), clRoot, "transitionGank")
             context.startActivity(intent, options.toBundle())

@@ -3,6 +3,7 @@ package com.blues.framework.utils
 import android.content.Context
 import android.net.NetworkInfo
 import android.net.ConnectivityManager
+import com.blues.application.BluesApplication
 
 /**
  * User : Blues
@@ -17,6 +18,5 @@ object NetWorkUtil {
 
     //需要添加权限 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     private val activeNetworkInfo: NetworkInfo
-        get() = (Utils.getContext()
-            .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo!!
+        get() = (BluesApplication.app.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo!!
 }

@@ -16,7 +16,7 @@ import com.blues.framework.base.BaseViewPagerAdapter
  */
 class KaiyanFragment : BaseKoinFragment() {
 
-    private val tabs = arrayOf("热门排行", "周排行", "月排行", "总排行")
+    private val tabs = arrayOf( "周排行", "月排行", "总排行")
 
     override fun getLayoutId(): Int = R.layout.fragment_openeye
 
@@ -24,7 +24,6 @@ class KaiyanFragment : BaseKoinFragment() {
         val mTab: TabLayout = rootView.findViewById(R.id.tl_fragment_bottom)
         val mViewPager: ViewPager = rootView.findViewById(R.id.vp_show)
         BaseViewPagerAdapter(childFragmentManager, tabs.asList()).apply {
-            addFragment(KaiyanHotRankFragment())
             addFragment(KaiyanWeeklyRankFragment())
             addFragment(KaiyanMonthlyRankFragment())
             addFragment(KaiyanHistoricalRankFragment())

@@ -11,12 +11,14 @@ import com.blues.home.view.MainPageFragment
 import com.blues.gankio.v1.view.StudyPageFragment
 import com.blues.kaiyan.list.view.KaiyanFragment
 import com.blues.framework.utils.HelperUtil
+import com.blues.kaiyan.list.view.KaiyanHotRankFragment
 
 class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private var mLastMillis: Long = 0
     private var mCurrentFragment: Fragment? = null
-    private val fragmentList: MutableList<Fragment> = mutableListOf(MainPageFragment(), StudyPageFragment(), KaiyanFragment())
+    //private val fragmentList: MutableList<Fragment> = mutableListOf(MainPageFragment(), StudyPageFragment(), KaiyanFragment())
+    private val fragmentList: MutableList<Fragment> = mutableListOf(KaiyanHotRankFragment(), StudyPageFragment(), KaiyanFragment())
 
     override fun onBackPressed() {
         showSimpleLog("on back press")
@@ -68,16 +70,23 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
         val isAdded = to.isAdded
         if (!isAdded) {
             if (from != null) {
-                transaction.hide(from).add(R.id.fl_container, to, null).show(to)
-                    .commitAllowingStateLoss()
+                transaction.hide(from)
+                        .add(R.id.fl_container, to, null)
+                        .show(to)
+                        .commitAllowingStateLoss()
             } else {
-                transaction.add(R.id.fl_container, to, null).show(to).commitAllowingStateLoss()
+                transaction.add(R.id.fl_container, to, null)
+                        .show(to)
+                        .commitAllowingStateLoss()
             }
         } else {
             if (from != null) {
-                transaction.hide(from).show(to).commitAllowingStateLoss()
+                transaction.hide(from)
+                        .show(to)
+                        .commitAllowingStateLoss()
             } else {
-                transaction.show(to).commitAllowingStateLoss()
+                transaction.show(to)
+                        .commitAllowingStateLoss()
             }
         }
         mCurrentFragment = to

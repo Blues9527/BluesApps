@@ -36,14 +36,6 @@
         <item name="colorAccent">@color/color_white</item>
     </style>
 
-    <style name="Theme_CustomProgressBar" parent="Widget.AppCompat.ProgressBar">
-        <item name="android:indeterminateDrawable">@drawable/custom_loading</item>
-        <item name="android:minWidth">25dp</item>
-        <item name="android:minHeight">25dp</item>
-        <item name="android:maxWidth">50dp</item>
-        <item name="android:maxHeight">50dp</item>
-    </style>
-
     <style name="Theme_LoadingDialog" parent="@android:style/Theme.Dialog">
         <!--Dialog的windowFrame框为无 -->
         <item name="android:windowFrame">@null</item>
@@ -89,5 +81,11 @@
         <item name="android:activityCloseExitAnimation">@anim/anim_slide_to_bottom</item>
     </style>
 
+    <style name="dialog_change_clarity" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@color/dialog_bg</item>
+    </style>
 
 </resources>

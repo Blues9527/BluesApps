@@ -39,11 +39,11 @@ class GankPostDetailActivity : BaseKoinActivity() {
                 tvComments.text = postDetail.likeCount.toString()
                 tvViews.text = postDetail.views.toString()
                 if (!TextUtils.isEmpty(postDetail.content)) {
-                    tvContents.text = Html.fromHtml(postDetail.content)
+                    tvContents.text = Html.fromHtml(postDetail.content, Html.FROM_HTML_MODE_LEGACY)
                 } else {
                     try {
                         val html = Markdown4jProcessor().process(postDetail.markdown)
-                        tvContents.text = Html.fromHtml(html)
+                        tvContents.text = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY)
                     } catch (e: IOException) {
                         e.printStackTrace()
                     }

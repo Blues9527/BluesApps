@@ -16,10 +16,12 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
- * User : Blues
- * Date : 2019/4/11
- * Time : 15:27
- */
+ * File: com.blues.home.view.MainPageFragment.kt
+ * Description: xxx
+ *
+ * @author: lanhuajian
+ * @time: 2021/8/3
+ **/
 class MainPageFragment : BaseKoinFragment() {
 
     private val bannerViewModel: WanAndroidBannerViewModel by viewModel()
@@ -27,6 +29,25 @@ class MainPageFragment : BaseKoinFragment() {
     private var mHeader: MainPageHeaderView? = null
 
     override fun getLayoutId(): Int = R.layout.fragment_mainpage
+
+    override fun observe() {
+        bannerViewModel.loadingEvent.observe(this) {
+            if (it) {
+                showLoading()
+            } else {
+                hideLoading()
+            }
+        }
+
+        bannerViewModel.wanAndroidBanner.observe(
+                requireActivity()) { wanAndroidBannerEntity: WanAndroidBannerEntity? ->
+            run {
+                wanAndroidBannerEntity?.let {
+                    mHeader?.initBanner(requireActivity(), it)
+                }
+            }
+        }
+    }
 
     override fun initData(inflater: LayoutInflater, container: ViewGroup?, saveInstanced: Bundle?) {
         bannerViewModel.getBanner()
@@ -39,20 +60,10 @@ class MainPageFragment : BaseKoinFragment() {
                 setLayoutManager(LinearLayoutManager(requireActivity()))
                 adapter = object : RecyclerArrayAdapter<DatasBean?>(requireActivity()) {
                     override fun OnCreateViewHolder(parent: ViewGroup,
-                        viewType: Int): BaseViewHolder<*> {
-                        return WanAndroidViewHolder(parent)
-                    }
+                        viewType: Int): BaseViewHolder<*> = WanAndroidViewHolder(parent)
                 }.also { mAdapter = it }
             }
             mAdapter.addHeader(MainPageHeaderView(requireActivity()).also { mHeader = it })
-
-            bannerViewModel.wanAndroidBanner.observe(requireActivity(), { wanAndroidBannerEntity: WanAndroidBannerEntity? ->
-                run {
-                    wanAndroidBannerEntity?.let {
-                        mHeader?.initBanner(requireActivity(), it)
-                    }
-                }
-            })
         }
     }
 }

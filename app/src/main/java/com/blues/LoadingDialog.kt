@@ -6,8 +6,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.graphics.drawable.ColorDrawable
 import android.view.Gravity
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.ProgressBar
 
 class LoadingDialog(context: Context) : Dialog(context, R.style.Theme_LoadingDialog) {
+
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +21,9 @@ class LoadingDialog(context: Context) : Dialog(context, R.style.Theme_LoadingDia
 
         //设置视图
         setContentView(R.layout.dialog_loading)
+
+        //初始化view
+        initView()
 
         //设置是否可撤销
         setCancelable(true)
@@ -39,5 +46,11 @@ class LoadingDialog(context: Context) : Dialog(context, R.style.Theme_LoadingDia
             //设置弹窗的宽高
             setLayout(-1, -1)
         }
+    }
+
+    private fun initView() {
+        progressBar = findViewById(R.id.pb_loading)
+
+        progressBar.interpolator = AccelerateDecelerateInterpolator()
     }
 }

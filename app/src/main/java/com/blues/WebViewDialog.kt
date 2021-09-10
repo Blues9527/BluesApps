@@ -3,7 +3,6 @@ package com.blues
 import android.app.Dialog
 import android.content.Context
 import com.blues.framework.utils.NetWorkUtil.isConnected
-import com.blues.framework.widget.CWebView
 import android.view.ViewStub
 import android.os.Bundle
 import android.webkit.WebViewClient
