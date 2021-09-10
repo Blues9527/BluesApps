@@ -3,9 +3,9 @@ package com.blues.gankio.v1.view
 import android.view.ViewGroup
 import com.blues.gankio.v1.model.VideoInfoBean
 import com.blues.R
+import com.blues.nicevideoplayer.NiceVideoPlayer
+import com.blues.nicevideoplayer.TxVideoPlayerController
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
-import com.xiao.nicevideoplayer.NiceVideoPlayer
-import com.xiao.nicevideoplayer.TxVideoPlayerController
 
 /**
  * User : Blues

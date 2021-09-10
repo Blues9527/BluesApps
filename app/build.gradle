@@ -2,12 +2,14 @@ import com.blues.plugin.AndroidX
 import com.blues.plugin.BaseConfig
 import com.blues.plugin.Coil
 import com.blues.plugin.Glide
+import com.blues.plugin.MMKV
 import com.blues.plugin.Koin
 import com.blues.plugin.Kotlin
 import com.blues.plugin.Network
 import com.blues.plugin.Others
 import com.blues.plugin.Room
 import com.blues.plugin.UiComponent
+import com.blues.plugin.Video
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -124,13 +126,18 @@ dependencies {
     implementation Coil.core
     implementation Coil.gif
 
+    implementation Video.ijkplayerJava
+    implementation Video.ijkplayerArmv7a
+    implementation Video.ijkplayerArm64
+    implementation Video.ijkplayerExo
+    implementation AndroidX.annotation
+
     implementation Glide.glide
     implementation Glide.compiler
+
+    implementation MMKV.mmkv
     //leakcanary
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
-
-    //nicevideoplayer通过library库来依赖，因为需要做一些小修改
-    api project(':nicevideoplayer')
 }
 repositories {
     mavenCentral()

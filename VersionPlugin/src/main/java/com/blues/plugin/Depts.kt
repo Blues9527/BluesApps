@@ -11,7 +11,7 @@ object BaseConfig {
 
     const val compileSdkVersion = 30
     const val buildToolsVersion = "30.0.3"
-    const val minSdkVersion = 21
+    const val minSdkVersion = 24
     const val targetSdkVersion = 30
     const val versionCode = 103
     const val versionName = "1.0.3"
@@ -97,5 +97,9 @@ object Others {
 object Glide{
     const val glide  = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val compiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+}
+
+object MMKV{
+    const val mmkv = "com.tencent:mmkv-static:${Versions.mmkv}"
 }
 

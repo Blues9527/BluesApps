@@ -14,6 +14,7 @@ import coil.decode.ImageDecoderDecoder
 import coil.util.CoilUtils
 import com.blues.adapter.ActivityLifecycleCallbacksAdapter
 import com.blues.di.allModules
+import com.tencent.mmkv.MMKV
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -51,6 +52,9 @@ class BluesApplication : MultiDexApplication() {
 
         //初始化coil
         initCoil()
+
+        //注册mmkv
+        MMKV.initialize(this)
     }
 
     private fun initKoin() {
@@ -76,21 +80,17 @@ class BluesApplication : MultiDexApplication() {
     }
 
     private fun initCoil() {
-        val imageLoader = ImageLoader.Builder(applicationContext)
-                .crossfade(true)
+        val imageLoader = ImageLoader.Builder(applicationContext).crossfade(true)
                 .componentRegistry {
                     if (SDK_INT >= 28) {
                         add(ImageDecoderDecoder(applicationContext))
                     } else {
                         add(GifDecoder())
                     }
-                }
-                .okHttpClient {
-                    OkHttpClient.Builder()
-                            .cache(CoilUtils.createDefaultCache(applicationContext))
+                }.okHttpClient {
+                    OkHttpClient.Builder().cache(CoilUtils.createDefaultCache(applicationContext))
                             .build()
-                }
-                .build()
+                }.build()
         Coil.setImageLoader(imageLoader)
     }
 }

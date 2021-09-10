@@ -5,6 +5,7 @@ import com.blues.constant.KAIYAN
 import com.blues.constant.WANANDROID
 import com.blues.framework.base.BaseViewModel
 import com.blues.framework.http.networkModule
+import com.blues.framework.utils.mmkv
 import com.blues.gankio.v1.service.GankRepository
 import com.blues.gankio.v1.service.provideGankApi
 import com.blues.gankio.v1.vm.GankViewModel
@@ -125,7 +126,14 @@ val gankioModule = module {
     }
 }
 
-val allModules = (networkModule + wanAndroidVmModule + registerModule + loginModule + kaiyanModule + gankioModule)
+val allModules = (networkModule
+        + wanAndroidVmModule
+        + registerModule
+        + loginModule
+        + kaiyanModule
+        + gankioModule
+        + mmkv
+        )
 
 
 

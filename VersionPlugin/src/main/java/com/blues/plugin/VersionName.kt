@@ -81,4 +81,7 @@ object Versions {
 
     //glide
     const val glide = "4.11.0"
+
+    //mmkv
+    const val mmkv ="1.2.10"
 }

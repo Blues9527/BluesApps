@@ -41,7 +41,8 @@ class GankActivity : BaseKoinActivity() {
 
     override fun observe() {
         gankioViewModel.banner.observe(this) { bean ->
-            startBannerLoop(bean.data.map { it.image } as MutableList<String>, bean.data.map { it.url } as MutableList<String>)
+            startBannerLoop(bean.data.map { it.image } as MutableList<String>,
+                    bean.data.map { it.url } as MutableList<String>)
         }
 
         gankioViewModel.category.observe(this) {
@@ -66,34 +67,36 @@ class GankActivity : BaseKoinActivity() {
                     mViewPager.currentItem = tab.position
                     val view = tab.customView
                     if (view is TextView) {
-                        view.setTextColor(view.getResources()
-                                .getColor(R.color.color_light_blue))
+                        view.setTextColor(
+                                view.getResources().getColor(R.color.color_light_blue, null))
                     }
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab) {
                     val view = tab.customView
                     if (view is TextView) {
-                        view.setTextColor(view.getResources()
-                                .getColor(R.color.color_black))
+                        view.setTextColor(view.getResources().getColor(R.color.color_black, null))
                     }
                 }
 
                 override fun onTabReselected(tab: TabLayout.Tab) {}
             })
 
-            mTabLayout.setSelectedTabIndicatorColor(mTabLayout.resources.getColor(R.color.color_light_blue)) //因为fragment不销毁，所以添加新tabs前最好把旧的都移除掉先，否则就会出现重复的
+            mTabLayout.setSelectedTabIndicatorColor(
+                    mTabLayout.resources.getColor(R.color.color_light_blue,
+                            null)) //因为fragment不销毁，所以添加新tabs前最好把旧的都移除掉先，否则就会出现重复的
             mTabLayout.removeAllTabs()
             for (i in mTabs.indices) {
-                mTabLayout.addTab(mTabLayout.newTab()
-                        .setCustomView(getTabView(this, mTabs[i])), i == 0)
+                mTabLayout.addTab(mTabLayout.newTab().setCustomView(getTabView(this, mTabs[i])),
+                        i == 0)
             }
         }
     }
 
     private fun startBannerLoop(images: MutableList<String>, urls: MutableList<String>) {
         Handler(Looper.getMainLooper()).post {
-            val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 185f.dp.toInt())
+            val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                    185f.dp.toInt())
             mBanner.apply {
                 setPlayDelay(3000)
                 setHintPadding(10f.dp.toInt(), 0, 10f.dp.toInt(), 10f.dp.toInt())
@@ -106,10 +109,9 @@ class GankActivity : BaseKoinActivity() {
                         WebViewDialog(this@GankActivity, urls[realPosition]).show()
                     }
                 })
+            }.also { //开启轮播
+                mBanner.setAdapter(it)
             }
-                    .also { //开启轮播
-                        mBanner.setAdapter(it)
-                    }
         }
     }
 
