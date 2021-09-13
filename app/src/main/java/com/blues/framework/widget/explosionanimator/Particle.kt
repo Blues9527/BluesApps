@@ -1,30 +1,17 @@
-package com.blues.framework.widget.explosionanimator;
+package com.blues.framework.widget.explosionanimator
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.graphics.Canvas
+import android.graphics.Paint
 
 /**
  * 粒子
  */
-public abstract class Particle {
+abstract class Particle(var color: Int, var cx: Float, var cy: Float) {
 
-    float cx;
-    float cy;
-    int color;
-
-    public Particle(int color, float x, float y) {
-        cx = x;
-        cy = y;
-        this.color = color;
-    }
-
-    protected abstract void draw(Canvas canvas, Paint paint);
-
-    protected abstract void calculate(float factor);
-
-    public void advance(Canvas canvas, Paint paint, float factor) {
-        calculate(factor);
-        draw(canvas, paint);
-
+    protected abstract fun draw(canvas: Canvas, paint: Paint)
+    protected abstract fun calculate(factor: Float)
+    fun advance(canvas: Canvas, paint: Paint, factor: Float) {
+        calculate(factor)
+        draw(canvas, paint)
     }
 }

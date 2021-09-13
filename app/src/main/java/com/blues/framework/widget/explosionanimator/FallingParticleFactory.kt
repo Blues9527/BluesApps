@@ -1,34 +1,34 @@
-package com.blues.framework.widget.explosionanimator;
+package com.blues.framework.widget.explosionanimator
 
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import android.graphics.Bitmap
+import android.graphics.Rect
 
-public class FallingParticleFactory extends ParticleFactory {
-    public static final int PART_WH = 8; //默认小球宽高
+class FallingParticleFactory : ParticleFactory() {
 
-    @Override
-    public Particle[][] generateParticles(Bitmap bitmap, Rect bound) {
-        int w = bound.width();
-        int h = bound.height();
+    companion object {
 
-        int partW_Count = w / PART_WH; //横向个数
-        int partH_Count = h / PART_WH; //竖向个数
+        const val PART_WH = 8 //默认小球宽高
+    }
 
-        int bitmap_part_w = bitmap.getWidth() / partW_Count;
-        int bitmap_part_h = bitmap.getHeight() / partH_Count;
-
-        Particle[][] particles = new Particle[partH_Count][partW_Count];
-        for (int row = 0; row < partH_Count; row++) { //行
-            for (int column = 0; column < partW_Count; column++) { //列
-                //取得当前粒子所在位置的颜色
-                int color = bitmap.getPixel(column * bitmap_part_w, row * bitmap_part_h);
-
-                float x = bound.left + FallingParticleFactory.PART_WH * column;
-                float y = bound.top + FallingParticleFactory.PART_WH * row;
-                particles[row][column] = new FallingParticle(color, x, y, bound);
+    override fun generateParticles(bitmap: Bitmap?, rect: Rect): Array<Array<Particle?>> {
+        val w = rect.width()
+        val h = rect.height()
+        val partWCount = w / PART_WH //横向个数
+        val partHCount = h / PART_WH //竖向个数
+        val particles = Array<Array<Particle?>>(partHCount) { arrayOfNulls(partWCount) }
+        bitmap?.let {
+            val bitmapPartW = bitmap.width / partWCount
+            val bitmapPartH = bitmap.height / partHCount
+            for (row in 0 until partHCount) { //行
+                for (column in 0 until partWCount) { //列
+                    //取得当前粒子所在位置的颜色
+                    val color = bitmap.getPixel(column * bitmapPartW, row * bitmapPartH)
+                    val x = (rect.left + PART_WH * column).toFloat()
+                    val y = (rect.top + PART_WH * row).toFloat()
+                    particles[row][column] = FallingParticle(color, x, y, rect)
+                }
             }
         }
-
-        return particles;
+        return particles
     }
 }

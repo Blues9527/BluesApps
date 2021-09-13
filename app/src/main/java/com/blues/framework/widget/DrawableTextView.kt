@@ -1,54 +1,30 @@
-package com.blues.framework.widget;
+package com.blues.framework.widget
 
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.util.AttributeSet;
-import android.widget.TextView;
+import android.content.Context
+import android.util.AttributeSet
+import android.graphics.Canvas
+import android.widget.TextView
 
+class DrawableTextView @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0) : TextView(context, attrs, defStyleAttr) {
 
-import androidx.annotation.Nullable;
+    override fun onDraw(canvas: Canvas) {
 
-public class DrawableTextView extends TextView {
-
-    public DrawableTextView(Context context) {
-        this(context, null);
-    }
-
-    public DrawableTextView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public DrawableTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-
-        //Returns drawables for the left, top, right, and bottom borders.
-        Drawable[] drawables = getCompoundDrawables();
-        Drawable leftDrawable = drawables[0];
+        val drawables = compoundDrawables
+        val leftDrawable = drawables[0]
         if (leftDrawable != null) {
             // 得到leftDrawable的宽度
-
-            int leftDrawableWidth = leftDrawable.getIntrinsicWidth();
+            val leftDrawableWidth = leftDrawable.intrinsicWidth
 
             // 得到drawable与text之间的间距
-
-            int drawablePadding = getCompoundDrawablePadding();
+            val drawablePadding = compoundDrawablePadding
 
             // 得到文本的宽度
-
-            int textWidth = (int) getPaint().measureText(getText().toString().trim());
-
-            int bodyWidth = leftDrawableWidth + drawablePadding + textWidth;
-
-            canvas.save();
-
-            canvas.translate((getWidth() - bodyWidth) >> 1, 0);
+            val textWidth = paint.measureText(text.toString().trim { it <= ' ' }).toInt()
+            val bodyWidth = leftDrawableWidth + drawablePadding + textWidth
+            canvas.save()
+            canvas.translate((width - bodyWidth shr 1).toFloat(), 0f)
         }
-
-        super.onDraw(canvas);
+        super.onDraw(canvas)
     }
 }

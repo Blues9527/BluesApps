@@ -1,10 +1,9 @@
-package com.blues.framework.widget.explosionanimator;
+package com.blues.framework.widget.explosionanimator
 
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import android.graphics.Bitmap
+import android.graphics.Rect
 
-public abstract class ParticleFactory {
+abstract class ParticleFactory {
 
-
-    public abstract Particle[][] generateParticles(Bitmap bitmap, Rect rect);
+    abstract fun generateParticles(bitmap: Bitmap?, rect: Rect): Array<Array<Particle?>>
 }
