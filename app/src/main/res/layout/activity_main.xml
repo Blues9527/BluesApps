@@ -24,13 +24,14 @@
                 android:layout_height="28dp"
                 android:src="@drawable/ic_svg_search" />
 
-            <EditText
-                style="@style/Widget.AppCompat.EditText"
+            <com.blues.framework.widget.NoTouchEditText
+                android:id="@+id/edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:hint="search what you want~"
-                android:textColorHint="@color/color_black" />
+                android:textColorHint="@color/color_black"
+                android:theme="@style/CustomEditText" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -40,7 +41,7 @@
         android:id="@+id/fl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_view"

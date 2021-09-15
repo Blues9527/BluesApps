@@ -5,6 +5,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MenuItem
+import android.widget.EditText
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.blues.framework.base.BaseKoinActivity
@@ -18,6 +19,7 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
     private var mLastMillis: Long = 0
     private var mCurrentFragment: Fragment? = null
     private lateinit var toolBar: Toolbar
+    private lateinit var editText:EditText
 
     //private val fragmentList: MutableList<Fragment> = mutableListOf(MainPageFragment(), StudyPageFragment(), KaiyanFragment())
     private val fragmentList: MutableList<Fragment> = mutableListOf(KaiyanHotRankFragment(),
@@ -48,6 +50,8 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
         toolBar.setOnClickListener {
             startActivity<KaiyanSearchActivity>()
         }
+
+        editText = findViewById(R.id.edit_text)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
