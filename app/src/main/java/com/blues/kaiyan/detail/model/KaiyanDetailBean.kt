@@ -10,11 +10,20 @@ import java.io.Serializable
  */
 class KaiyanDetailBean : Serializable {
 
+    @JSONField(name = "count")
     var count = 0
+
+    @JSONField(name = "total")
     var total = 0
+
+    @JSONField(name = "nextPageUrl")
     var nextPageUrl: Any? = null
+
+    @JSONField(name = "adExist")
     var isAdExist = false
-    var itemList: List<ItemListBean>? = null
+
+    @JSONField(name = "itemList")
+    var itemList: List<ItemListBean> = mutableListOf()
 
     class ItemListBean : Serializable {
 
@@ -26,7 +35,7 @@ class KaiyanDetailBean : Serializable {
          * adIndex : -1
          */
         @JSONField(name = "type")
-        var type: String? = null
+        var type: String = ""
 
         @JSONField(name = "data")
         var data: DataBean? = null
@@ -54,43 +63,43 @@ class KaiyanDetailBean : Serializable {
              */
 
             @JSONField(name = "dataType")
-            var dataType: String? = null
+            var dataType: String = ""
 
             @JSONField(name = "id")
             var id = 0
 
             @JSONField(name = "type")
-            var type: String? = null
+            var type: String = ""
 
             @JSONField(name = "text")
-            var text: String? = null
+            var text: String = ""
 
             @JSONField(name = "subTitle")
             var subTitle: Any? = null
 
             @JSONField(name = "actionUrl")
-            var actionUrl: String? = null
+            var actionUrl: String = ""
 
             @JSONField(name = "adTrack")
-            var adTrack: Any? = null
+            var adTrack: Any = ""
 
             @JSONField(name = "follow")
             var follow: Any? = null
 
             @JSONField(name = "title")
-            var title: String? = null
+            var title: String = ""
 
             @JSONField(name = "description")
-            var description: String? = null
+            var description: String = ""
 
             @JSONField(name = "library")
-            var library: String? = null
+            var library: String = ""
 
             @JSONField(name = "consumption")
             var consumption: ConsumptionBean? = null
 
             @JSONField(name = "resourceType")
-            var resourceType: String? = null
+            var resourceType: String = ""
 
             @JSONField(name = "slogan")
             var slogan: Any? = null
@@ -99,7 +108,7 @@ class KaiyanDetailBean : Serializable {
             var provider: ProviderBean? = null
 
             @JSONField(name = "category")
-            var category: String? = null
+            var category: String = ""
 
             @JSONField(name = "author")
             var author: AuthorBean? = null
@@ -108,7 +117,7 @@ class KaiyanDetailBean : Serializable {
             var cover: CoverBean? = null
 
             @JSONField(name = "playUrl")
-            var playUrl: String? = null
+            var playUrl: String = ""
 
             @JSONField(name = "thumbPlayUrl")
             var thumbPlayUrl: Any? = null
@@ -138,7 +147,7 @@ class KaiyanDetailBean : Serializable {
             var descriptionPgc: Any? = null
 
             @JSONField(name = "remark")
-            var remark: String? = null
+            var remark: String = ""
 
             @JSONField(name = "ifLimitVideo")
             var isIfLimitVideo = false
@@ -168,7 +177,7 @@ class KaiyanDetailBean : Serializable {
             var label: Any? = null
 
             @JSONField(name = "descriptionEditor")
-            var descriptionEditor: String? = null
+            var descriptionEditor: String = ""
 
             @JSONField(name = "collected")
             var isCollected = false
@@ -222,13 +231,13 @@ class KaiyanDetailBean : Serializable {
                  * icon : http://img.kaiyanapp.com/c3ad630be461cbb081649c9e21d6cbe3.png
                  */
                 @JSONField(name = "name")
-                var name: String? = null
+                var name: String = ""
 
                 @JSONField(name = "alias")
-                var alias: String? = null
+                var alias: String = ""
 
                 @JSONField(name = "icon")
-                var icon: String? = null
+                var icon: String = ""
             }
 
             class AuthorBean : Serializable {
@@ -253,16 +262,16 @@ class KaiyanDetailBean : Serializable {
                 var id = 0
 
                 @JSONField(name = "icon")
-                var icon: String? = null
+                var icon: String = ""
 
                 @JSONField(name = "name")
-                var name: String? = null
+                var name: String = ""
 
                 @JSONField(name = "description")
-                var description: String? = null
+                var description: String = ""
 
                 @JSONField(name = "link")
-                var link: String? = null
+                var link: String = ""
 
                 @JSONField(name = "latestReleaseTime")
                 var latestReleaseTime: Long = 0
@@ -299,7 +308,7 @@ class KaiyanDetailBean : Serializable {
                      * followed : false
                      */
                     @JSONField(name = "itemType")
-                    var itemType: String? = null
+                    var itemType: String = ""
 
                     @JSONField(name = "itemId")
                     var itemId = 0
@@ -316,7 +325,7 @@ class KaiyanDetailBean : Serializable {
                      * shielded : false
                      */
                     @JSONField(name = "itemType")
-                    var itemType: String? = null
+                    var itemType: String = ""
 
                     @JSONField(name = "itemId")
                     var itemId = 0
@@ -336,19 +345,19 @@ class KaiyanDetailBean : Serializable {
                  * homepage : http://img.kaiyanapp.com/20a2d60c40c8cb6983e05918b5488d37.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim
                  */
                 @JSONField(name = "feed")
-                var feed: String? = null
+                var feed: String = ""
 
                 @JSONField(name = "detail")
-                var detail: String? = null
+                var detail: String = ""
 
                 @JSONField(name = "blurred")
-                var blurred: String? = null
+                var blurred: String = ""
 
                 @JSONField(name = "sharing")
                 var sharing: Any? = null
 
                 @JSONField(name = "homepage")
-                var homepage: String? = null
+                var homepage: String = ""
             }
 
             class WebUrlBean : Serializable {
@@ -358,10 +367,10 @@ class KaiyanDetailBean : Serializable {
                  * forWeibo : http://www.eyepetizer.net/detail.html?vid=171095&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0
                  */
                 @JSONField(name = "raw")
-                var raw: String? = null
+                var raw: String = ""
 
                 @JSONField(name = "forWeibo")
-                var forWeibo: String? = null
+                var forWeibo: String = ""
             }
 
             class TagsBean : Serializable {
@@ -383,10 +392,10 @@ class KaiyanDetailBean : Serializable {
                 var id = 0
 
                 @JSONField(name = "name")
-                var name: String? = null
+                var name: String = ""
 
                 @JSONField(name = "actionUrl")
-                var actionUrl: String? = null
+                var actionUrl: String = ""
 
                 @JSONField(name = "adTrack")
                 var adTrack: Any? = null
@@ -395,13 +404,13 @@ class KaiyanDetailBean : Serializable {
                 var desc: Any? = null
 
                 @JSONField(name = "bgPicture")
-                var bgPicture: String? = null
+                var bgPicture: String = ""
 
                 @JSONField(name = "headerImage")
-                var headerImage: String? = null
+                var headerImage: String = ""
 
                 @JSONField(name = "tagRecType")
-                var tagRecType: String? = null
+                var tagRecType: String = ""
 
                 @JSONField(name = "childTagList")
                 var childTagList: Any? = null
@@ -430,16 +439,16 @@ class KaiyanDetailBean : Serializable {
                 var width = 0
 
                 @JSONField(name = "name")
-                var name: String? = null
+                var name: String = ""
 
                 @JSONField(name = "type")
-                var type: String? = null
+                var type: String = ""
 
                 @JSONField(name = "url")
-                var url: String? = null
+                var url: String = ""
 
                 @JSONField(name = "urlList")
-                var urlList: List<UrlListBean>? = null
+                var urlList: List<UrlListBean> = mutableListOf()
 
                 class UrlListBean : Serializable {
 
@@ -449,10 +458,10 @@ class KaiyanDetailBean : Serializable {
                      * size : 20077971
                      */
                     @JSONField(name = "name")
-                    var name: String? = null
+                    var name: String = ""
 
                     @JSONField(name = "url")
-                    var url: String? = null
+                    var url: String = ""
 
                     @JSONField(name = "size")
                     var size = 0
