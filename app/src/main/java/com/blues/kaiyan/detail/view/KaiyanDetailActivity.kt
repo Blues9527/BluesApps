@@ -43,9 +43,9 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
 
         val controller = TxVideoPlayerController(this).apply {
             setTitle(null)
-            setLength(data.data.duration.toLong() * 1000L) //这里将long类型时间长度转换成时分秒的单位是毫秒
+            setLength(data.data?.duration!!.toLong() * 1000L) //这里将long类型时间长度转换成时分秒的单位是毫秒
         }
-        controller.imageView().load(data.data.cover.blurred) {
+        controller.imageView().load(data.data?.cover?.blurred) {
             error(R.mipmap.ic_img_error)
         }
 
@@ -53,7 +53,7 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
         nvpVideo.apply {
             setPlayerType(NiceVideoPlayer.TYPE_NATIVE)
             setBackgroundResource(R.drawable.shape_background)
-            setUp(data.data.playUrl, null)
+            setUp(data.data?.playUrl, null)
             setController(controller)
             post {
                 nvpVideo.continueFromLastPosition(false)
@@ -106,7 +106,7 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
         itemListBean = intent.extras?.get("itemDetail") as KaiyanBean.ItemListBean
         itemListBean?.let {
             initDefaultView(it)
-            kaiyanDetailViewModel.getDetail(it.data.id.toString())
+            kaiyanDetailViewModel.getDetail(it.data?.id.toString())
         }
 
         ivBack.setOnClickListener(this)
@@ -117,7 +117,7 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
         itemListBean = intent.extras?.get("itemDetail") as KaiyanBean.ItemListBean
         itemListBean?.let {
             initDefaultView(it)
-            kaiyanDetailViewModel.getDetail(it.data.id.toString())
+            kaiyanDetailViewModel.getDetail(it.data?.id.toString())
         }
     }
 

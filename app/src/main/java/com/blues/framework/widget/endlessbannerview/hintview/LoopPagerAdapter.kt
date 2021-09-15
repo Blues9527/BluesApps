@@ -1,102 +1,89 @@
-package com.blues.framework.widget.endlessbannerview.hintview;
+package com.blues.framework.widget.endlessbannerview.hintview
 
-import android.database.DataSetObserver;
-import androidx.viewpager.widget.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.blues.framework.widget.endlessbannerview.BannerView;
-
-import java.util.ArrayList;
+import com.blues.framework.widget.endlessbannerview.BannerView
+import androidx.viewpager.widget.PagerAdapter
+import java.util.ArrayList
+import com.blues.framework.widget.endlessbannerview.BannerView.HintViewDelegate
+import android.database.DataSetObserver
+import android.view.View
+import android.view.ViewGroup
 
 /**
  * Created by Mr.Jude on 2016/1/9.
  */
-public abstract class LoopPagerAdapter extends PagerAdapter {
-    private BannerView mViewPager;
+abstract class LoopPagerAdapter(private val mViewPager: BannerView) : PagerAdapter() {
 
-    private ArrayList<View> mViewList = new ArrayList<>();
+    init {
+        mViewPager.setHintViewDelegate(LoopHintViewDelegate())
+    }
 
-    private class LoopHintViewDelegate implements BannerView.HintViewDelegate {
-        @Override
-        public void setCurrentPosition(int position, int duration, HintView hintView) {
-            if (hintView != null)
-                hintView.setCurrent(position % getRealCount(), duration);
+    private val mViewList = ArrayList<View>()
+
+    private inner class LoopHintViewDelegate : HintViewDelegate {
+
+        override fun setCurrentPosition(position: Int, duration: Int, hintView: HintView?) {
+            hintView?.setCurrent(position % getRealCount(), duration)
         }
 
-        @Override
-        public void initView(int length, int gravity, int duration, HintView hintView) {
-            if (hintView != null)
-                hintView.initView(getRealCount(), gravity, duration);
+        override fun initView(length: Int, gravity: Int, duration: Int, hintView: HintView?) {
+            hintView?.initView(getRealCount(), gravity, duration)
         }
     }
 
-    @Override
-    public void notifyDataSetChanged() {
-        mViewList.clear();
-        mViewPager.getViewPager().setAdapter(this);
-        initPosition(true);
-        super.notifyDataSetChanged();
+    override fun notifyDataSetChanged() {
+        mViewList.clear()
+        mViewPager.viewPager?.adapter = this
+        initPosition(true)
+        super.notifyDataSetChanged()
     }
 
     //一定要用这个回调,因为它只有第一次设置Adapter才会被回调。而除了这个时候去设置位置都是...ANR
-    @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
-        super.registerDataSetObserver(observer);
-        initPosition(false);
+    override fun registerDataSetObserver(observer: DataSetObserver) {
+        super.registerDataSetObserver(observer)
+        initPosition(false)
     }
 
-    private void initPosition(boolean isFast) {
-        if (getCount() <= 1) return;
-        int half = isFast ? getRealCount() * 3 : Integer.MAX_VALUE / 2;
-        int start = half - half % getRealCount();
-        mViewPager.getViewPager().setCurrentItem(start, false);
+    private fun initPosition(isFast: Boolean) {
+        if (count <= 1) return
+        val half = if (isFast) getRealCount() * 3 else Int.MAX_VALUE / 2
+        val start = half - half % getRealCount()
+        mViewPager.viewPager?.setCurrentItem(start, false)
     }
 
-    public LoopPagerAdapter(BannerView viewPager) {
-        this.mViewPager = viewPager;
-        viewPager.setHintViewDelegate(new LoopHintViewDelegate());
+    override fun isViewFromObject(arg0: View, arg1: Any): Boolean {
+        return arg0 === arg1
     }
 
-    @Override
-    public boolean isViewFromObject(View arg0, Object arg1) {
-        return arg0 == arg1;
+    override fun destroyItem(container: ViewGroup, position: Int, view: Any) {
+        container.removeView(view as View)
     }
 
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((View) object);
+    override fun instantiateItem(container: ViewGroup, position: Int): Any {
+        val realPosition = position % getRealCount()
+        val itemView = findViewByPosition(container, realPosition)
+        container.removeView(itemView)
+        container.addView(itemView)
+        return itemView
     }
 
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        int realPosition = position % getRealCount();
-        View itemView = findViewByPosition(container, realPosition);
-        container.removeView(itemView);
-        container.addView(itemView);
-        return itemView;
-    }
-
-
-    private View findViewByPosition(ViewGroup container, int position) {
-        for (View view : mViewList) {
-            if (((int) view.getTag()) == position && view.getParent() == null) {
-                return view;
+    private fun findViewByPosition(container: ViewGroup, position: Int): View {
+        for (view in mViewList) {
+            if (view.tag as Int == position && view.parent == null) {
+                return view
             }
         }
-        View view = getView(container, position);
-        view.setTag(position);
-        mViewList.add(view);
-        return view;
+        val view = getView(container, position)
+        view.tag = position
+        mViewList.add(view)
+        return view
     }
 
-    public abstract View getView(ViewGroup container, int position);
+    abstract fun getView(container: ViewGroup, position: Int): View
 
-    @Deprecated
-    @Override
-    public final int getCount() {
-        return getRealCount() <= 1 ? getRealCount() : Integer.MAX_VALUE;
+    override fun getCount(): Int {
+        return if (getRealCount() <= 1) getRealCount() else Int.MAX_VALUE
     }
 
-    protected abstract int getRealCount();
+    protected abstract fun  getRealCount(): Int
+
 }

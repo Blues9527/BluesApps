@@ -12,7 +12,6 @@ import android.app.Activity
 import android.widget.ImageView
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.bumptech.glide.Glide
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import java.lang.StringBuilder
 
@@ -29,34 +28,33 @@ class KaiyanHotRankViewHolder(parent: ViewGroup?) :
     private val tvCategory: TextView = itemView.findViewById(R.id.tv_category)
     private val coverHotRank: ImageView = itemView.findViewById(R.id.iv_hotrank_cover)
 
-    override fun setData(data: KaiyanBean.ItemListBean) {
-        super.setData(data)
+    override fun setData(item: KaiyanBean.ItemListBean) {
+        super.setData(item)
 
         val sb = StringBuilder()
 
-        ivAvatar.load(data.data.author.icon) {
-            crossfade(true)
-            transformations(CircleCropTransformation())
-            placeholder(R.drawable.shape_place_holder)
+        item.data?.apply {
+            ivAvatar.load(author?.icon) {
+                crossfade(true)
+                transformations(CircleCropTransformation())
+                placeholder(R.drawable.shape_place_holder)
+            }
+
+            coverHotRank.load(cover?.detail) {
+                crossfade(true)
+            }
+            tvTitle.text = title
+
+            for (tagsBean in tags) {
+                sb.append(tagsBean.name + "/")
+            }
+            tvTags.text = "#${sb}${formatTime(duration)}"
+            tvCategory.text = "#${category}"
         }
-
-        coverHotRank.load(data.data.cover.detail){
-            crossfade(true)
-        }
-
-        tvTitle.text = data.data.title
-
-        for (tagsBean in data.data.tags) {
-            sb.append(tagsBean.name + "/")
-        }
-
-        tvTags.text = "#${sb}${formatTime(data.data.duration)}"
-
-        tvCategory.text = "#${data.data.category}"
 
         coverHotRank.setOnClickListener {
             val intent = Intent(context, KaiyanDetailActivity::class.java).putExtra("itemDetail",
-                    data)
+                    item)
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation((context as Activity),
                     coverHotRank, "transitionOEObject")
             context.startActivity(intent, options.toBundle())

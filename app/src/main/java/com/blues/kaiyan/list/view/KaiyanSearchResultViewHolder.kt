@@ -23,9 +23,9 @@ class KaiyanSearchResultViewHolder(parent: ViewGroup?) :
     private val tvTitle: TextView = itemView.findViewById(R.id.tv_search_result_title)
 
     override fun setData(
-        data: KaiyanBean.ItemListBean.DataBean) {
+        item: KaiyanBean.ItemListBean.DataBean) {
 
-        tvTitle.text = data.title
-        ivCover.load(data.cover.detail)
+        tvTitle.text = item.title
+        ivCover.load(item.cover?.detail)
     }
 }

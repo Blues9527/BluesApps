@@ -273,7 +273,7 @@ class CountDownView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
      *
      * @param callBack
      */
-    fun setCountDownTimerCallBack(callBack: CountDownTimerCallBack?) {
+    fun setCountDownTimerCallBack(callBack: CountDownTimerCallBack) {
         mTimerCallBack = callBack
     }
 
