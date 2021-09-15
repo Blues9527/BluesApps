@@ -5,18 +5,19 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.blues.framework.base.BaseKoinActivity
-import com.blues.home.view.MainPageFragment
-import com.blues.gankio.v1.view.StudyPageFragment
 import com.blues.kaiyan.list.view.KaiyanFragment
 import com.blues.framework.utils.HelperUtil
 import com.blues.kaiyan.list.view.KaiyanHotRankFragment
+import com.blues.kaiyan.list.view.KaiyanSearchActivity
 
 class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private var mLastMillis: Long = 0
     private var mCurrentFragment: Fragment? = null
+    private lateinit var toolBar: Toolbar
 
     //private val fragmentList: MutableList<Fragment> = mutableListOf(MainPageFragment(), StudyPageFragment(), KaiyanFragment())
     private val fragmentList: MutableList<Fragment> = mutableListOf(KaiyanHotRankFragment(),
@@ -41,6 +42,12 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
         val bottomView = findViewById<BottomNavigationView>(R.id.bottom_view)
         bottomView.setOnNavigationItemSelectedListener(this)
         showFragment(null, fragmentList[0])
+
+        toolBar = findViewById(R.id.toolbar)
+
+        toolBar.setOnClickListener {
+            startActivity<KaiyanSearchActivity>()
+        }
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
