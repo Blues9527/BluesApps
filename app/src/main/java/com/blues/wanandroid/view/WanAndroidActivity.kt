@@ -24,7 +24,7 @@ class WanAndroidActivity : BaseKoinActivity() {
     override fun observe() {
         postViewModel.wanAndroidEntity.observe(this) {
             mAdapter.apply {
-                addAll(it.data.datas)
+                addAll(it.data?.datas)
                 notifyDataSetChanged()
             }
         }

@@ -28,18 +28,21 @@ class KaiyanDetailRelatedViewHolder(parent: ViewGroup?) :
     private val tvTitle: TextView = itemView.findViewById(R.id.tv_title)
     private val ivCover: ImageView = itemView.findViewById(R.id.iv_cover)
 
-    override fun setData(data: KaiyanDetailBean.ItemListBean) {
-        super.setData(data)
+    override fun setData(item: KaiyanDetailBean.ItemListBean) {
+        super.setData(item)
 
-        if (TextUtils.equals(data.type, "textCard")) {
-            itemText.visibility = View.VISIBLE
-            itemVideo.visibility = View.GONE
-            tvText.text = data.data.text
-        } else if (TextUtils.equals(data.type, "videoSmallCard")) {
-            itemText.visibility = View.GONE
-            itemVideo.visibility = View.VISIBLE
-            ivCover.load(data.data.cover.feed)
-            tvTitle.text = data.data.title
+        with(item) {
+            if (TextUtils.equals(type, "textCard")) {
+                itemText.visibility = View.VISIBLE
+                itemVideo.visibility = View.GONE
+                tvText.text = data?.text
+            } else if (TextUtils.equals(type, "videoSmallCard")) {
+                itemText.visibility = View.GONE
+                itemVideo.visibility = View.VISIBLE
+                ivCover.load(data?.cover?.feed)
+                tvTitle.text = data?.title
+            }
         }
+
     }
 }

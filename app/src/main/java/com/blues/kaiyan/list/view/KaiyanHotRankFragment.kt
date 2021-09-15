@@ -1,5 +1,6 @@
 package com.blues.kaiyan.list.view
 
+import android.graphics.Rect
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import android.view.ViewStub
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter
@@ -13,6 +14,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.jude.easyrecyclerview.decoration.DividerDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blues.framework.base.BaseKoinFragment
+import com.blues.framework.utils.dp
 import com.blues.kaiyan.list.vm.KaiyanViewModel
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import com.scwang.smartrefresh.layout.api.RefreshLayout

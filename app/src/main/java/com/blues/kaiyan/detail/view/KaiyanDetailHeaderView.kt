@@ -20,8 +20,7 @@ import coil.load
  * Time : 15:32
  */
 class KaiyanDetailHeaderView @JvmOverloads constructor(context: Context,
-                                                       attrs: AttributeSet? = null,
-                                                       defStyleAttr: Int = 0) :
+    attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     RelativeLayout(context, attrs, defStyleAttr), RecyclerArrayAdapter.ItemView {
 
     private lateinit var tvTitle: TextView
@@ -34,8 +33,7 @@ class KaiyanDetailHeaderView @JvmOverloads constructor(context: Context,
     private lateinit var tvAuthorDesc: TextView
 
     private fun initView(ctx: Context) {
-        val view = LayoutInflater.from(ctx)
-                .inflate(R.layout.item_oe_detail_header, this)
+        val view = LayoutInflater.from(ctx).inflate(R.layout.item_oe_detail_header, this)
         tvTitle = view.findViewById(R.id.tv_title)
         tvDesc = view.findViewById(R.id.tv_desc)
         tvShare = view.findViewById(R.id.tv_share)
@@ -46,15 +44,17 @@ class KaiyanDetailHeaderView @JvmOverloads constructor(context: Context,
         tvAuthorDesc = view.findViewById(R.id.tv_author_desc)
     }
 
-    fun initDefault(data: KaiyanBean.ItemListBean) {
-        tvTitle.text = data.data.title
-        tvDesc.text = data.data.description
-        tvShare.text = data.data.consumption.shareCount.toString()
-        tvReply.text = data.data.consumption.replyCount.toString()
-        tvLike.text = data.data.consumption.collectionCount.toString()
-        ivAvatar.load(data.data.author.icon)
-        tvAuthor.text = data.data.author.name
-        tvAuthorDesc.text = data.data.author.description
+    fun initDefault(item: KaiyanBean.ItemListBean) {
+        item.data?.apply {
+            tvTitle.text = title
+            tvDesc.text = description
+            tvShare.text = consumption?.shareCount.toString()
+            tvReply.text = consumption?.replyCount.toString()
+            tvLike.text = consumption?.collectionCount.toString()
+            ivAvatar.load(author?.icon)
+            tvAuthor.text = author?.name
+            tvAuthorDesc.text = author?.description
+        }
     }
 
     override fun onCreateView(parent: ViewGroup): View {

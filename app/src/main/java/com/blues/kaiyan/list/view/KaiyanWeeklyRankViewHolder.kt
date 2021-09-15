@@ -15,12 +15,12 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import java.lang.StringBuilder
 
 /**
-* File: com.blues.kaiyan.list.view.KaiyanWeeklyRankViewHolder.kt
-* Description: xxx
-*
-* @author: lanhuajian
-* @time: 2021/7/30
-**/
+ * File: com.blues.kaiyan.list.view.KaiyanWeeklyRankViewHolder.kt
+ * Description: xxx
+ *
+ * @author: lanhuajian
+ * @time: 2021/7/30
+ **/
 
 class KaiyanWeeklyRankViewHolder(parent: ViewGroup?) :
     BaseViewHolder<KaiyanBean.ItemListBean>(parent, R.layout.item_oe_hotrank_list) {
@@ -31,24 +31,29 @@ class KaiyanWeeklyRankViewHolder(parent: ViewGroup?) :
     private val tvCategory: TextView = itemView.findViewById(R.id.tv_category)
     private val coverHotRank: ImageView = itemView.findViewById(R.id.iv_hotrank_cover)
 
-    override fun setData(data: KaiyanBean.ItemListBean) {
-        super.setData(data)
+    override fun setData(item: KaiyanBean.ItemListBean) {
+        super.setData(item)
 
         val sb = StringBuilder()
 
-        ivAvatar.load(data.data.author.icon)
-        coverHotRank.load(data.data.cover.detail)
+        item.data?.apply {
+            ivAvatar.load(author?.icon)
+            coverHotRank.load(cover?.detail)
 
-        tvTitle.text = data.data.title
-        for (tagsBean in data.data.tags) {
-            sb.append(tagsBean.name + "/")
+            tvTitle.text = title
+            for (tagsBean in tags) {
+                sb.append(tagsBean.name + "/")
+            }
+            tvTags.text = "#$sb${formatTime(duration)}"
+            tvCategory.text = "#${category}"
+
         }
-        tvTags.text = "#$sb${formatTime(data.data.duration)}"
-        tvCategory.text = "#${data.data.category}"
 
         coverHotRank.setOnClickListener {
-            val intent = Intent(context, KaiyanDetailActivity::class.java).putExtra("itemDetail", data)
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation((context as Activity), coverHotRank, "transitionOEObject")
+            val intent = Intent(context, KaiyanDetailActivity::class.java).putExtra("itemDetail",
+                    item)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation((context as Activity),
+                    coverHotRank, "transitionOEObject")
             context.startActivity(intent, options.toBundle())
         }
     }

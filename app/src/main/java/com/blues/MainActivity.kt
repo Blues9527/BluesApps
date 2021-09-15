@@ -5,20 +5,23 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.blues.framework.base.BaseKoinActivity
-import com.blues.home.view.MainPageFragment
-import com.blues.gankio.v1.view.StudyPageFragment
 import com.blues.kaiyan.list.view.KaiyanFragment
 import com.blues.framework.utils.HelperUtil
 import com.blues.kaiyan.list.view.KaiyanHotRankFragment
+import com.blues.kaiyan.list.view.KaiyanSearchActivity
 
 class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private var mLastMillis: Long = 0
     private var mCurrentFragment: Fragment? = null
+    private lateinit var toolBar: Toolbar
+
     //private val fragmentList: MutableList<Fragment> = mutableListOf(MainPageFragment(), StudyPageFragment(), KaiyanFragment())
-    private val fragmentList: MutableList<Fragment> = mutableListOf(KaiyanHotRankFragment(), StudyPageFragment(), KaiyanFragment())
+    private val fragmentList: MutableList<Fragment> = mutableListOf(KaiyanHotRankFragment(),
+            KaiyanFragment())
 
     override fun onBackPressed() {
         showSimpleLog("on back press")
@@ -39,6 +42,12 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
         val bottomView = findViewById<BottomNavigationView>(R.id.bottom_view)
         bottomView.setOnNavigationItemSelectedListener(this)
         showFragment(null, fragmentList[0])
+
+        toolBar = findViewById(R.id.toolbar)
+
+        toolBar.setOnClickListener {
+            startActivity<KaiyanSearchActivity>()
+        }
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
@@ -58,8 +67,8 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_home -> showFragment(mCurrentFragment, fragmentList[0])
-            R.id.menu_study -> showFragment(mCurrentFragment, fragmentList[1])
-            R.id.menu_open_eye -> showFragment(mCurrentFragment, fragmentList[2])
+            R.id.menu_open_eye -> showFragment(mCurrentFragment, fragmentList[1])
+            //R.id.menu_mine -> showFragment(mCurrentFragment, fragmentList[2])
         }
         return true
     }
@@ -70,23 +79,16 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
         val isAdded = to.isAdded
         if (!isAdded) {
             if (from != null) {
-                transaction.hide(from)
-                        .add(R.id.fl_container, to, null)
-                        .show(to)
+                transaction.hide(from).add(R.id.fl_container, to, null).show(to)
                         .commitAllowingStateLoss()
             } else {
-                transaction.add(R.id.fl_container, to, null)
-                        .show(to)
-                        .commitAllowingStateLoss()
+                transaction.add(R.id.fl_container, to, null).show(to).commitAllowingStateLoss()
             }
         } else {
             if (from != null) {
-                transaction.hide(from)
-                        .show(to)
-                        .commitAllowingStateLoss()
+                transaction.hide(from).show(to).commitAllowingStateLoss()
             } else {
-                transaction.show(to)
-                        .commitAllowingStateLoss()
+                transaction.show(to).commitAllowingStateLoss()
             }
         }
         mCurrentFragment = to
