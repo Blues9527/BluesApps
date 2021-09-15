@@ -1,5 +1,2 @@
 include ':app'
-//include ':nicevideoplayer'
-//include ':framework'
-//include ':gifloader'
 includeBuild 'VersionPlugin'

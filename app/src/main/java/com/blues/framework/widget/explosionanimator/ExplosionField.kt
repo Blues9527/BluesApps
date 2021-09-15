@@ -115,24 +115,4 @@ class ExplosionField(context: Context, private val mParticleFactory: ParticleFac
                 ViewGroup.LayoutParams.MATCH_PARENT)
         rootView.addView(this, params)
     }
-
-    /**
-     * 要实现此效果的view添加监听
-     *
-     * @param v
-     */
-    fun addListener(v: View) {
-        if (v is ViewGroup) {
-            val count = v.childCount
-            for (i in 0 until count) {
-                addListener(v.getChildAt(i))
-            }
-        } else {
-            v.isClickable = true
-            v.setOnClickListener {
-                //开始执行粒子动画
-                this@ExplosionField.explode(v)
-            }
-        }
-    }
 }

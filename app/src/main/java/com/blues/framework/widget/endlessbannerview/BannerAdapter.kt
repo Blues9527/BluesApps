@@ -15,12 +15,12 @@ import com.blues.R
  * Time : 15:00
  */
 class BannerAdapter(private val mContext: Context, private val mBannerUrls: MutableList<String>,
-                    private val mBannerView: BannerView) : LoopPagerAdapter(mBannerView) {
+    private val mBannerView: BannerView) : LoopPagerAdapter(mBannerView) {
 
     private var mListener: ItemClickListener? = null
     override fun notifyDataSetChanged() {
         mBannerUrls.clear()
-        mBannerView.viewPager.adapter = this
+        mBannerView.viewPager?.adapter = this
         initPosition()
         super.notifyDataSetChanged()
     }
@@ -29,7 +29,7 @@ class BannerAdapter(private val mContext: Context, private val mBannerUrls: Muta
         if (count <= 1) return
         val half = Int.MAX_VALUE / 2
         val start = half - half / mBannerUrls.size
-        mBannerView.viewPager.setCurrentItem(start, false)
+        mBannerView.viewPager?.setCurrentItem(start, false)
     }
 
     override fun getRealCount(): Int {
@@ -38,8 +38,7 @@ class BannerAdapter(private val mContext: Context, private val mBannerUrls: Muta
 
     override fun getView(container: ViewGroup, position: Int): View {
         val realPosition = position % mBannerUrls.size
-        val itemView = LayoutInflater.from(mContext)
-                .inflate(R.layout.item_banner, container, false)
+        val itemView = LayoutInflater.from(mContext).inflate(R.layout.item_banner, container, false)
         val iv = itemView.findViewById<ImageView>(R.id.iv_banner)
 
         iv.load(mBannerUrls[realPosition]) {
