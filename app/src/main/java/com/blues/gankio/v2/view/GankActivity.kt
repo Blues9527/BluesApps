@@ -6,12 +6,10 @@ import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import com.blues.R
 import android.os.Bundle
-import android.os.Handler
 import android.widget.TextView
 import android.view.Gravity
 import com.blues.framework.base.BaseViewPagerAdapter
 import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
-import android.os.Looper
 import android.view.View
 import android.widget.LinearLayout
 import com.blues.framework.widget.endlessbannerview.BannerAdapter
@@ -19,6 +17,9 @@ import com.blues.WebViewDialog
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.framework.utils.dp
 import com.blues.gankio.v2.vm.GankioViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.ArrayList
 
@@ -94,7 +95,7 @@ class GankActivity : BaseKoinActivity() {
     }
 
     private fun startBannerLoop(images: MutableList<String>, urls: MutableList<String>) {
-        Handler(Looper.getMainLooper()).post {
+        CoroutineScope(Dispatchers.Main).launch {
             val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     185f.dp.toInt())
             mBanner.apply {
@@ -103,7 +104,7 @@ class GankActivity : BaseKoinActivity() {
                 setAnimationDuration(1000)
                 layoutParams = lp
             }
-            BannerAdapter(this, images, mBanner).apply {
+            BannerAdapter(this@GankActivity, images, mBanner).apply {
                 setItemClickListener(object : BannerAdapter.ItemClickListener {
                     override fun onClick(realPosition: Int) {
                         WebViewDialog(this@GankActivity, urls[realPosition]).show()

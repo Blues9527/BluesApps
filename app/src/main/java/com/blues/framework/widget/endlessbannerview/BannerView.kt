@@ -145,19 +145,15 @@ class BannerView @JvmOverloads constructor(context: Context?, attrs: AttributeSe
         if (delay <= 0 || mAdapter == null || mAdapter!!.count <= 1) {
             return
         }
-        if (timer != null) {
-            timer!!.cancel()
-        }
+        timer?.cancel()
         timer = Timer()
         //用一个timer定时设置当前项为下一项
-        timer!!.schedule(WeakTimerTask(this), delay.toLong(), delay.toLong())
+        timer?.schedule(WeakTimerTask(this), delay.toLong(), delay.toLong())
     }
 
     private fun stopPlay() {
-        if (timer != null) {
-            timer!!.cancel()
-            timer = null
-        }
+        timer?.cancel()
+        timer = null
     }
 
     /**
