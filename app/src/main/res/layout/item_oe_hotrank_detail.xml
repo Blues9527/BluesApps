@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/shape_oe_detail_bg">
 
-    <nicevideoplayer.NiceVideoPlayer
+    <com.blues.nicevideoplayer.NiceVideoPlayer
         android:id="@+id/nvp_oe_detail"
         android:layout_width="match_parent"
         android:layout_height="185dp" />

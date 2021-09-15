@@ -1,63 +1,23 @@
-package com.blues.kaiyan.detail.model;
+package com.blues.kaiyan.detail.model
 
-import java.io.Serializable;
-import java.util.List;
+import com.alibaba.fastjson.annotation.JSONField
+import java.io.Serializable
 
 /**
  * User : Blues
  * Date : 2019/8/30
  * Time : 15:17
  */
+class KaiyanDetailBean : Serializable {
 
-public class KaiyanDetailBean implements Serializable {
+    var count = 0
+    var total = 0
+    var nextPageUrl: Any? = null
+    var isAdExist = false
+    var itemList: List<ItemListBean>? = null
 
-    private int count;
-    private int total;
-    private Object nextPageUrl;
-    private boolean adExist;
-    private List<ItemListBean> itemList;
+    class ItemListBean : Serializable {
 
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public Object getNextPageUrl() {
-        return nextPageUrl;
-    }
-
-    public void setNextPageUrl(Object nextPageUrl) {
-        this.nextPageUrl = nextPageUrl;
-    }
-
-    public boolean isAdExist() {
-        return adExist;
-    }
-
-    public void setAdExist(boolean adExist) {
-        this.adExist = adExist;
-    }
-
-    public List<ItemListBean> getItemList() {
-        return itemList;
-    }
-
-    public void setItemList(List<ItemListBean> itemList) {
-        this.itemList = itemList;
-    }
-
-    public static class ItemListBean implements Serializable{
         /**
          * type : textCard
          * data : {"dataType":"TextCard","id":0,"type":"header4","text":"音乐类最新视频","subTitle":null,"actionUrl":"eyepetizer://common/?title=%E9%9F%B3%E4%B9%90%E7%B1%BB%E6%9C%80%E6%96%B0%E8%A7%86%E9%A2%91&url=http%3A%2F%2Fbaobab.kaiyanapp.com%2Fapi%2Fv4%2Fvideo%2Fcategory%3Fid%3D20","adTrack":null,"follow":null}
@@ -65,54 +25,23 @@ public class KaiyanDetailBean implements Serializable {
          * id : 0
          * adIndex : -1
          */
+        @JSONField(name = "type")
+        var type: String? = null
 
-        private String type;
-        private DataBean data;
-        private Object tag;
-        private int id;
-        private int adIndex;
+        @JSONField(name = "data")
+        var data: DataBean? = null
 
-        public String getType() {
-            return type;
-        }
+        @JSONField(name = "tag")
+        var tag: Any? = null
 
-        public void setType(String type) {
-            this.type = type;
-        }
+        @JSONField(name = "id")
+        var id = 0
 
-        public DataBean getData() {
-            return data;
-        }
+        @JSONField(name = "adIndex")
+        var adIndex = 0
 
-        public void setData(DataBean data) {
-            this.data = data;
-        }
+        class DataBean : Serializable {
 
-        public Object getTag() {
-            return tag;
-        }
-
-        public void setTag(Object tag) {
-            this.tag = tag;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public int getAdIndex() {
-            return adIndex;
-        }
-
-        public void setAdIndex(int adIndex) {
-            this.adIndex = adIndex;
-        }
-
-        public static class DataBean implements Serializable{
             /**
              * dataType : TextCard
              * id : 0
@@ -124,512 +53,186 @@ public class KaiyanDetailBean implements Serializable {
              * follow : null
              */
 
-            private String dataType;
-            private int id;
-            private String type;
-            private String text;
-            private Object subTitle;
-            private String actionUrl;
-            private Object adTrack;
-            private Object follow;
-            private String title;
-            private String description;
-            private String library;
-            private ConsumptionBean consumption;
-            private String resourceType;
-            private Object slogan;
-            private ProviderBean provider;
-            private String category;
-            private AuthorBean author;
-            private CoverBean cover;
-            private String playUrl;
-            private Object thumbPlayUrl;
-            private int duration;
-            private WebUrlBean webUrl;
-            private long releaseTime;
-            private Object campaign;
-            private Object waterMarks;
-            private boolean ad;
-            private Object titlePgc;
-            private Object descriptionPgc;
-            private String remark;
-            private boolean ifLimitVideo;
-            private int searchWeight;
-            private int idx;
-            private Object shareAdTrack;
-            private Object favoriteAdTrack;
-            private Object webAdTrack;
-            private long date;
-            private Object promotion;
-            private Object label;
-            private String descriptionEditor;
-            private boolean collected;
-            private boolean played;
-            private Object lastViewTime;
-            private Object playlists;
-            private Object src;
-            private List<TagsBean> tags;
-            private List<PlayInfoBean> playInfo;
-            private List<?> labelList;
-            private List<?> subtitles;
-
-            public String getDataType() {
-                return dataType;
-            }
-
-            public void setDataType(String dataType) {
-                this.dataType = dataType;
-            }
-
-            public int getId() {
-                return id;
-            }
-
-            public void setId(int id) {
-                this.id = id;
-            }
-
-            public String getTitle() {
-                return title;
-            }
-
-            public void setTitle(String title) {
-                this.title = title;
-            }
-
-            public String getDescription() {
-                return description;
-            }
-
-            public void setDescription(String description) {
-                this.description = description;
-            }
-
-            public String getLibrary() {
-                return library;
-            }
-
-            public void setLibrary(String library) {
-                this.library = library;
-            }
-
-            public ConsumptionBean getConsumption() {
-                return consumption;
-            }
-
-            public void setConsumption(ConsumptionBean consumption) {
-                this.consumption = consumption;
-            }
-
-            public String getResourceType() {
-                return resourceType;
-            }
-
-            public void setResourceType(String resourceType) {
-                this.resourceType = resourceType;
-            }
+            @JSONField(name = "dataType")
+            var dataType: String? = null
 
-            public Object getSlogan() {
-                return slogan;
-            }
+            @JSONField(name = "id")
+            var id = 0
 
-            public void setSlogan(Object slogan) {
-                this.slogan = slogan;
-            }
+            @JSONField(name = "type")
+            var type: String? = null
 
-            public ProviderBean getProvider() {
-                return provider;
-            }
+            @JSONField(name = "text")
+            var text: String? = null
 
-            public void setProvider(ProviderBean provider) {
-                this.provider = provider;
-            }
+            @JSONField(name = "subTitle")
+            var subTitle: Any? = null
 
-            public String getCategory() {
-                return category;
-            }
+            @JSONField(name = "actionUrl")
+            var actionUrl: String? = null
 
-            public void setCategory(String category) {
-                this.category = category;
-            }
+            @JSONField(name = "adTrack")
+            var adTrack: Any? = null
 
-            public AuthorBean getAuthor() {
-                return author;
-            }
+            @JSONField(name = "follow")
+            var follow: Any? = null
 
-            public void setAuthor(AuthorBean author) {
-                this.author = author;
-            }
+            @JSONField(name = "title")
+            var title: String? = null
 
-            public CoverBean getCover() {
-                return cover;
-            }
+            @JSONField(name = "description")
+            var description: String? = null
 
-            public void setCover(CoverBean cover) {
-                this.cover = cover;
-            }
+            @JSONField(name = "library")
+            var library: String? = null
 
-            public String getPlayUrl() {
-                return playUrl;
-            }
+            @JSONField(name = "consumption")
+            var consumption: ConsumptionBean? = null
 
-            public void setPlayUrl(String playUrl) {
-                this.playUrl = playUrl;
-            }
+            @JSONField(name = "resourceType")
+            var resourceType: String? = null
 
-            public Object getThumbPlayUrl() {
-                return thumbPlayUrl;
-            }
+            @JSONField(name = "slogan")
+            var slogan: Any? = null
 
-            public void setThumbPlayUrl(Object thumbPlayUrl) {
-                this.thumbPlayUrl = thumbPlayUrl;
-            }
+            @JSONField(name = "provider")
+            var provider: ProviderBean? = null
 
-            public int getDuration() {
-                return duration;
-            }
+            @JSONField(name = "category")
+            var category: String? = null
 
-            public void setDuration(int duration) {
-                this.duration = duration;
-            }
+            @JSONField(name = "author")
+            var author: AuthorBean? = null
 
-            public WebUrlBean getWebUrl() {
-                return webUrl;
-            }
+            @JSONField(name = "cover")
+            var cover: CoverBean? = null
 
-            public void setWebUrl(WebUrlBean webUrl) {
-                this.webUrl = webUrl;
-            }
+            @JSONField(name = "playUrl")
+            var playUrl: String? = null
 
-            public long getReleaseTime() {
-                return releaseTime;
-            }
+            @JSONField(name = "thumbPlayUrl")
+            var thumbPlayUrl: Any? = null
 
-            public void setReleaseTime(long releaseTime) {
-                this.releaseTime = releaseTime;
-            }
+            @JSONField(name = "duration")
+            var duration = 0
 
-            public Object getCampaign() {
-                return campaign;
-            }
+            @JSONField(name = "webUrl")
+            var webUrl: WebUrlBean? = null
 
-            public void setCampaign(Object campaign) {
-                this.campaign = campaign;
-            }
+            @JSONField(name = "releaseTime")
+            var releaseTime: Long = 0
 
-            public Object getWaterMarks() {
-                return waterMarks;
-            }
+            @JSONField(name = "campaign")
+            var campaign: Any? = null
 
-            public void setWaterMarks(Object waterMarks) {
-                this.waterMarks = waterMarks;
-            }
+            @JSONField(name = "waterMarks")
+            var waterMarks: Any? = null
 
-            public boolean isAd() {
-                return ad;
-            }
+            @JSONField(name = "ad")
+            var isAd = false
 
-            public void setAd(boolean ad) {
-                this.ad = ad;
-            }
+            @JSONField(name = "titlePgc")
+            var titlePgc: Any? = null
 
-            public Object getAdTrack() {
-                return adTrack;
-            }
+            @JSONField(name = "descriptionPgc")
+            var descriptionPgc: Any? = null
 
-            public void setAdTrack(Object adTrack) {
-                this.adTrack = adTrack;
-            }
+            @JSONField(name = "remark")
+            var remark: String? = null
 
-            public String getType() {
-                return type;
-            }
+            @JSONField(name = "ifLimitVideo")
+            var isIfLimitVideo = false
 
-            public void setType(String type) {
-                this.type = type;
-            }
+            @JSONField(name = "searchWeight")
+            var searchWeight = 0
 
-            public Object getTitlePgc() {
-                return titlePgc;
-            }
+            @JSONField(name = "idx")
+            var idx = 0
 
-            public void setTitlePgc(Object titlePgc) {
-                this.titlePgc = titlePgc;
-            }
+            @JSONField(name = "shareAdTrack")
+            var shareAdTrack: Any? = null
 
-            public Object getDescriptionPgc() {
-                return descriptionPgc;
-            }
+            @JSONField(name = "favoriteAdTrack")
+            var favoriteAdTrack: Any? = null
 
-            public void setDescriptionPgc(Object descriptionPgc) {
-                this.descriptionPgc = descriptionPgc;
-            }
+            @JSONField(name = "webAdTrack")
+            var webAdTrack: Any? = null
 
-            public String getRemark() {
-                return remark;
-            }
+            @JSONField(name = "date")
+            var date: Long = 0
 
-            public void setRemark(String remark) {
-                this.remark = remark;
-            }
+            @JSONField(name = "promotion")
+            var promotion: Any? = null
 
-            public boolean isIfLimitVideo() {
-                return ifLimitVideo;
-            }
+            @JSONField(name = "label")
+            var label: Any? = null
 
-            public void setIfLimitVideo(boolean ifLimitVideo) {
-                this.ifLimitVideo = ifLimitVideo;
-            }
+            @JSONField(name = "descriptionEditor")
+            var descriptionEditor: String? = null
 
-            public int getSearchWeight() {
-                return searchWeight;
-            }
+            @JSONField(name = "collected")
+            var isCollected = false
 
-            public void setSearchWeight(int searchWeight) {
-                this.searchWeight = searchWeight;
-            }
+            @JSONField(name = "played")
+            var isPlayed = false
 
-            public int getIdx() {
-                return idx;
-            }
+            @JSONField(name = "lastViewTime")
+            var lastViewTime: Any? = null
 
-            public void setIdx(int idx) {
-                this.idx = idx;
-            }
+            @JSONField(name = "playlists")
+            var playlists: Any? = null
 
-            public Object getShareAdTrack() {
-                return shareAdTrack;
-            }
+            @JSONField(name = "src")
+            var src: Any? = null
 
-            public void setShareAdTrack(Object shareAdTrack) {
-                this.shareAdTrack = shareAdTrack;
-            }
+            @JSONField(name = "tags")
+            var tags: List<TagsBean> = mutableListOf()
 
-            public Object getFavoriteAdTrack() {
-                return favoriteAdTrack;
-            }
+            @JSONField(name = "playInfo")
+            var playInfo: List<PlayInfoBean> = mutableListOf()
 
-            public void setFavoriteAdTrack(Object favoriteAdTrack) {
-                this.favoriteAdTrack = favoriteAdTrack;
-            }
+            @JSONField(name = "labelList")
+            var labelList: List<Any> = mutableListOf()
 
-            public Object getWebAdTrack() {
-                return webAdTrack;
-            }
+            @JSONField(name = "subtitles")
+            var subtitles: List<Any> = mutableListOf()
 
-            public void setWebAdTrack(Object webAdTrack) {
-                this.webAdTrack = webAdTrack;
-            }
+            class ConsumptionBean : Serializable {
 
-            public long getDate() {
-                return date;
-            }
-
-            public void setDate(long date) {
-                this.date = date;
-            }
-
-            public Object getPromotion() {
-                return promotion;
-            }
-
-            public void setPromotion(Object promotion) {
-                this.promotion = promotion;
-            }
-
-            public Object getLabel() {
-                return label;
-            }
-
-            public void setLabel(Object label) {
-                this.label = label;
-            }
-
-            public String getDescriptionEditor() {
-                return descriptionEditor;
-            }
-
-            public void setDescriptionEditor(String descriptionEditor) {
-                this.descriptionEditor = descriptionEditor;
-            }
-
-            public boolean isCollected() {
-                return collected;
-            }
-
-            public void setCollected(boolean collected) {
-                this.collected = collected;
-            }
-
-            public boolean isPlayed() {
-                return played;
-            }
-
-            public void setPlayed(boolean played) {
-                this.played = played;
-            }
-
-            public Object getLastViewTime() {
-                return lastViewTime;
-            }
-
-            public void setLastViewTime(Object lastViewTime) {
-                this.lastViewTime = lastViewTime;
-            }
-
-            public Object getPlaylists() {
-                return playlists;
-            }
-
-            public void setPlaylists(Object playlists) {
-                this.playlists = playlists;
-            }
-
-            public Object getSrc() {
-                return src;
-            }
-
-            public void setSrc(Object src) {
-                this.src = src;
-            }
-
-            public List<TagsBean> getTags() {
-                return tags;
-            }
-
-            public void setTags(List<TagsBean> tags) {
-                this.tags = tags;
-            }
-
-            public List<PlayInfoBean> getPlayInfo() {
-                return playInfo;
-            }
-
-            public void setPlayInfo(List<PlayInfoBean> playInfo) {
-                this.playInfo = playInfo;
-            }
-
-            public List<?> getLabelList() {
-                return labelList;
-            }
-
-            public void setLabelList(List<?> labelList) {
-                this.labelList = labelList;
-            }
-
-            public List<?> getSubtitles() {
-                return subtitles;
-            }
-
-            public void setSubtitles(List<?> subtitles) {
-                this.subtitles = subtitles;
-            }
-
-            public String getText() {
-                return text;
-            }
-
-            public void setText(String text) {
-                this.text = text;
-            }
-
-            public Object getSubTitle() {
-                return subTitle;
-            }
-
-            public void setSubTitle(Object subTitle) {
-                this.subTitle = subTitle;
-            }
-
-            public String getActionUrl() {
-                return actionUrl;
-            }
-
-            public void setActionUrl(String actionUrl) {
-                this.actionUrl = actionUrl;
-            }
-
-            public Object getFollow() {
-                return follow;
-            }
-
-            public void setFollow(Object follow) {
-                this.follow = follow;
-            }
-
-            public static class ConsumptionBean implements Serializable{
                 /**
                  * collectionCount : 1799
                  * shareCount : 860
                  * replyCount : 14
                  */
+                @JSONField(name = "collectionCount")
+                var collectionCount = 0
 
-                private int collectionCount;
-                private int shareCount;
-                private int replyCount;
+                @JSONField(name = "shareCount")
+                var shareCount = 0
 
-                public int getCollectionCount() {
-                    return collectionCount;
-                }
-
-                public void setCollectionCount(int collectionCount) {
-                    this.collectionCount = collectionCount;
-                }
-
-                public int getShareCount() {
-                    return shareCount;
-                }
-
-                public void setShareCount(int shareCount) {
-                    this.shareCount = shareCount;
-                }
-
-                public int getReplyCount() {
-                    return replyCount;
-                }
-
-                public void setReplyCount(int replyCount) {
-                    this.replyCount = replyCount;
-                }
+                @JSONField(name = "replyCount")
+                var replyCount = 0
             }
 
-            public static class ProviderBean implements Serializable{
+            class ProviderBean : Serializable {
+
                 /**
                  * name : Vimeo
                  * alias : vimeo
                  * icon : http://img.kaiyanapp.com/c3ad630be461cbb081649c9e21d6cbe3.png
                  */
+                @JSONField(name = "name")
+                var name: String? = null
 
-                private String name;
-                private String alias;
-                private String icon;
+                @JSONField(name = "alias")
+                var alias: String? = null
 
-                public String getName() {
-                    return name;
-                }
-
-                public void setName(String name) {
-                    this.name = name;
-                }
-
-                public String getAlias() {
-                    return alias;
-                }
-
-                public void setAlias(String alias) {
-                    this.alias = alias;
-                }
-
-                public String getIcon() {
-                    return icon;
-                }
-
-                public void setIcon(String icon) {
-                    this.icon = icon;
-                }
+                @JSONField(name = "icon")
+                var icon: String? = null
             }
 
-            public static class AuthorBean implements Serializable{
+            class AuthorBean : Serializable {
+
                 /**
                  * id : 2163
                  * icon : http://img.kaiyanapp.com/9279c17b4da5ba5e7e4f21afb5bb0a74.jpeg
@@ -646,208 +249,85 @@ public class KaiyanDetailBean implements Serializable {
                  * recSort : 0
                  * expert : false
                  */
+                @JSONField(name = "id")
+                var id = 0
 
-                private int id;
-                private String icon;
-                private String name;
-                private String description;
-                private String link;
-                private long latestReleaseTime;
-                private int videoNum;
-                private Object adTrack;
-                private FollowBean follow;
-                private ShieldBean shield;
-                private int approvedNotReadyVideoCount;
-                private boolean ifPgc;
-                private int recSort;
-                private boolean expert;
+                @JSONField(name = "icon")
+                var icon: String? = null
 
-                public int getId() {
-                    return id;
-                }
+                @JSONField(name = "name")
+                var name: String? = null
 
-                public void setId(int id) {
-                    this.id = id;
-                }
+                @JSONField(name = "description")
+                var description: String? = null
 
-                public String getIcon() {
-                    return icon;
-                }
+                @JSONField(name = "link")
+                var link: String? = null
 
-                public void setIcon(String icon) {
-                    this.icon = icon;
-                }
+                @JSONField(name = "latestReleaseTime")
+                var latestReleaseTime: Long = 0
 
-                public String getName() {
-                    return name;
-                }
+                @JSONField(name = "videoNum")
+                var videoNum = 0
 
-                public void setName(String name) {
-                    this.name = name;
-                }
+                @JSONField(name = "adTrack")
+                var adTrack: Any? = null
 
-                public String getDescription() {
-                    return description;
-                }
+                @JSONField(name = "follow")
+                var follow: FollowBean? = null
 
-                public void setDescription(String description) {
-                    this.description = description;
-                }
+                @JSONField(name = "shield")
+                var shield: ShieldBean? = null
 
-                public String getLink() {
-                    return link;
-                }
+                @JSONField(name = "approvedNotReadyVideoCount")
+                var approvedNotReadyVideoCount = 0
 
-                public void setLink(String link) {
-                    this.link = link;
-                }
+                @JSONField(name = "ifPgc")
+                var isIfPgc = false
 
-                public long getLatestReleaseTime() {
-                    return latestReleaseTime;
-                }
+                @JSONField(name = "recSort")
+                var recSort = 0
 
-                public void setLatestReleaseTime(long latestReleaseTime) {
-                    this.latestReleaseTime = latestReleaseTime;
-                }
+                @JSONField(name = "expert")
+                var isExpert = false
 
-                public int getVideoNum() {
-                    return videoNum;
-                }
+                class FollowBean : Serializable {
 
-                public void setVideoNum(int videoNum) {
-                    this.videoNum = videoNum;
-                }
-
-                public Object getAdTrack() {
-                    return adTrack;
-                }
-
-                public void setAdTrack(Object adTrack) {
-                    this.adTrack = adTrack;
-                }
-
-                public FollowBean getFollow() {
-                    return follow;
-                }
-
-                public void setFollow(FollowBean follow) {
-                    this.follow = follow;
-                }
-
-                public ShieldBean getShield() {
-                    return shield;
-                }
-
-                public void setShield(ShieldBean shield) {
-                    this.shield = shield;
-                }
-
-                public int getApprovedNotReadyVideoCount() {
-                    return approvedNotReadyVideoCount;
-                }
-
-                public void setApprovedNotReadyVideoCount(int approvedNotReadyVideoCount) {
-                    this.approvedNotReadyVideoCount = approvedNotReadyVideoCount;
-                }
-
-                public boolean isIfPgc() {
-                    return ifPgc;
-                }
-
-                public void setIfPgc(boolean ifPgc) {
-                    this.ifPgc = ifPgc;
-                }
-
-                public int getRecSort() {
-                    return recSort;
-                }
-
-                public void setRecSort(int recSort) {
-                    this.recSort = recSort;
-                }
-
-                public boolean isExpert() {
-                    return expert;
-                }
-
-                public void setExpert(boolean expert) {
-                    this.expert = expert;
-                }
-
-                public static class FollowBean implements Serializable{
                     /**
                      * itemType : author
                      * itemId : 2163
                      * followed : false
                      */
+                    @JSONField(name = "itemType")
+                    var itemType: String? = null
 
-                    private String itemType;
-                    private int itemId;
-                    private boolean followed;
+                    @JSONField(name = "itemId")
+                    var itemId = 0
 
-                    public String getItemType() {
-                        return itemType;
-                    }
-
-                    public void setItemType(String itemType) {
-                        this.itemType = itemType;
-                    }
-
-                    public int getItemId() {
-                        return itemId;
-                    }
-
-                    public void setItemId(int itemId) {
-                        this.itemId = itemId;
-                    }
-
-                    public boolean isFollowed() {
-                        return followed;
-                    }
-
-                    public void setFollowed(boolean followed) {
-                        this.followed = followed;
-                    }
+                    @JSONField(name = "followed")
+                    var isFollowed = false
                 }
 
-                public static class ShieldBean implements Serializable{
+                class ShieldBean : Serializable {
+
                     /**
                      * itemType : author
                      * itemId : 2163
                      * shielded : false
                      */
+                    @JSONField(name = "itemType")
+                    var itemType: String? = null
 
-                    private String itemType;
-                    private int itemId;
-                    private boolean shielded;
+                    @JSONField(name = "itemId")
+                    var itemId = 0
 
-                    public String getItemType() {
-                        return itemType;
-                    }
-
-                    public void setItemType(String itemType) {
-                        this.itemType = itemType;
-                    }
-
-                    public int getItemId() {
-                        return itemId;
-                    }
-
-                    public void setItemId(int itemId) {
-                        this.itemId = itemId;
-                    }
-
-                    public boolean isShielded() {
-                        return shielded;
-                    }
-
-                    public void setShielded(boolean shielded) {
-                        this.shielded = shielded;
-                    }
+                    @JSONField(name = "shielded")
+                    var isShielded = false
                 }
             }
 
-            public static class CoverBean implements Serializable{
+            class CoverBean : Serializable {
+
                 /**
                  * feed : http://img.kaiyanapp.com/20a2d60c40c8cb6983e05918b5488d37.jpeg?imageMogr2/quality/60/format/jpg
                  * detail : http://img.kaiyanapp.com/20a2d60c40c8cb6983e05918b5488d37.jpeg?imageMogr2/quality/60/format/jpg
@@ -855,79 +335,37 @@ public class KaiyanDetailBean implements Serializable {
                  * sharing : null
                  * homepage : http://img.kaiyanapp.com/20a2d60c40c8cb6983e05918b5488d37.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim
                  */
+                @JSONField(name = "feed")
+                var feed: String? = null
 
-                private String feed;
-                private String detail;
-                private String blurred;
-                private Object sharing;
-                private String homepage;
+                @JSONField(name = "detail")
+                var detail: String? = null
 
-                public String getFeed() {
-                    return feed;
-                }
+                @JSONField(name = "blurred")
+                var blurred: String? = null
 
-                public void setFeed(String feed) {
-                    this.feed = feed;
-                }
+                @JSONField(name = "sharing")
+                var sharing: Any? = null
 
-                public String getDetail() {
-                    return detail;
-                }
-
-                public void setDetail(String detail) {
-                    this.detail = detail;
-                }
-
-                public String getBlurred() {
-                    return blurred;
-                }
-
-                public void setBlurred(String blurred) {
-                    this.blurred = blurred;
-                }
-
-                public Object getSharing() {
-                    return sharing;
-                }
-
-                public void setSharing(Object sharing) {
-                    this.sharing = sharing;
-                }
-
-                public String getHomepage() {
-                    return homepage;
-                }
-
-                public void setHomepage(String homepage) {
-                    this.homepage = homepage;
-                }
+                @JSONField(name = "homepage")
+                var homepage: String? = null
             }
-            public static class WebUrlBean implements Serializable{
+
+            class WebUrlBean : Serializable {
+
                 /**
                  * raw : http://www.eyepetizer.net/detail.html?vid=171095
                  * forWeibo : http://www.eyepetizer.net/detail.html?vid=171095&resourceType=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0
                  */
+                @JSONField(name = "raw")
+                var raw: String? = null
 
-                private String raw;
-                private String forWeibo;
-
-                public String getRaw() {
-                    return raw;
-                }
-
-                public void setRaw(String raw) {
-                    this.raw = raw;
-                }
-
-                public String getForWeibo() {
-                    return forWeibo;
-                }
-
-                public void setForWeibo(String forWeibo) {
-                    this.forWeibo = forWeibo;
-                }
+                @JSONField(name = "forWeibo")
+                var forWeibo: String? = null
             }
-            public static class TagsBean implements Serializable{
+
+            class TagsBean : Serializable {
+
                 /**
                  * id : 18
                  * name : 音乐电台
@@ -941,109 +379,42 @@ public class KaiyanDetailBean implements Serializable {
                  * childTagIdList : null
                  * communityIndex : 0
                  */
+                @JSONField(name = "id")
+                var id = 0
 
-                private int id;
-                private String name;
-                private String actionUrl;
-                private Object adTrack;
-                private Object desc;
-                private String bgPicture;
-                private String headerImage;
-                private String tagRecType;
-                private Object childTagList;
-                private Object childTagIdList;
-                private int communityIndex;
+                @JSONField(name = "name")
+                var name: String? = null
 
-                public int getId() {
-                    return id;
-                }
+                @JSONField(name = "actionUrl")
+                var actionUrl: String? = null
 
-                public void setId(int id) {
-                    this.id = id;
-                }
+                @JSONField(name = "adTrack")
+                var adTrack: Any? = null
 
-                public String getName() {
-                    return name;
-                }
+                @JSONField(name = "desc")
+                var desc: Any? = null
 
-                public void setName(String name) {
-                    this.name = name;
-                }
+                @JSONField(name = "bgPicture")
+                var bgPicture: String? = null
 
-                public String getActionUrl() {
-                    return actionUrl;
-                }
+                @JSONField(name = "headerImage")
+                var headerImage: String? = null
 
-                public void setActionUrl(String actionUrl) {
-                    this.actionUrl = actionUrl;
-                }
+                @JSONField(name = "tagRecType")
+                var tagRecType: String? = null
 
-                public Object getAdTrack() {
-                    return adTrack;
-                }
+                @JSONField(name = "childTagList")
+                var childTagList: Any? = null
 
-                public void setAdTrack(Object adTrack) {
-                    this.adTrack = adTrack;
-                }
+                @JSONField(name = "childTagIdList")
+                var childTagIdList: Any? = null
 
-                public Object getDesc() {
-                    return desc;
-                }
-
-                public void setDesc(Object desc) {
-                    this.desc = desc;
-                }
-
-                public String getBgPicture() {
-                    return bgPicture;
-                }
-
-                public void setBgPicture(String bgPicture) {
-                    this.bgPicture = bgPicture;
-                }
-
-                public String getHeaderImage() {
-                    return headerImage;
-                }
-
-                public void setHeaderImage(String headerImage) {
-                    this.headerImage = headerImage;
-                }
-
-                public String getTagRecType() {
-                    return tagRecType;
-                }
-
-                public void setTagRecType(String tagRecType) {
-                    this.tagRecType = tagRecType;
-                }
-
-                public Object getChildTagList() {
-                    return childTagList;
-                }
-
-                public void setChildTagList(Object childTagList) {
-                    this.childTagList = childTagList;
-                }
-
-                public Object getChildTagIdList() {
-                    return childTagIdList;
-                }
-
-                public void setChildTagIdList(Object childTagIdList) {
-                    this.childTagIdList = childTagIdList;
-                }
-
-                public int getCommunityIndex() {
-                    return communityIndex;
-                }
-
-                public void setCommunityIndex(int communityIndex) {
-                    this.communityIndex = communityIndex;
-                }
+                @JSONField(name = "communityIndex")
+                var communityIndex = 0
             }
 
-            public static class PlayInfoBean implements Serializable{
+            class PlayInfoBean : Serializable {
+
                 /**
                  * height : 480
                  * width : 854
@@ -1052,96 +423,39 @@ public class KaiyanDetailBean implements Serializable {
                  * type : normal
                  * url : http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171095&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss
                  */
+                @JSONField(name = "height")
+                var height = 0
 
-                private int height;
-                private int width;
-                private String name;
-                private String type;
-                private String url;
-                private List<UrlListBean> urlList;
+                @JSONField(name = "width")
+                var width = 0
 
-                public int getHeight() {
-                    return height;
-                }
+                @JSONField(name = "name")
+                var name: String? = null
 
-                public void setHeight(int height) {
-                    this.height = height;
-                }
+                @JSONField(name = "type")
+                var type: String? = null
 
-                public int getWidth() {
-                    return width;
-                }
+                @JSONField(name = "url")
+                var url: String? = null
 
-                public void setWidth(int width) {
-                    this.width = width;
-                }
+                @JSONField(name = "urlList")
+                var urlList: List<UrlListBean>? = null
 
-                public String getName() {
-                    return name;
-                }
+                class UrlListBean : Serializable {
 
-                public void setName(String name) {
-                    this.name = name;
-                }
-
-                public String getType() {
-                    return type;
-                }
-
-                public void setType(String type) {
-                    this.type = type;
-                }
-
-                public String getUrl() {
-                    return url;
-                }
-
-                public void setUrl(String url) {
-                    this.url = url;
-                }
-
-                public List<UrlListBean> getUrlList() {
-                    return urlList;
-                }
-
-                public void setUrlList(List<UrlListBean> urlList) {
-                    this.urlList = urlList;
-                }
-
-                public static class UrlListBean implements Serializable{
                     /**
                      * name : aliyun
                      * url : http://baobab.kaiyanapp.com/api/v1/playUrl?vid=171095&resourceType=video&editionType=normal&source=aliyun&playUrlType=url_oss
                      * size : 20077971
                      */
+                    @JSONField(name = "name")
+                    var name: String? = null
 
-                    private String name;
-                    private String url;
-                    private int size;
+                    @JSONField(name = "url")
+                    var url: String? = null
 
-                    public String getName() {
-                        return name;
-                    }
-
-                    public void setName(String name) {
-                        this.name = name;
-                    }
-
-                    public String getUrl() {
-                        return url;
-                    }
-
-                    public void setUrl(String url) {
-                        this.url = url;
-                    }
-
-                    public int getSize() {
-                        return size;
-                    }
-
-                    public void setSize(int size) {
-                        this.size = size;
-                    }
+                    @JSONField(name = "size")
+                    var size = 0
                 }
             }
         }

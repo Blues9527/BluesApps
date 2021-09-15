@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/black">
 
-    <nicevideoplayer.NiceVideoPlayer
+    <com.blues.nicevideoplayer.NiceVideoPlayer
         android:id="@+id/nvp_video"
         android:layout_width="match_parent"
         android:layout_height="300dp"
