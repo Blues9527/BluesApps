@@ -7,13 +7,14 @@
             android:icon="@drawable/ic_svg_home_grey"
             android:title="主页" />
         <item
-            android:id="@+id/menu_study"
-            android:icon="@drawable/ic_svg_book_grey"
-            android:title="学习" />
-        <item
             android:id="@+id/menu_open_eye"
-            android:icon="@drawable/ic_svg_user_grey"
+            android:icon="@drawable/ic_svg_book_grey"
             android:title="开眼" />
+
+        <item
+            android:id="@+id/menu_mine"
+            android:icon="@drawable/ic_svg_user_grey"
+            android:title="我的" />
     </group>
 
 </menu>

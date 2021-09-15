@@ -12,8 +12,10 @@ import android.app.Activity
 import android.widget.ImageView
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.blues.framework.utils.dp
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import java.lang.StringBuilder
+import java.util.*
 
 /**
  * User : Blues
@@ -42,6 +44,9 @@ class KaiyanHotRankViewHolder(parent: ViewGroup?) :
 
             coverHotRank.load(cover?.detail) {
                 crossfade(true)
+                placeholder(R.mipmap.ic_img_error)
+                error(R.mipmap.ic_img_error)
+                placeholderMemoryCacheKey(UUID.randomUUID().toString())
             }
             tvTitle.text = title
 

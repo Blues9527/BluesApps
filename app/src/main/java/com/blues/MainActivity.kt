@@ -17,8 +17,10 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
 
     private var mLastMillis: Long = 0
     private var mCurrentFragment: Fragment? = null
+
     //private val fragmentList: MutableList<Fragment> = mutableListOf(MainPageFragment(), StudyPageFragment(), KaiyanFragment())
-    private val fragmentList: MutableList<Fragment> = mutableListOf(KaiyanHotRankFragment(), StudyPageFragment(), KaiyanFragment())
+    private val fragmentList: MutableList<Fragment> = mutableListOf(KaiyanHotRankFragment(),
+            KaiyanFragment())
 
     override fun onBackPressed() {
         showSimpleLog("on back press")
@@ -58,8 +60,8 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_home -> showFragment(mCurrentFragment, fragmentList[0])
-            R.id.menu_study -> showFragment(mCurrentFragment, fragmentList[1])
-            R.id.menu_open_eye -> showFragment(mCurrentFragment, fragmentList[2])
+            R.id.menu_open_eye -> showFragment(mCurrentFragment, fragmentList[1])
+            //R.id.menu_mine -> showFragment(mCurrentFragment, fragmentList[2])
         }
         return true
     }
@@ -70,23 +72,16 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
         val isAdded = to.isAdded
         if (!isAdded) {
             if (from != null) {
-                transaction.hide(from)
-                        .add(R.id.fl_container, to, null)
-                        .show(to)
+                transaction.hide(from).add(R.id.fl_container, to, null).show(to)
                         .commitAllowingStateLoss()
             } else {
-                transaction.add(R.id.fl_container, to, null)
-                        .show(to)
-                        .commitAllowingStateLoss()
+                transaction.add(R.id.fl_container, to, null).show(to).commitAllowingStateLoss()
             }
         } else {
             if (from != null) {
-                transaction.hide(from)
-                        .show(to)
-                        .commitAllowingStateLoss()
+                transaction.hide(from).show(to).commitAllowingStateLoss()
             } else {
-                transaction.show(to)
-                        .commitAllowingStateLoss()
+                transaction.show(to).commitAllowingStateLoss()
             }
         }
         mCurrentFragment = to
