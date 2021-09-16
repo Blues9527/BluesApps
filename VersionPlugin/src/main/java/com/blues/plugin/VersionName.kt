@@ -17,7 +17,8 @@ object Versions {
     const val appcompat = "1.1.0"
 
     //constraint layout
-    const val constraintlayout = "1.1.3"
+    //implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    const val constraintlayout = "2.1.0"
 
     //material
     const val material = "1.1.0"
