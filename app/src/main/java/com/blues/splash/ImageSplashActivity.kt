@@ -7,12 +7,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.blues.framework.base.BaseKoinActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 /**
  * File: com.blues.splash.ImageSplashActivity
@@ -38,6 +36,14 @@ class ImageSplashActivity : BaseKoinActivity() {
 
             val decor = LayoutInflater.from(this@ImageSplashActivity)
                     .inflate(R.layout.item_splash, null) as ConstraintLayout
+
+            val skipTv = decor.findViewById<TextView>(R.id.tv_skip)
+            skipTv.setOnClickListener {
+                startActivity<MainActivity>()
+                finish()
+                cancel()
+            }
+
             decor.apply {
                 id = SPLASH_ID
                 layoutParams = ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -46,7 +52,7 @@ class ImageSplashActivity : BaseKoinActivity() {
             decorView.addView(decor)
 
             //延迟2s消失
-            delay(2000)
+            delay(5000)
 
             decorView.findViewById<View>(SPLASH_ID)?.also {
                 decorView.removeView(it)
