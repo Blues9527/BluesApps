@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.blues.framework.base.BaseKoinActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -36,10 +37,10 @@ class ImageSplashActivity : BaseKoinActivity() {
             val decorView = window.decorView as FrameLayout
 
             val decor = LayoutInflater.from(this@ImageSplashActivity)
-                    .inflate(R.layout.item_splash, null) as FrameLayout
+                    .inflate(R.layout.item_splash, null) as ConstraintLayout
             decor.apply {
                 id = SPLASH_ID
-                layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                layoutParams = ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT)
             }
             decorView.addView(decor)

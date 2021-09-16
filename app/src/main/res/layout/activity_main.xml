@@ -55,8 +55,7 @@
         android:foregroundGravity="center"
         android:scaleType="center"
         app:backgroundTint="@color/color_white"
-        app:fabSize="auto"
-        app:layout_behavior="com.google.android.material.floatingactionbutton.FloatingActionButton$Behavior" />
+        app:fabSize="auto" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_view"

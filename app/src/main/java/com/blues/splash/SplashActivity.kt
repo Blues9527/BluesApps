@@ -20,19 +20,20 @@ import kotlinx.coroutines.launch
  */
 class SplashActivity : BaseKoinActivity() {
 
-    private val cdView: CountDownView by lazy {
-        findViewById(R.id.cdv_count)
-    }
+    private lateinit var tcvSplash: TextClockView
+
+    private lateinit var cdView: CountDownView
     private val mField: ExplosionField by lazy {
         ExplosionField(this@SplashActivity, FallingParticleFactory())
-    }
-    private val tcvSplash: TextClockView by lazy {
-        findViewById(R.id.rclv_splash)
     }
 
     override fun getLayoutId(): Int = R.layout.dialog_splash
 
     override fun initData(savedInstanceState: Bundle?) {
+
+        cdView = findViewById(R.id.cdv_count)
+        tcvSplash = findViewById(R.id.rclv_splash)
+
         tcvSplash.startTimerSafely()
         cdView.setCountDownTimerCallBack(object : CountDownView.CountDownTimerCallBack {
             override fun onFinish() {
