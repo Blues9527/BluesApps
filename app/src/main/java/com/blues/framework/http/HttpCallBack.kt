@@ -1,7 +1,6 @@
 package com.blues.framework.http
 
 import com.blues.framework.utils.NetWorkUtil.isConnected
-import com.blues.framework.utils.NetWorkUtil
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
