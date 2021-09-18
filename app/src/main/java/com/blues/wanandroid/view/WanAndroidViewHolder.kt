@@ -9,7 +9,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
 import coil.load
-import com.blues.WebViewDialog
+import com.blues.framework.dialog.WebViewDialog
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 
 /**

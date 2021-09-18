@@ -17,6 +17,14 @@
     <color name="color_blue">#ff0000ff</color>
     <color name="color_purple">#ff800080</color>
 
+    <!--白色10%透明度-->
+    <color name="color_white_translucent10">#10ffffff</color>
+    <!--白色20%透明度-->
+    <color name="color_white_translucent20">#20ffffff</color>
+    <!--白色30%透明度-->
+    <color name="color_white_translucent30">#30ffffff</color>
+    <!--白色40%透明度-->
+    <color name="color_white_translucent40">#40ffffff</color>
     <!--白色50%透明度-->
     <color name="color_white_translucent50">#50ffffff</color>
     <!--白色60%透明度-->

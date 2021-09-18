@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.blues.LoadingDialog
+import com.blues.framework.dialog.LoadingDialog
 
 /**
  * File: com.blues.framework.base.BaseKoinFragment

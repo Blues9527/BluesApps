@@ -1,6 +1,5 @@
 package com.blues.gankio.v1.view
 
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.blues.R
@@ -8,7 +7,7 @@ import android.widget.TextView
 import com.jude.easyrecyclerview.EasyRecyclerView
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.blues.WebViewDialog
+import com.blues.framework.dialog.WebViewDialog
 import com.blues.gankio.v1.model.GankBean
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 

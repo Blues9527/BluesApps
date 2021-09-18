@@ -3,7 +3,6 @@ package com.blues.framework.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.blues.LoadingDialog
 import com.blues.framework.http.Response
 import com.blues.framework.utils.HelperUtil
 import kotlinx.coroutines.Dispatchers

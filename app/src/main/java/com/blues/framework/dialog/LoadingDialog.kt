@@ -1,4 +1,4 @@
-package com.blues
+package com.blues.framework.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.Gravity
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ProgressBar
+import com.blues.R
 
 class LoadingDialog(context: Context) : Dialog(context, R.style.Theme_LoadingDialog) {
 

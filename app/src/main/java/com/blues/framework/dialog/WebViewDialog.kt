@@ -1,4 +1,4 @@
-package com.blues
+package com.blues.framework.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -16,6 +16,7 @@ import android.view.View
 import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.ProgressBar
+import com.blues.R
 import java.lang.Exception
 
 class WebViewDialog(context: Context, private val url: String) : Dialog(context) {
