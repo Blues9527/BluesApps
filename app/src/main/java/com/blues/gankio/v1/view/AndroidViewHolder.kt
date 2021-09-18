@@ -8,11 +8,10 @@ import android.content.Intent
 import androidx.core.app.ActivityOptionsCompat
 import android.app.Activity
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import coil.load
-import com.blues.WebViewDialog
+import com.blues.framework.dialog.WebViewDialog
 import com.blues.gankio.v1.model.GankBean
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 

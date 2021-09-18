@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
 import android.view.View
 import android.widget.LinearLayout
 import com.blues.framework.widget.endlessbannerview.BannerAdapter
-import com.blues.WebViewDialog
+import com.blues.framework.dialog.WebViewDialog
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.framework.utils.dp
 import com.blues.gankio.v2.vm.GankioViewModel

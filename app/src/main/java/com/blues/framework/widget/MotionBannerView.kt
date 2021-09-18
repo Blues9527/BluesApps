@@ -25,7 +25,14 @@ class MotionBannerView(context: Context, attrs: AttributeSet?) : FrameLayout(con
 
     private var carousel: Carousel
 
-    private var urls: List<String> = mutableListOf()
+    private var urls: List<String>? = null
+
+    private var defaultBanners: List<Int> = arrayListOf(
+            R.drawable.image_sample1,
+            R.drawable.image_sample2,
+            R.drawable.image_sample3,
+            R.drawable.image_sample4,
+    )
 
     init {
         val rootView = inflate(context, R.layout.layout_banner, this)
@@ -42,24 +49,33 @@ class MotionBannerView(context: Context, attrs: AttributeSet?) : FrameLayout(con
     private fun setCarouselAdapter() {
         carousel.setAdapter(object : Carousel.Adapter {
             override fun count(): Int {
-                return urls.size
+
+                urls?.apply {
+                    return size
+                }
+
+                return defaultBanners.size
             }
 
             override fun populate(view: View?, index: Int) {
-                if (urls.isNotEmpty()) {
-                    (view as? ImageView)?.load(urls[index]) {
+                urls?.let {
+                    (view as? ImageView)?.load(it[index]) {
                         placeholder(R.drawable.shape_place_holder)
                     }
+                    return
+                }
+
+                (view as? ImageView)?.load(defaultBanners[index]) {
+                    placeholder(R.drawable.shape_place_holder)
                 }
             }
 
             override fun onNewItem(index: Int) {
                 //这里可以拿到中间image真正的下标，然后调用transitionToIndex进行轮播
-                if (urls.isNotEmpty()) {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        delay(2500)
-                        carousel.transitionToIndex(index + 1, 2500)
-                    }
+
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(2500)
+                    carousel.transitionToIndex(index + 1, 2500)
                 }
             }
         })
@@ -73,9 +89,8 @@ class MotionBannerView(context: Context, attrs: AttributeSet?) : FrameLayout(con
         }
     }
 
-    fun setDataSource(urls: List<String> = mutableListOf()) {
+    fun setDataSource(urls: List<String>) {
         this.urls = urls
     }
-
 
 }

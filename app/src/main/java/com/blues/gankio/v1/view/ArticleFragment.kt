@@ -9,7 +9,7 @@ import android.os.Bundle
 import com.jude.easyrecyclerview.EasyRecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import com.blues.WebViewDialog
+import com.blues.framework.dialog.WebViewDialog
 import com.blues.framework.base.BaseKoinFragment
 import com.blues.gankio.v1.model.ArticleBean
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
