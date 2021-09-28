@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.blues.framework.base.BaseKoinActivity
+import com.blues.framework.utils.startActivity
 import kotlinx.coroutines.*
 
 /**

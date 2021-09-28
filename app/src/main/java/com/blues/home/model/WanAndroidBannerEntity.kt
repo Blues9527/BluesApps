@@ -1,15 +1,14 @@
-package com.blues.home.model;
+package com.blues.home.model
 
-import java.io.Serializable;
-import java.util.List;
+import com.alibaba.fastjson.annotation.JSONField
+import java.io.Serializable
 
 /**
  * User : Blues
  * Date : 2019/8/1
  * Time : 11:04
  */
-
-public class WanAndroidBannerEntity implements Serializable {
+class WanAndroidBannerEntity : Serializable {
 
     /**
      * data : [{"desc":"Android高级进阶直播课免费学习","id":24,"imagePath":"https://www.wanandroid.com/blogimgs/bb4937de-b6f3-4c7e-b7d0-66d02f54abee.jpeg","isVisible":1,"order":10,"title":"Android高级进阶直播课免费学习\t","type":0,"url":"https://url.163.com/4bj"},{"desc":"一起来做个App吧","id":10,"imagePath":"https://www.wanandroid.com/blogimgs/50c115c2-cf6c-4802-aa7b-a4334de444cd.png","isVisible":1,"order":0,"title":"一起来做个App吧","type":1,"url":"http://www.wanandroid.com/blog/show/2"},{"desc":"","id":6,"imagePath":"https://www.wanandroid.com/blogimgs/62c1bd68-b5f3-4a3c-a649-7ca8c7dfabe6.png","isVisible":1,"order":1,"title":"我们新增了一个常用导航Tab~","type":1,"url":"http://www.wanandroid.com/navi"},{"desc":"","id":20,"imagePath":"https://www.wanandroid.com/blogimgs/90c6cc12-742e-4c9f-b318-b912f163b8d0.png","isVisible":1,"order":2,"title":"flutter 中文社区 ","type":1,"url":"https://flutter.cn/"}]
@@ -17,35 +16,17 @@ public class WanAndroidBannerEntity implements Serializable {
      * errorMsg :
      */
 
-    private int errorCode;
-    private String errorMsg;
-    private List<DataBean> data;
+    @JSONField(name = "errorCode")
+    var errorCode = 0
 
-    public int getErrorCode() {
-        return errorCode;
-    }
+    @JSONField(name = "errorMsg")
+    var errorMsg: String = ""
 
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
-    }
+    @JSONField(name = "data")
+    var data: List<DataBean> = mutableListOf()
 
-    public String getErrorMsg() {
-        return errorMsg;
-    }
+    class DataBean : Serializable {
 
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
-    }
-
-    public List<DataBean> getData() {
-        return data;
-    }
-
-    public void setData(List<DataBean> data) {
-        this.data = data;
-    }
-
-    public static class DataBean implements Serializable{
         /**
          * desc : Android高级进阶直播课免费学习
          * id : 24
@@ -56,78 +37,28 @@ public class WanAndroidBannerEntity implements Serializable {
          * type : 0
          * url : https://url.163.com/4bj
          */
+        @JSONField(name = "desc")
+        var desc: String = ""
 
-        private String desc;
-        private int id;
-        private String imagePath;
-        private int isVisible;
-        private int order;
-        private String title;
-        private int type;
-        private String url;
+        @JSONField(name = "id")
+        var id = 0
 
-        public String getDesc() {
-            return desc;
-        }
+        @JSONField(name = "imagePath")
+        var imagePath: String = ""
 
-        public void setDesc(String desc) {
-            this.desc = desc;
-        }
+        @JSONField(name = "isVisible")
+        var isVisible = 0
 
-        public int getId() {
-            return id;
-        }
+        @JSONField(name = "order")
+        var order = 0
 
-        public void setId(int id) {
-            this.id = id;
-        }
+        @JSONField(name = "title")
+        var title: String = ""
 
-        public String getImagePath() {
-            return imagePath;
-        }
+        @JSONField(name = "type")
+        var type = 0
 
-        public void setImagePath(String imagePath) {
-            this.imagePath = imagePath;
-        }
-
-        public int getIsVisible() {
-            return isVisible;
-        }
-
-        public void setIsVisible(int isVisible) {
-            this.isVisible = isVisible;
-        }
-
-        public int getOrder() {
-            return order;
-        }
-
-        public void setOrder(int order) {
-            this.order = order;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public int getType() {
-            return type;
-        }
-
-        public void setType(int type) {
-            this.type = type;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
+        @JSONField(name = "url")
+        var url: String = ""
     }
 }

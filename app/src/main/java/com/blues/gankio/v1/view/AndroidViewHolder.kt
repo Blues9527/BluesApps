@@ -33,7 +33,7 @@ class AndroidViewHolder(parent: ViewGroup?) :
         super.setData(data)
         tvDesc.text = data.desc
         tvAuthor.text = data.who
-        if (data.images != null && data.images.size != 0) {
+        if (data.images.isNotEmpty()) {
             ivCover.visibility = View.VISIBLE
             ivCover.load(data.images[0]) {
                 placeholder(R.mipmap.ic_img_error)

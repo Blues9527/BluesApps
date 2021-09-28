@@ -8,7 +8,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import android.content.Intent
 import androidx.core.app.ActivityOptionsCompat
 import android.app.Activity
-import android.view.View
 import android.widget.ImageView
 import coil.load
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
@@ -28,7 +27,7 @@ class GankViewHolder(parent: ViewGroup?) :
         super.setData(data)
         tvTitle.text = data.title
         tvAuthor.text = "作者：${data.author}"
-        if (data.images.size != 0) {
+        if (data.images.isNotEmpty()) {
             ivPreview.load(data.images[0]){
                 placeholder(R.mipmap.ic_img_error)
                 error(R.mipmap.ic_img_error)
@@ -40,7 +39,7 @@ class GankViewHolder(parent: ViewGroup?) :
         tvLikes.text = data.likeCounts.toString()
         tvPTime.text = "日期:${data.publishedAt}"
         clRoot.setOnClickListener {
-            val intent = Intent(context, GankPostDetailActivity::class.java).putExtra("postId", data._id)
+            val intent = Intent(context, GankPostDetailActivity::class.java).putExtra("postId", data.id)
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation((context as Activity), clRoot, "transitionGank")
             context.startActivity(intent, options.toBundle())
         }

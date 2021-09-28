@@ -26,7 +26,6 @@ class AccountLoginFragment : BaseKoinFragment(), View.OnClickListener, TextWatch
 
     private val loginViewModel: LoginViewModel by viewModel()
 
-    fun lazyFetchData() {}
     override fun onClick(v: View) {
         when (v.id) {
             R.id.tv_skip -> {

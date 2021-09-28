@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.kaiyan.list.view.KaiyanFragment
 import com.blues.framework.utils.HelperUtil
+import com.blues.framework.utils.startActivity
 import com.blues.kaiyan.list.view.KaiyanHotRankFragment
 import com.blues.kaiyan.list.view.KaiyanSearchActivity
 

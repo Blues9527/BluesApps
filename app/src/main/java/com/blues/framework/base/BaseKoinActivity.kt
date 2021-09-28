@@ -28,8 +28,4 @@ abstract class BaseKoinActivity : AppCompatActivity() {
     open fun observe() {
 
     }
-
-    inline fun <reified T> startActivity() {
-        startActivity(Intent(this, T::class.java))
-    }
 }

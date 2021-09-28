@@ -1,10 +1,9 @@
-package com.blues.gankio.v2.model;
+package com.blues.gankio.v2.model
 
-import java.io.Serializable;
-import java.util.List;
+import com.alibaba.fastjson.annotation.JSONField
+import java.io.Serializable
 
-public class GankioHotBean implements Serializable {
-
+class GankioHotBean : Serializable {
 
     /**
      * category : Article
@@ -13,44 +12,20 @@ public class GankioHotBean implements Serializable {
      * status : 100
      */
 
-    private String category;
-    private String hot;
-    private int status;
-    private List<DataBean> data;
+    @JSONField(name = "category")
+    var category: String = ""
 
-    public String getCategory() {
-        return category;
-    }
+    @JSONField(name = "hot")
+    var hot: String = ""
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+    @JSONField(name = "status")
+    var status = 0
 
-    public String getHot() {
-        return hot;
-    }
+    @JSONField(name = "data")
+    var data: List<DataBean> = mutableListOf()
 
-    public void setHot(String hot) {
-        this.hot = hot;
-    }
+    class DataBean : Serializable {
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public List<DataBean> getData() {
-        return data;
-    }
-
-    public void setData(List<DataBean> data) {
-        this.data = data;
-    }
-
-    public static class DataBean implements Serializable {
         /**
          * _id : 5e78b2f65d7c47fe610b0029
          * author : 扔物线
@@ -67,151 +42,43 @@ public class GankioHotBean implements Serializable {
          * views : 5254
          */
 
-        private String _id;
-        private String author;
-        private String category;
-        private String createdAt;
-        private String desc;
-        private int likeCounts;
-        private String publishedAt;
-        private int stars;
-        private String title;
-        private String type;
-        private String url;
-        private int views;
-        private List<String> images;
+        @JSONField(name = "_id")
+        private var id: String = ""
 
-        public String get_id() {
-            return _id;
-        }
+        @JSONField(name = "author")
+        var author: String = ""
 
-        public void set_id(String _id) {
-            this._id = _id;
-        }
+        @JSONField(name = "category")
+        var category: String = ""
 
-        public String getAuthor() {
-            return author;
-        }
+        @JSONField(name = "createdAt")
+        var createdAt: String = ""
 
-        public void setAuthor(String author) {
-            this.author = author;
-        }
+        @JSONField(name = "desc")
+        var desc: String = ""
 
-        public String getCategory() {
-            return category;
-        }
+        @JSONField(name = "likeCounts")
+        var likeCounts = 0
 
-        public void setCategory(String category) {
-            this.category = category;
-        }
+        @JSONField(name = "publishedAt")
+        var publishedAt: String = ""
 
-        public String getCreatedAt() {
-            return createdAt;
-        }
+        @JSONField(name = "stars")
+        var stars = 0
 
-        public void setCreatedAt(String createdAt) {
-            this.createdAt = createdAt;
-        }
+        @JSONField(name = "title")
+        var title: String = ""
 
-        public String getDesc() {
-            return desc;
-        }
+        @JSONField(name = "type")
+        var type: String = ""
 
-        public void setDesc(String desc) {
-            this.desc = desc;
-        }
+        @JSONField(name = "url")
+        var url: String = ""
 
-        public int getLikeCounts() {
-            return likeCounts;
-        }
+        @JSONField(name = "views")
+        var views = 0
 
-        public void setLikeCounts(int likeCounts) {
-            this.likeCounts = likeCounts;
-        }
-
-        public String getPublishedAt() {
-            return publishedAt;
-        }
-
-        public void setPublishedAt(String publishedAt) {
-            this.publishedAt = publishedAt;
-        }
-
-        public int getStars() {
-            return stars;
-        }
-
-        public void setStars(int stars) {
-            this.stars = stars;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        public int getViews() {
-            return views;
-        }
-
-        public void setViews(int views) {
-            this.views = views;
-        }
-
-        public List<String> getImages() {
-            return images;
-        }
-
-        public void setImages(List<String> images) {
-            this.images = images;
-        }
-
-        @Override
-        public String toString() {
-            return "DataBean{" +
-                    "_id='" + _id + '\'' +
-                    ", author='" + author + '\'' +
-                    ", category='" + category + '\'' +
-                    ", createdAt='" + createdAt + '\'' +
-                    ", desc='" + desc + '\'' +
-                    ", likeCounts=" + likeCounts +
-                    ", publishedAt='" + publishedAt + '\'' +
-                    ", stars=" + stars +
-                    ", title='" + title + '\'' +
-                    ", type='" + type + '\'' +
-                    ", url='" + url + '\'' +
-                    ", views=" + views +
-                    ", images=" + images +
-                    '}';
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "GankHotEntity{" +
-                "category='" + category + '\'' +
-                ", hot='" + hot + '\'' +
-                ", status=" + status +
-                ", data=" + data +
-                '}';
+        @JSONField(name = "images")
+        var images: List<String> = mutableListOf()
     }
 }

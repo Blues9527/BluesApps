@@ -1,36 +1,23 @@
-package com.blues.gankio.v2.model;
+package com.blues.gankio.v2.model
 
-import java.io.Serializable;
-import java.util.List;
+import com.alibaba.fastjson.annotation.JSONField
+import java.io.Serializable
 
-public class GankioPostDetailBean implements Serializable {
-
+class GankioPostDetailBean : Serializable {
 
     /**
      * data : {"_id":"5e777432b8ea09cade05263f","author":"鸢媛","category":"Girl","content":"这世界总有人在笨拙地爱着你，想把全部的温柔都给你。","createdAt":"2020-03-25 08:00:00","desc":"这世界总有人在笨拙地爱着你，想把全部的温柔都给你。","images":["http://gank.io/images/624ade89f93f421b8d4e8fafd86b1d8d"],"index":35,"isOriginal":true,"license":"","likeCount":0,"likeCounts":1,"likes":["DBRef('users', ObjectId('5b6ce9c89d21226f4e09c779'))"],"markdown":"","originalAuthor":"","publishedAt":"2020-03-25 08:00:00","stars":1,"status":1,"tags":[],"title":"第35期","type":"Girl","updatedAt":"2020-03-25 08:00:00","url":"http://gank.io/images/624ade89f93f421b8d4e8fafd86b1d8d","views":1077}
      * status : 100
      */
 
-    private DataBean data;
-    private int status;
+    @JSONField(name = "data")
+    var data: DataBean? = null
 
-    public DataBean getData() {
-        return data;
-    }
+    @JSONField(name = "status")
+    var status = 0
 
-    public void setData(DataBean data) {
-        this.data = data;
-    }
+    class DataBean : Serializable {
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public static class DataBean implements Serializable {
         /**
          * _id : 5e777432b8ea09cade05263f
          * author : 鸢媛
@@ -57,260 +44,76 @@ public class GankioPostDetailBean implements Serializable {
          * url : http://gank.io/images/624ade89f93f421b8d4e8fafd86b1d8d
          * views : 1077
          */
+        @JSONField(name = "_id")
+        var id: String = ""
 
-        private String _id;
-        private String author;
-        private String category;
-        private String content;
-        private String createdAt;
-        private String desc;
-        private int index;
-        private boolean isOriginal;
-        private String license;
-        private int likeCount;
-        private int likeCounts;
-        private String markdown;
-        private String originalAuthor;
-        private String publishedAt;
-        private int stars;
-        private int status;
-        private String title;
-        private String type;
-        private String updatedAt;
-        private String url;
-        private int views;
-        private List<String> images;
-        private List<String> likes;
-        private List<?> tags;
+        @JSONField(name = "author")
+        var author: String = ""
 
-        public String get_id() {
-            return _id;
-        }
+        @JSONField(name = "category")
+        var category: String = ""
 
-        public void set_id(String _id) {
-            this._id = _id;
-        }
+        @JSONField(name = "content")
+        var content: String = ""
 
-        public String getAuthor() {
-            return author;
-        }
+        @JSONField(name = "createdAt")
+        var createdAt: String = ""
 
-        public void setAuthor(String author) {
-            this.author = author;
-        }
+        @JSONField(name = "desc")
+        var desc: String = ""
 
-        public String getCategory() {
-            return category;
-        }
+        @JSONField(name = "index")
+        var index = 0
 
-        public void setCategory(String category) {
-            this.category = category;
-        }
+        @JSONField(name = "isOriginal")
+        var isIsOriginal = false
 
-        public String getContent() {
-            return content;
-        }
+        @JSONField(name = "license")
+        var license: String = ""
 
-        public void setContent(String content) {
-            this.content = content;
-        }
+        @JSONField(name = "likeCount")
+        var likeCount = 0
 
-        public String getCreatedAt() {
-            return createdAt;
-        }
+        @JSONField(name = "likeCounts")
+        var likeCounts = 0
 
-        public void setCreatedAt(String createdAt) {
-            this.createdAt = createdAt;
-        }
+        @JSONField(name = "markdown")
+        var markdown: String = ""
 
-        public String getDesc() {
-            return desc;
-        }
+        @JSONField(name = "originalAuthor")
+        var originalAuthor: String = ""
 
-        public void setDesc(String desc) {
-            this.desc = desc;
-        }
+        @JSONField(name = "publishedAt")
+        var publishedAt: String = ""
 
-        public int getIndex() {
-            return index;
-        }
+        @JSONField(name = "stars")
+        var stars = 0
 
-        public void setIndex(int index) {
-            this.index = index;
-        }
+        @JSONField(name = "status")
+        var status = 0
 
-        public boolean isIsOriginal() {
-            return isOriginal;
-        }
+        @JSONField(name = "title")
+        var title: String = ""
 
-        public void setIsOriginal(boolean isOriginal) {
-            this.isOriginal = isOriginal;
-        }
+        @JSONField(name = "type")
+        var type: String = ""
 
-        public String getLicense() {
-            return license;
-        }
+        @JSONField(name = "updatedAt")
+        var updatedAt: String = "¬"
 
-        public void setLicense(String license) {
-            this.license = license;
-        }
+        @JSONField(name = "url")
+        var url: String = ""
 
-        public int getLikeCount() {
-            return likeCount;
-        }
+        @JSONField(name = "views")
+        var views = 0
 
-        public void setLikeCount(int likeCount) {
-            this.likeCount = likeCount;
-        }
+        @JSONField(name = "images")
+        var images: List<String> = mutableListOf()
 
-        public int getLikeCounts() {
-            return likeCounts;
-        }
+        @JSONField(name = "likes")
+        var likes: List<String> = mutableListOf()
 
-        public void setLikeCounts(int likeCounts) {
-            this.likeCounts = likeCounts;
-        }
-
-        public String getMarkdown() {
-            return markdown;
-        }
-
-        public void setMarkdown(String markdown) {
-            this.markdown = markdown;
-        }
-
-        public String getOriginalAuthor() {
-            return originalAuthor;
-        }
-
-        public void setOriginalAuthor(String originalAuthor) {
-            this.originalAuthor = originalAuthor;
-        }
-
-        public String getPublishedAt() {
-            return publishedAt;
-        }
-
-        public void setPublishedAt(String publishedAt) {
-            this.publishedAt = publishedAt;
-        }
-
-        public int getStars() {
-            return stars;
-        }
-
-        public void setStars(int stars) {
-            this.stars = stars;
-        }
-
-        public int getStatus() {
-            return status;
-        }
-
-        public void setStatus(int status) {
-            this.status = status;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public String getUpdatedAt() {
-            return updatedAt;
-        }
-
-        public void setUpdatedAt(String updatedAt) {
-            this.updatedAt = updatedAt;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        public int getViews() {
-            return views;
-        }
-
-        public void setViews(int views) {
-            this.views = views;
-        }
-
-        public List<String> getImages() {
-            return images;
-        }
-
-        public void setImages(List<String> images) {
-            this.images = images;
-        }
-
-        public List<String> getLikes() {
-            return likes;
-        }
-
-        public void setLikes(List<String> likes) {
-            this.likes = likes;
-        }
-
-        public List<?> getTags() {
-            return tags;
-        }
-
-        public void setTags(List<?> tags) {
-            this.tags = tags;
-        }
-
-        @Override
-        public String toString() {
-            return "DataBean{" +
-                    "_id='" + _id + '\'' +
-                    ", author='" + author + '\'' +
-                    ", category='" + category + '\'' +
-                    ", content='" + content + '\'' +
-                    ", createdAt='" + createdAt + '\'' +
-                    ", desc='" + desc + '\'' +
-                    ", index=" + index +
-                    ", isOriginal=" + isOriginal +
-                    ", license='" + license + '\'' +
-                    ", likeCount=" + likeCount +
-                    ", likeCounts=" + likeCounts +
-                    ", markdown='" + markdown + '\'' +
-                    ", originalAuthor='" + originalAuthor + '\'' +
-                    ", publishedAt='" + publishedAt + '\'' +
-                    ", stars=" + stars +
-                    ", status=" + status +
-                    ", title='" + title + '\'' +
-                    ", type='" + type + '\'' +
-                    ", updatedAt='" + updatedAt + '\'' +
-                    ", url='" + url + '\'' +
-                    ", views=" + views +
-                    ", images=" + images +
-                    ", likes=" + likes +
-                    ", tags=" + tags +
-                    '}';
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "GankPostDetail{" +
-                "data=" + data +
-                ", status=" + status +
-                '}';
+        @JSONField(name = "tags")
+        var tags: List<Any> = mutableListOf()
     }
 }
