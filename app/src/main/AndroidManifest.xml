@@ -56,12 +56,14 @@
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
+            android:theme="@style/Theme_Transparent"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".register.view.RegisterActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
+            android:theme="@style/Theme_Transparent"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".kaiyan.list.view.KaiyanSearchActivity"
@@ -69,7 +71,8 @@
         <activity
             android:name=".kaiyan.detail.view.KaiyanDetailActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
-            android:launchMode="standard" />
+            android:launchMode="standard"
+            android:theme="@style/Theme_Transparent" />
         <activity android:name=".game.GameActivity" />
         <activity android:name=".wanandroid.view.WanAndroidActivity" />
         <activity android:name=".gankio.v2.view.GankActivity" />

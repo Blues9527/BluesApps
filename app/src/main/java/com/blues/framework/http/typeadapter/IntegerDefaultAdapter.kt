@@ -16,10 +16,12 @@ import java.lang.reflect.Type
  */
 class IntegerDefaultAdapter : JsonSerializer<Int?>, JsonDeserializer<Int> {
 
-    override fun deserialize(json: JsonElement, typeOfT: Type,
-        context: JsonDeserializationContext): Int {
+    override fun deserialize(
+        json: JsonElement, typeOfT: Type,
+        context: JsonDeserializationContext
+    ): Int {
         try {
-            if (json.asString == "" || json.asString == "null") { //定义为int类型,如果后台返回""或者null,则返回0
+            if (json.asString == null || json.asString == "" || json.asString == "null") { //定义为int类型,如果后台返回""或者null,则返回0
                 return 0
             }
         } catch (e: Exception) {
@@ -32,8 +34,10 @@ class IntegerDefaultAdapter : JsonSerializer<Int?>, JsonDeserializer<Int> {
         }
     }
 
-    override fun serialize(src: Int?, typeOfSrc: Type,
-        context: JsonSerializationContext): JsonElement {
+    override fun serialize(
+        src: Int?, typeOfSrc: Type,
+        context: JsonSerializationContext
+    ): JsonElement {
         return JsonPrimitive(src)
     }
 }
