@@ -18,12 +18,8 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder
 class KaiyanDetailRelatedViewHolder(parent: ViewGroup?) :
     BaseViewHolder<KaiyanDetailBean.ItemListBean>(parent, R.layout.item_oe_detail_related) {
 
-    private val itemText = itemView.findViewById<LinearLayout>(R.id.ll_item_text).apply {
-        visibility = View.GONE
-    }
-    private val itemVideo = itemView.findViewById<LinearLayout>(R.id.ll_item_video).apply {
-        visibility = View.GONE
-    }
+    private val itemText = itemView.findViewById<LinearLayout>(R.id.ll_item_text)
+    private val itemVideo = itemView.findViewById<LinearLayout>(R.id.ll_item_video)
     private val tvText: TextView = itemView.findViewById(R.id.tv_text)
     private val tvTitle: TextView = itemView.findViewById(R.id.tv_title)
     private val ivCover: ImageView = itemView.findViewById(R.id.iv_cover)

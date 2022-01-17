@@ -49,7 +49,7 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
     private lateinit var tvCancel: TextView
 
     private lateinit var mHotSearchAdapter: RecyclerArrayAdapter<String>
-    private lateinit var mResultAdapter: RecyclerArrayAdapter<KaiyanBean.ItemListBean.DataBean>
+    private lateinit var mResultAdapter: RecyclerArrayAdapter<KaiyanBean.ItemListBean>
 
     private var textInput: String = ""
 
@@ -88,7 +88,7 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
                     text = "『$textInput』共有${it.itemList.size}条搜索结果"
                 }
                 for (item in it.itemList) {
-                    mResultAdapter.add(item.data)
+                    mResultAdapter.add(item)
                 }
                 mResultAdapter.notifyDataSetChanged()
             }
@@ -146,7 +146,7 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
         rvSearchResult.apply {
             setLayoutManager(LinearLayoutManager(this@KaiyanSearchActivity))
             adapter = object :
-                RecyclerArrayAdapter<KaiyanBean.ItemListBean.DataBean>(this@KaiyanSearchActivity) {
+                RecyclerArrayAdapter<KaiyanBean.ItemListBean>(this@KaiyanSearchActivity) {
                 override fun OnCreateViewHolder(
                     parent: ViewGroup,
                     viewType: Int
