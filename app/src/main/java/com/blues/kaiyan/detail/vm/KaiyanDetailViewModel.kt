@@ -1,14 +1,14 @@
 package com.blues.kaiyan.detail.vm
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.blues.framework.base.BaseViewModel
 import com.blues.framework.base.catch
 import com.blues.framework.base.next
 import com.blues.framework.utils.HelperUtil
 import com.blues.kaiyan.detail.model.KaiyanDetailBean
 import com.blues.kaiyan.detail.service.KaiyanDetailRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 /**
@@ -16,14 +16,20 @@ import kotlinx.coroutines.launch
  * Description: xxx
  *
  * @author: lanhuajian
- * @time: 2021-07-30 15:58
+ * @time: 2022-01-05 19:27
  **/
 
 class KaiyanDetailViewModel(private val kaiyanDetailRepository: KaiyanDetailRepository) :
     BaseViewModel() {
 
-    private val _detail = MutableLiveData<KaiyanDetailBean>()
-    val detail: LiveData<KaiyanDetailBean> = _detail
+    //StateFlow
+    private val _detail = MutableStateFlow<KaiyanDetailBean?>(null)
+    val detail: StateFlow<KaiyanDetailBean?> = _detail
+
+    // LiveData
+//        private val _detail = MutableLiveData<KaiyanDetailBean>()
+//        val detail: LiveData<KaiyanDetailBean> = _detail
+
 
     fun getDetail(id: String) {
         viewModelScope.launch {
@@ -33,7 +39,8 @@ class KaiyanDetailViewModel(private val kaiyanDetailRepository: KaiyanDetailRepo
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _detail.value = it
+//                    _detail.value = it
+                    _detail.tryEmit(it)
                 }
             }
         }

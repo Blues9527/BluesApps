@@ -25,6 +25,7 @@ object AndroidX {
     const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
     const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewmodel}"
     const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.livedata}"
+    const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
     const val annotation = "androidx.annotation:annotation:${Versions.annotation}"
 }
 

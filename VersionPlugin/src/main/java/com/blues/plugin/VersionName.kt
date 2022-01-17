@@ -62,6 +62,9 @@ object Versions {
     //livedata
     const val livedata = "2.4.0-alpha02"
 
+    //lifecycle
+    const val lifecycle = "2.4.0-alpha02"
+
     //依赖注入koin
     const val koin = "3.1.2"
 

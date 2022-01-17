@@ -15,11 +15,14 @@ import android.transition.AutoTransition
 import android.transition.Explode
 import android.view.View
 import android.widget.ImageView
+import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.kaiyan.detail.vm.KaiyanDetailViewModel
 import com.blues.nicevideoplayer.NiceVideoPlayer
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -69,8 +72,10 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
             setLayoutManager(LinearLayoutManager(this@KaiyanDetailActivity))
             adapter = object :
                 RecyclerArrayAdapter<KaiyanDetailBean.ItemListBean>(this@KaiyanDetailActivity) {
-                override fun OnCreateViewHolder(parent: ViewGroup,
-                    viewType: Int): BaseViewHolder<*> {
+                override fun OnCreateViewHolder(
+                    parent: ViewGroup,
+                    viewType: Int
+                ): BaseViewHolder<*> {
                     return KaiyanDetailRelatedViewHolder(parent)
                 }
             }.also { mAdapter = it }
@@ -89,10 +94,20 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
     }
 
     override fun observe() {
-        kaiyanDetailViewModel.detail.observe(this) {
-            mAdapter.apply {
-                addAll(it.itemList)
-                notifyDataSetChanged()
+//        kaiyanDetailViewModel.detail.observe(this) {
+//            mAdapter.apply {
+//                addAll(it.itemList)
+//                notifyDataSetChanged()
+//            }
+//        }
+        lifecycleScope.launch {
+            kaiyanDetailViewModel.detail.collect { result ->
+                result?.let {
+                    mAdapter.apply {
+                        addAll(it.itemList)
+                        notifyDataSetChanged()
+                    }
+                }
             }
         }
     }
