@@ -9,10 +9,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import com.blues.MainActivity
 import com.blues.adapter.TextWatcherAdapter
 import com.blues.framework.utils.HelperUtil
 import com.blues.login.vm.LoginViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AccountLoginFragment : BaseKoinFragment(), View.OnClickListener, TextWatcherAdapter {
@@ -69,11 +72,13 @@ class AccountLoginFragment : BaseKoinFragment(), View.OnClickListener, TextWatch
     }
 
     override fun observe() {
-        loginViewModel.result.observe(this) {
-            if (it.errorCode == 200) {
-                startActivity(Intent(requireActivity(), MainActivity::class.java))
-            } else {
-                HelperUtil.showToast(it.errorMsg)
+        lifecycleScope.launch {
+            loginViewModel.result.collect{
+                if (it.errorCode == 200) {
+                    startActivity(Intent(requireActivity(), MainActivity::class.java))
+                } else {
+                    HelperUtil.showToast(it.errorMsg)
+                }
             }
         }
     }

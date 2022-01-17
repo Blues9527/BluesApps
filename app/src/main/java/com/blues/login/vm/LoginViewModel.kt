@@ -1,6 +1,5 @@
 package com.blues.login.vm
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.blues.framework.base.BaseViewModel
 import com.blues.framework.base.catch
@@ -8,6 +7,8 @@ import com.blues.framework.base.next
 import com.blues.framework.utils.HelperUtil
 import com.blues.login.model.LoginResponse
 import com.blues.login.service.LoginRepository
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 /**
@@ -20,7 +21,8 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val loginRepo: LoginRepository) : BaseViewModel() {
 
-    val result = MutableLiveData<LoginResponse>()
+    private val _result = MutableSharedFlow<LoginResponse>(replay = 1)
+    val result: SharedFlow<LoginResponse> = _result
 
     fun login(username: String, password: String) {
         viewModelScope.launch {
@@ -29,10 +31,10 @@ class LoginViewModel(private val loginRepo: LoginRepository) : BaseViewModel() {
             }.catch {
                 HelperUtil.showSimpleLog(this.message)
             }.next {
-                    this.data?.let {
-                        result.value = it
-                    }
+                this.data?.let {
+                    _result.tryEmit(it)
                 }
+            }
         }
     }
 }
