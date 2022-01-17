@@ -7,7 +7,6 @@ import com.blues.framework.base.next
 import com.blues.framework.utils.HelperUtil
 import com.blues.kaiyan.detail.model.KaiyanDetailBean
 import com.blues.kaiyan.detail.service.KaiyanDetailRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -23,13 +22,8 @@ class KaiyanDetailViewModel(private val kaiyanDetailRepository: KaiyanDetailRepo
     BaseViewModel() {
 
     //StateFlow
-    private val _detail = MutableStateFlow<KaiyanDetailBean?>(null)
-    val detail: StateFlow<KaiyanDetailBean?> = _detail
-
-    // LiveData
-//        private val _detail = MutableLiveData<KaiyanDetailBean>()
-//        val detail: LiveData<KaiyanDetailBean> = _detail
-
+    private val _detail = MutableSharedFlow<KaiyanDetailBean>(replay = 1)
+    val detail: SharedFlow<KaiyanDetailBean?> = _detail
 
     fun getDetail(id: String) {
         viewModelScope.launch {
@@ -39,7 +33,6 @@ class KaiyanDetailViewModel(private val kaiyanDetailRepository: KaiyanDetailRepo
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-//                    _detail.value = it
                     _detail.tryEmit(it)
                 }
             }

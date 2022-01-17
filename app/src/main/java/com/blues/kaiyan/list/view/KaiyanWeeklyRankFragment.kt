@@ -8,6 +8,7 @@ import com.blues.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.blues.constant.KaiYanType
 import com.jude.easyrecyclerview.decoration.DividerDecoration
@@ -18,15 +19,17 @@ import com.jude.easyrecyclerview.EasyRecyclerView
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
-* File: com.blues.module_kaiyan.main.view.KaiyanWeeklyRankFragment.kt
-* Description: xxx
-*
-* @author: lanhuajian
-* @time: 2021/7/30
-**/
+ * File: com.blues.module_kaiyan.main.view.KaiyanWeeklyRankFragment.kt
+ * Description: xxx
+ *
+ * @author: lanhuajian
+ * @time: 2021/7/30
+ **/
 
 class KaiyanWeeklyRankFragment : BaseKoinFragment(), OnRefreshListener {
 
@@ -58,12 +61,14 @@ class KaiyanWeeklyRankFragment : BaseKoinFragment(), OnRefreshListener {
     }
 
     override fun observe() {
-        weeklyViewModel.videos.observe(this){
-            mAdapter.apply {
-                addAll(it.itemList)
-                notifyDataSetChanged()
+        lifecycleScope.launch {
+            weeklyViewModel.videos.collect {
+                mAdapter.apply {
+                    addAll(it.itemList)
+                    notifyDataSetChanged()
+                }
+                hotRankSr.finishRefresh()
             }
-            hotRankSr.finishRefresh()
         }
     }
 
@@ -79,8 +84,10 @@ class KaiyanWeeklyRankFragment : BaseKoinFragment(), OnRefreshListener {
             addItemDecoration(decoration)
             setLayoutManager(LinearLayoutManager(requireContext()))
             adapter = object : RecyclerArrayAdapter<KaiyanBean.ItemListBean>(requireContext()) {
-                override fun OnCreateViewHolder(parent: ViewGroup,
-                    viewType: Int): BaseViewHolder<*> {
+                override fun OnCreateViewHolder(
+                    parent: ViewGroup,
+                    viewType: Int
+                ): BaseViewHolder<*> {
                     return KaiyanWeeklyRankViewHolder(parent)
                 }
             }.also { mAdapter = it }

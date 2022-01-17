@@ -9,6 +9,7 @@ import com.blues.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.jude.easyrecyclerview.EasyRecyclerView
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.jude.easyrecyclerview.decoration.DividerDecoration
@@ -19,6 +20,8 @@ import com.blues.kaiyan.list.vm.KaiyanViewModel
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -63,12 +66,14 @@ class KaiyanHotRankFragment : BaseKoinFragment(), OnRefreshListener {
     }
 
     override fun observe() {
-        hotrankViewModel.rankList.observe(this) {
-            mAdapter.apply {
-                addAll(it.itemList)
-                notifyDataSetChanged()
+        lifecycleScope.launch {
+            hotrankViewModel.rankList.collect{
+                mAdapter.apply {
+                    addAll(it.itemList)
+                    notifyDataSetChanged()
+                }
+                hotRankSr.finishRefresh()
             }
-            hotRankSr.finishRefresh()
         }
     }
 

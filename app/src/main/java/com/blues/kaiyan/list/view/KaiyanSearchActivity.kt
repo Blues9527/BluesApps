@@ -18,10 +18,13 @@ import android.view.View
 import com.blues.kaiyan.list.model.KaiyanBean
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
+import androidx.lifecycle.lifecycleScope
 import com.blues.adapter.TextWatcherAdapter
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.kaiyan.list.vm.KaiyanViewModel
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -66,25 +69,29 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
     }
 
     override fun observe() {
-        searchViewModel.hotSearch.observe(this) {
-            mHotSearchAdapter.apply {
-                addAll(it)
-                notifyDataSetChanged()
+        lifecycleScope.launch {
+            searchViewModel.hotSearch.collect {
+                mHotSearchAdapter.apply {
+                    addAll(it)
+                    notifyDataSetChanged()
+                }
             }
         }
 
-        searchViewModel.searchResult.observe(this) {
-            llHotSearch.visibility = View.GONE
-            rvSearchResult.visibility = View.VISIBLE
-            tvSearchResult.apply {
-                setTextColor(resources.getColor(R.color.color_black, null))
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
-                text = String.format("『%s』共有%s条搜索结果", textInput, it.itemList.size)
+        lifecycleScope.launch {
+            searchViewModel.searchResult.collect {
+                llHotSearch.visibility = View.GONE
+                rvSearchResult.visibility = View.VISIBLE
+                tvSearchResult.apply {
+                    setTextColor(resources.getColor(R.color.color_black, null))
+                    setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
+                    text = "『$textInput』共有${it.itemList.size}条搜索结果"
+                }
+                for (item in it.itemList) {
+                    mResultAdapter.add(item.data)
+                }
+                mResultAdapter.notifyDataSetChanged()
             }
-            for (item in it.itemList) {
-                mResultAdapter.add(item.data)
-            }
-            mResultAdapter.notifyDataSetChanged()
         }
     }
 
@@ -110,28 +117,27 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
             setOnEditorActionListener(this@KaiyanSearchActivity)
         }
         ivClear = findViewById<ImageView>(R.id.iv_clear).apply {
-            visibility = View.GONE
             setOnClickListener(this@KaiyanSearchActivity)
         }
+
         tvSearchResult = findViewById<TextView>(R.id.tv_search_result).apply {
             setTextColor(resources.getColor(R.color.color_weak_white, null))
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 11f)
         }
-        rvSearchResult = findViewById<EasyRecyclerView>(R.id.rv_search_result).apply {
-            visibility = View.GONE
-        }
+        rvSearchResult = findViewById(R.id.rv_search_result)
+
         rvHotSearchResult = findViewById<EasyRecyclerView>(R.id.rv_hot_search).apply {
             setLayoutManager(StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL))
             adapter = object : RecyclerArrayAdapter<String>(this@KaiyanSearchActivity) {
-                override fun OnCreateViewHolder(parent: ViewGroup,
-                    viewType: Int): BaseViewHolder<*> {
+                override fun OnCreateViewHolder(
+                    parent: ViewGroup,
+                    viewType: Int
+                ): BaseViewHolder<*> {
                     return KaiyanHotSearchViewHolder(parent)
                 }
             }.also { mHotSearchAdapter = it }
         }
-        llHotSearch = findViewById<LinearLayout>(R.id.ll_hot_search).apply {
-            visibility = View.VISIBLE
-        }
+        llHotSearch = findViewById(R.id.ll_hot_search)
 
         tvCancel = findViewById<TextView>(R.id.tv_cancel).apply {
             setOnClickListener(this@KaiyanSearchActivity)
@@ -141,8 +147,10 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
             setLayoutManager(LinearLayoutManager(this@KaiyanSearchActivity))
             adapter = object :
                 RecyclerArrayAdapter<KaiyanBean.ItemListBean.DataBean>(this@KaiyanSearchActivity) {
-                override fun OnCreateViewHolder(parent: ViewGroup,
-                    viewType: Int): BaseViewHolder<*> {
+                override fun OnCreateViewHolder(
+                    parent: ViewGroup,
+                    viewType: Int
+                ): BaseViewHolder<*> {
                     return KaiyanSearchResultViewHolder(parent)
                 }
             }.also { mResultAdapter = it }
