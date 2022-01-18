@@ -17,14 +17,14 @@ abstract class BaseKoinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
         initData(savedInstanceState)
-        observe()
+        collect()
     }
 
     abstract fun getLayoutId(): Int
 
     abstract fun initData(savedInstanceState: Bundle?)
 
-    open fun observe() {
+    open fun collect() {
 
     }
 }

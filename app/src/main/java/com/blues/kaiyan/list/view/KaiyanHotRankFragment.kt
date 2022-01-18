@@ -65,7 +65,7 @@ class KaiyanHotRankFragment : BaseKoinFragment(), OnRefreshListener {
         hotrankViewModel.getRankList()
     }
 
-    override fun observe() {
+    override fun collect() {
         lifecycleScope.launch {
             hotrankViewModel.rankList.collect{
                 mAdapter.apply {

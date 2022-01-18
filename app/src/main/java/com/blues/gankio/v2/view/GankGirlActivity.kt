@@ -31,7 +31,7 @@ class GankGirlActivity : BaseKoinActivity(), OnRefreshListener {
         gankioViewModel.getCategoryPostList(GankioConstant.GIRL, GankioConstant.GIRL, page = 1)
     }
 
-    override fun observe() {
+    override fun collect() {
         gankioViewModel.list.observe(this) {
             mAdapter.apply {
                 addAll(it.data)

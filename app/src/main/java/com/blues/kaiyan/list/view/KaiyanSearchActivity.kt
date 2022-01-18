@@ -40,13 +40,27 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
 
     private val searchViewModel: KaiyanViewModel by viewModel()
 
-    private lateinit var etSearch: EditText
-    private lateinit var ivClear: ImageView
-    private lateinit var tvSearchResult: TextView
-    private lateinit var llHotSearch: LinearLayout
-    private lateinit var rvSearchResult: EasyRecyclerView
-    private lateinit var rvHotSearchResult: EasyRecyclerView
-    private lateinit var tvCancel: TextView
+    private val etSearch: EditText by lazy {
+        findViewById(R.id.et_search)
+    }
+    private val ivClear: ImageView by lazy {
+        findViewById(R.id.iv_clear)
+    }
+    private val tvSearchResult: TextView by lazy {
+        findViewById(R.id.tv_search_result)
+    }
+    private val llHotSearch: LinearLayout by lazy {
+        findViewById(R.id.ll_hot_search)
+    }
+    private val rvSearchResult: EasyRecyclerView by lazy {
+        findViewById(R.id.rv_search_result)
+    }
+    private val rvHotSearchResult: EasyRecyclerView by lazy {
+        findViewById(R.id.rv_hot_search)
+    }
+    private val tvCancel: TextView by lazy {
+        findViewById(R.id.tv_cancel)
+    }
 
     private lateinit var mHotSearchAdapter: RecyclerArrayAdapter<String>
     private lateinit var mResultAdapter: RecyclerArrayAdapter<KaiyanBean.ItemListBean>
@@ -68,7 +82,7 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
         }
     }
 
-    override fun observe() {
+    override fun collect() {
         lifecycleScope.launch {
             searchViewModel.hotSearch.collect {
                 mHotSearchAdapter.apply {
@@ -112,21 +126,18 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
         //获取热搜
         searchViewModel.getHotSearch()
 
-        etSearch = findViewById<EditText>(R.id.et_search).apply {
+        etSearch.apply {
             addTextChangedListener(this@KaiyanSearchActivity)
             setOnEditorActionListener(this@KaiyanSearchActivity)
         }
-        ivClear = findViewById<ImageView>(R.id.iv_clear).apply {
-            setOnClickListener(this@KaiyanSearchActivity)
-        }
+        ivClear.setOnClickListener(this@KaiyanSearchActivity)
 
-        tvSearchResult = findViewById<TextView>(R.id.tv_search_result).apply {
+        tvSearchResult.apply {
             setTextColor(resources.getColor(R.color.color_weak_white, null))
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 11f)
         }
-        rvSearchResult = findViewById(R.id.rv_search_result)
 
-        rvHotSearchResult = findViewById<EasyRecyclerView>(R.id.rv_hot_search).apply {
+        rvHotSearchResult.apply {
             setLayoutManager(StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL))
             adapter = object : RecyclerArrayAdapter<String>(this@KaiyanSearchActivity) {
                 override fun OnCreateViewHolder(
@@ -137,11 +148,8 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
                 }
             }.also { mHotSearchAdapter = it }
         }
-        llHotSearch = findViewById(R.id.ll_hot_search)
 
-        tvCancel = findViewById<TextView>(R.id.tv_cancel).apply {
-            setOnClickListener(this@KaiyanSearchActivity)
-        }
+        tvCancel.setOnClickListener(this@KaiyanSearchActivity)
 
         rvSearchResult.apply {
             setLayoutManager(LinearLayoutManager(this@KaiyanSearchActivity))

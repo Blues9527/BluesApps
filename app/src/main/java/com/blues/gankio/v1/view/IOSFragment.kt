@@ -26,7 +26,7 @@ class IOSFragment : BaseKoinFragment(), OnRefreshListener {
     private lateinit var iOSSr: SmartRefreshLayout
     private lateinit var mAdapter: RecyclerArrayAdapter<GankBean.ResultsBean>
 
-    override fun observe() {
+    override fun collect() {
         iOSViewModel.listData.observe(this) {
             it.results?.let { list ->
                 mAdapter.apply {

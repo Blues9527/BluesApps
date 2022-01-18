@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import android.view.MenuItem
-import android.view.MotionEvent
-import android.view.View
 import android.widget.EditText
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -23,9 +21,16 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
 
     private var mLastMillis: Long = 0
     private var mCurrentFragment: Fragment? = null
-    private lateinit var toolBar: Toolbar
-    private lateinit var editText: EditText
-    private lateinit var floatActionButton: FloatingActionButton
+
+    private val toolBar: Toolbar by lazy {
+        findViewById(R.id.toolbar)
+    }
+    private val editText: EditText by lazy {
+        findViewById(R.id.edit_text)
+    }
+    private val floatActionButton: FloatingActionButton by lazy {
+        findViewById(R.id.float_action_button)
+    }
 
     //private val fragmentList: MutableList<Fragment> = mutableListOf(MainPageFragment(), StudyPageFragment(), KaiyanFragment())
     private val fragmentList: MutableList<Fragment> = mutableListOf(
@@ -53,15 +58,9 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
         bottomView.setOnNavigationItemSelectedListener(this)
         showFragment(null, fragmentList[0])
 
-        toolBar = findViewById(R.id.toolbar)
-
         toolBar.setOnClickListener {
             startActivity<KaiyanSearchActivity>()
         }
-
-        editText = findViewById(R.id.edit_text)
-
-        floatActionButton = findViewById(R.id.float_action_button)
 
         floatActionButton.setOnTouchListener { _, _ ->
             Log.i("Blues", "onTouch FloatingActionButton")

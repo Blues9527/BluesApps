@@ -21,7 +21,7 @@ class WanAndroidActivity : BaseKoinActivity() {
 
     override fun getLayoutId(): Int = R.layout.activity_wanandroid
 
-    override fun observe() {
+    override fun collect() {
         postViewModel.wanAndroidEntity.observe(this) {
             mAdapter.apply {
                 addAll(it.data?.datas)

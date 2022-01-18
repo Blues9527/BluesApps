@@ -93,7 +93,7 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
         }
     }
 
-    override fun observe() {
+    override fun collect() {
 //        kaiyanDetailViewModel.detail.observe(this) {
 //            mAdapter.apply {
 //                addAll(it.itemList)

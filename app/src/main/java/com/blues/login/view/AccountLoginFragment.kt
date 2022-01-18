@@ -71,7 +71,7 @@ class AccountLoginFragment : BaseKoinFragment(), View.OnClickListener, TextWatch
         }
     }
 
-    override fun observe() {
+    override fun collect() {
         lifecycleScope.launch {
             loginViewModel.result.collect{
                 if (it.errorCode == 200) {

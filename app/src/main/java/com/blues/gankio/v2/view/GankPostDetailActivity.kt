@@ -28,7 +28,7 @@ class GankPostDetailActivity : BaseKoinActivity() {
     private lateinit var tvContents: TextView
     private lateinit var ivContent: ImageView
 
-    override fun observe() {
+    override fun collect() {
         gankioViewModel.postDetail.observe(this) {
             it.data?.let { postDetail ->
                 tvTitle.text = postDetail.title

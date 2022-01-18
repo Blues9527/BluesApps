@@ -30,7 +30,7 @@ class MainPageFragment : BaseKoinFragment() {
 
     override fun getLayoutId(): Int = R.layout.fragment_mainpage
 
-    override fun observe() {
+    override fun collect() {
         bannerViewModel.loadingEvent.observe(this) {
             if (it) {
                 showLoading()

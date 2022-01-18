@@ -40,7 +40,7 @@ class GankActivity : BaseKoinActivity() {
         return textView
     }
 
-    override fun observe() {
+    override fun collect() {
         gankioViewModel.banner.observe(this) { bean ->
             startBannerLoop(bean.data.map { it.image } as MutableList<String>,
                     bean.data.map { it.url } as MutableList<String>)

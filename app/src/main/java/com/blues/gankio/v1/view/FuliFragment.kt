@@ -28,7 +28,7 @@ class FuliFragment : BaseKoinFragment(), OnRefreshListener {
     private var networkVS: ViewStub? = null
     private lateinit var mAdapter: RecyclerArrayAdapter<GankBean.ResultsBean>
 
-    override fun observe() {
+    override fun collect() {
         fuliViewModel.listData.observe(this) {
             it.results?.let { list ->
                 mAdapter.apply {

@@ -49,7 +49,7 @@ class AccountRegisterFragment : BaseKoinFragment(), View.OnClickListener, TextWa
             .trim()
     }
 
-    override fun observe() {
+    override fun collect() {
         lifecycleScope.launch {
             registerViewModel.result.collect {
                 if (it.errorCode == 200) {

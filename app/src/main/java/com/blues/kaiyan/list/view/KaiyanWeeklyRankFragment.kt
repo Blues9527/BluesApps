@@ -60,7 +60,7 @@ class KaiyanWeeklyRankFragment : BaseKoinFragment(), OnRefreshListener {
         weeklyViewModel.getRankListVideos(KaiYanType.WEEKLY)
     }
 
-    override fun observe() {
+    override fun collect() {
         lifecycleScope.launch {
             weeklyViewModel.videos.collect {
                 mAdapter.apply {

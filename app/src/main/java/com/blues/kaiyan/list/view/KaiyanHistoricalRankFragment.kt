@@ -41,7 +41,7 @@ class KaiyanHistoricalRankFragment : BaseKoinFragment(), OnRefreshListener {
     private lateinit var networkVS: ViewStub
     private lateinit var mAdapter: RecyclerArrayAdapter<KaiyanBean.ItemListBean>
 
-    override fun observe() {
+    override fun collect() {
         lifecycleScope.launch {
             historicViewModel.videos.collect {
                 mAdapter.apply {

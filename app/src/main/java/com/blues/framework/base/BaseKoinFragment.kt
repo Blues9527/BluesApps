@@ -34,14 +34,14 @@ abstract class BaseKoinFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observe()
+        collect()
     }
 
     abstract fun getLayoutId(): Int
 
     abstract fun initData(inflater: LayoutInflater, container: ViewGroup?, saveInstanced: Bundle?)
 
-    open fun observe() {}
+    open fun collect() {}
 
     protected fun showLoading() {
         if (!mLoading.isShowing) {

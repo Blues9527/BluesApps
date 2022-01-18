@@ -23,7 +23,7 @@ class GankUniversalFragment(private val type: String) : BaseKoinFragment() {
     private lateinit var srGank: SmartRefreshLayout
     private lateinit var mAdapter: RecyclerArrayAdapter<GankioUniversalBean.DataBean>
 
-    override fun observe() {
+    override fun collect() {
         gankioViewModel.list.observe(this) {
             mAdapter.apply {
                 addAll(it.data)
