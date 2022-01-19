@@ -1,7 +1,5 @@
 package com.blues.wanandroid.vm
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.blues.framework.base.BaseViewModel
 import com.blues.framework.base.catch
@@ -9,6 +7,8 @@ import com.blues.framework.base.next
 import com.blues.framework.utils.HelperUtil
 import com.blues.wanandroid.model.WanAndroidEntity
 import com.blues.wanandroid.service.WanAndroidRepository
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 /**
@@ -23,7 +23,8 @@ class WanAndroidViewModel(private val wanAndroidRepo: WanAndroidRepository) : Ba
 
     private var startPage = 0
 
-    val wanAndroidEntity = MutableLiveData<WanAndroidEntity>()
+    private val _wanAndroidEntity = MutableSharedFlow<WanAndroidEntity>()
+    val wanAndroidEntity: SharedFlow<WanAndroidEntity> = _wanAndroidEntity
 
     private fun getPostList(page: Int) {
         viewModelScope.launch {
@@ -34,8 +35,7 @@ class WanAndroidViewModel(private val wanAndroidRepo: WanAndroidRepository) : Ba
             }
                 .next {
                     this.data?.let {
-                        Log.i("blues", "data:$it")
-                        wanAndroidEntity.value = it
+                        _wanAndroidEntity.tryEmit(it)
                     }
                 }
         }

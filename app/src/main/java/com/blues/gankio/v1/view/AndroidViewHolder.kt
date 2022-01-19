@@ -49,7 +49,7 @@ class AndroidViewHolder(parent: ViewGroup?) :
         tvDate.text = "日期：${data.publishedAt.substring(0, data.publishedAt.indexOf("T"))}"
         tvPublisher.text = "来自：${data.source}"
 
-        if (!TextUtils.isEmpty(data.url)) {
+        if (data.url.isNotEmpty()) {
             clRoot.setOnClickListener {
                 WebViewDialog(context, data.url).show()
             }

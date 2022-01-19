@@ -7,6 +7,7 @@ import com.blues.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.jude.easyrecyclerview.EasyRecyclerView
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,8 @@ import com.blues.framework.base.BaseKoinFragment
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter.OnMoreListener
 import com.blues.gankio.v2.vm.GankioViewModel
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GankUniversalFragment(private val type: String) : BaseKoinFragment() {
@@ -24,11 +27,13 @@ class GankUniversalFragment(private val type: String) : BaseKoinFragment() {
     private lateinit var mAdapter: RecyclerArrayAdapter<GankioUniversalBean.DataBean>
 
     override fun collect() {
-        gankioViewModel.list.observe(this) {
-            mAdapter.apply {
-                addAll(it.data)
-                notifyDataSetChanged()
-                srGank.finishRefresh()
+        lifecycleScope.launch {
+            gankioViewModel.list.collect {
+                mAdapter.apply {
+                    addAll(it.data)
+                    notifyDataSetChanged()
+                    srGank.finishRefresh()
+                }
             }
         }
     }
@@ -43,8 +48,10 @@ class GankUniversalFragment(private val type: String) : BaseKoinFragment() {
             setLayoutManager(LinearLayoutManager(requireContext()))
             adapter = object :
                 RecyclerArrayAdapter<GankioUniversalBean.DataBean>(requireContext()) {
-                override fun OnCreateViewHolder(parent: ViewGroup,
-                    viewType: Int): BaseViewHolder<*> {
+                override fun OnCreateViewHolder(
+                    parent: ViewGroup,
+                    viewType: Int
+                ): BaseViewHolder<*> {
                     return GankViewHolder(parent)
                 }
             }.also { mAdapter = it }
