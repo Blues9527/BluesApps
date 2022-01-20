@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 
 class GankViewModel(private val gankRepository: GankRepository) : BaseViewModel() {
 
-    private val _listData = MutableSharedFlow<GankBean>()
+    private val _listData = MutableSharedFlow<GankBean>(replay = 1)
     val listData: SharedFlow<GankBean> = _listData
 
     private var currentPage: Int = 1

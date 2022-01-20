@@ -1,5 +1,6 @@
 package com.blues
 
+import android.content.Intent
 import com.blues.framework.utils.HelperUtil.showSimpleLog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.blues.framework.utils.HelperUtil
 import com.blues.framework.utils.startActivity
 import com.blues.kaiyan.list.view.KaiyanHotRankFragment
 import com.blues.kaiyan.list.view.KaiyanSearchActivity
+import com.blues.router.RouterActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -62,9 +64,9 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
             startActivity<KaiyanSearchActivity>()
         }
 
-        floatActionButton.setOnTouchListener { _, _ ->
+        floatActionButton.setOnClickListener {
             Log.i("Blues", "onTouch FloatingActionButton")
-            true
+            startActivity(Intent(this, RouterActivity::class.java))
         }
     }
 

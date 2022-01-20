@@ -29,9 +29,9 @@ class GankActivity : BaseKoinActivity() {
 
     private val gankioViewModel: GankioViewModel by viewModel()
 
-    private val mBanner: BannerView by lazy {
-        findViewById(R.id.bv_header)
-    }
+//    private val mBanner: BannerView by lazy {
+//        findViewById(R.id.bv_header)
+//    }
     private val mTabLayout: TabLayout by lazy {
         findViewById(R.id.tl_gank_top)
     }
@@ -121,21 +121,21 @@ class GankActivity : BaseKoinActivity() {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 185f.dp.toInt()
             )
-            mBanner.apply {
-                setPlayDelay(3000)
-                setHintPadding(10f.dp.toInt(), 0, 10f.dp.toInt(), 10f.dp.toInt())
-                setAnimationDuration(1000)
-                layoutParams = lp
-            }
-            BannerAdapter(this@GankActivity, images, mBanner).apply {
-                setItemClickListener(object : BannerAdapter.ItemClickListener {
-                    override fun onClick(realPosition: Int) {
-                        WebViewDialog(this@GankActivity, urls[realPosition]).show()
-                    }
-                })
-            }.also { //开启轮播
-                mBanner.setAdapter(it)
-            }
+//            mBanner.apply {
+//                setPlayDelay(3000)
+//                setHintPadding(10f.dp.toInt(), 0, 10f.dp.toInt(), 10f.dp.toInt())
+//                setAnimationDuration(1000)
+//                layoutParams = lp
+//            }
+//            BannerAdapter(this@GankActivity, images, mBanner).apply {
+//                setItemClickListener(object : BannerAdapter.ItemClickListener {
+//                    override fun onClick(realPosition: Int) {
+//                        WebViewDialog(this@GankActivity, urls[realPosition]).show()
+//                    }
+//                })
+//            }.also { //开启轮播
+//                mBanner.setAdapter(it)
+//            }
         }
     }
 
@@ -145,13 +145,13 @@ class GankActivity : BaseKoinActivity() {
         gankioViewModel.requestData()
     }
 
-    override fun onResume() {
-        super.onResume()
-        mBanner.resume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        mBanner.pause()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        mBanner.resume()
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        mBanner.pause()
+//    }
 }

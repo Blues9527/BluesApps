@@ -3,6 +3,7 @@ package com.blues.wanandroid.view
 import com.blues.R
 import android.os.Bundle
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.jude.easyrecyclerview.EasyRecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blues.framework.base.BaseKoinActivity
@@ -11,6 +12,8 @@ import com.blues.wanandroid.vm.WanAndroidViewModel
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter.OnMoreListener
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WanAndroidActivity : BaseKoinActivity() {
@@ -22,10 +25,12 @@ class WanAndroidActivity : BaseKoinActivity() {
     override fun getLayoutId(): Int = R.layout.activity_wanandroid
 
     override fun collect() {
-        postViewModel.wanAndroidEntity.observe(this) {
-            mAdapter.apply {
-                addAll(it.data?.datas)
-                notifyDataSetChanged()
+        lifecycleScope.launch {
+            postViewModel.wanAndroidEntity.collect {
+                mAdapter.apply {
+                    addAll(it.data?.datas)
+                    notifyDataSetChanged()
+                }
             }
         }
     }
@@ -38,21 +43,23 @@ class WanAndroidActivity : BaseKoinActivity() {
             setLayoutManager(LinearLayoutManager(this@WanAndroidActivity))
         }
         mAdapter = object : RecyclerArrayAdapter<WanAndroidEntity.DataBean.DatasBean>(this) {
-            override fun OnCreateViewHolder(parent: ViewGroup?,
-                                            viewType: Int): BaseViewHolder<*> = WanAndroidViewHolder(parent)
+            override fun OnCreateViewHolder(
+                parent: ViewGroup?,
+                viewType: Int
+            ): BaseViewHolder<*> = WanAndroidViewHolder(parent)
 
         }.apply {
             setMore(R.layout.view_loading_more, object : OnMoreListener {
                 override fun onMoreShow() {
+                    postViewModel.loadMore()
                 }
 
                 override fun onMoreClick() {}
             })
 
             setNoMore(R.layout.view_load_no_more)
-        }
-                .also {
-                    ervMain.adapter = it
-                }
+        }.also {
+                ervMain.adapter = it
+            }
     }
 }

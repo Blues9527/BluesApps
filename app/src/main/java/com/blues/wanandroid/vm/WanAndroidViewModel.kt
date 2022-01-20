@@ -23,7 +23,7 @@ class WanAndroidViewModel(private val wanAndroidRepo: WanAndroidRepository) : Ba
 
     private var startPage = 0
 
-    private val _wanAndroidEntity = MutableSharedFlow<WanAndroidEntity>()
+    private val _wanAndroidEntity = MutableSharedFlow<WanAndroidEntity>(replay = 1)
     val wanAndroidEntity: SharedFlow<WanAndroidEntity> = _wanAndroidEntity
 
     private fun getPostList(page: Int) {
