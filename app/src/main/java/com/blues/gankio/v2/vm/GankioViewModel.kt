@@ -1,7 +1,5 @@
 package com.blues.gankio.v2.vm
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.blues.framework.base.BaseViewModel
 import com.blues.framework.base.catch
@@ -126,7 +124,7 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
         }
     }
 
-    private val _hotList = MutableSharedFlow<GankioHotBean>()
+    private val _hotList = MutableSharedFlow<GankioHotBean>(replay = 1)
     val hotList: SharedFlow<GankioHotBean> = _hotList
 
     fun getPostHotList(type: String, category: String, count: Int) {
@@ -143,7 +141,7 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
         }
     }
 
-    private val _postComments = MutableSharedFlow<GankioPostCommentsBean>()
+    private val _postComments = MutableSharedFlow<GankioPostCommentsBean>(replay = 1)
     val postComment: SharedFlow<GankioPostCommentsBean> = _postComments
 
     fun getGankPostComments(postId: String) {
@@ -160,7 +158,7 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
         }
     }
 
-    private val _search = MutableSharedFlow<GankioSearchResultBean>()
+    private val _search = MutableSharedFlow<GankioSearchResultBean>(replay = 1)
     val search: SharedFlow<GankioSearchResultBean> = _search
 
     fun getSearchContents(search: String, category: String, type: String, page: Int, count: Int) {

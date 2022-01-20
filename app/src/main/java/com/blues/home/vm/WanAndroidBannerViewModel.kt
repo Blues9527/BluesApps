@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 class WanAndroidBannerViewModel(private val wanAndroidRepo: WanAndroidBannerRepository) :
     BaseViewModel() {
 
-    private val _wanAndroidBanner = MutableSharedFlow<WanAndroidBannerEntity>()
+    private val _wanAndroidBanner = MutableSharedFlow<WanAndroidBannerEntity>(replay = 1)
     val wanAndroidBanner: SharedFlow<WanAndroidBannerEntity> = _wanAndroidBanner
 
     fun getBanner() {
