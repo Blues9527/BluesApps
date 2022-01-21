@@ -49,16 +49,34 @@ class RegisterRepository(
     /**
      * 本地注册
      */
-    suspend fun registerLocal(
+    suspend fun registerByUsername(
         username: String,
         password: String
     ) {
+
         UserDatabase.getInstance(BluesApplication.app).userDao().isUsernameExist(username).collect {
             //查出来用户不为空，表示已注册
             if (it.isEmpty()) {
                 UserDatabase.getInstance(BluesApplication.app).userDao()
                     .insertUser(User(userName = username, password = password))
                 mmkv.putString(USER_INFO_KEY, username)
+            }
+        }
+    }
+
+    /**
+     * 本地注册
+     */
+    suspend fun registerByPhone(
+        phone: String,
+        password: String
+    ) {
+        UserDatabase.getInstance(BluesApplication.app).userDao().isUserPhoneExist(phone).collect {
+            //查出来用户不为空，表示已注册
+            if (it.isEmpty()) {
+                UserDatabase.getInstance(BluesApplication.app).userDao()
+                    .insertUser(User(phone = phone, password = password))
+                mmkv.putString(USER_INFO_KEY, phone)
             }
         }
     }

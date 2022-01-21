@@ -24,9 +24,6 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
     private var mLastMillis: Long = 0
     private var mCurrentFragment: Fragment? = null
 
-    private val toolBar: Toolbar by lazy {
-        findViewById(R.id.toolbar)
-    }
     private val editText: EditText by lazy {
         findViewById(R.id.edit_text)
     }
@@ -59,10 +56,6 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
         val bottomView = findViewById<BottomNavigationView>(R.id.bottom_view)
         bottomView.setOnNavigationItemSelectedListener(this)
         showFragment(null, fragmentList[0])
-
-        toolBar.setOnClickListener {
-            startActivity<KaiyanSearchActivity>()
-        }
 
         floatActionButton.setOnClickListener {
             Log.i("Blues", "onTouch FloatingActionButton")

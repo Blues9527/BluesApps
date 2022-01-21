@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.blues.MainActivity
@@ -15,6 +16,7 @@ import com.blues.adapter.TextWatcherAdapter
 import com.blues.framework.base.BaseKoinFragment
 import com.blues.login.view.LoginActivity
 import com.blues.register.vm.RegisterViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -40,7 +42,7 @@ class AccountRegisterFragment : BaseKoinFragment(), View.OnClickListener, TextWa
 //                repassword
 //            )
             //本地注册
-            R.id.tv_register -> registerViewModel.registerLocal(
+            R.id.tv_register -> registerViewModel.registerByUsername(
                 account,
                 password,
                 repassword
@@ -67,9 +69,11 @@ class AccountRegisterFragment : BaseKoinFragment(), View.OnClickListener, TextWa
 //                    showToast(it.errorMsg)
 //                }
 //            }
-            registerViewModel.localRegisterResult.collect {
+            registerViewModel.resultUserInfo.collect {
+                Log.i("Blues","register flow collect it:$it")
                 if (it) {
                     showToast("注册成功") //跳转登陆界面
+//                    delay(1000)
                     startActivity(Intent(requireContext(), MainActivity::class.java))
                 } else {
                     showToast("两次密码输入不一致")

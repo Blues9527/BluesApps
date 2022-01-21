@@ -36,7 +36,9 @@ class KaiyanHotRankFragment : BaseKoinFragment(), OnRefreshListener {
 
     private val hotrankViewModel: KaiyanViewModel by viewModel()
 
-    private lateinit var hotRankSr: SmartRefreshLayout
+    private val hotRankSr: SmartRefreshLayout by lazy {
+        rootView.findViewById(R.id.sr_hotrank)
+    }
 
     //private lateinit var v: View
     private lateinit var networkVS: ViewStub
@@ -83,7 +85,7 @@ class KaiyanHotRankFragment : BaseKoinFragment(), OnRefreshListener {
 
         hotrankViewModel.getRankList()
 
-        hotRankSr = rootView.findViewById(R.id.sr_hotrank)
+//        hotRankSr = rootView.findViewById(R.id.sr_hotrank)
         networkVS = rootView.findViewById(R.id.view_stub_network)
         hotRankSr.apply {
 
@@ -108,7 +110,7 @@ class KaiyanHotRankFragment : BaseKoinFragment(), OnRefreshListener {
                 mAdapter = it
             }
         }
-
+        mAdapter.addHeader(KaiyanMainHeaderView(requireActivity()))
         mAdapter.setNoMore(R.layout.view_load_no_more)
     }
 }

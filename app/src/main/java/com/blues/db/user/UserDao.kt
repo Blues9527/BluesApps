@@ -66,5 +66,11 @@ interface UserDao {
      * 校验用户信息有效性
      */
     @Query("SELECT * FROM user_info WHERE username = :userName AND password = :password")
-    fun isUserInfoValidate(userName: String, password: String):Flow<List<User>>
+    fun isUserNameInfoValidate(userName: String, password: String): Flow<List<User>>
+
+    /**
+     * 校验用户手机号码有效性
+     */
+    @Query("SELECT * FROM user_info WHERE phone = :phone AND password = :password")
+    fun isUserPhoneInfoValidate(phone: String, password: String): Flow<List<User>>
 }

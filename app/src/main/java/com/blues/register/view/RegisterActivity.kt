@@ -15,11 +15,20 @@ import androidx.fragment.app.Fragment
  */
 class RegisterActivity : BaseKoinActivity(), View.OnClickListener {
 
-    private val fragments: List<Fragment> = listOf(AccountRegisterFragment(), PhoneRegisterFragment())
+    private val fragments: List<Fragment> =
+        listOf(AccountRegisterFragment(), PhoneRegisterFragment())
+
     private var mCurrentFragment: Fragment? = null
-    private lateinit var tvAccountRegister: TextView
-    private lateinit var tvPhoneRegister: TextView
-    private lateinit var flContainer: FrameLayout
+
+    private val tvAccountRegister: TextView by lazy {
+        findViewById(R.id.tv_account_register)
+    }
+    private val tvPhoneRegister: TextView by lazy {
+        findViewById(R.id.tv_phone_register)
+    }
+    private val flContainer: FrameLayout by lazy {
+        findViewById(R.id.fl_container)
+    }
 
     private fun showFragment(from: Fragment?, to: Fragment?) {
         if (to == null) return
@@ -70,17 +79,10 @@ class RegisterActivity : BaseKoinActivity(), View.OnClickListener {
         }
     }
 
-    override fun getLayoutId(): Int {
-        return R.layout.activity_register
-    }
+    override fun getLayoutId() = R.layout.activity_register
 
     override fun initData(savedInstanceState: Bundle?) {
-        tvAccountRegister = findViewById<TextView>(R.id.tv_account_register).apply {
-            setOnClickListener(this@RegisterActivity)
-        }
-        tvPhoneRegister = findViewById<TextView>(R.id.tv_phone_register).apply {
-            setOnClickListener(this@RegisterActivity)
-        }
-        flContainer = findViewById(R.id.fl_container)
+        tvAccountRegister.setOnClickListener(this@RegisterActivity)
+        tvPhoneRegister.setOnClickListener(this@RegisterActivity)
     }
 }

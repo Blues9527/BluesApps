@@ -10,6 +10,8 @@ import android.view.View
 import com.blues.MainActivity
 import androidx.fragment.app.Fragment
 import com.blues.framework.base.BaseKoinActivity
+import com.blues.framework.utils.HelperUtil
+import com.blues.framework.utils.startActivity
 import com.blues.register.view.RegisterActivity
 
 /**
@@ -19,15 +21,25 @@ import com.blues.register.view.RegisterActivity
  */
 class LoginActivity : BaseKoinActivity(), View.OnClickListener {
 
-    private val fragments: MutableList<Fragment> = mutableListOf(AccountLoginFragment(), PhoneLoginFragment())
+    private var mLastMillis: Long = 0
+
+    private val fragments: MutableList<Fragment> =
+        mutableListOf(AccountLoginFragment(), PhoneLoginFragment())
+
     private var mCurrentFragment: Fragment? = null
-    private lateinit var flContainer: FrameLayout
-    private lateinit var llContainer: LinearLayout
+
+
+    private val flContainer: FrameLayout by lazy {
+        findViewById(R.id.fl_container)
+    }
+    private val llContainer: LinearLayout by lazy {
+        findViewById(R.id.ll_container)
+    }
 
     override fun onClick(v: View) {
         when (v.id) {
             R.id.tv_skip -> {
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                startActivity<MainActivity>()
                 overridePendingTransition(R.anim.anim_zoom_in, R.anim.anim_slide_to_bottom)
                 finish()
             }
@@ -47,7 +59,7 @@ class LoginActivity : BaseKoinActivity(), View.OnClickListener {
                 showFragment(mCurrentFragment, fragments[1])
             }
             R.id.tv_user_reg -> {
-                startActivity(Intent(this, RegisterActivity::class.java))
+                startActivity<RegisterActivity>()
                 finish()
             }
         }
@@ -86,23 +98,26 @@ class LoginActivity : BaseKoinActivity(), View.OnClickListener {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        findViewById<TextView>(R.id.tv_skip).also {
-            it.setOnClickListener(this)
-        }
-        findViewById<TextView>(R.id.tv_forget_pwd).also {
-            it.setOnClickListener(this)
-        }
+        findViewById<TextView>(R.id.tv_skip).setOnClickListener(this)
+        findViewById<TextView>(R.id.tv_forget_pwd).setOnClickListener(this)
+        findViewById<TextView>(R.id.tv_user_reg).setOnClickListener(this)
+        findViewById<TextView>(R.id.tv_account_login).setOnClickListener(this)
+        findViewById<TextView>(R.id.tv_phone_login).setOnClickListener(this)
+    }
 
-        findViewById<TextView>(R.id.tv_user_reg).also {
-            it.setOnClickListener(this)
+    override fun onBackPressed() {
+        HelperUtil.showSimpleLog("on back press")
+        val currentMillis = System.currentTimeMillis()
+        if (currentMillis - mLastMillis > 2000) {
+            mLastMillis = currentMillis
+            HelperUtil.showToast("再按一次退出程序")
+            return
         }
-        findViewById<TextView>(R.id.tv_account_login).also {
-            it.setOnClickListener(this)
+        super.onBackPressed()
+        if (supportFragmentManager.backStackEntryCount == 0) {
+            finish()
+        } else {
+            supportFragmentManager.popBackStack()
         }
-        findViewById<TextView>(R.id.tv_phone_login).also {
-            it.setOnClickListener(this)
-        }
-        flContainer = findViewById(R.id.fl_container)
-        llContainer = findViewById(R.id.ll_container)
     }
 }

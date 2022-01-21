@@ -16,6 +16,7 @@ import com.blues.framework.utils.HelperUtil
 import com.blues.framework.utils.startActivity
 import com.blues.login.vm.LoginViewModel
 import com.tencent.mmkv.MMKV
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
@@ -26,7 +27,7 @@ class AccountLoginFragment : BaseKoinFragment(), View.OnClickListener, TextWatch
     private lateinit var etAccount: EditText
     private lateinit var etPassword: EditText
     private lateinit var tvLogin: TextView
-    private lateinit var tvSkip: TextView
+    private lateinit var tvBack: TextView
     private var account: String = ""
     private var password: String = ""
 
@@ -35,13 +36,13 @@ class AccountLoginFragment : BaseKoinFragment(), View.OnClickListener, TextWatch
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.tv_skip -> {
-                //点击跳过，进入主页面
-                startActivity<MainActivity>()
+            R.id.tv_back -> {
+                //点击返回
+
             }
             R.id.tv_login -> {
                 //调用登陆接口
-                loginViewModel.loginLocal(account, password)
+                loginViewModel.loginByUsername(account, password)
             }
         }
     }
@@ -59,7 +60,7 @@ class AccountLoginFragment : BaseKoinFragment(), View.OnClickListener, TextWatch
             etPassword = findViewById<EditText>(R.id.et_input_password).apply {
                 addTextChangedListener(this@AccountLoginFragment)
             }
-            tvSkip = findViewById<TextView>(R.id.tv_skip).apply {
+            tvBack = findViewById<TextView>(R.id.tv_back).apply {
                 setOnClickListener(this@AccountLoginFragment)
             }
             tvLogin = findViewById<TextView>(R.id.tv_login).apply {
@@ -77,11 +78,12 @@ class AccountLoginFragment : BaseKoinFragment(), View.OnClickListener, TextWatch
 //                    HelperUtil.showToast(it.errorMsg)
 //                }
 //            }
-            loginViewModel.resultLocal.collect {
+            loginViewModel.resultUsername.collect {
                 //first -> 登录状态 second->用户信息
                 mmkv.putString(USER_INFO_KEY, it.second)
                 if (it.first) {
                     HelperUtil.showToast("登录成功～")
+                    delay(1000)
                     startActivity<MainActivity>()
                 } else {
                     HelperUtil.showToast("登录失败～")
@@ -91,9 +93,9 @@ class AccountLoginFragment : BaseKoinFragment(), View.OnClickListener, TextWatch
     }
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        password = etPassword.toString()
+        password = etPassword.text.toString()
             .trim()
-        account = etAccount.toString()
+        account = etAccount.text.toString()
             .trim()
     }
 }
