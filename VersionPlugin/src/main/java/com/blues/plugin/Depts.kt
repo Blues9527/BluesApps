@@ -11,10 +11,10 @@ object BaseConfig {
 
     const val compileSdkVersion = 30
     const val buildToolsVersion = "30.0.3"
-    const val minSdkVersion = 24
+    const val minSdkVersion = 26
     const val targetSdkVersion = 30
-    const val versionCode = 103
-    const val versionName = "1.0.3"
+    const val versionCode = 104
+    const val versionName = "1.0.4"
     const val applicationId = "com.blues.app"
 }
 
@@ -25,13 +25,15 @@ object AndroidX {
     const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
     const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewmodel}"
     const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.livedata}"
+    const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
     const val annotation = "androidx.annotation:annotation:${Versions.annotation}"
 }
 
 object Room {
 
     const val runtime = "androidx.room:room-runtime:${Versions.room}"
-    const val compiler = "androidx.room:room-compiler:${Versions.roomCompiler}"
+    const val compiler = "androidx.room:room-compiler:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
 }
 
 object Kotlin {

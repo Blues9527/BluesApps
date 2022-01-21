@@ -7,6 +7,7 @@ import com.blues.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.jude.easyrecyclerview.EasyRecyclerView
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,8 @@ import com.blues.gankio.v1.vm.GankViewModel
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FuliFragment : BaseKoinFragment(), OnRefreshListener {
@@ -28,14 +31,16 @@ class FuliFragment : BaseKoinFragment(), OnRefreshListener {
     private var networkVS: ViewStub? = null
     private lateinit var mAdapter: RecyclerArrayAdapter<GankBean.ResultsBean>
 
-    override fun observe() {
-        fuliViewModel.listData.observe(this) {
-            it.results?.let { list ->
-                mAdapter.apply {
-                    addAll(list)
-                    notifyDataSetChanged()
+    override fun collect() {
+        lifecycleScope.launch {
+            fuliViewModel.listData.collect {
+                it.results.let { list ->
+                    mAdapter.apply {
+                        addAll(list)
+                        notifyDataSetChanged()
+                    }
+                    fuliSr.finishRefresh()
                 }
-                fuliSr.finishRefresh()
             }
         }
     }

@@ -8,6 +8,7 @@ import com.blues.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.jude.easyrecyclerview.EasyRecyclerView
 import com.blues.constant.KaiYanType
 import com.jude.easyrecyclerview.decoration.DividerDecoration
@@ -18,15 +19,17 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
-* File: com.blues.kaiyan.list.view.KaiyanHistoricalRankFragment.kt
-* Description: xxx
-*
-* @author: lanhuajian
-* @time: 2021/7/30
-**/
+ * File: com.blues.kaiyan.list.view.KaiyanHistoricalRankFragment.kt
+ * Description: xxx
+ *
+ * @author: lanhuajian
+ * @time: 2021/7/30
+ **/
 
 class KaiyanHistoricalRankFragment : BaseKoinFragment(), OnRefreshListener {
 
@@ -38,13 +41,15 @@ class KaiyanHistoricalRankFragment : BaseKoinFragment(), OnRefreshListener {
     private lateinit var networkVS: ViewStub
     private lateinit var mAdapter: RecyclerArrayAdapter<KaiyanBean.ItemListBean>
 
-    override fun observe() {
-        historicViewModel.videos.observe(this) {
-            mAdapter.apply {
-                addAll(it.itemList)
-                notifyDataSetChanged()
+    override fun collect() {
+        lifecycleScope.launch {
+            historicViewModel.videos.collect {
+                mAdapter.apply {
+                    addAll(it.itemList)
+                    notifyDataSetChanged()
+                }
+                hotRankSr.finishRefresh()
             }
-            hotRankSr.finishRefresh()
         }
     }
 
@@ -64,8 +69,10 @@ class KaiyanHistoricalRankFragment : BaseKoinFragment(), OnRefreshListener {
             addItemDecoration(decoration)
             setLayoutManager(LinearLayoutManager(requireContext()))
             adapter = object : RecyclerArrayAdapter<KaiyanBean.ItemListBean>(requireContext()) {
-                override fun OnCreateViewHolder(parent: ViewGroup,
-                    viewType: Int): BaseViewHolder<*> {
+                override fun OnCreateViewHolder(
+                    parent: ViewGroup,
+                    viewType: Int
+                ): BaseViewHolder<*> {
                     return KaiyanHistoricalRankViewHolder(parent)
                 }
             }.also { mAdapter = it }

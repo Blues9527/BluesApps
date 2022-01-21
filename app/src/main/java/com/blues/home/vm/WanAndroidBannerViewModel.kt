@@ -1,6 +1,5 @@
 package com.blues.home.vm
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.blues.framework.base.BaseViewModel
 import com.blues.framework.base.catch
@@ -8,6 +7,8 @@ import com.blues.framework.base.next
 import com.blues.framework.utils.HelperUtil
 import com.blues.home.model.WanAndroidBannerEntity
 import com.blues.home.service.WanAndroidBannerRepository
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 /**
@@ -21,7 +22,8 @@ import kotlinx.coroutines.launch
 class WanAndroidBannerViewModel(private val wanAndroidRepo: WanAndroidBannerRepository) :
     BaseViewModel() {
 
-    val wanAndroidBanner = MutableLiveData<WanAndroidBannerEntity>()
+    private val _wanAndroidBanner = MutableSharedFlow<WanAndroidBannerEntity>(replay = 1)
+    val wanAndroidBanner: SharedFlow<WanAndroidBannerEntity> = _wanAndroidBanner
 
     fun getBanner() {
         viewModelScope.launch {
@@ -31,7 +33,7 @@ class WanAndroidBannerViewModel(private val wanAndroidRepo: WanAndroidBannerRepo
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 data?.let {
-                    wanAndroidBanner.value = it
+                    _wanAndroidBanner.tryEmit(it)
                 }
             }
         }

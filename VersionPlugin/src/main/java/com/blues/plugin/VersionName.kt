@@ -39,10 +39,7 @@ object Versions {
     const val smartRefresh = "1.1.3"
 
     //room
-    const val room = "2.0.0"
-
-    //room compiler
-    const val roomCompiler = "2.0.0"
+    const val room = "2.3.0"
 
     //markdown4j
     const val markdown4j = "2.2-cj-1.1"
@@ -61,6 +58,9 @@ object Versions {
 
     //livedata
     const val livedata = "2.4.0-alpha02"
+
+    //lifecycle
+    const val lifecycle = "2.4.0-alpha02"
 
     //依赖注入koin
     const val koin = "3.1.2"

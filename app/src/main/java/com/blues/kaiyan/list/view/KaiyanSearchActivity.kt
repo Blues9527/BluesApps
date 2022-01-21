@@ -18,10 +18,13 @@ import android.view.View
 import com.blues.kaiyan.list.model.KaiyanBean
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
+import androidx.lifecycle.lifecycleScope
 import com.blues.adapter.TextWatcherAdapter
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.kaiyan.list.vm.KaiyanViewModel
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -37,16 +40,30 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
 
     private val searchViewModel: KaiyanViewModel by viewModel()
 
-    private lateinit var etSearch: EditText
-    private lateinit var ivClear: ImageView
-    private lateinit var tvSearchResult: TextView
-    private lateinit var llHotSearch: LinearLayout
-    private lateinit var rvSearchResult: EasyRecyclerView
-    private lateinit var rvHotSearchResult: EasyRecyclerView
-    private lateinit var tvCancel: TextView
+    private val etSearch: EditText by lazy {
+        findViewById(R.id.et_search)
+    }
+    private val ivClear: ImageView by lazy {
+        findViewById(R.id.iv_clear)
+    }
+    private val tvSearchResult: TextView by lazy {
+        findViewById(R.id.tv_search_result)
+    }
+    private val llHotSearch: LinearLayout by lazy {
+        findViewById(R.id.ll_hot_search)
+    }
+    private val rvSearchResult: EasyRecyclerView by lazy {
+        findViewById(R.id.rv_search_result)
+    }
+    private val rvHotSearchResult: EasyRecyclerView by lazy {
+        findViewById(R.id.rv_hot_search)
+    }
+    private val tvCancel: TextView by lazy {
+        findViewById(R.id.tv_cancel)
+    }
 
     private lateinit var mHotSearchAdapter: RecyclerArrayAdapter<String>
-    private lateinit var mResultAdapter: RecyclerArrayAdapter<KaiyanBean.ItemListBean.DataBean>
+    private lateinit var mResultAdapter: RecyclerArrayAdapter<KaiyanBean.ItemListBean>
 
     private var textInput: String = ""
 
@@ -65,30 +82,35 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
         }
     }
 
-    override fun observe() {
-        searchViewModel.hotSearch.observe(this) {
-            mHotSearchAdapter.apply {
-                addAll(it)
-                notifyDataSetChanged()
+    override fun collect() {
+        lifecycleScope.launch {
+            searchViewModel.hotSearch.collect {
+                mHotSearchAdapter.apply {
+                    addAll(it)
+                    notifyDataSetChanged()
+                }
             }
         }
 
-        searchViewModel.searchResult.observe(this) {
-            llHotSearch.visibility = View.GONE
-            rvSearchResult.visibility = View.VISIBLE
-            tvSearchResult.apply {
-                setTextColor(resources.getColor(R.color.color_black, null))
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
-                text = String.format("『%s』共有%s条搜索结果", textInput, it.itemList.size)
+        lifecycleScope.launch {
+            searchViewModel.searchResult.collect {
+                llHotSearch.visibility = View.GONE
+                rvSearchResult.visibility = View.VISIBLE
+                tvSearchResult.apply {
+                    setTextColor(resources.getColor(R.color.color_black, null))
+                    setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
+                    text = "『$textInput』共有${it.itemList.size}条搜索结果"
+                }
+                for (item in it.itemList) {
+                    mResultAdapter.add(item)
+                }
+                mResultAdapter.notifyDataSetChanged()
             }
-            for (item in it.itemList) {
-                mResultAdapter.add(item.data)
-            }
-            mResultAdapter.notifyDataSetChanged()
         }
     }
 
-    override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent): Boolean {
+
+    override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
         if (actionId == EditorInfo.IME_ACTION_SEARCH) {
             mResultAdapter.clear()
             searchViewModel.getSearchResult(textInput)
@@ -104,44 +126,39 @@ class KaiyanSearchActivity : BaseKoinActivity(), TextWatcherAdapter, View.OnClic
         //获取热搜
         searchViewModel.getHotSearch()
 
-        etSearch = findViewById<EditText>(R.id.et_search).apply {
+        etSearch.apply {
             addTextChangedListener(this@KaiyanSearchActivity)
             setOnEditorActionListener(this@KaiyanSearchActivity)
         }
-        ivClear = findViewById<ImageView>(R.id.iv_clear).apply {
-            visibility = View.GONE
-            setOnClickListener(this@KaiyanSearchActivity)
-        }
-        tvSearchResult = findViewById<TextView>(R.id.tv_search_result).apply {
+        ivClear.setOnClickListener(this@KaiyanSearchActivity)
+
+        tvSearchResult.apply {
             setTextColor(resources.getColor(R.color.color_weak_white, null))
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 11f)
         }
-        rvSearchResult = findViewById<EasyRecyclerView>(R.id.rv_search_result).apply {
-            visibility = View.GONE
-        }
-        rvHotSearchResult = findViewById<EasyRecyclerView>(R.id.rv_hot_search).apply {
+
+        rvHotSearchResult.apply {
             setLayoutManager(StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL))
             adapter = object : RecyclerArrayAdapter<String>(this@KaiyanSearchActivity) {
-                override fun OnCreateViewHolder(parent: ViewGroup,
-                    viewType: Int): BaseViewHolder<*> {
+                override fun OnCreateViewHolder(
+                    parent: ViewGroup,
+                    viewType: Int
+                ): BaseViewHolder<*> {
                     return KaiyanHotSearchViewHolder(parent)
                 }
             }.also { mHotSearchAdapter = it }
         }
-        llHotSearch = findViewById<LinearLayout>(R.id.ll_hot_search).apply {
-            visibility = View.VISIBLE
-        }
 
-        tvCancel = findViewById<TextView>(R.id.tv_cancel).apply {
-            setOnClickListener(this@KaiyanSearchActivity)
-        }
+        tvCancel.setOnClickListener(this@KaiyanSearchActivity)
 
         rvSearchResult.apply {
             setLayoutManager(LinearLayoutManager(this@KaiyanSearchActivity))
             adapter = object :
-                RecyclerArrayAdapter<KaiyanBean.ItemListBean.DataBean>(this@KaiyanSearchActivity) {
-                override fun OnCreateViewHolder(parent: ViewGroup,
-                    viewType: Int): BaseViewHolder<*> {
+                RecyclerArrayAdapter<KaiyanBean.ItemListBean>(this@KaiyanSearchActivity) {
+                override fun OnCreateViewHolder(
+                    parent: ViewGroup,
+                    viewType: Int
+                ): BaseViewHolder<*> {
                     return KaiyanSearchResultViewHolder(parent)
                 }
             }.also { mResultAdapter = it }

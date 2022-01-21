@@ -1,7 +1,5 @@
 package com.blues.kaiyan.list.vm
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.blues.framework.base.BaseViewModel
 import com.blues.framework.base.catch
@@ -9,6 +7,8 @@ import com.blues.framework.base.next
 import com.blues.framework.utils.HelperUtil
 import com.blues.kaiyan.list.model.KaiyanBean
 import com.blues.kaiyan.list.service.KaiyanRepository
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 /**
@@ -21,17 +21,17 @@ import kotlinx.coroutines.launch
 
 class KaiyanViewModel(private val kaiyanRepo: KaiyanRepository) : BaseViewModel() {
 
-    private val _ranList = MutableLiveData<KaiyanBean>()
-    val rankList: LiveData<KaiyanBean> = _ranList
+    private val _ranList = MutableSharedFlow<KaiyanBean>(replay = 1)
+    val rankList: SharedFlow<KaiyanBean> = _ranList
 
-    private val _videos = MutableLiveData<KaiyanBean>()
-    val videos: LiveData<KaiyanBean> = _videos
+    private val _videos = MutableSharedFlow<KaiyanBean>(replay = 1)
+    val videos: SharedFlow<KaiyanBean> = _videos
 
-    private val _searchResult = MutableLiveData<KaiyanBean>()
-    val searchResult: LiveData<KaiyanBean> = _searchResult
+    private val _searchResult = MutableSharedFlow<KaiyanBean>(replay = 1)
+    val searchResult: SharedFlow<KaiyanBean> = _searchResult
 
-    private val _hotSearch = MutableLiveData<List<String?>>()
-    val hotSearch: LiveData<List<String?>> = _hotSearch
+    private val _hotSearch = MutableSharedFlow<List<String?>>(replay = 1)
+    val hotSearch: SharedFlow<List<String?>> = _hotSearch
 
     fun getRankList() {
         viewModelScope.launch {
@@ -41,7 +41,7 @@ class KaiyanViewModel(private val kaiyanRepo: KaiyanRepository) : BaseViewModel(
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _ranList.value = it
+                    _ranList.tryEmit(it)
                 }
             }
         }
@@ -55,7 +55,7 @@ class KaiyanViewModel(private val kaiyanRepo: KaiyanRepository) : BaseViewModel(
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _videos.value = it
+                    _videos.tryEmit(it)
                 }
             }
         }
@@ -69,7 +69,7 @@ class KaiyanViewModel(private val kaiyanRepo: KaiyanRepository) : BaseViewModel(
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _searchResult.value = it
+                    _searchResult.tryEmit(it)
                 }
             }
         }
@@ -83,7 +83,7 @@ class KaiyanViewModel(private val kaiyanRepo: KaiyanRepository) : BaseViewModel(
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _hotSearch.value = it
+                    _hotSearch.tryEmit(it)
                 }
             }
         }

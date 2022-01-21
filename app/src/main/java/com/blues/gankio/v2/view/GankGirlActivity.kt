@@ -11,12 +11,15 @@ import com.jude.easyrecyclerview.EasyRecyclerView
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.gankio.v2.vm.GankioViewModel
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter.OnMoreListener
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GankGirlActivity : BaseKoinActivity(), OnRefreshListener {
@@ -24,20 +27,24 @@ class GankGirlActivity : BaseKoinActivity(), OnRefreshListener {
     private val gankioViewModel: GankioViewModel by viewModel()
 
     private lateinit var mAdapter: RecyclerArrayAdapter<GankioUniversalBean.DataBean>
-    private lateinit var srGirl: SmartRefreshLayout
+    private val srGirl: SmartRefreshLayout by lazy {
+        findViewById(R.id.sr_gank_girl)
+    }
 
     override fun onRefresh(refreshLayout: RefreshLayout) {
         mAdapter.clear()
         gankioViewModel.getCategoryPostList(GankioConstant.GIRL, GankioConstant.GIRL, page = 1)
     }
 
-    override fun observe() {
-        gankioViewModel.list.observe(this) {
-            mAdapter.apply {
-                addAll(it.data)
-                notifyDataSetChanged()
+    override fun collect() {
+        lifecycleScope.launch {
+            gankioViewModel.list.collect {
+                mAdapter.apply {
+                    addAll(it.data)
+                    notifyDataSetChanged()
+                }
+                srGirl.finishRefresh()
             }
-            srGirl.finishRefresh()
         }
     }
 
@@ -51,8 +58,10 @@ class GankGirlActivity : BaseKoinActivity(), OnRefreshListener {
             setLayoutManager(LinearLayoutManager(this@GankGirlActivity))
             adapter = object :
                 RecyclerArrayAdapter<GankioUniversalBean.DataBean>(this@GankGirlActivity) {
-                override fun OnCreateViewHolder(parent: ViewGroup,
-                    viewType: Int): BaseViewHolder<*> {
+                override fun OnCreateViewHolder(
+                    parent: ViewGroup,
+                    viewType: Int
+                ): BaseViewHolder<*> {
                     return GankGirlsViewHolder(parent)
                 }
             }.also { mAdapter = it }
@@ -60,7 +69,7 @@ class GankGirlActivity : BaseKoinActivity(), OnRefreshListener {
 
         PagerSnapHelper().attachToRecyclerView(ervGirl.recyclerView)
 
-        srGirl = findViewById<SmartRefreshLayout>(R.id.sr_gank_girl).apply {
+        srGirl.apply {
 
             //设置 Header 为 经典 样式 带最后刷新时间
             setRefreshHeader(ClassicsHeader(this@GankGirlActivity).setEnableLastTime(true))

@@ -59,7 +59,7 @@ val registerModule = module {
     }
 
     single {
-        RegisterRepository(get(), get())
+        RegisterRepository(get(), get(),get())
     }
 
     factory {

@@ -3,6 +3,7 @@ package com.blues.splash
 import android.os.Bundle
 import com.blues.R
 import com.blues.framework.base.BaseKoinActivity
+import com.blues.framework.utils.startActivity
 import com.blues.framework.widget.TextClockView
 import com.blues.framework.widget.countdownview.CountDownView
 import com.blues.framework.widget.explosionanimator.ExplosionField

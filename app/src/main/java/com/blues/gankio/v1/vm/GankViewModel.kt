@@ -9,6 +9,8 @@ import com.blues.framework.base.next
 import com.blues.framework.utils.HelperUtil
 import com.blues.gankio.v1.model.GankBean
 import com.blues.gankio.v1.service.GankRepository
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 /**
@@ -21,13 +23,12 @@ import kotlinx.coroutines.launch
 
 class GankViewModel(private val gankRepository: GankRepository) : BaseViewModel() {
 
-    private val _listData = MutableLiveData<GankBean>()
-    val listData: LiveData<GankBean> = _listData
+    private val _listData = MutableSharedFlow<GankBean>(replay = 1)
+    val listData: SharedFlow<GankBean> = _listData
 
     private var currentPage: Int = 1
 
     private fun getData(type: String, page: Int) {
-
         viewModelScope.launch {
             requestByFlow {
                 gankRepository.getData(type, page, 10)
@@ -35,7 +36,7 @@ class GankViewModel(private val gankRepository: GankRepository) : BaseViewModel(
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 data?.let {
-                    _listData.value = it
+                    _listData.tryEmit(it)
                 }
             }
         }

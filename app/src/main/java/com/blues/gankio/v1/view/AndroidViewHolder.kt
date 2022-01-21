@@ -33,7 +33,7 @@ class AndroidViewHolder(parent: ViewGroup?) :
         super.setData(data)
         tvDesc.text = data.desc
         tvAuthor.text = data.who
-        if (data.images != null && data.images.size != 0) {
+        if (data.images.isNotEmpty()) {
             ivCover.visibility = View.VISIBLE
             ivCover.load(data.images[0]) {
                 placeholder(R.mipmap.ic_img_error)
@@ -49,7 +49,7 @@ class AndroidViewHolder(parent: ViewGroup?) :
         tvDate.text = "日期：${data.publishedAt.substring(0, data.publishedAt.indexOf("T"))}"
         tvPublisher.text = "来自：${data.source}"
 
-        if (!TextUtils.isEmpty(data.url)) {
+        if (data.url.isNotEmpty()) {
             clRoot.setOnClickListener {
                 WebViewDialog(context, data.url).show()
             }

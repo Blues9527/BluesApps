@@ -1,7 +1,5 @@
 package com.blues.gankio.v2.vm
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.blues.framework.base.BaseViewModel
 import com.blues.framework.base.catch
@@ -10,6 +8,8 @@ import com.blues.framework.utils.HelperUtil
 import com.blues.gankio.v2.model.*
 import com.blues.gankio.v2.constant.GankioConstant
 import com.blues.gankio.v2.service.GankioRepository
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 /**
@@ -32,8 +32,8 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
         getCategory(GankioConstant.GANK)
     }
 
-    private val _banner = MutableLiveData<GankioBannerBean>()
-    val banner: LiveData<GankioBannerBean> = _banner
+    private val _banner = MutableSharedFlow<GankioBannerBean>(replay = 1)
+    val banner: SharedFlow<GankioBannerBean> = _banner
 
     fun getBanner() {
         viewModelScope.launch {
@@ -43,14 +43,14 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _banner.value = it
+                    _banner.tryEmit(it)
                 }
             }
         }
     }
 
-    private val _category = MutableLiveData<GankioCategoryBean>()
-    val category: LiveData<GankioCategoryBean> = _category
+    private val _category = MutableSharedFlow<GankioCategoryBean>(replay = 1)
+    val category: SharedFlow<GankioCategoryBean> = _category
 
     fun getCategory(type: String) {
         viewModelScope.launch {
@@ -60,17 +60,19 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _category.value = it
+                    _category.tryEmit(it)
                 }
             }
         }
     }
 
-    private val _list = MutableLiveData<GankioUniversalBean>()
-    val list: LiveData<GankioUniversalBean> = _list
+    private val _list = MutableSharedFlow<GankioUniversalBean>(replay = 1)
+    val list: SharedFlow<GankioUniversalBean> = _list
 
-    fun getCategoryPostList(category: String = GankioConstant.GANK, type: String,
-        page: Int = currentPage) {
+    fun getCategoryPostList(
+        category: String = GankioConstant.GANK, type: String,
+        page: Int = currentPage
+    ) {
         viewModelScope.launch {
             requestByFlow {
                 gankioRepository.getCategoryPostList(category, type, page, 10)
@@ -78,7 +80,7 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _list.value = it
+                    _list.tryEmit(it)
                 }
             }
         }
@@ -88,8 +90,8 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
         getCategoryPostList(category, type, page = ++currentPage)
     }
 
-    private val _randomList = MutableLiveData<GankioRandomBean>()
-    val randomList: LiveData<GankioRandomBean> = _randomList
+    private val _randomList = MutableSharedFlow<GankioRandomBean>(replay = 1)
+    val randomList: SharedFlow<GankioRandomBean> = _randomList
 
     fun getRandomCategoryPostList(category: String, type: String, count: Int) {
         viewModelScope.launch {
@@ -99,14 +101,14 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _randomList.value = it
+                    _randomList.tryEmit(it)
                 }
             }
         }
     }
 
-    private val _postDetail = MutableLiveData<GankioPostDetailBean>()
-    val postDetail: LiveData<GankioPostDetailBean> = _postDetail
+    private val _postDetail = MutableSharedFlow<GankioPostDetailBean>(replay = 1)
+    val postDetail: SharedFlow<GankioPostDetailBean> = _postDetail
 
     fun getPostDetail(postId: String) {
         viewModelScope.launch {
@@ -116,14 +118,14 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _postDetail.value = it
+                    _postDetail.tryEmit(it)
                 }
             }
         }
     }
 
-    private val _hotList = MutableLiveData<GankioHotBean>()
-    val hotList: LiveData<GankioHotBean> = _hotList
+    private val _hotList = MutableSharedFlow<GankioHotBean>(replay = 1)
+    val hotList: SharedFlow<GankioHotBean> = _hotList
 
     fun getPostHotList(type: String, category: String, count: Int) {
         viewModelScope.launch {
@@ -133,14 +135,14 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _hotList.value = it
+                    _hotList.tryEmit(it)
                 }
             }
         }
     }
 
-    private val _postComments = MutableLiveData<GankioPostCommentsBean>()
-    val postComment: LiveData<GankioPostCommentsBean> = _postComments
+    private val _postComments = MutableSharedFlow<GankioPostCommentsBean>(replay = 1)
+    val postComment: SharedFlow<GankioPostCommentsBean> = _postComments
 
     fun getGankPostComments(postId: String) {
         viewModelScope.launch {
@@ -150,14 +152,14 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _postComments.value = it
+                    _postComments.tryEmit(it)
                 }
             }
         }
     }
 
-    private val _search = MutableLiveData<GankioSearchResultBean>()
-    val search: LiveData<GankioSearchResultBean> = _search
+    private val _search = MutableSharedFlow<GankioSearchResultBean>(replay = 1)
+    val search: SharedFlow<GankioSearchResultBean> = _search
 
     fun getSearchContents(search: String, category: String, type: String, page: Int, count: Int) {
         viewModelScope.launch {
@@ -167,7 +169,7 @@ class GankioViewModel(private val gankioRepository: GankioRepository) : BaseView
                 HelperUtil.showSimpleLog(this.message)
             }.next {
                 this.data?.let {
-                    _search.value = it
+                    _search.tryEmit(it)
                 }
             }
         }

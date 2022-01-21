@@ -3,8 +3,6 @@ package com.blues.framework.utils
 import android.util.Log
 import android.widget.Toast
 import com.blues.application.BluesApplication
-import com.blues.framework.utils.HelperUtil
-import com.google.android.material.snackbar.BaseTransientBottomBar
 
 /**
  * User : Blues
@@ -16,16 +14,24 @@ object HelperUtil {
     private const val GLOBAL_TAG = "Blues"
     var LOGGER_SWITCH_ON = true
 
-    @JvmStatic
-    @JvmOverloads
     fun showToast(str: String?, duration: Int = Toast.LENGTH_SHORT) {
-        Toast.makeText(BluesApplication.app, str, duration)
-            .show()
+        Toast.makeText(BluesApplication.app, str, duration).show()
     }
 
-    @JvmStatic
     fun showSimpleLog(str: String?) {
         if (LOGGER_SWITCH_ON) Log.i(GLOBAL_TAG, String.format("=====> %s <=====", str))
     }
 
+    /**
+     * 校验参数不为空串
+     */
+    fun checkEmpty(args: List<String>): Boolean {
+        var result = false
+        args.forEach {
+            if (it.isEmpty()) {
+                result = true
+            }
+        }
+        return result
+    }
 }

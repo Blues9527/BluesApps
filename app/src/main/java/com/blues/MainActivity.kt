@@ -1,8 +1,10 @@
 package com.blues
 
+import android.content.Intent
 import com.blues.framework.utils.HelperUtil.showSimpleLog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.MenuItem
 import android.widget.EditText
@@ -11,19 +13,32 @@ import androidx.fragment.app.Fragment
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.kaiyan.list.view.KaiyanFragment
 import com.blues.framework.utils.HelperUtil
+import com.blues.framework.utils.startActivity
 import com.blues.kaiyan.list.view.KaiyanHotRankFragment
 import com.blues.kaiyan.list.view.KaiyanSearchActivity
+import com.blues.router.RouterActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private var mLastMillis: Long = 0
     private var mCurrentFragment: Fragment? = null
-    private lateinit var toolBar: Toolbar
-    private lateinit var editText:EditText
+
+    private val toolBar: Toolbar by lazy {
+        findViewById(R.id.toolbar)
+    }
+    private val editText: EditText by lazy {
+        findViewById(R.id.edit_text)
+    }
+    private val floatActionButton: FloatingActionButton by lazy {
+        findViewById(R.id.float_action_button)
+    }
 
     //private val fragmentList: MutableList<Fragment> = mutableListOf(MainPageFragment(), StudyPageFragment(), KaiyanFragment())
-    private val fragmentList: MutableList<Fragment> = mutableListOf(KaiyanHotRankFragment(),
-            KaiyanFragment())
+    private val fragmentList: MutableList<Fragment> = mutableListOf(
+        KaiyanHotRankFragment(),
+        KaiyanFragment()
+    )
 
     override fun onBackPressed() {
         showSimpleLog("on back press")
@@ -45,13 +60,14 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
         bottomView.setOnNavigationItemSelectedListener(this)
         showFragment(null, fragmentList[0])
 
-        toolBar = findViewById(R.id.toolbar)
-
         toolBar.setOnClickListener {
             startActivity<KaiyanSearchActivity>()
         }
 
-        editText = findViewById(R.id.edit_text)
+        floatActionButton.setOnClickListener {
+            Log.i("Blues", "onTouch FloatingActionButton")
+            startActivity(Intent(this, RouterActivity::class.java))
+        }
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
@@ -84,7 +100,7 @@ class MainActivity : BaseKoinActivity(), BottomNavigationView.OnNavigationItemSe
         if (!isAdded) {
             if (from != null) {
                 transaction.hide(from).add(R.id.fl_container, to, null).show(to)
-                        .commitAllowingStateLoss()
+                    .commitAllowingStateLoss()
             } else {
                 transaction.add(R.id.fl_container, to, null).show(to).commitAllowingStateLoss()
             }

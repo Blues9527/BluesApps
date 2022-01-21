@@ -6,6 +6,7 @@ import com.blues.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.jude.easyrecyclerview.EasyRecyclerView
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +18,8 @@ import com.blues.gankio.v1.vm.GankViewModel
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AndroidFragment : BaseKoinFragment(), OnRefreshListener {
@@ -26,12 +29,14 @@ class AndroidFragment : BaseKoinFragment(), OnRefreshListener {
     private lateinit var androidSr: SmartRefreshLayout
     private lateinit var mAdapter: RecyclerArrayAdapter<GankBean.ResultsBean>
 
-    override fun observe() {
-        androidViewModel.listData.observe(this) {
-            it.results?.let { list ->
-                mAdapter.apply {
-                    addAll(list)
-                    notifyDataSetChanged()
+    override fun collect() {
+        lifecycleScope.launch {
+            androidViewModel.listData.collect {
+                it.results.let { list ->
+                    mAdapter.apply {
+                        addAll(list)
+                        notifyDataSetChanged()
+                    }
                 }
             }
         }
@@ -52,19 +57,21 @@ class AndroidFragment : BaseKoinFragment(), OnRefreshListener {
         rootView.findViewById<EasyRecyclerView>(R.id.rv_android).apply {
             setLayoutManager(LinearLayoutManager(requireContext()))
             adapter = object : RecyclerArrayAdapter<GankBean.ResultsBean>(requireContext()) {
-                override fun OnCreateViewHolder(parent: ViewGroup,
-                    viewType: Int): BaseViewHolder<*> {
+                override fun OnCreateViewHolder(
+                    parent: ViewGroup,
+                    viewType: Int
+                ): BaseViewHolder<*> {
                     return AndroidViewHolder(parent)
                 }
             }.also { mAdapter = it }
         }
         androidSr = rootView.findViewById<SmartRefreshLayout>(R.id.sr_android)
-                .apply { //设置 Header 为 经典 样式 带最后刷新时间
-                    setRefreshHeader(ClassicsHeader(requireContext()).setEnableLastTime(true))
-                    setEnableHeaderTranslationContent(true)
-                    setEnableRefresh(true)
-                    setOnRefreshListener(this@AndroidFragment)
-                }
+            .apply { //设置 Header 为 经典 样式 带最后刷新时间
+                setRefreshHeader(ClassicsHeader(requireContext()).setEnableLastTime(true))
+                setEnableHeaderTranslationContent(true)
+                setEnableRefresh(true)
+                setOnRefreshListener(this@AndroidFragment)
+            }
 
         mAdapter.apply {
             setNoMore(R.layout.view_load_no_more)

@@ -1,6 +1,5 @@
 package com.blues.framework.base
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
@@ -18,18 +17,14 @@ abstract class BaseKoinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
         initData(savedInstanceState)
-        observe()
+        collect()
     }
 
     abstract fun getLayoutId(): Int
 
     abstract fun initData(savedInstanceState: Bundle?)
 
-    open fun observe() {
+    open fun collect() {
 
-    }
-
-    inline fun <reified T> startActivity() {
-        startActivity(Intent(this, T::class.java))
     }
 }

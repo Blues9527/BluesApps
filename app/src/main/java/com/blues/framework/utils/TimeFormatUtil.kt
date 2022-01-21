@@ -7,24 +7,16 @@ package com.blues.framework.utils
  */
 object TimeFormatUtil {
 
-    @JvmStatic
     fun formatTime(duration: Int): String {
-        val time: String
+
+        //获取分钟
         val minute = duration / 60
+        //获取秒数
         val second = duration % 60
-        time = if (minute < 10) {
-            if (second == 0) {
-                String.format("0%s'", minute)
-            } else {
-                String.format("0%s'%s\"", minute, second)
-            }
-        } else {
-            if (second == 0) {
-                String.format("%s'", minute)
-            } else {
-                String.format("%s'%s\"", minute, second)
-            }
+
+        return when {
+            minute < 10 -> if (second == 0) "0$minute'" else "0$minute'$second\""
+            else -> if (second == 0) "$minute'" else "$minute'$second\""
         }
-        return time
     }
 }

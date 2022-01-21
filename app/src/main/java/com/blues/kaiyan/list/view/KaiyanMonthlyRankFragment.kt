@@ -8,6 +8,7 @@ import com.blues.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.jude.easyrecyclerview.EasyRecyclerView
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.blues.constant.KaiYanType
@@ -18,6 +19,8 @@ import com.blues.kaiyan.list.vm.KaiyanViewModel
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -57,13 +60,15 @@ class KaiyanMonthlyRankFragment : BaseKoinFragment(), OnRefreshListener {
         monthlyViewModel.getRankListVideos(KaiYanType.MONTHLY)
     }
 
-    override fun observe() {
-        monthlyViewModel.videos.observe(this) {
-            mAdapter.apply {
-                addAll(it.itemList)
-                notifyDataSetChanged()
+    override fun collect() {
+        lifecycleScope.launch {
+            monthlyViewModel.videos.collect{
+                mAdapter.apply {
+                    addAll(it.itemList)
+                    notifyDataSetChanged()
+                }
+                hotRankSr.finishRefresh()
             }
-            hotRankSr.finishRefresh()
         }
     }
 

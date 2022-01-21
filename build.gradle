@@ -5,6 +5,7 @@ buildscript {
 
     repositories {
         maven {  url "https://jitpack.io" }
+        maven {  url "https://maven.google.com" }
         google()
         mavenCentral()
         maven{ url 'https://maven.aliyun.com/repository/jcenter'}
@@ -27,6 +28,8 @@ allprojects {
         mavenCentral()
         google()
         maven{ url 'https://maven.aliyun.com/repository/jcenter'}
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     }
 
     //加快编译速度不浪费时间

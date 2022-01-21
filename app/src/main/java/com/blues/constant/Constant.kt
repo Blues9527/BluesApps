@@ -31,3 +31,6 @@ object KaiYanType {
     //总排行
     const val HISTORICAL = "historical"
 }
+
+//用户信息
+const val USER_INFO_KEY = "user_info"
