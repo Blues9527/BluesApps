@@ -39,10 +39,7 @@ object Versions {
     const val smartRefresh = "1.1.3"
 
     //room
-    const val room = "2.0.0"
-
-    //room compiler
-    const val roomCompiler = "2.0.0"
+    const val room = "2.3.0"
 
     //markdown4j
     const val markdown4j = "2.2-cj-1.1"

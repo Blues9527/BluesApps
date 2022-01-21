@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.content.Intent
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import com.blues.MainActivity
 import com.blues.adapter.TextWatcherAdapter
 import com.blues.framework.base.BaseKoinFragment
 import com.blues.login.view.LoginActivity
@@ -32,11 +33,18 @@ class AccountRegisterFragment : BaseKoinFragment(), View.OnClickListener, TextWa
     override fun onClick(v: View) {
         when (v.id) {
             R.id.tv_skip -> startActivity(Intent(requireContext(), LoginActivity::class.java))
-            R.id.tv_register -> registerViewModel.register(
+            //调用注册接口
+//            R.id.tv_register -> registerViewModel.register(
+//                account,
+//                password,
+//                repassword
+//            )
+            //本地注册
+            R.id.tv_register -> registerViewModel.registerLocal(
                 account,
                 password,
                 repassword
-            )               //调用注册接口
+            )
         }
     }
 
@@ -51,12 +59,20 @@ class AccountRegisterFragment : BaseKoinFragment(), View.OnClickListener, TextWa
 
     override fun collect() {
         lifecycleScope.launch {
-            registerViewModel.result.collect {
-                if (it.errorCode == 200) {
+//            registerViewModel.result.collect {
+//                if (it.errorCode == 200) {
+//                    showToast("注册成功") //跳转登陆界面
+//                    startActivity(Intent(requireContext(), LoginActivity::class.java))
+//                } else {
+//                    showToast(it.errorMsg)
+//                }
+//            }
+            registerViewModel.localRegisterResult.collect {
+                if (it) {
                     showToast("注册成功") //跳转登陆界面
-                    startActivity(Intent(requireContext(), LoginActivity::class.java))
+                    startActivity(Intent(requireContext(), MainActivity::class.java))
                 } else {
-                    showToast(it.errorMsg)
+                    showToast("两次密码输入不一致")
                 }
             }
         }

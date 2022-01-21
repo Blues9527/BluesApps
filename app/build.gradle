@@ -13,6 +13,7 @@ import com.blues.plugin.Video
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 static def releaseTime() {  //获取时间的方法,在Android节点外,另外的节点
     return new Date().format("yyyyMMddHHmm", TimeZone.getDefault())
@@ -118,7 +119,8 @@ dependencies {
     implementation UiComponent.viewpager2
 
     implementation Room.runtime
-    annotationProcessor Room.compiler
+    implementation Room.roomKtx
+    kapt Room.compiler
 
     implementation Kotlin.stdlibJdk8
     implementation Kotlin.coroutines

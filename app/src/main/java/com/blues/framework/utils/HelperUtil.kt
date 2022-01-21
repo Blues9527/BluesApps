@@ -22,4 +22,16 @@ object HelperUtil {
         if (LOGGER_SWITCH_ON) Log.i(GLOBAL_TAG, String.format("=====> %s <=====", str))
     }
 
+    /**
+     * 校验参数不为空串
+     */
+    fun checkEmpty(args: List<String>): Boolean {
+        var result = false
+        args.forEach {
+            if (it.isEmpty()) {
+                result = true
+            }
+        }
+        return result
+    }
 }
