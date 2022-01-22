@@ -59,7 +59,7 @@ class RegisterViewModel(private val registerRepo: RegisterRepository) : BaseView
             //再校验 两次密码是否相同
             if (password == repassword) {
                 //密码相同就直接注册
-                CoroutineScope(Dispatchers.IO).launch {
+                launch(Dispatchers.IO) {
                     registerRepo.registerByUsername(username, password)
                 }
             }
@@ -84,7 +84,7 @@ class RegisterViewModel(private val registerRepo: RegisterRepository) : BaseView
                 return@launch
             }
 
-            CoroutineScope(Dispatchers.IO).launch {
+            launch(Dispatchers.IO) {
                 registerRepo.registerByPhone(phone, password)
             }
             _resultUserInfo.tryEmit(true)
