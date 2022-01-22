@@ -14,10 +14,13 @@ import android.content.Intent
 import android.transition.AutoTransition
 import android.transition.Explode
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.blues.framework.base.BaseKoinActivity
+import com.blues.framework.utils.ScreenUtil
+import com.blues.framework.utils.dp
 import com.blues.kaiyan.detail.vm.KaiyanDetailViewModel
 import com.blues.nicevideoplayer.NiceVideoPlayer
 import com.jude.easyrecyclerview.adapter.BaseViewHolder
@@ -34,9 +37,18 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
 
     private val kaiyanDetailViewModel: KaiyanDetailViewModel by viewModel()
 
-    private lateinit var nvpVideo: NiceVideoPlayer
-    private lateinit var ivBack: ImageView
-    private lateinit var ervRelated: EasyRecyclerView
+    private val rootFl: FrameLayout by lazy {
+        findViewById(R.id.rl_root)
+    }
+    private val nvpVideo: NiceVideoPlayer by lazy {
+        findViewById(R.id.nvp_oe_detail)
+    }
+    private val ivBack: ImageView by lazy {
+        findViewById(R.id.iv_back)
+    }
+    private val ervRelated: EasyRecyclerView by lazy {
+        findViewById(R.id.erv_related)
+    }
 
     private var itemListBean: KaiyanBean.ItemListBean? = null
     private lateinit var mAdapter: RecyclerArrayAdapter<KaiyanDetailBean.ItemListBean>
@@ -115,9 +127,6 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
     override fun getLayoutId(): Int = R.layout.item_oe_hotrank_detail
 
     override fun initData(savedInstanceState: Bundle?) {
-        nvpVideo = findViewById(R.id.nvp_oe_detail)
-        ivBack = findViewById(R.id.iv_back)
-        ervRelated = findViewById(R.id.erv_related)
         itemListBean = intent.extras?.get("itemDetail") as KaiyanBean.ItemListBean
         itemListBean?.let {
             initDefaultView(it)
@@ -125,6 +134,8 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
         }
 
         ivBack.setOnClickListener(this)
+
+        rootFl.setPadding(0, ScreenUtil.statusBarHeight, 0, 0)
     }
 
     override fun onNewIntent(intent: Intent) {

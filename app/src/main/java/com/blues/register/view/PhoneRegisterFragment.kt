@@ -7,10 +7,17 @@ import com.blues.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
+import androidx.lifecycle.lifecycleScope
+import com.blues.MainActivity
 import com.blues.adapter.TextWatcherAdapter
 import com.blues.framework.base.BaseKoinFragment
+import com.blues.framework.utils.startActivity
+import com.blues.register.vm.RegisterViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * User : Blues
@@ -26,6 +33,8 @@ class PhoneRegisterFragment : BaseKoinFragment(), TextWatcherAdapter, View.OnCli
     private var verifyCode: String = ""
     private var password: String = ""
 
+    private val registerViewModel: RegisterViewModel by viewModel()
+
     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
         phoneNum = etPhone.text.toString()
             .trim()
@@ -38,11 +47,24 @@ class PhoneRegisterFragment : BaseKoinFragment(), TextWatcherAdapter, View.OnCli
     override fun onClick(v: View) {
         when (v.id) {
             R.id.tv_skip -> {
+                startActivity<MainActivity>()
             }
-            R.id.tv_register -> if (TextUtils.isEmpty(phoneNum) || TextUtils.isEmpty(verifyCode)) {
-                showToast("手机号码 or 验证码不能为空")
-            }
+            R.id.tv_register -> registerViewModel.registerByPhone(phoneNum, password)
             R.id.tv_get_verify -> {
+            }
+        }
+    }
+
+    override fun collect() {
+        lifecycleScope.launch {
+            registerViewModel.resultPhoneInfo.collect {
+                if (it) {
+                    showToast("注册成功，即将跳转主页面～") //跳转登陆界面
+                    delay(1000)
+                    startActivity<MainActivity>()
+                } else {
+                    showToast("注册失败，请检查手机号和密码～")
+                }
             }
         }
     }
@@ -64,6 +86,7 @@ class PhoneRegisterFragment : BaseKoinFragment(), TextWatcherAdapter, View.OnCli
                 .apply {
                     addTextChangedListener(this@PhoneRegisterFragment)
                 }
+
             findViewById<TextView>(R.id.tv_skip)
                 .setOnClickListener(this@PhoneRegisterFragment)
             findViewById<TextView>(R.id.tv_register)

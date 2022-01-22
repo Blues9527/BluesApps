@@ -46,4 +46,18 @@ object ScreenUtil {
 
             return dm.heightPixels
         }
+
+    /**
+     * 获取状态栏高度
+     */
+    val statusBarHeight: Int
+        get() {
+            val resources = BluesApplication.app.resources
+            val resId = resources.getIdentifier(
+                "status_bar_height",
+                "dimen",
+                "android"
+            )
+            return if (resId > 0) resources.getDimensionPixelSize(resId) else 0
+        }
 }
