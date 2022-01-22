@@ -45,7 +45,7 @@ abstract class NiceVideoPlayerController(private val mContext: Context) : FrameL
      *
      * @param title 视频标题
      */
-    abstract fun setTitle(title: String?)
+    abstract var title: String?
 
     /**
      * 视频底图
@@ -59,13 +59,14 @@ abstract class NiceVideoPlayerController(private val mContext: Context) : FrameL
      *
      * @return 底图ImageView
      */
-    abstract fun imageView(): ImageView?
+    abstract var imageView: ImageView?
 
     /**
      * 设置总时长.
      */
-    abstract fun setLength(length: Long)
-    abstract fun setShouldShowLength(shouldShowLength: Boolean)
+    abstract var length: Long
+
+    abstract var shouldShowLength: Boolean
 
     /**
      * 当播放器的播放状态发生变化，在此方法中国你更新不同的播放状态的UI
@@ -176,7 +177,8 @@ abstract class NiceVideoPlayerController(private val mContext: Context) : FrameL
                             // 左侧改变亮度
                             mNeedChangeBrightness = true
                             mGestureDownBrightness = NiceUtil.scanForActivity(
-                                    mContext)!!.window.attributes.screenBrightness
+                                mContext
+                            )!!.window.attributes.screenBrightness
                         } else {
                             // 右侧改变声音
                             mNeedChangeVolume = true

@@ -59,12 +59,13 @@ class TxVideoPlayerController(private val mContext: Context) : NiceVideoPlayerCo
 
     private var topBottomVisible = false
     private var mDismissTopBottomCountDownTimer: CountDownTimer? = null
-    private var clarities: List<Clarity>? = null
+    private var clarities: List<Clarity> = mutableListOf()
     private var defaultClarityIndex = 0
     private var mClarityDialog: ChangeClarityDialog? = null
     private var hasRegisterBatteryReceiver = false // 是否已经注册了电池广播
 
-    private var shouldShowLength = true //默认显示
+    //默认显示
+    override var shouldShowLength = true
 
     private fun init() {
         LayoutInflater.from(mContext).inflate(R.layout.tx_video_palyer_controller, this, true)
@@ -113,36 +114,32 @@ class TxVideoPlayerController(private val mContext: Context) : NiceVideoPlayerCo
         setOnClickListener(this)
     }
 
-    override fun setTitle(title: String?) {
-        mTitle.text = title
-    }
-
-    override fun imageView(): ImageView {
-        return mImage
-    }
-
-    override fun setImage(@DrawableRes resId: Int) {
-        mImage.setImageResource(resId)
-    }
-
-    override fun setLength(length: Long) {
-        if (shouldShowLength) {
-            mLength.text = NiceUtil.formatTime(length)
-            mLength.visibility = VISIBLE
-        } else {
-            mLength.visibility = GONE
+    override var title: String? = null
+        set(value) {
+            field = value
+            mTitle.text = value
         }
-    }
 
-    override fun setShouldShowLength(shouldShowLength: Boolean) {
-        this.shouldShowLength = shouldShowLength
-    }
+    override var imageView: ImageView? = mImage
+
+    override fun setImage(@DrawableRes resId: Int) = mImage.setImageResource(resId)
+
+    override var length: Long = 0L
+        set(value) {
+            field = value
+            if (shouldShowLength) {
+                mLength.text = NiceUtil.formatTime(value)
+                mLength.visibility = VISIBLE
+            } else {
+                mLength.visibility = GONE
+            }
+        }
 
     override fun setNiceVideoPlayer(niceVideoPlayer: INiceVideoPlayer) {
         super.setNiceVideoPlayer(niceVideoPlayer)
         // 给播放器配置视频链接地址
-        if (clarities != null && clarities!!.size > 1) {
-            mNiceVideoPlayer.setUp(clarities!![defaultClarityIndex].videoUrl, null)
+        if (clarities.size > 1) {
+            mNiceVideoPlayer.setUp(clarities[defaultClarityIndex].videoUrl, null)
         }
     }
 
@@ -151,8 +148,8 @@ class TxVideoPlayerController(private val mContext: Context) : NiceVideoPlayerCo
      *
      * @param clarities 清晰度及链接
      */
-    fun setClarity(clarities: List<Clarity>?, defaultClarityIndex: Int) {
-        if (clarities != null && clarities.size > 1) {
+    fun setClarity(clarities: List<Clarity>, defaultClarityIndex: Int) {
+        if (clarities.size > 1) {
             this.clarities = clarities
             this.defaultClarityIndex = defaultClarityIndex
             val clarityGrades: MutableList<String?> = ArrayList()
@@ -161,9 +158,10 @@ class TxVideoPlayerController(private val mContext: Context) : NiceVideoPlayerCo
             }
             mClarity.text = clarities[defaultClarityIndex].grade
             // 初始化切换清晰度对话框
-            mClarityDialog = ChangeClarityDialog(mContext).also {
+            ChangeClarityDialog(mContext).also {
                 it.setClarityGrade(clarityGrades, defaultClarityIndex)
                 it.setOnClarityCheckedListener(this)
+                mClarityDialog = it
             }
 
             // 给播放器配置视频链接地址
@@ -241,13 +239,15 @@ class TxVideoPlayerController(private val mContext: Context) : NiceVideoPlayerCo
                 mBack.visibility = VISIBLE
                 mFullScreen.visibility = GONE
                 mFullScreen.setImageResource(R.drawable.ic_player_shrink)
-                if (clarities != null && clarities!!.size > 1) {
+                if (clarities.size > 1) {
                     mClarity.visibility = VISIBLE
                 }
                 mBatteryTime.visibility = VISIBLE
                 if (!hasRegisterBatteryReceiver) {
-                    mContext.registerReceiver(mBatterReceiver,
-                            IntentFilter(Intent.ACTION_BATTERY_CHANGED))
+                    mContext.registerReceiver(
+                        mBatterReceiver,
+                        IntentFilter(Intent.ACTION_BATTERY_CHANGED)
+                    )
                     hasRegisterBatteryReceiver = true
                 }
             }
@@ -263,37 +263,23 @@ class TxVideoPlayerController(private val mContext: Context) : NiceVideoPlayerCo
      */
     private val mBatterReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            val status = intent.getIntExtra(BatteryManager.EXTRA_STATUS,
-                    BatteryManager.BATTERY_STATUS_UNKNOWN)
+            val status = intent.getIntExtra(
+                BatteryManager.EXTRA_STATUS,
+                BatteryManager.BATTERY_STATUS_UNKNOWN
+            )
             when (status) {
-                BatteryManager.BATTERY_STATUS_CHARGING -> {
-                    // 充电中
-                    mBattery.setImageResource(R.drawable.battery_charging)
-                }
-                BatteryManager.BATTERY_STATUS_FULL -> {
-                    // 充电完成
-                    mBattery.setImageResource(R.drawable.battery_full)
-                }
+                BatteryManager.BATTERY_STATUS_CHARGING -> mBattery.setImageResource(R.drawable.battery_charging) // 充电中
+                BatteryManager.BATTERY_STATUS_FULL -> mBattery.setImageResource(R.drawable.battery_full)// 充电完成
                 else -> {
                     val level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0)
                     val scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, 0)
                     val percentage = (level.toFloat() / scale * 100).toInt()
                     when {
-                        percentage <= 10 -> {
-                            mBattery.setImageResource(R.drawable.battery_10)
-                        }
-                        percentage <= 20 -> {
-                            mBattery.setImageResource(R.drawable.battery_20)
-                        }
-                        percentage <= 50 -> {
-                            mBattery.setImageResource(R.drawable.battery_50)
-                        }
-                        percentage <= 80 -> {
-                            mBattery.setImageResource(R.drawable.battery_80)
-                        }
-                        percentage <= 100 -> {
-                            mBattery.setImageResource(R.drawable.battery_100)
-                        }
+                        percentage <= 10 -> mBattery.setImageResource(R.drawable.battery_10)
+                        percentage <= 20 -> mBattery.setImageResource(R.drawable.battery_20)
+                        percentage <= 50 -> mBattery.setImageResource(R.drawable.battery_50)
+                        percentage <= 80 -> mBattery.setImageResource(R.drawable.battery_80)
+                        percentage <= 100 -> mBattery.setImageResource(R.drawable.battery_100)
                     }
                 }
             }
@@ -354,7 +340,7 @@ class TxVideoPlayerController(private val mContext: Context) : NiceVideoPlayerCo
 
             mClarity -> {
                 setTopBottomVisible(false) // 隐藏top、bottom
-                mClarityDialog!!.show() // 显示清晰度对话框
+                mClarityDialog?.show() // 显示清晰度对话框
             }
 
             mRetry -> mNiceVideoPlayer.restart()
@@ -369,11 +355,10 @@ class TxVideoPlayerController(private val mContext: Context) : NiceVideoPlayerCo
 
     override fun onClarityChanged(clarityIndex: Int) {
         // 根据切换后的清晰度索引值，设置对应的视频链接地址，并从当前播放位置接着播放
-        val (grade, _, videoUrl) = clarities!![clarityIndex]
+        val (grade, _, videoUrl) = clarities[clarityIndex]
         mClarity.text = grade
 
         with(mNiceVideoPlayer) {
-            val currentPosition = currentPosition
             releasePlayer()
             setUp(videoUrl, null)
             start(currentPosition)
@@ -409,11 +394,15 @@ class TxVideoPlayerController(private val mContext: Context) : NiceVideoPlayerCo
     private fun startDismissTopBottomTimer() {
         cancelDismissTopBottomTimer()
         if (mDismissTopBottomCountDownTimer == null) {
-            mDismissTopBottomCountDownTimer = object : CountDownTimer(8000, 8000) {
-                override fun onTick(millisUntilFinished: Long) {}
-                override fun onFinish() {
-                    setTopBottomVisible(false)
-                }
+//            mDismissTopBottomCountDownTimer = object : CountDownTimer(8000, 8000) {
+//                override fun onTick(millisUntilFinished: Long) {}
+//                override fun onFinish() {
+//                    setTopBottomVisible(false)
+//                }
+//            }
+
+            mDismissTopBottomCountDownTimer = CountDownTimerImpl(8000, 8000, null) {
+                setTopBottomVisible(false)
             }
         }
         mDismissTopBottomCountDownTimer?.start()
@@ -429,19 +418,20 @@ class TxVideoPlayerController(private val mContext: Context) : NiceVideoPlayerCo
     override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {}
     override fun onStartTrackingTouch(seekBar: SeekBar) {}
     override fun onStopTrackingTouch(seekBar: SeekBar) {
-        if (mNiceVideoPlayer.isBufferingPaused || mNiceVideoPlayer.isPaused) {
-            mNiceVideoPlayer.restart()
+        with(mNiceVideoPlayer) {
+            if (isBufferingPaused || isPaused) {
+                restart()
+            }
+            val position = (duration * seekBar.progress / 100f).toLong()
+            seekTo(position)
         }
-        val position = (mNiceVideoPlayer.duration * seekBar.progress / 100f).toLong()
-        mNiceVideoPlayer.seekTo(position)
         startDismissTopBottomTimer()
     }
 
     override fun updateProgress() {
         val position = mNiceVideoPlayer.currentPosition
         val duration = mNiceVideoPlayer.duration
-        val bufferPercentage = mNiceVideoPlayer.bufferPercentage
-        mSeek.secondaryProgress = bufferPercentage
+        mSeek.secondaryProgress = mNiceVideoPlayer.bufferPercentage
         val progress = (100f * position / duration).toInt()
         mSeek.progress = progress
         mPosition.text = NiceUtil.formatTime(position)

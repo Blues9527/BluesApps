@@ -24,9 +24,9 @@ class VideoHolder(parent: ViewGroup?) :
             setBackgroundResource(R.drawable.shape_background)
             setUp(data.video_url, null)
             setController(TxVideoPlayerController(context).apply {
-                setTitle(data.video_title)
                 setImage(R.color.color_black)
-                setShouldShowLength(false)
+                title = data.video_title
+                shouldShowLength = false
             })
         }
     }

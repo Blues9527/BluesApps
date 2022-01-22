@@ -58,9 +58,9 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
 
         val controller = TxVideoPlayerController(this).apply {
             setTitle(null)
-            setLength(data.data?.duration!!.toLong() * 1000L) //这里将long类型时间长度转换成时分秒的单位是毫秒
+            length = (data.data?.duration!!.toLong() * 1000L) //这里将long类型时间长度转换成时分秒的单位是毫秒
         }
-        controller.imageView().load(data.data?.cover?.blurred) {
+        controller.imageView?.load(data.data?.cover?.blurred) {
             error(R.mipmap.ic_img_error)
         }
 
@@ -71,9 +71,9 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
             setUp(data.data?.playUrl, null)
             setController(controller)
             post {
-                nvpVideo.continueFromLastPosition(false)
-                if (nvpVideo.isIdle) {
-                    nvpVideo.start()
+                continueFromLastPosition(false)
+                if (isIdle) {
+                    start()
                 }
             }
         }
@@ -87,9 +87,7 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
                 override fun OnCreateViewHolder(
                     parent: ViewGroup,
                     viewType: Int
-                ): BaseViewHolder<*> {
-                    return KaiyanDetailRelatedViewHolder(parent)
-                }
+                ): BaseViewHolder<*> = KaiyanDetailRelatedViewHolder(parent)
             }.also { mAdapter = it }
         }
 
@@ -135,6 +133,7 @@ class KaiyanDetailActivity : BaseKoinActivity(), View.OnClickListener {
 
         ivBack.setOnClickListener(this)
 
+        //因为沉浸式状态栏所以得设置一下padding
         rootFl.setPadding(0, ScreenUtil.statusBarHeight, 0, 0)
     }
 
