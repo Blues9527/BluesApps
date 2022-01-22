@@ -56,21 +56,14 @@ class RegisterViewModel(private val registerRepo: RegisterRepository) : BaseView
                 return@launch
             }
 
-        }
-        //再校验 两次密码是否相同
-        if (password == repassword) {
-            //密码相同就直接注册
-            CoroutineScope(Dispatchers.IO).launch {
-                registerRepo.registerByUsername(username, password)
+            //再校验 两次密码是否相同
+            if (password == repassword) {
+                //密码相同就直接注册
+                CoroutineScope(Dispatchers.IO).launch {
+                    registerRepo.registerByUsername(username, password)
+                }
             }
-            viewModelScope.launch {
-                _resultUserInfo.tryEmit(true)
-            }
-
-        } else {
-            viewModelScope.launch {
-                _resultUserInfo.tryEmit(false)
-            }
+            _resultUserInfo.tryEmit(password == repassword)
         }
     }
 
@@ -90,12 +83,10 @@ class RegisterViewModel(private val registerRepo: RegisterRepository) : BaseView
                 _resultUserInfo.tryEmit(false)
                 return@launch
             }
-        }
 
-        CoroutineScope(Dispatchers.IO).launch {
-            registerRepo.registerByPhone(phone, password)
-        }
-        viewModelScope.launch {
+            CoroutineScope(Dispatchers.IO).launch {
+                registerRepo.registerByPhone(phone, password)
+            }
             _resultUserInfo.tryEmit(true)
         }
     }
