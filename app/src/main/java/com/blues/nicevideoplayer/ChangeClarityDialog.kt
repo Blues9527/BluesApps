@@ -25,15 +25,17 @@ class ChangeClarityDialog(context: Context) : Dialog(context, R.style.dialog_cha
             gravity = Gravity.CENTER
             orientation = LinearLayout.VERTICAL
             setOnClickListener {
-                if (mListener != null) {
-                    mListener!!.onClarityNotChanged()
-                }
+                mListener?.onClarityNotChanged()
                 dismiss()
             }
         }
-        val params = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                MarginLayoutParams.MATCH_PARENT)
-        setContentView(mLinearLayout, params)
+
+        ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            MarginLayoutParams.MATCH_PARENT
+        ).also {
+            setContentView(mLinearLayout, it)
+        }
 
         window?.let {
             it.attributes.apply {
@@ -53,8 +55,11 @@ class ChangeClarityDialog(context: Context) : Dialog(context, R.style.dialog_cha
         mCurrentCheckedIndex = defaultChecked
         for (i in items.indices) {
             val itemView = (LayoutInflater.from(context)
-                    .inflate(R.layout.item_change_clarity, mLinearLayout,
-                            false) as TextView).apply {
+                .inflate(
+                    R.layout.item_change_clarity,
+                    mLinearLayout,
+                    false,
+                ) as TextView).apply {
                 tag = i
                 setOnClickListener { v ->
                     mListener?.let {
@@ -75,9 +80,8 @@ class ChangeClarityDialog(context: Context) : Dialog(context, R.style.dialog_cha
                 isSelected = i == defaultChecked
             }
 
-            (itemView.layoutParams as MarginLayoutParams).apply {
-                topMargin = if (i == 0) 0 else 16f.dp.toInt()
-            }.also {
+            (itemView.layoutParams as MarginLayoutParams).also {
+                it.topMargin = if (i == 0) 0 else 16f.dp.toInt()
                 mLinearLayout.addView(itemView, it)
             }
 

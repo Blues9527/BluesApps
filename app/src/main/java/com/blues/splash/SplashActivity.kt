@@ -36,17 +36,15 @@ class SplashActivity : BaseKoinActivity() {
         tcvSplash = findViewById(R.id.rclv_splash)
 
         tcvSplash.startTimerSafely()
-        cdView.setCountDownTimerCallBack(object : CountDownView.CountDownTimerCallBack {
-            override fun onFinish() {
-                mField.explode(cdView)
-                CoroutineScope(Dispatchers.Main).launch {
-                    delay(1500)
-                    startActivity<LoginActivity>()
-                    overridePendingTransition(R.anim.anim_zoom_in, 0)
-                    finish()
-                }
+        cdView.mTimerCallBack = {
+            mField.explode(cdView)
+            CoroutineScope(Dispatchers.Main).launch {
+                delay(1500)
+                startActivity<LoginActivity>()
+                overridePendingTransition(R.anim.anim_zoom_in, 0)
+                finish()
             }
-        })
+        }
     }
 
     override fun onResume() {

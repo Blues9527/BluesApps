@@ -58,7 +58,11 @@ class TxVideoPlayerController(private val mContext: Context) : NiceVideoPlayerCo
     private lateinit var mShare: TextView
 
     private var topBottomVisible = false
-    private var mDismissTopBottomCountDownTimer: CountDownTimer? = null
+    private val mDismissTopBottomCountDownTimer: CountDownTimer by lazy {
+        CountDownTimerImpl(8000, 8000, null) {
+            setTopBottomVisible(false)
+        }
+    }
     private var clarities: List<Clarity> = mutableListOf()
     private var defaultClarityIndex = 0
     private var mClarityDialog: ChangeClarityDialog? = null
@@ -393,26 +397,14 @@ class TxVideoPlayerController(private val mContext: Context) : NiceVideoPlayerCo
      */
     private fun startDismissTopBottomTimer() {
         cancelDismissTopBottomTimer()
-        if (mDismissTopBottomCountDownTimer == null) {
-//            mDismissTopBottomCountDownTimer = object : CountDownTimer(8000, 8000) {
-//                override fun onTick(millisUntilFinished: Long) {}
-//                override fun onFinish() {
-//                    setTopBottomVisible(false)
-//                }
-//            }
-
-            mDismissTopBottomCountDownTimer = CountDownTimerImpl(8000, 8000, null) {
-                setTopBottomVisible(false)
-            }
-        }
-        mDismissTopBottomCountDownTimer?.start()
+        mDismissTopBottomCountDownTimer.start()
     }
 
     /**
      * 取消top、bottom自动消失的timer
      */
     private fun cancelDismissTopBottomTimer() {
-        mDismissTopBottomCountDownTimer?.cancel()
+        mDismissTopBottomCountDownTimer.cancel()
     }
 
     override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {}

@@ -17,30 +17,37 @@ class NiceVideoPlayerManager private constructor() {
     }
 
     fun suspendNiceVideoPlayer() {
-        if (currentNiceVideoPlayer != null && (currentNiceVideoPlayer!!.isPlaying || currentNiceVideoPlayer!!.isBufferingPlaying)) {
-            currentNiceVideoPlayer!!.pause()
+        check(currentNiceVideoPlayer != null)
+        currentNiceVideoPlayer?.let {
+            if ((it.isPlaying || it.isBufferingPlaying)) {
+                it.pause()
+            }
         }
     }
 
     fun resumeNiceVideoPlayer() {
-        if (currentNiceVideoPlayer != null && (currentNiceVideoPlayer!!.isPaused || currentNiceVideoPlayer!!.isBufferingPaused)) {
-            currentNiceVideoPlayer!!.restart()
+        check(currentNiceVideoPlayer != null)
+        currentNiceVideoPlayer?.let {
+            if (it.isPaused || it.isBufferingPaused) {
+                it.restart()
+            }
         }
     }
 
     fun releaseNiceVideoPlayer() {
-        if (currentNiceVideoPlayer != null) {
-            currentNiceVideoPlayer!!.release()
-            currentNiceVideoPlayer = null
+        currentNiceVideoPlayer = currentNiceVideoPlayer?.run {
+            release()
+            null
         }
     }
 
     fun onBackPressd(): Boolean {
-        if (currentNiceVideoPlayer != null) {
-            if (currentNiceVideoPlayer!!.isFullScreen) {
-                return currentNiceVideoPlayer!!.exitFullScreen()
-            } else if (currentNiceVideoPlayer!!.isTinyWindow) {
-                return currentNiceVideoPlayer!!.exitTinyWindow()
+        check(currentNiceVideoPlayer != null)
+        currentNiceVideoPlayer?.let {
+            if (it.isFullScreen) {
+                return it.exitFullScreen()
+            } else if (it.isTinyWindow) {
+                return it.exitTinyWindow()
             }
         }
         return false
