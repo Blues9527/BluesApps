@@ -3,9 +3,19 @@ package com.blues.framework.http
 import android.util.Log
 import com.blues.framework.utils.FileUtil.cacheDirectory
 import com.blues.framework.utils.NetWorkUtil.isConnected
+import okhttp3.Cache
+import okhttp3.CacheControl
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import okhttp3.*
+import java.security.SecureRandom
+import java.security.cert.CertificateException
+import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
+import javax.net.ssl.SSLContext
+import javax.net.ssl.SSLSocketFactory
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
 
 /**
  * User : Blues
@@ -75,5 +85,33 @@ object OkHttpClientManager {
             .readTimeout(30, TimeUnit.SECONDS) //错误重连
             .retryOnConnectionFailure(true)
             .cache(cache)
+            .hostnameVerifier { _, _ -> true }
+            .sslSocketFactory(createSSLSocketFactory(),TrustAllCerts())
             .build()
+
+    private fun createSSLSocketFactory(): SSLSocketFactory? {
+        var ssfFactory: SSLSocketFactory? = null
+        try {
+            val sc = SSLContext.getInstance("TLS")
+            sc.init(null, arrayOf<TrustManager>(TrustAllCerts()), SecureRandom())
+            ssfFactory = sc.socketFactory
+        } catch (e: Exception) {
+            e.localizedMessage?.let { Log.e("Blues", it) }
+        }
+        return ssfFactory
+    }
+}
+
+class TrustAllCerts : X509TrustManager {
+    @Throws(CertificateException::class)
+    override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {
+    }
+
+    @Throws(CertificateException::class)
+    override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {
+    }
+
+    override fun getAcceptedIssuers(): Array<X509Certificate?> {
+        return arrayOfNulls(0)
+    }
 }

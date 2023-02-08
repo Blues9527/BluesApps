@@ -1,9 +1,12 @@
 package com.blues.di
 
+import com.blues.article.EverydayArticleRepository
+import com.blues.article.EverydayArticleViewModel
+import com.blues.article.provideEverydayArticleApi
+import com.blues.constant.EVERYDAY_ARTICLE
 import com.blues.constant.GANKIO
 import com.blues.constant.KAIYAN
 import com.blues.constant.WANANDROID
-import com.blues.framework.base.BaseViewModel
 import com.blues.framework.http.networkModule
 import com.blues.framework.utils.mmkv
 import com.blues.gankio.v1.service.GankRepository
@@ -31,7 +34,6 @@ import com.blues.register.service.RegisterRepository
 import com.blues.register.service.provideRegisterApi
 import com.blues.register.vm.RegisterViewModel
 import org.koin.core.qualifier.named
-import org.koin.core.scope.get
 import org.koin.dsl.module
 
 /**
@@ -100,6 +102,20 @@ val kaiyanModule = module {
     factory { KaiyanDetailViewModel(get()) }
 }
 
+val meiriyiwenModule = module {
+    factory {
+        provideEverydayArticleApi(get(named(EVERYDAY_ARTICLE)))
+    }
+
+    single {
+        EverydayArticleRepository(get(),get())
+    }
+
+    factory {
+        EverydayArticleViewModel(get())
+    }
+}
+
 val gankioModule = module {
     factory {
         provideGankioApi(get(named(GANKIO)))
@@ -133,6 +149,7 @@ val allModules = (networkModule
         + kaiyanModule
         + gankioModule
         + mmkv
+        + meiriyiwenModule
         )
 
 

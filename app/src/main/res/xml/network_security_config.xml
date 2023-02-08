@@ -3,6 +3,7 @@
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">easy-mock.com</domain>
         <domain includeSubdomains="true">www.wanandroid.com</domain>
+        <domain includeSubdomains="true">interface.meiriyiwen.com</domain>
     </domain-config>
     <base-config cleartextTrafficPermitted="true" />
 </network-security-config>

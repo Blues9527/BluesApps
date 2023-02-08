@@ -11,11 +11,11 @@ import coil.Coil
 import coil.ImageLoader
 import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
-import coil.util.CoilUtils
 import com.blues.adapter.ActivityLifecycleCallbacksAdapter
 import com.blues.di.allModules
+import com.blues.framework.http.OkHttpClientManager
+import com.blues.framework.network.NetworkCallbackImpl
 import com.tencent.mmkv.MMKV
-import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -42,7 +42,7 @@ class BluesApplication : MultiDexApplication() {
         super.onCreate()
 
         //注册一下网络监听
-        //initNetworkListener()
+        initNetworkListener()
 
         //初始化Activity声明周期监听
         initActivityLifecycleListener()
@@ -55,6 +55,10 @@ class BluesApplication : MultiDexApplication() {
 
         //注册mmkv
         MMKV.initialize(this)
+    }
+
+    private fun initNetworkListener() {
+        NetworkCallbackImpl(app)
     }
 
     private fun initKoin() {
@@ -81,16 +85,15 @@ class BluesApplication : MultiDexApplication() {
 
     private fun initCoil() {
         val imageLoader = ImageLoader.Builder(applicationContext).crossfade(true)
-                .componentRegistry {
-                    if (SDK_INT >= 28) {
-                        add(ImageDecoderDecoder(applicationContext))
-                    } else {
-                        add(GifDecoder())
-                    }
-                }.okHttpClient {
-                    OkHttpClient.Builder().cache(CoilUtils.createDefaultCache(applicationContext))
-                            .build()
-                }.build()
+            .componentRegistry {
+                if (SDK_INT >= 28) {
+                    add(ImageDecoderDecoder(applicationContext))
+                } else {
+                    add(GifDecoder())
+                }
+            }.okHttpClient {
+                OkHttpClientManager.instance
+            }.build()
         Coil.setImageLoader(imageLoader)
     }
 }

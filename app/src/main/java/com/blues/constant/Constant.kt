@@ -20,6 +20,9 @@ const val KAIYAN = "kaiyan"
 //干货
 const val GANKIO = "gankio"
 
+//每日一文
+const val EVERYDAY_ARTICLE="meiriyiwen"
+
 object KaiYanType {
 
     //周排行

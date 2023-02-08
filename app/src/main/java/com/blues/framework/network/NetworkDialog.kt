@@ -6,7 +6,16 @@ import android.graphics.Color
 import android.os.Bundle
 import android.graphics.drawable.ColorDrawable
 import android.view.Gravity
+import android.view.WindowManager
 import com.blues.R
+
+/**
+ * File: com.blues.framework.network.NetworkDialog.kt
+ * Description: 网络错误弹窗
+ *
+ * @author: lanhuajian
+ * @time: 2022/1/24
+ **/
 
 class NetworkDialog(context: Context) : Dialog(context) {
 
@@ -25,15 +34,17 @@ class NetworkDialog(context: Context) : Dialog(context) {
 
             //设置弹窗的宽高
             setLayout(-1, -1)
+
+            setType(WindowManager.LayoutParams.TYPE_SYSTEM_DIALOG)
         }
 
         //设置视图
         setContentView(R.layout.dialog_network_error)
 
         //设置是否可撤销
-        setCancelable(true)
+        setCancelable(false)
 
         //设置触摸外部是否可撤销
-        setCanceledOnTouchOutside(true)
+        setCanceledOnTouchOutside(false)
     }
 }

@@ -41,11 +41,9 @@ class GankActivity : BaseKoinActivity() {
 
     private val mTabs: MutableList<String> = ArrayList()
 
-    private fun getTabView(context: Context, text: String): View {
-        val textView = TextView(context)
-        textView.gravity = Gravity.CENTER
-        textView.text = text
-        return textView
+    private fun getTabView(context: Context, textStr: String): View = TextView(context).apply {
+        gravity = Gravity.CENTER
+        text = textStr
     }
 
     override fun collect() {
@@ -59,12 +57,11 @@ class GankActivity : BaseKoinActivity() {
         lifecycleScope.launch {
             gankioViewModel.category.collect {
 
-                for (data in it.data) {
-                    mTabs.add(data.title)
-                }
-
                 val mFragmentAdapter = BaseViewPagerAdapter(supportFragmentManager, mTabs)
-                for (data in it.data) {
+
+                it.data.forEach { data ->
+                    mTabs.add(data.title)
+
                     mFragmentAdapter.addFragment(GankUniversalFragment(data.type))
                 }
 
@@ -77,18 +74,22 @@ class GankActivity : BaseKoinActivity() {
                     TabLayout.ViewPagerOnTabSelectedListener(mViewPager) {
                     override fun onTabSelected(tab: TabLayout.Tab) {
                         mViewPager.currentItem = tab.position
-                        val view = tab.customView
-                        if (view is TextView) {
-                            view.setTextColor(
+
+                        tab.customView.takeIf { view ->
+                            view is TextView
+                        }?.let { view ->
+                            (view as TextView).setTextColor(
                                 view.getResources().getColor(R.color.color_light_blue, null)
                             )
                         }
                     }
 
                     override fun onTabUnselected(tab: TabLayout.Tab) {
-                        val view = tab.customView
-                        if (view is TextView) {
-                            view.setTextColor(
+
+                        tab.customView.takeIf { view ->
+                            view is TextView
+                        }?.let { view ->
+                            (view as TextView).setTextColor(
                                 view.getResources().getColor(R.color.color_black, null)
                             )
                         }
@@ -97,18 +98,23 @@ class GankActivity : BaseKoinActivity() {
                     override fun onTabReselected(tab: TabLayout.Tab) {}
                 })
 
-                mTabLayout.setSelectedTabIndicatorColor(
-                    mTabLayout.resources.getColor(
-                        R.color.color_light_blue,
-                        null
+                with(mTabLayout) {
+                    setSelectedTabIndicatorColor(
+                        resources.getColor(
+                            R.color.color_light_blue,
+                            null
+                        )
                     )
-                ) //因为fragment不销毁，所以添加新tabs前最好把旧的都移除掉先，否则就会出现重复的
-                mTabLayout.removeAllTabs()
-                for (i in mTabs.indices) {
-                    mTabLayout.addTab(
-                        mTabLayout.newTab().setCustomView(getTabView(this@GankActivity, mTabs[i])),
-                        i == 0
-                    )
+
+                    //因为fragment不销毁，所以添加新tabs前最好把旧的都移除掉先，否则就会出现重复的
+                    removeAllTabs()
+
+                    for (i in mTabs.indices) {
+                        addTab(
+                            newTab().setCustomView(getTabView(this@GankActivity, mTabs[i])),
+                            i == 0
+                        )
+                    }
                 }
             }
         }

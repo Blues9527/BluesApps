@@ -1,5 +1,6 @@
 package com.blues.framework.http
 
+import com.blues.article.EverydayArticleServiceApi
 import com.blues.constant.*
 import com.blues.framework.http.typeadapter.DoubleDefaultAdapter
 import com.blues.framework.http.typeadapter.IntegerDefaultAdapter
@@ -22,6 +23,7 @@ val networkModule = module {
     single(named(WANANDROID)) { provideRetrofit(BASE_WANANDROID_URL) }
     single(named(KAIYAN)) { provideRetrofit(BASE_KAIYAN_URL) }
     single(named(GANKIO)) { provideRetrofit(BASE_GANKIO_URL) }
+    single(named(EVERYDAY_ARTICLE)){ provideRetrofit(EverydayArticleServiceApi.EVERYDAY_ARTICLE_URL) }
     factory { ResponseHandler() }
 }
 

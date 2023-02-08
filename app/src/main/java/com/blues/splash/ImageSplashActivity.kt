@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.lifecycleScope
 import com.blues.constant.USER_INFO_KEY
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.framework.utils.startActivity
@@ -27,7 +28,6 @@ import org.koin.android.ext.android.get
 class ImageSplashActivity : BaseKoinActivity() {
 
     companion object {
-
         private const val SPLASH_ID = 0xff0001
     }
 
@@ -37,28 +37,31 @@ class ImageSplashActivity : BaseKoinActivity() {
 
     override fun initData(savedInstanceState: Bundle?) {
         //使用coroutine替代handler
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
 
             val decorView = window.decorView as FrameLayout
 
-            val decor = LayoutInflater.from(this@ImageSplashActivity)
-                .inflate(R.layout.item_splash, null) as ConstraintLayout
-
-            val skipTv = decor.findViewById<TextView>(R.id.tv_skip)
-            skipTv.setOnClickListener {
-                startActivity<MainActivity>()
-                finish()
-                cancel()
+            (LayoutInflater.from(this@ImageSplashActivity)
+                .inflate(R.layout.item_splash, null) as ConstraintLayout).also { decor ->
+                decor.findViewById<TextView>(R.id.tv_skip).also {
+                    it.setOnClickListener {
+                        this@ImageSplashActivity.startActivity<MainActivity>()
+                        this@ImageSplashActivity.finish()
+                        this.cancel()
+                    }
+                }
+            }.also { decor ->
+                decor.apply {
+                    id = SPLASH_ID
+                    layoutParams = ConstraintLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                    )
+                }
+            }.also {
+                decorView.addView(it)
             }
 
-            decor.apply {
-                id = SPLASH_ID
-                layoutParams = ConstraintLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT
-                )
-            }
-            decorView.addView(decor)
 
             //延迟2s消失
             delay(2000)
