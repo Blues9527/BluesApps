@@ -1,10 +1,18 @@
 buildscript {
     repositories {
-        jcenter()
+        maven {
+            allowInsecureProtocol = true
+            url "https://jitpack.io" }
+        google()
+        mavenCentral()
+        maven{
+            allowInsecureProtocol = true
+            url 'https://maven.aliyun.com/repository/jcenter'}
+
     }
     dependencies {
         // 因为使用的 Kotlin 需要需要添加 Kotlin 插件
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.22"
     }
 }
 
@@ -13,7 +21,15 @@ apply plugin: 'java-gradle-plugin'
 
 repositories {
     // 需要添加 jcenter 否则会提示找不到 gradlePlugin
-    jcenter()
+    maven { url "https://jitpack.io" }
+    mavenCentral()
+    google()
+    maven{
+        allowInsecureProtocol = true
+        url 'https://maven.aliyun.com/repository/jcenter'}
+    maven {
+        allowInsecureProtocol = true
+        url 'https://maven.aliyun.com/repository/google' }
 }
 
 dependencies {

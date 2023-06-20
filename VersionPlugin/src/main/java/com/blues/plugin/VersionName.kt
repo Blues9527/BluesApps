@@ -81,8 +81,10 @@ object Versions {
     const val ijkplayer = "0.8.8"
 
     //glide
-    const val glide = "4.11.0"
+//    const val glide = "4.11.0"
 
     //mmkv
     const val mmkv ="1.2.10"
+
+    const val codeLocator = "2.0.0"
 }

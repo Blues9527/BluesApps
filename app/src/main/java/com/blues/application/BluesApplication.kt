@@ -83,9 +83,11 @@ class BluesApplication : MultiDexApplication() {
         })
     }
 
+    /**
+     * 初始化coil
+     */
     private fun initCoil() {
-        val imageLoader = ImageLoader.Builder(applicationContext).crossfade(true)
-            .componentRegistry {
+        ImageLoader.Builder(applicationContext).crossfade(true).componentRegistry {
                 if (SDK_INT >= 28) {
                     add(ImageDecoderDecoder(applicationContext))
                 } else {
@@ -93,7 +95,8 @@ class BluesApplication : MultiDexApplication() {
                 }
             }.okHttpClient {
                 OkHttpClientManager.instance
-            }.build()
-        Coil.setImageLoader(imageLoader)
+            }.build().also {
+                Coil.setImageLoader(it)
+            }
     }
 }

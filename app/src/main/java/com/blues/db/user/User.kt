@@ -2,6 +2,7 @@ package com.blues.db.user
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 /**
@@ -35,4 +36,7 @@ data class User(
 
     @ColumnInfo(name = "head_image", typeAffinity = ColumnInfo.TEXT)
     val headImage: String? = null,//用户头像
-)
+){
+    @Ignore
+    constructor():this(0,"",0,"","","")
+}

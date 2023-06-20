@@ -16,7 +16,7 @@ class EverydayArticleViewModel(private val everydayArticleRepository: EverydayAr
     BaseViewModel() {
 
     private val _everydayArticleEntity = MutableSharedFlow<EverydayArticleBean>(replay = 1)
-    val wanAndroidEntity: SharedFlow<EverydayArticleBean> = _everydayArticleEntity
+    val everydayArticleFlow: SharedFlow<EverydayArticleBean> = _everydayArticleEntity
 
      fun getTodayArticle() {
         viewModelScope.launch {

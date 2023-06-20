@@ -2,7 +2,9 @@ package com.blues.article
 
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.widget.TextView
+import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.lifecycleScope
 import com.blues.R
 import com.blues.framework.base.BaseKoinActivity
@@ -16,9 +18,19 @@ class EverydayArticleActivity : BaseKoinActivity() {
 
     private val articleViewModel by viewModel<EverydayArticleViewModel>()
 
-    private lateinit var mTvTitle: TextView
-    private lateinit var mTvArticle: TextView
-    private lateinit var mTvArticleContent: TextView
+    private val mTvTitle: TextView by lazy {
+        findViewById(R.id.tv_article_title)
+    }
+    private val mTvArticle: TextView by lazy {
+        findViewById(R.id.tv_article_info)
+    }
+    private val mTvArticleContent: TextView by lazy {
+        findViewById(R.id.tv_article_detail)
+    }
+
+    private val mNsvArticle: NestedScrollView by lazy {
+        findViewById(R.id.nsv_article)
+    }
 
     override fun getLayoutId() = R.layout.activity_everyday_article
 
@@ -26,14 +38,19 @@ class EverydayArticleActivity : BaseKoinActivity() {
         //获取当日文章数据
         articleViewModel.getTodayArticle()
 
-        mTvTitle = findViewById(R.id.tv_article_title)
-        mTvArticle = findViewById(R.id.tv_article_info)
-        mTvArticleContent = findViewById(R.id.tv_article_detail)
+        mNsvArticle.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            run {
+                Log.d(
+                    "Blues",
+                    "scrollX:$scrollX  scrollY:$scrollY  oldScrollX:$oldScrollX  oldScrollY$oldScrollY"
+                )
+            }
+        })
     }
 
     override fun collect() {
         lifecycleScope.launchWhenCreated {
-            articleViewModel.wanAndroidEntity.collect {
+            articleViewModel.everydayArticleFlow.collect {
                 with(it.data!!) {
                     //设置标题
                     mTvTitle.text = title

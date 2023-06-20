@@ -96,12 +96,16 @@ object Others {
     const val multidex = "androidx.multidex:multidex:${Versions.multidex}"
 }
 
-object Glide{
-    const val glide  = "com.github.bumptech.glide:glide:${Versions.glide}"
-    const val compiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
-}
+//object Glide{
+//    const val glide  = "com.github.bumptech.glide:glide:${Versions.glide}"
+//    const val compiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+//}
 
 object MMKV{
     const val mmkv = "com.tencent:mmkv-static:${Versions.mmkv}"
+}
+
+object CL{
+    const val codeLocator = "com.bytedance.tools.codelocator:codelocator-core:${Versions.codeLocator}"
 }
 
