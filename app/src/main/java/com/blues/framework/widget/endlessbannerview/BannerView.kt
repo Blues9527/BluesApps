@@ -307,8 +307,8 @@ class BannerView @JvmOverloads constructor(context: Context?, attrs: AttributeSe
                 alpha = mAlpha
             }
         }
-        mHintViewDelegate.initView(if (mAdapter == null) 0 else mAdapter!!.count, location, delay,
-                mHintView as HintView?)
+//        mHintViewDelegate.initView(if (mAdapter == null) 0 else mAdapter!!.count, location, delay,
+//                mHintView as HintView?)
     }
 
     /**

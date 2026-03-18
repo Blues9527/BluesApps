@@ -9,6 +9,9 @@ object ActivityUtil {
 
     val activities = mutableListOf<Activity>()
 
+    /**
+     * 启动一个在activity栈里的activity
+     */
     @JvmStatic
     @JvmOverloads
     fun start(clazz: Class<out Activity>, params: Map<String, Any> = emptyMap()) {
@@ -19,6 +22,13 @@ object ActivityUtil {
         }
         currentActivity.startActivity(intent)
     }
+
+
+    /**
+     * 获取栈顶activity
+     */
+    @JvmStatic
+    fun topActivity() = activities[activities.lastIndex]
 
     /**
      * finish指定的一个或多个Activity

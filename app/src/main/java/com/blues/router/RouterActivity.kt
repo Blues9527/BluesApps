@@ -27,7 +27,7 @@ import com.blues.wanandroid.view.WanAndroidActivity
 class RouterActivity : BaseKoinActivity() {
 
     private val mRecyclerViewItemList = mutableListOf<Pair<String, Class<*>>>(
-        Pair("干货", GankActivity::class.java),
+//        Pair("干货", GankActivity::class.java),
         Pair("玩安卓", WanAndroidActivity::class.java),
         Pair("每日一文", EverydayArticleActivity::class.java)
     )

@@ -1,5 +1,6 @@
 package com.blues.framework.network
 
+import ActivityUtil
 import android.content.Context
 import android.net.ConnectivityManager.NetworkCallback
 import android.net.Network
@@ -14,31 +15,34 @@ import android.util.Log
  * @time: 2022/1/24
  **/
 
-class NetworkCallbackImpl(context: Context) : NetworkCallback() {
+class NetworkCallbackImpl() : NetworkCallback() {
 
-    private val mDialog: NetworkDialog = NetworkDialog(context)
+    private var mDialog: NetworkDialog? = null
 
     override fun onAvailable(network: Network) {
         super.onAvailable(network)
         Log.i("Blues", "网络已连接")
-        if (mDialog.isShowing) {
-            mDialog.dismiss()
+        if (mDialog?.isShowing == true) {
+            mDialog?.dismiss()
         }
     }
 
     override fun onUnavailable() {
         super.onUnavailable()
         Log.i("Blues", "没有网络连接")
-        if (!mDialog.isShowing) {
-            mDialog.show()
+        if (mDialog == null) {
+            mDialog = NetworkDialog(ActivityUtil.topActivity())
+        }
+        if (mDialog?.isShowing == false) {
+            mDialog?.show()
         }
     }
 
     override fun onLost(network: Network) {
         super.onLost(network)
         Log.i("Blues", "网络已断开")
-        if (!mDialog.isShowing) {
-            mDialog.show()
+        if (mDialog?.isShowing == false) {
+            mDialog?.show()
         }
     }
 

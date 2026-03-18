@@ -6,7 +6,9 @@ import android.widget.FrameLayout
 import com.blues.R
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.blues.framework.utils.ScreenUtil
 
 /**
  * User : Blues
@@ -82,6 +84,13 @@ class RegisterActivity : BaseKoinActivity(), View.OnClickListener {
     override fun getLayoutId() = R.layout.activity_register
 
     override fun initData(savedInstanceState: Bundle?) {
+        // 设置状态栏 padding，避免被遮挡
+        val statusBarHeight = ScreenUtil.statusBarHeight
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        window.addFlags(android.view.WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        findViewById<ViewGroup>(android.R.id.content).setPadding(0, statusBarHeight, 0, 0)
+
         tvAccountRegister.setOnClickListener(this@RegisterActivity)
         tvPhoneRegister.setOnClickListener(this@RegisterActivity)
     }

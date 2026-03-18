@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod:*)",
+      "Bash(npx skills:*)",
+      "Bash(curl:*)",
+      "Bash(pip3 install:*)",
+      "Bash(npm install:*)",
+      "Bash(brew install:*)",
+      "Bash(brew search:*)",
+      "Bash(./gradlew assembleDebug 2>&1 | tail -20)",
+      "Bash(./gradlew assembleDebug 2>&1 | tail -15)",
+      "Bash(./gradlew clean:*)"
+    ]
+  }
+}

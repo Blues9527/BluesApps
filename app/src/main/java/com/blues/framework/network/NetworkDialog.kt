@@ -19,7 +19,7 @@ import com.blues.R
 
 class NetworkDialog(context: Context) : Dialog(context) {
 
-    override fun onCreate(savedInstanceState: Bundle) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         window?.apply { //初始化窗口属性

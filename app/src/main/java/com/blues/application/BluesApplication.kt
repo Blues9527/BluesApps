@@ -5,6 +5,7 @@ import androidx.multidex.MultiDexApplication
 import androidx.multidex.MultiDex
 import android.app.Activity
 import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Build.VERSION.SDK_INT
 import coil.Coil
@@ -58,7 +59,8 @@ class BluesApplication : MultiDexApplication() {
     }
 
     private fun initNetworkListener() {
-        NetworkCallbackImpl(app)
+        val systemService = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        systemService.registerDefaultNetworkCallback(NetworkCallbackImpl())
     }
 
     private fun initKoin() {
@@ -88,15 +90,15 @@ class BluesApplication : MultiDexApplication() {
      */
     private fun initCoil() {
         ImageLoader.Builder(applicationContext).crossfade(true).componentRegistry {
-                if (SDK_INT >= 28) {
-                    add(ImageDecoderDecoder(applicationContext))
-                } else {
-                    add(GifDecoder())
-                }
-            }.okHttpClient {
-                OkHttpClientManager.instance
-            }.build().also {
-                Coil.setImageLoader(it)
+            if (SDK_INT >= 28) {
+                add(ImageDecoderDecoder(applicationContext))
+            } else {
+                add(GifDecoder())
             }
+        }.okHttpClient {
+            OkHttpClientManager.instance
+        }.build().also {
+            Coil.setImageLoader(it)
+        }
     }
 }

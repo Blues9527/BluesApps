@@ -7,10 +7,12 @@ import com.blues.R
 import android.os.Bundle
 import android.content.Intent
 import android.view.View
+import android.view.ViewGroup
 import com.blues.MainActivity
 import androidx.fragment.app.Fragment
 import com.blues.framework.base.BaseKoinActivity
 import com.blues.framework.utils.HelperUtil
+import com.blues.framework.utils.ScreenUtil
 import com.blues.framework.utils.startActivity
 import com.blues.register.view.RegisterActivity
 
@@ -98,6 +100,13 @@ class LoginActivity : BaseKoinActivity(), View.OnClickListener {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
+        // 设置状态栏 padding，避免被遮挡
+        val statusBarHeight = ScreenUtil.statusBarHeight
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        window.addFlags(android.view.WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        findViewById<ViewGroup>(android.R.id.content).setPadding(0, statusBarHeight, 0, 0)
+
         findViewById<TextView>(R.id.tv_skip).setOnClickListener(this)
         findViewById<TextView>(R.id.tv_forget_pwd).setOnClickListener(this)
         findViewById<TextView>(R.id.tv_user_reg).setOnClickListener(this)
