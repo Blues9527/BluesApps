@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-An Android personal learning app written in Kotlin, originally developed in MVP pattern and migrated to MVVM with ViewModel + Flow. Uses Composing Build for dependency management via a custom Gradle plugin.
+An Android personal learning app written in Kotlin, originally developed in MVP pattern and migrated to MVVM with ViewModel + Flow. Uses Gradle Version Catalog for dependency management.
 
 ## Build Commands
 
@@ -47,7 +47,7 @@ Koin is used for DI. Modules are defined in `com.blues.di.inject.kt`:
 - `com.blues.framework.http.OkHttpClientManager` - OkHttp singleton
 
 ### Dependency Management
-Custom Gradle plugin in `VersionPlugin/` manages all dependencies. Edit `VersionPlugin/src/main/java/com/blues/plugin/Depts.kt` to add/update dependencies.
+Dependency versions and coordinates are managed in `gradle/libs.versions.toml`. Update that file when adding or changing libraries.
 
 ## Project Structure
 

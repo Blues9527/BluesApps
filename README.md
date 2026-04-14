@@ -30,7 +30,7 @@ BluesApp 是一个 Android 个人学习应用，最初使用 Java-MVP 模式开�
 | 生命周期 | ViewModel + LiveData/Flow |
 
 ### 依赖管理
-采用 Composing Build 方式管理依赖，通过自定义 Gradle 插件集中管理所有依赖版本。
+采用 Gradle Version Catalog 管理依赖，统一维护在 `gradle/libs.versions.toml`。
 
 ## 项目结构
 
@@ -93,7 +93,7 @@ app/src/main/java/com/blues/
 ## 相关文档
 
 - [CLAUDE.md](./CLAUDE.md) - Claude Code 开发指南
-- [开发笔记](./VersionPlugin) - 版本插件记录
+- [依赖版本表](./gradle/libs.versions.toml) - Version Catalog 依赖定义
 
 ## 鸣谢
 

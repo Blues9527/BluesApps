@@ -1,33 +1,22 @@
-import com.blues.plugin.AndroidX
-import com.blues.plugin.BaseConfig
-import com.blues.plugin.Coil
-import com.blues.plugin.CL
-import com.blues.plugin.MMKV
-import com.blues.plugin.Koin
-import com.blues.plugin.Kotlin
-import com.blues.plugin.Network
-import com.blues.plugin.Others
-import com.blues.plugin.Room
-import com.blues.plugin.UiComponent
-import com.blues.plugin.Video
-
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
+}
 
 static def releaseTime() {  //获取时间的方法,在Android节点外,另外的节点
     return new Date().format("yyyyMMddHHmm", TimeZone.getDefault())
 }
 
 android {
-    compileSdkVersion BaseConfig.compileSdkVersion
+    compileSdkVersion 30
     defaultConfig {
-        applicationId BaseConfig.applicationId
-        minSdkVersion BaseConfig.minSdkVersion
-        targetSdkVersion BaseConfig.targetSdkVersion
-        versionCode BaseConfig.versionCode
-        versionName BaseConfig.versionName
-        buildToolsVersion BaseConfig.buildToolsVersion
+        applicationId "com.blues.app"
+        minSdkVersion 26
+        targetSdkVersion 30
+        versionCode 104
+        versionName "1.0.4"
+        buildToolsVersion "30.0.3"
 
         resConfigs "zh"
 
@@ -96,53 +85,53 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation Others.multidex
-    implementation AndroidX.appcompat
-    implementation AndroidX.constraintlayout
-    implementation AndroidX.viewmodel
-    implementation AndroidX.livedata
-    implementation AndroidX.lifecycle
-    implementation AndroidX.ktx
+    implementation libs.androidx.multidex
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.lifecycle.viewmodel
+    implementation libs.androidx.lifecycle.livedata
+    implementation libs.androidx.lifecycle.runtime
+    implementation libs.androidx.core.ktx
 
-    implementation Network.retrofit
-    implementation Network.okhttp3
-    implementation Network.okhttp3Interceptor
-    implementation Network.fastJson
-    implementation Network.convertor
+    implementation libs.retrofit.core
+    implementation libs.okhttp.core
+    implementation libs.okhttp.logging.interceptor
+    implementation libs.fastjson
+    implementation libs.retrofit.converter.gson
 
-    implementation UiComponent.material
-    implementation UiComponent.easyrecyclerview
-    implementation UiComponent.baseRecyclerViewAdapter
-    implementation UiComponent.smartRefresh
-    implementation UiComponent.smartRefreshHeader//没有使用特殊Header，可以不加这行
-    implementation UiComponent.markdown4j
-    implementation UiComponent.viewpager2
+    implementation libs.material
+    implementation libs.easyrecyclerview
+    implementation libs.base.recyclerview.adapter.helper
+    implementation libs.smartrefresh.layout
+    implementation libs.smartrefresh.header//没有使用特殊Header，可以不加这行
+    implementation libs.markdown4j
+    implementation libs.androidx.viewpager2
 
-    implementation Room.runtime
-    implementation Room.roomKtx
-    kapt Room.compiler
+    implementation libs.room.runtime
+    implementation libs.room.ktx
+    kapt libs.room.compiler
 
-    implementation Kotlin.stdlibJdk8
-    implementation Kotlin.coroutines
+    implementation libs.kotlin.stdlib.jdk8
+    implementation libs.kotlinx.coroutines.android
 
-    implementation Koin.core
-    implementation Coil.core
-    implementation Coil.gif
+    implementation libs.koin.android
+    implementation libs.coil.core
+    implementation libs.coil.gif
 
-    implementation Video.ijkplayerJava
-    implementation Video.ijkplayerArmv7a
-    implementation Video.ijkplayerArm64
-    implementation Video.ijkplayerExo
-    implementation AndroidX.annotation
+    implementation libs.ijkplayer.java
+    implementation libs.ijkplayer.armv7a
+    implementation libs.ijkplayer.arm64
+    implementation libs.ijkplayer.exo
+    implementation libs.androidx.annotation
 
 //    implementation Glide.glide
 //    implementation Glide.compiler
 
-    implementation MMKV.mmkv
+    implementation libs.mmkv.static
     //leakcanary
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
 
-    implementation CL.codeLocator
+    implementation libs.codelocator.core
 }
 repositories {
     mavenCentral()

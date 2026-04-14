@@ -107,7 +107,7 @@ class BannerView @JvmOverloads constructor(context: Context?, attrs: AttributeSe
                 cur = 0
             }
             rollPagerView.viewPager!!.currentItem = cur
-            rollPagerView.mHintViewDelegate.setCurrentPosition(cur, msg.arg1,
+            rollPagerView.mHintViewDelegate?.setCurrentPosition(cur, msg.arg1,
                     rollPagerView.mHintView as HintView?)
             if (rollPagerView.mAdapter!!.count <= 1) rollPagerView.stopPlay()
         }
@@ -255,7 +255,7 @@ class BannerView @JvmOverloads constructor(context: Context?, attrs: AttributeSe
     override fun onPageScrolled(i: Int, v: Float, i1: Int) {}
     override fun onPageSelected(position: Int) {
         mCurrentPosition = position
-        mHintViewDelegate.setCurrentPosition(position, delay, mHintView as HintView?)
+        mHintViewDelegate?.setCurrentPosition(position, delay, mHintView as HintView?)
     }
 
     override fun onPageScrollStateChanged(i: Int) {}
@@ -267,7 +267,7 @@ class BannerView @JvmOverloads constructor(context: Context?, attrs: AttributeSe
         fun initView(length: Int, gravity: Int, duration: Int, hintView: HintView?)
     }
 
-    private var mHintViewDelegate: HintViewDelegate = object : HintViewDelegate {
+    private var mHintViewDelegate: HintViewDelegate? = object : HintViewDelegate {
         override fun setCurrentPosition(position: Int, duration: Int, hintView: HintView?) {
             hintView?.setCurrent(position, duration)
         }
@@ -277,7 +277,7 @@ class BannerView @JvmOverloads constructor(context: Context?, attrs: AttributeSe
         }
     }
 
-    fun setHintViewDelegate(delegate: HintViewDelegate) {
+    fun setHintViewDelegate(delegate: HintViewDelegate?) {
         mHintViewDelegate = delegate
     }
 
@@ -307,8 +307,8 @@ class BannerView @JvmOverloads constructor(context: Context?, attrs: AttributeSe
                 alpha = mAlpha
             }
         }
-//        mHintViewDelegate.initView(if (mAdapter == null) 0 else mAdapter!!.count, location, delay,
-//                mHintView as HintView?)
+        mHintViewDelegate?.initView(if (mAdapter == null) 0 else mAdapter!!.count, location, delay,
+                mHintView as HintView?)
     }
 
     /**
@@ -324,7 +324,7 @@ class BannerView @JvmOverloads constructor(context: Context?, attrs: AttributeSe
 
     private fun dataSetChanged() {
         if (mHintView != null) {
-            mHintViewDelegate.initView(mAdapter!!.count, location, delay, mHintView as HintView?)
+            mHintViewDelegate?.initView(mAdapter!!.count, location, delay, mHintView as HintView?)
         }
         startPlay()
     }

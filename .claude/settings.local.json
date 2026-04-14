@@ -10,7 +10,15 @@
       "Bash(brew search:*)",
       "Bash(./gradlew assembleDebug 2>&1 | tail -20)",
       "Bash(./gradlew assembleDebug 2>&1 | tail -15)",
-      "Bash(./gradlew clean:*)"
+      "Bash(./gradlew clean:*)",
+      "Skill(tavily-search)",
+      "Bash(python3:*)",
+      "WebSearch",
+      "WebFetch(domain:www.wanandroid.com)",
+      "Bash(sh)",
+      "Bash(export:*)",
+      "Bash(TAVILY_API_KEY=\"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\" tvly search \"免费的技术文章API 替代 gank.io 干货集中营\" --json --max-results 10)",
+      "Bash(npx:*)"
     ]
   }
 }
